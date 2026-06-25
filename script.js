@@ -2,31 +2,35 @@
    Birth with Milliya — 互動腳本（純原生，無函式庫）
    ========================================================= */
 
-// 1) 導覽列：捲動時加底色
+// 1) 導覽列：捲動時加底色（首頁才有 #nav，子頁面沒有就跳過）
 const nav = document.getElementById('nav');
-const onScroll = () => {
-  if (window.scrollY > 40) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-};
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+if (nav) {
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
 
-// 2) 手機選單開合
+// 2) 手機選單開合（同樣只在有漢堡選單的頁面執行）
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
-toggle.addEventListener('click', () => {
-  const open = links.classList.toggle('open');
-  toggle.classList.toggle('open', open);
-  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-// 點選單項後自動收合
-links.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
+if (toggle && links) {
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-});
+  // 點選單項後自動收合
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 // 3) 捲動淡入（IntersectionObserver）
 const reveals = document.querySelectorAll('.reveal');

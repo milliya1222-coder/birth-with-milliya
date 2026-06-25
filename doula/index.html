@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>溫柔生產陪產 Birth Keeper｜Birth with Milliya</title>
+  <meta name="description" content="從產前到生產現場，再到產後第一段日子，持續在你身邊的陪產員。用呼吸、撫觸與穩定的陪伴，把恐懼換成力量，迎接屬於你的生產經驗。台北北投。">
+  <meta property="og:title" content="溫柔生產陪產 Birth Keeper｜Birth with Milliya">
+  <meta property="og:description" content="生產不是一場需要被處理的醫療事件，而是一段值得被好好陪伴的生命轉化。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../images/og-cover.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <!-- 服務頁專屬樣式（共用 Home 的品牌系統 ../styles.css）-->
+  <style>
+    .svc-topbar{
+      position:fixed;top:0;left:0;width:100%;z-index:100;
+      background:rgba(251,247,242,.92);backdrop-filter:blur(10px);
+      box-shadow:0 4px 24px -16px rgba(90,74,66,.4);
+    }
+    .svc-topbar .nav-inner{display:flex;align-items:center;justify-content:space-between;
+      max-width:var(--maxw);margin:0 auto;padding:16px 26px;}
+    .svc-back{font-family:"Cormorant Garamond",serif;font-size:1.15rem;letter-spacing:.04em;
+      color:var(--cocoa);text-decoration:none;transition:color .3s var(--ease);}
+    .svc-back:hover{color:var(--rose-deep);}
+    .svc-topbar .nav-cta{background:var(--rose);color:#fff;padding:9px 22px;border-radius:999px;
+      font-size:.92rem;letter-spacing:.06em;text-decoration:none;transition:all .3s var(--ease);}
+    .svc-topbar .nav-cta:hover{background:var(--rose-deep);}
+
+    .svc-hero{position:relative;min-height:74vh;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;text-align:center;padding:140px 26px 90px;overflow:hidden;
+      background:linear-gradient(110deg,rgba(251,247,242,.93) 0%,rgba(251,247,242,.7) 45%,rgba(168,181,162,.30) 100%),
+        url("../images/hero-wide.jpg") center/cover no-repeat;}
+    .svc-hero .eyebrow{font-family:"Cormorant Garamond",serif;font-style:italic;
+      font-size:1.2rem;letter-spacing:.14em;color:var(--rose-deep);margin-bottom:18px;}
+    .svc-hero h1{font-size:clamp(2rem,5vw,3.2rem);max-width:14em;}
+    .svc-hero .lead{margin-top:22px;max-width:34em;color:var(--cocoa-soft);font-size:1.05rem;}
+
+    .svc-section{padding:78px 0;}
+    .svc-section.alt{background:var(--beige);}
+    .svc-narrow{max-width:760px;margin:0 auto;}
+    .svc-section h2{font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:22px;}
+    .svc-section p{color:var(--cocoa-soft);margin-bottom:18px;}
+
+    .pain-list{list-style:none;display:grid;gap:14px;margin-top:8px;}
+    .pain-list li{position:relative;padding-left:30px;color:var(--cocoa-soft);}
+    .pain-list li::before{content:"❀";position:absolute;left:0;color:var(--rose);}
+
+    .phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:34px;}
+    .phase-card{background:var(--ivory);border:1px solid var(--line);border-radius:var(--radius);
+      padding:34px 30px;box-shadow:var(--shadow-soft);}
+    .phase-num{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.4rem;color:var(--sage);}
+    .phase-card h3{font-size:1.2rem;margin:6px 0 12px;}
+    .phase-card p{font-size:.96rem;margin-bottom:0;}
+
+    .evidence{background:var(--ivory);border:1px solid var(--line);border-left:4px solid var(--rose);
+      border-radius:14px;padding:26px 28px;margin-top:24px;}
+    .evidence p{margin-bottom:10px;}
+    .evidence .src{font-size:.82rem;color:var(--cocoa-soft);opacity:.85;margin-bottom:0;}
+
+    .todo-box{border:1.5px dashed var(--rose);background:rgba(226,155,134,.07);border-radius:14px;
+      padding:22px 26px;margin-top:20px;color:var(--cocoa-soft);font-size:.95rem;}
+    .todo-box strong{color:var(--rose-deep);}
+
+    .svc-cta{text-align:center;padding:84px 26px;background:
+      radial-gradient(120% 90% at 50% 0%,var(--beige) 0%,var(--ivory) 70%);}
+    .svc-cta h2{margin-bottom:18px;}
+    .svc-cta p{color:var(--cocoa-soft);max-width:30em;margin:0 auto 30px;}
+  </style>
+</head>
+<body>
+
+  <!-- 頂部：回首頁 + 預約 -->
+  <header class="svc-topbar">
+    <div class="nav-inner">
+      <a href="../" class="svc-back">← Birth with Milliya</a>
+      <a href="../#contact" class="nav-cta">預約對話</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="svc-hero">
+    <div class="reveal">
+      <p class="eyebrow">溫柔生產陪產 · Birth Keeper</p>
+      <h1>生產的那一天，<br>你不需要一個人勇敢</h1>
+      <p class="lead">從產前的準備，到生產現場的每一次呼吸，再到產後的第一段日子——我會持續在你身邊，陪你把屬於自己的生產，溫柔地走過。</p>
+    </div>
+  </section>
+
+  <!-- 這是為誰 -->
+  <section class="svc-section">
+    <div class="container svc-narrow reveal">
+      <p class="section-eyebrow">這份陪伴，是為你準備的</p>
+      <h2>如果你正在這樣的心情裡</h2>
+      <ul class="pain-list">
+        <li>對生產既期待又害怕，網路上的資訊越看越焦慮，卻不知道該相信誰。</li>
+        <li>很想要一場「溫柔生產」，但不確定身體、醫療現場、家人會不會配合。</li>
+        <li>擔心進產房後，自己的聲音會被淹沒，重要的選擇來不及好好決定。</li>
+        <li>希望生產這一天，身邊有一個「只屬於你」、穩定又懂你的人。</li>
+      </ul>
+      <p style="margin-top:24px;">這些心情，我都懂。因為我也曾是那個渴望被好好陪伴的母親。</p>
+    </div>
+  </section>
+
+  <!-- 我會怎麼陪你（三階段） -->
+  <section class="svc-section alt">
+    <div class="container reveal">
+      <div style="max-width:680px;">
+        <p class="section-eyebrow">我會怎麼陪你</p>
+        <h2>一段完整的陪伴，分成三個階段</h2>
+        <p>陪產不是只有生產那幾個小時。從你決定邀請我同行的那一刻起，我們就一起準備、一起經歷、一起安頓。</p>
+      </div>
+      <div class="phase-grid">
+        <div class="phase-card">
+          <span class="phase-num">i.</span>
+          <h3>產前準備</h3>
+          <p>數次產前會談，認識你的身體與期待，一起寫下生產計畫書；教你呼吸、姿勢與放鬆技巧，也陪你和伴侶對齊，讓家人成為你的後盾。</p>
+        </div>
+        <div class="phase-card">
+          <span class="phase-num">ii.</span>
+          <h3>生產現場</h3>
+          <p>產兆開始後待命，全程陪伴在你身邊。用撫觸、按壓、呼吸引導與穩定的存在，幫你安住在每一次陣痛裡，也在需要時，協助你把想法清楚地告訴醫療團隊。</p>
+        </div>
+        <div class="phase-card">
+          <span class="phase-num">iii.</span>
+          <h3>產後安頓</h3>
+          <p>產後的訪視與陪伴，聽你說說這場生產的故事，協助哺乳與身心安頓，陪你溫柔地接住「成為母親」的最初幾天。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 為什麼是陪產員（實證） -->
+  <section class="svc-section">
+    <div class="container svc-narrow reveal">
+      <p class="section-eyebrow">不只是溫柔，也有研究支持</p>
+      <h2>持續性的陪伴，真的會帶來不同</h2>
+      <p>「有人全程陪伴生產」這件事，不只是情感上的安慰——大型研究回顧發現，產程中獲得持續性支持的女性，更可能順利自然生產、較少使用止痛藥物與剖腹產，對生產經驗的滿意度也更高。</p>
+      <div class="evidence">
+        <p>「持續性的產程支持，能讓更多女性自然生產、減少醫療介入，並提升生產滿意度。」</p>
+        <p class="src">資料來源：Cochrane 系統性回顧 Bohren et al. (2017)《Continuous support for women during childbirth》／世界衛生組織 WHO 2018 自然生產照護指引亦推薦陪產員陪伴。</p>
+      </div>
+      <p style="margin-top:24px;">而我想再多做一點的，是把這份實證的支持，揉進身心靈整合的視角——讓生產不只是「安全地完成」，更是一段你會記得、會感謝自己的生命轉化。</p>
+    </div>
+  </section>
+
+  <!-- 方案與費用（待 Milliya 填寫真實內容） -->
+  <section class="svc-section alt">
+    <div class="container svc-narrow reveal">
+      <p class="section-eyebrow">方案與費用</p>
+      <h2>選擇最貼近你的陪伴</h2>
+      <div class="todo-box">
+        <p><strong>Milliya，這一段請填上你真實的方案內容</strong>（我先留好版型）：</p>
+        <p>例如——完整陪產方案包含「◯ 次產前會談 + 24 小時待命 + 生產全程陪伴 + ◯ 次產後訪視」，費用 NT$ ◯◯◯◯◯；另有單次諮詢、產後陪伴等選項。<br>跟我說你的方案與價格，我就幫你排成漂亮的價目卡。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 見證（可換成真實回饋） -->
+  <section class="svc-section">
+    <div class="container svc-narrow reveal">
+      <p class="section-eyebrow">媽媽們的話</p>
+      <h2>她們走過之後，這樣說</h2>
+      <figure style="margin-top:18px;">
+        <blockquote style="font-size:1.15rem;line-height:1.9;color:var(--cocoa);">「原本對生產充滿恐懼，是欣妙讓我相信自己的身體。那天我不是被生產『發生』在我身上，而是我自己把孩子迎接出來的。」</blockquote>
+        <figcaption style="margin-top:10px;color:var(--cocoa-soft);">—— 一位二寶媽媽</figcaption>
+      </figure>
+      <div class="todo-box"><p>可換成更多<strong>已徵得同意</strong>的真實學員回饋。</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="svc-cta reveal">
+    <p class="section-eyebrow">開始你的孕育旅程</p>
+    <h2>先從一次對話開始</h2>
+    <p>無論你正在懷孕、準備生產，或還在猶豫，都歡迎讓我聽聽你的故事。這一步，不需要你準備好，只需要你願意。</p>
+    <a href="../#contact" class="btn">預約一次對話</a>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <p class="footer-brand">Birth with Milliya</p>
+    <p class="footer-tag">溫暖但有骨 · 陪伴女性走過孕產的生命轉化</p>
+    <p class="footer-copy">© 2026 Birth with Milliya・欣妙　|　<a href="../" style="color:inherit;">回首頁</a></p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

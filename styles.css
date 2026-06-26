@@ -388,6 +388,14 @@ img{max-width:100%;display:block;}
 .svc-cta h2{margin-bottom:18px;}
 .svc-cta p{color:var(--cocoa-soft);max-width:30em;margin:0 auto 30px;}
 
+/* 服務頁圖片（含說明） */
+.svc-figure{max-width:720px;margin:0 auto;}
+.svc-figure img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);display:block;}
+.svc-figure figcaption{
+  margin-top:14px;text-align:center;font-size:.95rem;color:var(--cocoa-soft);
+  font-family:"Cormorant Garamond","Noto Serif TC",serif;font-style:italic;
+}
+
 /* 全寬意境圖帶 */
 .image-band{
   height:clamp(240px,42vw,460px);

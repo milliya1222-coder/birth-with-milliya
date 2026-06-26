@@ -329,3 +329,60 @@ img{max-width:100%;display:block;}
   .btn{padding:14px 30px;}
   .contact-info{flex-direction:column;gap:10px;}
 }
+
+/* =========================================================
+   服務子頁面共用樣式（doula / education / coaching / reiki）
+   ========================================================= */
+.svc-topbar{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  background:rgba(251,247,242,.92);backdrop-filter:blur(10px);
+  box-shadow:0 4px 24px -16px rgba(90,74,66,.4);
+}
+.svc-topbar .nav-inner{display:flex;align-items:center;justify-content:space-between;
+  max-width:var(--maxw);margin:0 auto;padding:16px 26px;}
+.svc-back{font-family:"Cormorant Garamond",serif;font-size:1.15rem;letter-spacing:.04em;
+  color:var(--cocoa);text-decoration:none;transition:color .3s var(--ease);}
+.svc-back:hover{color:var(--rose-deep);}
+.svc-topbar .nav-cta{background:var(--rose);color:#fff;padding:9px 22px;border-radius:999px;
+  font-size:.92rem;letter-spacing:.06em;text-decoration:none;transition:all .3s var(--ease);}
+.svc-topbar .nav-cta:hover{background:var(--rose-deep);}
+
+.svc-hero{position:relative;min-height:74vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:140px 26px 90px;overflow:hidden;
+  background:linear-gradient(110deg,rgba(251,247,242,.93) 0%,rgba(251,247,242,.7) 45%,rgba(168,181,162,.30) 100%),
+    url("images/hero-wide.jpg") center/cover no-repeat;}
+.svc-hero .eyebrow{font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:1.2rem;letter-spacing:.14em;color:var(--rose-deep);margin-bottom:18px;}
+.svc-hero h1{font-size:clamp(2rem,5vw,3.2rem);max-width:14em;}
+.svc-hero .lead{margin-top:22px;max-width:34em;color:var(--cocoa-soft);font-size:1.05rem;}
+
+.svc-section{padding:78px 0;}
+.svc-section.alt{background:var(--beige);}
+.svc-narrow{max-width:760px;margin:0 auto;}
+.svc-section h2{font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:22px;}
+.svc-section p{color:var(--cocoa-soft);margin-bottom:18px;}
+
+.pain-list{list-style:none;display:grid;gap:14px;margin-top:8px;}
+.pain-list li{position:relative;padding-left:30px;color:var(--cocoa-soft);}
+.pain-list li::before{content:"❀";position:absolute;left:0;color:var(--rose);}
+
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:34px;}
+.phase-card{background:var(--ivory);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 30px;box-shadow:var(--shadow-soft);}
+.phase-num{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.4rem;color:var(--sage);}
+.phase-card h3{font-size:1.2rem;margin:6px 0 12px;}
+.phase-card p{font-size:.96rem;margin-bottom:0;}
+
+.evidence{background:var(--ivory);border:1px solid var(--line);border-left:4px solid var(--rose);
+  border-radius:14px;padding:26px 28px;margin-top:24px;}
+.evidence p{margin-bottom:10px;}
+.evidence .src{font-size:.82rem;color:var(--cocoa-soft);opacity:.85;margin-bottom:0;}
+
+.todo-box{border:1.5px dashed var(--rose);background:rgba(226,155,134,.07);border-radius:14px;
+  padding:22px 26px;margin-top:20px;color:var(--cocoa-soft);font-size:.95rem;}
+.todo-box strong{color:var(--rose-deep);}
+
+.svc-cta{text-align:center;padding:84px 26px;background:
+  radial-gradient(120% 90% at 50% 0%,var(--beige) 0%,var(--ivory) 70%);}
+.svc-cta h2{margin-bottom:18px;}
+.svc-cta p{color:var(--cocoa-soft);max-width:30em;margin:0 auto 30px;}

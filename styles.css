@@ -388,6 +388,14 @@ img{max-width:100%;display:block;}
 .svc-cta h2{margin-bottom:18px;}
 .svc-cta p{color:var(--cocoa-soft);max-width:30em;margin:0 auto 30px;}
 
+/* 全寬意境圖帶 */
+.image-band{
+  height:clamp(240px,42vw,460px);
+  background:
+    linear-gradient(rgba(226,155,134,.10),rgba(168,181,162,.12)),
+    url("images/altar.jpg") center 58%/cover no-repeat;
+}
+
 /* Milliya 視角・金句引言（可用於首頁與服務頁） */
 .voice-quote{
   position:relative;margin:30px 0;padding:6px 0 6px 28px;

@@ -387,3 +387,16 @@ img{max-width:100%;display:block;}
   radial-gradient(120% 90% at 50% 0%,var(--beige) 0%,var(--ivory) 70%);}
 .svc-cta h2{margin-bottom:18px;}
 .svc-cta p{color:var(--cocoa-soft);max-width:30em;margin:0 auto 30px;}
+
+/* Milliya 視角・金句引言（可用於首頁與服務頁） */
+.voice-quote{
+  position:relative;margin:30px 0;padding:6px 0 6px 28px;
+  border-left:3px solid var(--rose);
+  font-family:"Noto Serif TC",serif;font-weight:500;
+  font-size:1.18rem;line-height:1.95;color:var(--cocoa);
+}
+.voice-quote cite{
+  display:block;margin-top:14px;font-style:normal;
+  font-family:"Cormorant Garamond","Noto Sans TC",serif;
+  font-size:.95rem;letter-spacing:.04em;color:var(--rose-deep);
+}

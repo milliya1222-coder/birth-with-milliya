@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- ===== SEO / 社群分享 meta（之後可微調文字與 og:image）===== -->
+  <!-- ===== SEO / 社群分享 meta ===== -->
   <title>Birth with Milliya｜溫柔生產陪產・女性身心靈整合</title>
-  <meta name="description" content="Birth with Milliya（欣妙）—— 孕產身心靈陪產員與女性身心靈整合教練。提供溫柔生產陪產、孕產教育、女性教練、阿育吠陀產後按摩與靈氣療癒。陪伴你在生命轉化的此刻，被理解、被支持。台北北投行義路・日本湘南逗子。">
-  <meta property="og:title" content="Birth with Milliya｜溫柔生產陪產・女性身心靈整合">
-  <meta property="og:description" content="在生命轉化的此刻，有人懂你、陪你。">
+  <meta name="description" content="Birth with Milliya（欣妙）—— 陪妳生，也陪妳生出新的自己。孕產身心靈陪產員與女性身心靈整合教練：溫柔生產陪產、孕產教育、阿育吠陀產後按摩、女性身心靈教練與女人圈。台北北投行義路・日本湘南逗子。">
+  <link rel="canonical" href="https://birthwithmilliya.com/">
+  <meta property="og:title" content="Birth with Milliya｜陪妳生，也陪妳生出新的自己">
+  <meta property="og:description" content="孕產支持 × 女人身心靈。陪妳把懷孕、生產與成為母親，走成一段被理解、被支持的生命轉化。">
   <meta property="og:type" content="website">
-  <!-- TODO: 換成你自己的分享縮圖網址（建議 1200x630）-->
-  <meta property="og:image" content="images/og-cover.jpg">
+  <meta property="og:url" content="https://birthwithmilliya.com/">
+  <meta property="og:image" content="https://birthwithmilliya.com/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,19 +20,36 @@
   <link rel="icon" type="image/png" href="images/logo/icon.png">
   <link rel="apple-touch-icon" href="images/logo/icon.png">
   <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Birth with Milliya 欣妙在陪妳",
+    "description": "孕產身心靈陪產員與女性身心靈整合教練。陪妳生，也陪妳生出新的自己——溫柔生產陪產、孕產教育、阿育吠陀產後按摩、女性身心靈教練與女人圈。",
+    "url": "https://birthwithmilliya.com/",
+    "image": "https://birthwithmilliya.com/images/og-cover.jpg",
+    "founder": { "@type": "Person", "name": "Milliya 欣妙", "jobTitle": "陪產員・女性身心靈整合教練" },
+    "areaServed": ["台北市", "北投區", "日本・神奈川・湘南逗子"],
+    "address": { "@type": "PostalAddress", "addressLocality": "台北市北投區", "streetAddress": "行義路", "addressCountry": "TW" },
+    "sameAs": ["https://instagram.com/birth.with.milliya"],
+    "slogan": "陪妳生，也陪妳生出新的自己"
+  }
+  </script>
 </head>
 <body>
 
   <!-- ===================== 導覽列（吸頂） ===================== -->
   <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#hero" class="logo"><img src="images/logo/logo-rose.png" alt="Birth with Milliya 欣妙在陪你"></a>
+      <a href="#hero" class="logo"><img src="images/logo/logo-rose.png" alt="Birth with Milliya 欣妙在陪妳"></a>
       <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links" id="navLinks">
         <a href="#about">關於我</a>
         <a href="#services">服務</a>
+        <a href="guide/">手冊</a>
         <a href="#belief">理念</a>
         <a href="#voices">媽媽們的話</a>
         <a href="#contact" class="nav-cta">預約對話</a>
@@ -39,14 +58,12 @@
   </header>
 
   <!-- ===================== Hero 首屏 ===================== -->
-  <!-- TODO: 把 hero 背景換成你自己的柔光自然照（母親 / 雙手 / 植物意象），
-       在 styles.css 的 .hero 區塊改 background-image。建議橫式、寬 2000px 以上。 -->
   <section class="hero" id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content reveal">
       <p class="eyebrow">孕產身心靈陪伴 · 台北北投 · 日本湘南逗子</p>
-      <h1>在生命轉化的此刻，<br>有人懂你、陪你</h1>
-      <p class="hero-sub">我是 Milliya（欣妙），陪產員與女性身心靈整合教練。<br>陪你把懷孕、生產與成為母親，走成一段被理解、被支持的旅程。</p>
+      <h1>陪妳生、<br>也陪妳生出新的自己</h1>
+      <p class="hero-sub">在生命轉化的此刻，有人懂妳、陪妳。<br>我是 Milliya（欣妙），陪產員與女性身心靈整合教練。</p>
       <a href="#contact" class="btn">預約一次對話</a>
     </div>
     <a href="#about" class="scroll-hint" aria-label="向下捲動">↓</a>
@@ -56,10 +73,9 @@
   <section class="about" id="about">
     <div class="container about-grid">
       <div class="about-photo reveal">
-        <!-- TODO: 換成你的照片（直式為佳，自然光、溫暖）。檔名放 images/milliya.jpg -->
         <div class="photo-frame">
           <img src="images/milliya.jpg" alt="Milliya 欣妙 的照片" onerror="this.parentElement.classList.add('photo-placeholder'); this.style.display='none';">
-          <span class="photo-label">你的照片<br>images/milliya.jpg</span>
+          <span class="photo-label">妳的照片<br>images/milliya.jpg</span>
         </div>
       </div>
       <div class="about-text reveal">
@@ -73,68 +89,110 @@
     </div>
   </section>
 
-  <!-- ===================== 服務 ===================== -->
+  <!-- ===================== 服務（兩大主軸） ===================== -->
   <section class="services" id="services">
     <div class="container">
       <div class="section-head reveal">
-        <p class="section-eyebrow">我能怎麼陪你</p>
-        <h2>七種陪伴，一個核心：<br>讓你在轉化裡不孤單</h2>
+        <p class="section-eyebrow">我能怎麼陪妳</p>
+        <h2>兩大主軸，一個核心：<br>讓妳在轉化裡不孤單</h2>
       </div>
-      <div class="service-grid">
-        <a href="doula/" class="service-card reveal">
-          <span class="service-icon">❀</span>
-          <h3>溫柔生產陪產</h3>
-          <p class="service-tag">Birth Keeper</p>
-          <p class="service-desc">從產前到生產現場，持續在你身邊。用呼吸、撫觸與穩定的陪伴，幫你把恐懼換成力量，迎接屬於你的生產經驗。</p>
-          <span class="service-more">了解更多 →</span>
-        </a>
-        <a href="education/" class="service-card reveal">
-          <span class="service-icon">☾</span>
-          <h3>孕產教育</h3>
-          <p class="service-tag">Education</p>
-          <p class="service-desc">把實證研究說成你聽得懂、用得上的語言。讓你在每一個選擇前，都因為「真的明白」而安心。</p>
-          <span class="service-more">了解更多 →</span>
-        </a>
-        <a href="coaching/" class="service-card reveal">
-          <span class="service-icon">✦</span>
-          <h3>女性身心靈教練</h3>
-          <p class="service-tag">Coaching</p>
-          <p class="service-desc">不只陪你生產，也陪你成長。透過一對一對話，看見孕產帶來的內在課題，把它走成自我整合的入口。</p>
-          <span class="service-more">了解更多 →</span>
-        </a>
-        <a href="https://milliya1222-coder.github.io/Ayurvedic-care/" class="service-card reveal">
-          <span class="service-icon">⊹</span>
-          <h3>阿育吠陀產後按摩</h3>
-          <p class="service-tag">Ayurveda</p>
-          <p class="service-desc">產後的身體需要被慎重地承接。以阿育吠陀的溫油按摩，幫你安定神經、修復元氣，把「坐月子」做回一場療癒。</p>
-          <span class="service-more">了解更多 →</span>
-        </a>
-        <a href="reiki/" class="service-card reveal">
-          <span class="service-icon">◌</span>
-          <h3>靈氣療癒</h3>
-          <p class="service-tag">Reiki</p>
-          <p class="service-desc">在身心疲憊或情緒滿溢時，用靈氣為你做一次溫柔的能量梳理，讓你重新與自己的中心連上線。</p>
-          <span class="service-more">了解更多 →</span>
-        </a>
-        <a href="https://milliya1222-coder.github.io/gentle-birthing-circle/" class="service-card reveal">
-          <span class="service-icon">✺</span>
-          <h3>生生不息・溫柔孕育圈</h3>
-          <p class="service-tag">Gentle Birthing Circle</p>
-          <p class="service-desc">和姊妹一起圍坐成圈，在故事與儀式裡，重新找回孕育的神聖與女性的主體性。一個尊重每一種孕育路徑的支持圓圈。</p>
-          <span class="service-more">了解更多 →</span>
-        </a>
-        <a href="wombmoon/" class="service-card reveal">
-          <span class="service-icon">☽</span>
-          <h3>Womb-Moon 神聖脈輪女人圈</h3>
-          <p class="service-tag">Womb-Moon Circle</p>
-          <p class="service-desc">由認證 Womb-Moon 引導師帶領的八週脈輪旅程，線上或實體。從身體、子宮與月亮本質出發，在被守住的姊妹圈裡，慢慢回到完整的自己。</p>
-          <span class="service-more">了解更多 →</span>
-        </a>
+
+      <!-- 主軸一：孕產支持 -->
+      <div class="pillar reveal">
+        <div class="pillar-head">
+          <span class="pillar-axis">主軸一</span>
+          <h3>孕產支持</h3>
+          <p class="pillar-sub">陪妳生</p>
+        </div>
+        <div class="service-grid">
+          <a href="doula/" class="service-card">
+            <span class="service-icon">❀</span>
+            <h4>溫柔生產陪產</h4>
+            <p class="service-tag">Birth Keeper</p>
+            <p class="service-desc">從產前到生產現場，持續在妳身邊。用呼吸、撫觸與穩定的陪伴，幫妳把恐懼換成力量，迎接屬於妳的生產經驗。</p>
+            <span class="service-more">了解更多 →</span>
+          </a>
+          <a href="education/" class="service-card">
+            <span class="service-icon">☾</span>
+            <h4>孕產教育</h4>
+            <p class="service-tag">Education</p>
+            <p class="service-desc">把實證研究說成妳聽得懂、用得上的語言。讓妳在每一個選擇前，都因為「真的明白」而安心。</p>
+            <span class="service-more">了解更多 →</span>
+          </a>
+          <a href="https://milliya1222-coder.github.io/Ayurvedic-care/" class="service-card">
+            <span class="service-icon">⊹</span>
+            <h4>阿育吠陀產後按摩</h4>
+            <p class="service-tag">Ayurveda</p>
+            <p class="service-desc">產後的身體需要被慎重地承接。以阿育吠陀的溫油按摩，幫妳安定神經、修復元氣，把「坐月子」做回一場療癒。</p>
+            <span class="service-more">了解更多 →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 主軸二：女人身心靈 -->
+      <div class="pillar reveal">
+        <div class="pillar-head">
+          <span class="pillar-axis">主軸二</span>
+          <h3>女人身心靈</h3>
+          <p class="pillar-sub">陪妳生出新的自己</p>
+        </div>
+        <div class="service-grid">
+          <a href="coaching/" class="service-card">
+            <span class="service-icon">✦</span>
+            <h4>女性身心靈教練</h4>
+            <p class="service-tag">Coaching</p>
+            <p class="service-desc">不只陪妳生產，也陪妳成長。透過一對一對話，看見孕產帶來的內在課題，把它走成自我整合的入口。</p>
+            <span class="service-more">了解更多 →</span>
+          </a>
+          <a href="wombmoon/" class="service-card">
+            <span class="service-icon">☽</span>
+            <h4>Womb-Moon 神聖脈輪女人圈</h4>
+            <p class="service-tag">Womb-Moon Circle</p>
+            <p class="service-desc">由認證 Womb-Moon 引導師帶領的八週脈輪旅程，線上或實體。從身體、子宮與月亮本質出發，在被守住的姊妹圈裡，慢慢回到完整的自己。</p>
+            <span class="service-more">了解更多 →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 不確定哪一種 -->
+      <div class="service-grid services-cta-row">
         <article class="service-card service-card--cta reveal">
-          <h3>不確定適合哪一種？</h3>
-          <p>每個媽媽的旅程都不一樣。先來一次對話，我們一起找出最貼近你此刻的陪伴方式。</p>
+          <h4>不確定適合哪一種？</h4>
+          <p>每個媽媽的旅程都不一樣。先來一次對話，我們一起找出最貼近妳此刻的陪伴方式。</p>
           <a href="#contact" class="btn btn-small">預約一次對話</a>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 與姊妹共創（特區） ===================== -->
+  <section class="collab" id="collab">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">與姊妹共創</p>
+        <h2>有些事，不只一個人的事</h2>
+      </div>
+      <div class="collab-card reveal">
+        <span class="service-icon">✺</span>
+        <div class="collab-body">
+          <span class="collab-badge">與夥伴共同推動的專案</span>
+          <h3>生生不息・溫柔孕育圈</h3>
+          <p class="service-tag">Gentle Birthing Circle</p>
+          <p>和姊妹一起圍坐成圈，在故事與儀式裡，重新找回孕育的神聖與女性的主體性——一個尊重每一種孕育路徑的支持圓圈。這是我與夥伴一起推動、共同帶領的專案。</p>
+          <a href="https://milliya1222-coder.github.io/gentle-birthing-circle/" class="service-more" target="_blank" rel="noopener">了解更多 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 免費手冊（lead magnet） ===================== -->
+  <section class="leadmagnet">
+    <div class="container">
+      <div class="leadmagnet-inner reveal">
+        <p class="section-eyebrow">免費資源</p>
+        <h2>還在猶豫，要怎麼生？</h2>
+        <p>我做了一份《生產方式選擇手冊》——用 A·B·C 三步驟，陪妳釐清自己的生產信念、想要的生產地點，以及怎麼選擇生產隊友。免費線上閱讀，也可下載 PDF。</p>
+        <a href="guide/" class="btn">翻開手冊 →</a>
       </div>
     </div>
   </section>
@@ -182,9 +240,9 @@
   <!-- ===================== 聯絡 / 預約 ===================== -->
   <section class="contact" id="contact">
     <div class="container contact-inner reveal">
-      <p class="section-eyebrow">開始你的孕育旅程</p>
+      <p class="section-eyebrow">開始妳的孕育旅程</p>
       <h2>先從一次對話開始</h2>
-      <p class="contact-sub">無論你正在懷孕、準備生產，或正走在成為母親的路上，<br>都歡迎讓我聽聽你的故事。這一步，不需要你準備好，只需要你願意。</p>
+      <p class="contact-sub">無論妳正在懷孕、準備生產，或正走在成為母親的路上，<br>都歡迎讓我聽聽妳的故事。這一步，不需要妳準備好，只需要妳願意。</p>
       <div class="contact-actions">
         <a href="https://instagram.com/birth.with.milliya" class="btn" target="_blank" rel="noopener">Instagram 私訊我</a>
         <a href="https://line.me/ti/p/qzkfVKnTr_" class="btn btn-outline" target="_blank" rel="noopener">加 LINE 預約</a>
@@ -200,8 +258,8 @@
 
   <!-- ===================== 頁尾 ===================== -->
   <footer class="footer">
-    <img class="footer-logo" src="images/logo/logo-white.png" alt="Birth with Milliya 欣妙在陪你">
-    <p class="footer-tag">溫暖但有骨 · 陪伴女性走過孕產的生命轉化</p>
+    <img class="footer-logo" src="images/logo/logo-white.png" alt="Birth with Milliya 欣妙在陪妳">
+    <p class="footer-tag">陪妳生、也陪妳生出新的自己</p>
     <p class="footer-copy">© 2026 Birth with Milliya・欣妙</p>
   </footer>
 

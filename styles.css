@@ -459,3 +459,43 @@ img{max-width:100%;display:block;}
   font-family:"Cormorant Garamond","Noto Sans TC",serif;
   font-size:.95rem;letter-spacing:.04em;color:var(--rose-deep);
 }
+
+/* =========================================================
+   關於我 /about 專頁
+   ========================================================= */
+.about-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px;}
+.about-tags span{
+  font-size:.86rem;letter-spacing:.03em;color:var(--rose-deep);
+  border:1px solid var(--rose);border-radius:999px;padding:6px 16px;background:rgba(226,155,134,.08);
+}
+.about-quote{
+  font-family:"Noto Serif TC",serif;font-weight:500;
+  font-size:clamp(1.4rem,3.4vw,2rem);line-height:1.6;color:var(--cocoa);margin:6px auto 24px;
+}
+.mission-band{
+  margin-top:34px;padding:30px 28px;border-radius:var(--radius);
+  background:linear-gradient(160deg,#fbf1ea 0%,#f7e6dd 100%);border:1px solid var(--line);
+}
+.mission-line{font-size:1.08rem;color:var(--cocoa);margin-bottom:10px;}
+.mission-line strong{color:var(--rose-deep);font-weight:600;}
+.mission-motto{
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:1.3rem;color:var(--rose-deep);letter-spacing:.03em;
+}
+.timeline{list-style:none;margin:26px 0 0;padding:0;}
+.timeline li{
+  display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start;
+  padding:16px 0;border-bottom:1px dashed var(--line);
+}
+.timeline li:last-child{border-bottom:none;}
+.t-year{
+  font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.25rem;
+  color:var(--rose-deep);line-height:1.4;
+}
+.t-event{color:var(--cocoa-soft);font-size:.98rem;line-height:1.85;}
+.service-count{
+  margin-top:26px;text-align:center;font-size:1.05rem;color:var(--cocoa);
+  background:rgba(168,181,162,.14);border-radius:var(--radius);padding:18px 24px;
+}
+.service-count strong{color:var(--rose-deep);font-weight:600;}
+.about-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px;}

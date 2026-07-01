@@ -499,3 +499,10 @@ img{max-width:100%;display:block;}
 }
 .service-count strong{color:var(--rose-deep);font-weight:600;}
 .about-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+
+/* ---- 語言切換 ---- */
+.lang-switch{display:inline-flex;align-items:center;gap:9px;font-size:.9rem;letter-spacing:.05em;}
+.lang-switch a{color:var(--cocoa-soft);transition:color .25s;}
+.lang-switch a:hover{color:var(--rose-deep);}
+.lang-switch span{color:var(--rose-deep);font-weight:500;}
+.svc-topbar .lang-switch{font-size:.95rem;}

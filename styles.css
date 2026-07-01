@@ -330,6 +330,23 @@ img{max-width:100%;display:block;}
 .footer-tag{font-size:.94rem;opacity:.85;margin-bottom:18px;}
 .footer-copy{font-size:.82rem;opacity:.6;}
 
+/* ---- 品牌 logo：插畫圖示＋網頁文字（取代燒字 PNG；文字正確且可被搜尋引擎/AI 讀取） ---- */
+.brand-lockup{display:inline-flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;transition:opacity .3s var(--ease);}
+.brand-lockup:hover{opacity:.78;}
+.brand-lockup .brand-mark{height:46px;width:auto;display:block;flex-shrink:0;}
+.brand-lockup .brand-text{display:flex;flex-direction:column;line-height:1.12;white-space:nowrap;}
+.brand-lockup .brand-zh{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:1.16rem;color:var(--rose);letter-spacing:.1em;white-space:nowrap;}
+.brand-lockup .brand-en{font-family:"Cormorant Garamond",serif;font-size:.68rem;letter-spacing:.22em;color:var(--rose-deep);opacity:.85;margin-top:2px;white-space:nowrap;}
+.footer .brand-lockup{margin-bottom:14px;}
+.footer .brand-lockup .brand-mark{height:54px;}
+.footer .brand-lockup .brand-zh{color:var(--beige);}
+.footer .brand-lockup .brand-en{color:var(--beige);opacity:.72;}
+@media(max-width:640px){
+  .brand-lockup .brand-mark{height:38px;}
+  .brand-lockup .brand-zh{font-size:1rem;}
+  .brand-lockup .brand-en{font-size:.58rem;}
+}
+
 /* =========================================================
    捲動淡入動畫
    ========================================================= */

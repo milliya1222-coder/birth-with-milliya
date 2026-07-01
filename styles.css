@@ -337,6 +337,9 @@ img{max-width:100%;display:block;}
 .brand-lockup .brand-text{display:flex;flex-direction:column;line-height:1.12;white-space:nowrap;}
 .brand-lockup .brand-zh{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:1.16rem;color:var(--rose);letter-spacing:.1em;white-space:nowrap;}
 .brand-lockup .brand-en{font-family:"Cormorant Garamond",serif;font-size:.68rem;letter-spacing:.22em;color:var(--rose-deep);opacity:.85;margin-top:2px;white-space:nowrap;}
+.brand-lockup .brand-name-en{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.34rem;color:var(--rose);letter-spacing:.03em;white-space:nowrap;}
+.footer .brand-lockup .brand-name-en{color:var(--beige);}
+@media(max-width:640px){.brand-lockup .brand-name-en{font-size:1.12rem;}}
 .footer .brand-lockup{margin-bottom:14px;}
 .footer .brand-lockup .brand-mark{height:54px;}
 .footer .brand-lockup .brand-zh{color:var(--beige);}

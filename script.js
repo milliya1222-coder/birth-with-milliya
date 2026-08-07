@@ -33,7 +33,15 @@ if (toggle && links) {
 }
 
 // 3) 捲動淡入（IntersectionObserver）
+//
+// threshold 必須是 0：用比例當門檻時，只要元素比視窗高很多就永遠觸發不了。
+// （例：文章內文約 8000px 高、手機視窗約 700px，最大交集比例僅約 9%，
+//   舊的 0.14 門檻永遠達不到，整篇內文會一直停在 opacity:0 = 全白。）
+// 改用 threshold 0 + rootMargin 下緣負值：任何高度的元素，只要進入畫面
+// 下緣一段距離就顯示，效果一樣但不會因為元素太高而失效。
 const reveals = document.querySelectorAll('.reveal');
+const showAll = () => reveals.forEach((el) => el.classList.add('visible'));
+
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -42,9 +50,12 @@ if ('IntersectionObserver' in window) {
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
   reveals.forEach((el) => io.observe(el));
+
+  // 保險：無論發生什麼事，內容都不該永久隱形。
+  // 3 秒後把還沒顯示的一律打開——動畫是加分項，內容看得見才是底線。
+  setTimeout(showAll, 3000);
 } else {
-  // 不支援就直接顯示
-  reveals.forEach((el) => el.classList.add('visible'));
+  showAll();
 }

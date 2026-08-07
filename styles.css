@@ -246,6 +246,36 @@ img{max-width:100%;display:block;}
 .services-cta-row{margin-top:38px;}
 .services-cta-row .service-card--cta{max-width:600px;margin:0 auto;width:100%;align-items:center;text-align:center;}
 
+/* ---- 文章卡（首頁「最新文章」與 /blog/ 列表共用） ---- */
+.post-card{
+  display:block;text-decoration:none;color:inherit;
+  background:var(--ivory);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 34px 30px;box-shadow:var(--shadow-soft);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+}
+.post-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--rose);}
+.post-meta{
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  color:var(--sage);font-size:1rem;letter-spacing:.05em;margin-bottom:8px;
+}
+.post-card h3{font-size:1.35rem;line-height:1.5;margin-bottom:12px;font-weight:500;}
+.post-card p{color:var(--cocoa-soft);font-size:.96rem;margin-bottom:16px;}
+.post-card .service-more{color:var(--rose-deep);}
+.post-card:hover .service-more{transform:translateX(6px);}
+@media(max-width:560px){.post-card{padding:28px 24px 24px;}}
+
+/* 首頁「最新文章」區 */
+.latest{padding:96px 0;background:var(--beige);}
+.latest-inner{max-width:760px;margin:0 auto;}
+.latest-all{text-align:center;margin-top:28px;}
+.latest-all a{
+  display:inline-block;text-decoration:none;color:var(--rose-deep);
+  font-size:.95rem;letter-spacing:.06em;
+  border-bottom:1px solid rgba(201,126,104,.4);padding-bottom:3px;
+  transition:color .3s var(--ease),border-color .3s var(--ease);
+}
+.latest-all a:hover{color:var(--cocoa);border-color:var(--cocoa);}
+
 /* ---- 與姊妹共創（特區・用生生不息自己的品牌色，刻意跳出主站米玫瑰） ---- */
 .collab{
   padding:104px 0;position:relative;overflow:hidden;

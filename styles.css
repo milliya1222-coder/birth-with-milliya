@@ -422,11 +422,10 @@ img{max-width:100%;display:block;}
 .nav-links a.nav-collab{color:#7d5d91;}
 .nav-links a.nav-collab:hover{color:#5a4168;}
 .nav-links a.nav-collab::after{background:#9d7bb0;}
-/* 導覽列在 860px 以下改用漢堡選單：
-   7 個項目在 760–860px 之間會被壓成豎排（原本斷點設在 720px 太晚） */
-@media(max-width:860px){
-  .about-grid{grid-template-columns:1fr;gap:40px;}
-  .about-photo{max-width:380px;margin:0 auto;}
+/* 導覽列在 980px 以下改用漢堡選單。
+   項目數增加後（關於我／服務／生生不息／文章／手冊／理念／媽媽們的話＋語言＋CTA），
+   980px 以下橫排會被壓成豎排——斷點需隨項目數調整，加項目時記得重測。 */
+@media(max-width:980px){
   .nav-toggle{display:flex;}
   .nav-links{
     position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);
@@ -437,6 +436,10 @@ img{max-width:100%;display:block;}
   }
   .nav-links.open{transform:translateX(0);}
   .nav-links a{font-size:1.1rem;}
+}
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .about-photo{max-width:380px;margin:0 auto;}
 }
 @media(max-width:720px){
   .logo img{height:38px;}

@@ -71,15 +71,27 @@
     .article-body h2{font-size:clamp(1.35rem,3vw,1.75rem);margin:52px 0 18px;}
     .article-body h3{font-size:1.12rem;margin:34px 0 12px;color:var(--cocoa);}
     .article-body strong{color:var(--cocoa);font-weight:500;}
+    /* lede 與作者列壓在首圖上，需自帶底色才讀得清楚 */
+    .article-intro{
+      background:rgba(251,247,242,.90);
+      backdrop-filter:blur(6px);
+      border:1px solid rgba(231,218,208,.9);
+      border-radius:18px;
+      padding:26px 28px 22px;
+      margin-top:26px;
+      box-shadow:0 18px 40px -28px rgba(90,74,66,.5);
+      text-align:left;
+    }
     .article-lede{
-      font-size:1.02rem;line-height:1.95;color:var(--cocoa-soft);
-      border-left:3px solid var(--rose);padding-left:20px;margin:0 0 8px;
+      font-size:1rem;line-height:1.92;color:var(--cocoa);
+      border-left:3px solid var(--rose);padding-left:18px;margin:0;
     }
     .byline{
       display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
-      font-size:.88rem;color:var(--cocoa-soft);margin-top:26px;
-      padding-top:18px;border-top:1px solid var(--line);
+      font-size:.88rem;color:var(--cocoa-soft);margin-top:20px;
+      padding-top:16px;border-top:1px solid var(--line);
     }
+    @media(max-width:560px){.article-intro{padding:22px 20px 18px;}.article-lede{font-size:.95rem;}}
     .byline .b-name{color:var(--cocoa);}
     .byline a{color:var(--rose-deep);text-decoration:none;}
 
@@ -141,11 +153,13 @@
     <div class="reveal article-head">
       <p class="article-kicker">文章 · 生產選擇</p>
       <h1>「生產不是病」<br>——自主生產的趨勢，<br>與一條選擇的光譜</h1>
-      <p class="article-lede">自主生產（freebirth）指的是沒有醫療專業人員在場的生產；居家生產則多在家中、由助產師接生。這篇文章談台灣正在發生的生產選擇轉向：它背後的數字、原因，以及一條從「高度介入」到「完全不介入」的光譜。作者是陪產員與獨立生產顧問 Milliya（欣妙），台北北投・日本湘南。</p>
-      <div class="byline">
-        <span class="b-name">Milliya（欣妙）</span>
-        <span>2026 年 8 月 7 日</span>
-        <a href="../../about/">關於作者 →</a>
+      <div class="article-intro">
+        <p class="article-lede">自主生產（freebirth）指的是沒有醫療專業人員在場的生產；居家生產則多在家中、由助產師接生。這篇文章談台灣正在發生的生產選擇轉向：它背後的數字、原因，以及一條從「高度介入」到「完全不介入」的光譜。作者是陪產員與獨立生產顧問 Milliya（欣妙），台北北投・日本湘南。</p>
+        <div class="byline">
+          <span class="b-name">Milliya（欣妙）</span>
+          <span>2026 年 8 月 7 日</span>
+          <a href="../../about/">關於作者 →</a>
+        </div>
       </div>
     </div>
   </section>

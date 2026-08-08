@@ -102,6 +102,25 @@
     .callout.alert{background:rgba(148,65,60,.06);border-left-color:#94413c;}
     .callout.alert .c-label{color:#94413c;}
 
+    /* ── グラフ。サイト全体が単一テーマ（ライト）のため、グラフも単一テーマ。
+       日本と台湾は別カテゴリなので 2 色。色覚多様性の検証を通した組み合わせを使用。 ── */
+    .fig{margin:32px 0;}
+    .fig svg{width:100%;height:auto;display:block;overflow:visible;}
+    .fig-narrow{max-width:500px;margin:0 auto;}
+    .fig figcaption{font-size:.83rem;color:var(--cocoa-soft);line-height:1.75;
+      margin-top:14px;padding-top:11px;border-top:1px solid var(--line);}
+    .viz-lab{font-size:12.5px;fill:#7d6a60;}
+    .viz-head{font-size:13px;font-weight:600;fill:#5A4A42;}
+    .viz-axis{stroke:#E7DAD0;stroke-width:1;}
+    .viz-jp{fill:#2a78d6;}
+    .viz-tw{fill:#eb6834;}
+    .viz-vjp{font-size:13.5px;font-weight:600;fill:#1f5ea8;}
+    .viz-vtw{font-size:13.5px;font-weight:600;fill:#b8481f;}
+    .fig-legend{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;
+      margin:0 0 14px;font-size:.86rem;color:var(--cocoa-soft);}
+    .fig-legend span{display:inline-flex;align-items:center;gap:7px;}
+    .fig-legend i{width:11px;height:11px;border-radius:2px;display:inline-block;}
+
     .tablewrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:14px;}
     table{border-collapse:collapse;width:100%;font-size:.89rem;min-width:520px;}
     th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);
@@ -110,6 +129,8 @@
     td{color:var(--cocoa-soft);}
     tr:last-child td,tr:last-child th{border-bottom:none;}
     thead th{background:var(--cream,#faf6f2);font-size:.82rem;}
+    /* 比較表の1列目が1文字ずつ折り返さないように */
+    table tbody th:first-child{white-space:nowrap;}
 
     .place{border-left:2px solid var(--line);padding:2px 0 2px 15px;margin:0 0 18px;}
     .place.ok{border-left-color:#2f6e6a;}
@@ -206,6 +227,52 @@
             </tbody>
           </table>
         </div>
+
+        <figure class="fig">
+          <div class="fig-legend">
+            <span><i style="background:#2a78d6"></i>日本</span>
+            <span><i style="background:#eb6834"></i>台湾</span>
+          </div>
+          <svg class="fig-narrow" viewBox="0 0 400 246" role="img" aria-label="無痛分娩の割合は日本 13.8 パーセント、台湾は約 20 から 30 パーセント。帝王切開は日本が約 20 パーセント、台湾は 36 から 38 パーセント。いずれも台湾のほうが高い。">
+            <text class="viz-head" x="8" y="16">無痛分娩</text>
+            <g><title>日本：13.8%（2024年）</title>
+              <path class="viz-jp" d="M92 28 H176.2 a4 4 0 0 1 4 4 V42 a4 4 0 0 1 -4 4 H92 Z"></path>
+            </g>
+            <text class="viz-lab" x="84" y="42" text-anchor="end">日本</text>
+            <text class="viz-vjp" x="190" y="42">13.8%</text>
+            <g><title>台湾：約 20〜30%</title>
+              <path class="viz-tw" d="M92 54 H214 V72 H92 Z"></path>
+              <path class="viz-tw" opacity="0.5" d="M214 54 H271 a4 4 0 0 1 4 4 V68 a4 4 0 0 1 -4 4 H214 Z"></path>
+            </g>
+            <text class="viz-lab" x="84" y="68" text-anchor="end">台湾</text>
+            <text class="viz-vtw" x="285" y="68">20〜30%</text>
+
+            <text class="viz-head" x="8" y="112">帝王切開</text>
+            <g><title>日本：約 20%</title>
+              <path class="viz-jp" d="M92 124 H210 a4 4 0 0 1 4 4 V138 a4 4 0 0 1 -4 4 H92 Z"></path>
+            </g>
+            <text class="viz-lab" x="84" y="138" text-anchor="end">日本</text>
+            <text class="viz-vjp" x="224" y="138">約 20%</text>
+            <g><title>台湾：36〜38%</title>
+              <path class="viz-tw" d="M92 150 H311.6 V168 H92 Z"></path>
+              <path class="viz-tw" opacity="0.5" d="M311.6 150 H319.8 a4 4 0 0 1 4 4 V164 a4 4 0 0 1 -4 4 H311.6 Z"></path>
+            </g>
+            <text class="viz-lab" x="84" y="164" text-anchor="end">台湾</text>
+            <text class="viz-vtw" x="332" y="164">36〜38%</text>
+
+            <line class="viz-axis" x1="92" y1="182" x2="336" y2="182"></line>
+            <g class="viz-lab">
+              <text x="92" y="198" text-anchor="middle">0</text>
+              <text x="153" y="198" text-anchor="middle">10%</text>
+              <text x="214" y="198" text-anchor="middle">20%</text>
+              <text x="275" y="198" text-anchor="middle">30%</text>
+              <text x="336" y="198" text-anchor="middle">40%</text>
+            </g>
+            <text class="viz-lab" x="8" y="222">薄い部分は報告されている範囲の上側です。</text>
+            <text class="viz-lab" x="8" y="240">日本の帝王切開率は概数のため、範囲は示していません。</text>
+          </svg>
+          <figcaption><strong>どちらも台湾のほうが高い、けれど意味は逆です。</strong>無痛分娩が選びやすいことは、多くの方にとって歓迎できる違いでしょう。帝王切開率の高さは、事前に話し合っておく理由になります。<br>出典：日本産婦人科医会（2025年3月、無痛分娩 13.8%）／衛生福利部統計処・国民健康署（台湾の帝王切開率）／台湾の無痛分娩の割合は推定値。</figcaption>
+        </figure>
 
         <div class="callout">
           <span class="c-label">多くの日本人が同じところで不安になります</span>

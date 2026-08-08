@@ -105,6 +105,19 @@
     .callout.alert{background:rgba(148,65,60,.06);border-left-color:#94413c;}
     .callout.alert .c-label{color:#94413c;}
 
+    /* ── Charts. Site is single-theme (light) by design, so charts are too.
+       Same hue for both rows: they are two values of one measure, not two categories. ── */
+    .fig{margin:32px 0;}
+    .fig svg{width:100%;height:auto;display:block;overflow:visible;}
+    .fig-narrow{max-width:500px;margin:0 auto;}
+    .fig figcaption{font-size:.83rem;color:var(--cocoa-soft);line-height:1.75;
+      margin-top:14px;padding-top:11px;border-top:1px solid var(--line);}
+    .viz-val{font-size:14px;font-weight:600;fill:#C25E3E;}
+    .viz-lab{font-size:12.5px;fill:#7d6a60;}
+    .viz-head{font-size:13px;font-weight:600;fill:#5A4A42;}
+    .viz-axis{stroke:#E7DAD0;stroke-width:1;}
+    .viz-bar{fill:#C25E3E;}
+
     .tablewrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:14px;}
     table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px;}
     th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);
@@ -222,6 +235,48 @@
             </tbody>
           </table>
         </div>
+
+        <figure class="fig">
+          <svg class="fig-narrow" viewBox="0 0 400 252" role="img" aria-label="Caesarean section: Taiwan 37.64 percent versus WHO reference range 10 to 15 percent. Episiotomy: Taiwan 70 to 73.4 percent versus WHO recommendation of around 10 percent.">
+            <text class="viz-head" x="8" y="16">Caesarean section</text>
+            <g><title>Taiwan: 37.64% (2021)</title>
+              <path class="viz-bar" d="M96 28 H206.8 a4 4 0 0 1 4 4 V42 a4 4 0 0 1 -4 4 H96 Z"></path>
+            </g>
+            <text class="viz-lab" x="88" y="42" text-anchor="end">Taiwan</text>
+            <text class="viz-val" x="219" y="42">37.6%</text>
+            <g opacity="0.45"><title>WHO reference range: 10–15%</title>
+              <path class="viz-bar" d="M96 58 H126.5 V76 H96 Z"></path>
+              <path class="viz-bar" opacity="0.5" d="M126.5 58 H137.75 a4 4 0 0 1 4 4 V72 a4 4 0 0 1 -4 4 H126.5 Z"></path>
+            </g>
+            <text class="viz-lab" x="88" y="72" text-anchor="end">WHO ref.</text>
+            <text class="viz-val" x="150" y="72" opacity="0.75">10–15%</text>
+
+            <text class="viz-head" x="8" y="112">Episiotomy</text>
+            <g><title>Taiwan hospitals: 70–73.4% (2023 survey)</title>
+              <path class="viz-bar" d="M96 124 H309.5 V142 H96 Z"></path>
+              <path class="viz-bar" opacity="0.5" d="M309.5 124 H315.8 a4 4 0 0 1 4 4 V138 a4 4 0 0 1 -4 4 H309.5 Z"></path>
+            </g>
+            <text class="viz-lab" x="88" y="138" text-anchor="end">Taiwan</text>
+            <text class="viz-val" x="330" y="138">70–73.4%</text>
+            <g opacity="0.45"><title>WHO recommendation: around 10%</title>
+              <path class="viz-bar" d="M96 154 H122.5 a4 4 0 0 1 4 4 V168 a4 4 0 0 1 -4 4 H96 Z"></path>
+            </g>
+            <text class="viz-lab" x="88" y="168" text-anchor="end">WHO ref.</text>
+            <text class="viz-val" x="135" y="168" opacity="0.75">~10%</text>
+
+            <line class="viz-axis" x1="96" y1="186" x2="340" y2="186"></line>
+            <g class="viz-lab">
+              <text x="96" y="202" text-anchor="middle">0</text>
+              <text x="157" y="202" text-anchor="middle">20%</text>
+              <text x="218" y="202" text-anchor="middle">40%</text>
+              <text x="279" y="202" text-anchor="middle">60%</text>
+              <text x="340" y="202" text-anchor="middle">80%</text>
+            </g>
+            <text class="viz-lab" x="8" y="226">Lighter segment = upper end of a reported range.</text>
+            <text class="viz-lab" x="8" y="244">Both rows share one colour: they are two values of one measure, not two categories.</text>
+          </svg>
+          <figcaption><strong>The episiotomy gap is the one that surprises people.</strong> A caesarean is a decision usually discussed in advance. An episiotomy often is not — which is exactly why it belongs in your birth plan.<br>Sources: Health Promotion Administration birth notification statistics (C-section, 2021); Taiwan Birth Reform Alliance 2023 survey (episiotomy); WHO reference values.</figcaption>
+        </figure>
 
         <p>The episiotomy figure comes from a 2023 survey by the Taiwan Birth Reform Alliance. <span class="tier t-comm">Community</span> for the C-section figure as cited here — it comes via a 2022 AmCham article citing 2021 data; the primary source is the Health Promotion Administration's annual birth notification report, which you may want to check for a newer number.</p>
         <p>If a low-intervention birth matters to you, these numbers mean the conversation has to happen <strong>before</strong> labour, in writing, with a provider who has agreed in advance. A birth plan discussed at 36 weeks is worth more than any preference expressed at 6cm.</p>

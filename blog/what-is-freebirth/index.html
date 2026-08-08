@@ -94,6 +94,24 @@
     .src-media{color:#94413c;background:rgba(148,65,60,.12);}
     .src-gap{color:#7d6a60;background:rgba(125,106,96,.12);}
 
+    /* ── 圖表／時間軸 ── */
+    .fig{margin:32px 0;}
+    .fig figcaption{font-size:.83rem;color:var(--cocoa-soft);line-height:1.75;
+      margin-top:14px;padding-top:11px;border-top:1px solid var(--line);}
+    .tl{margin:24px 0 8px;}
+    .tl-row{display:grid;grid-template-columns:72px 1fr;gap:16px;
+      padding:14px 0;border-bottom:1px solid var(--line);}
+    .tl-row:last-child{border-bottom:none;}
+    .tl-yr{font-size:.95rem;font-weight:600;color:#C25E3E;line-height:1.5;
+      font-variant-numeric:tabular-nums;}
+    .tl-body strong{display:block;color:var(--cocoa);font-weight:500;margin-bottom:3px;}
+    .tl-body span{font-size:.9rem;color:var(--cocoa-soft);line-height:1.75;}
+    .tl-row.datapoint{background:var(--cream,#faf6f2);border-radius:10px;
+      margin:0 -12px;padding-left:12px;padding-right:12px;}
+    .tl-pct{display:inline-block;font-size:1.5rem;font-weight:600;color:#C25E3E;
+      line-height:1.2;margin-bottom:2px;font-variant-numeric:tabular-nums;}
+    .tl-note{font-size:.8rem;color:var(--cocoa-soft);opacity:.85;margin-top:10px;}
+
     .termtable{width:100%;border-collapse:collapse;font-size:.93rem;margin-top:8px;min-width:520px;}
     .termtable th,.termtable td{text-align:left;padding:13px 14px;
       border-bottom:1px solid var(--line);vertical-align:top;line-height:1.75;}
@@ -285,6 +303,57 @@
         <p><span class="src src-gap">研究空白</span> 台灣也<strong>沒有居家生產的量化結果研究</strong>。現有的只有 2004 與 2005 年的兩篇小樣本質性研究，至今 20 年沒有更新。</p>
         <p>要理解台灣為什麼是這個樣子，得回頭看助產這個職業發生了什麼事：</p>
         <p><span class="src src-official">官方</span> 1962 年，台灣醫師接生率只有 <strong>14%</strong>。1972 年，醫師接生率首度超越助產士。1983 年，衛生署公告助產人員在醫院須在醫師指導下接生。1992 年，醫院取消助產士編制。到 2016 年，醫師接生占 <strong>99.87%</strong>。</p>
+        <figure class="fig">
+          <div class="tl">
+            <div class="tl-row datapoint">
+              <div class="tl-yr">1962</div>
+              <div class="tl-body">
+                <span class="tl-pct">14%</span>
+                <strong>醫師接生率</strong>
+                <span>助產士仍是台灣主要的接生者。</span>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-yr">1972</div>
+              <div class="tl-body">
+                <strong>醫師接生率首度超越助產士</strong>
+                <span>交叉點。此後兩條曲線再也沒有回頭。</span>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-yr">1983</div>
+              <div class="tl-body">
+                <strong>助產人員在醫院須在醫師指導下接生</strong>
+                <span>衛生署公告。專業自主權的第一道限制。</span>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-yr">1992</div>
+              <div class="tl-body">
+                <strong>醫院取消助產士編制</strong>
+                <span>不是不能執業，是體制裡沒有位置了。</span>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-yr">2003</div>
+              <div class="tl-body">
+                <strong>《助產人員法》設「助產師」</strong>
+                <span>職稱與法源重建，但接生的實際空間已經消失。</span>
+              </div>
+            </div>
+            <div class="tl-row datapoint">
+              <div class="tl-yr">2016</div>
+              <div class="tl-body">
+                <span class="tl-pct">99.87%</span>
+                <strong>醫師接生率</strong>
+                <span>助產師接生佔比不到 1%。</span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-note">深色底的兩列為實際統計數字；中間四列為政策與制度事件，非逐年資料。1972 年僅知「醫師接生率首度超越助產士」，未取得該年確切百分比，故不以曲線呈現，避免造成不存在的精確感。</p>
+          <figcaption><strong>五十年，一個職業被清空。</strong>這不是自然演變，中間每一步都有具體的政策。<br>資料來源：出生通報統計；聯合報〈被遺忘的台灣助產史〉；吳嘉苓（2000）〈醫療專業、性別與國家：台灣助產士興衰的社會學分析〉。</figcaption>
+        </figure>
+
         <p>五十年，一個職業被清空。</p>
         <p>目前台灣有 17 家健保特約助產所。助產師接生的新生兒數，2013 年是 95 人（當年全國 19.5 萬名新生兒），2023 年是 299 人（當年全國 13.7 萬名）——絕對數字成長三倍，但佔比仍不到 1%。</p>
 

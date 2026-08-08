@@ -95,6 +95,33 @@
     .byline .b-name{color:var(--cocoa);}
     .byline a{color:var(--rose-deep);text-decoration:none;}
 
+    /* ── 圖表 ──
+       全站為單一淺色主題，故圖表亦為單一主題（刻意選擇，非遺漏）。
+       多數圖表僅一個數列，避免雙軸與品牌色彩度不足的問題。 */
+    .fig{margin:32px 0;}
+    .fig svg{width:100%;height:auto;display:block;overflow:visible;}
+    /* 限制放大倍率，避免內嵌文字在寬螢幕上被放得過大、在手機上又縮得太小 */
+    .fig-narrow{max-width:480px;margin:0 auto;}
+    .fig figcaption{font-size:.83rem;color:var(--cocoa-soft);line-height:1.75;
+      margin-top:14px;padding-top:11px;border-top:1px solid var(--line);}
+    .fig-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+    @media(max-width:600px){.fig-grid{grid-template-columns:1fr;gap:16px;}}
+    .fig-panel{background:var(--cream,#faf6f2);border:1px solid var(--line);
+      border-radius:14px;padding:16px 14px 10px;}
+    .fig-panel h4{font-size:.9rem;font-weight:500;color:var(--cocoa);
+      margin:0 0 4px;text-align:center;}
+    .fig-panel .pnote{font-size:.78rem;color:var(--cocoa-soft);text-align:center;margin:0 0 4px;}
+    .viz-val{font-size:14px;font-weight:600;fill:#C25E3E;}
+    .viz-lab{font-size:12.5px;fill:#7d6a60;}
+    .viz-delta{font-size:12.5px;font-weight:600;fill:#5A4A42;}
+    .viz-line{fill:none;stroke:#C25E3E;stroke-width:2;stroke-linecap:round;}
+    .viz-dot{fill:#C25E3E;}
+    .viz-axis{stroke:#E7DAD0;stroke-width:1;}
+    .viz-bar{fill:#C25E3E;}
+    .viz-ref{fill:#A8B5A2;opacity:.30;}
+    .viz-refline{stroke:#7f8f79;stroke-width:1;stroke-dasharray:3 3;}
+    .viz-reflab{font-size:12px;fill:#5d6b57;font-weight:500;}
+
     /* 介入光譜 */
     .spectrum{margin:30px 0 10px;}
     .spectrum-bar{
@@ -181,8 +208,81 @@
         <p>我原本以為這是我的同溫層效應。查了數字之後，發現不是。</p>
         <p>依出生通報統計：<strong>2013 年，全國 19.5 萬名新生兒中，有 95 人由助產師（士）接生。2023 年，全國 13.7 萬名新生兒中，有 299 人。</strong></p>
         <p>同一個十年裡，台灣的新生兒少了大約三成，由助產師接生的孩子卻變成三倍多。</p>
+
+        <figure class="fig">
+          <div class="fig-grid">
+            <div class="fig-panel">
+              <h4>全國新生兒數</h4>
+              <p class="pnote">同期間</p>
+              <svg viewBox="0 0 250 165" role="img" aria-label="全國新生兒數由 2013 年 19.5 萬人減少至 2023 年 13.7 萬人，減少約三成。">
+                <line class="viz-axis" x1="30" y1="125" x2="235" y2="125"></line>
+                <path class="viz-line" d="M70 32 L200 58"></path>
+                <g><title>2013 年：19.5 萬人</title>
+                  <circle class="viz-dot" cx="70" cy="32" r="4.5"></circle>
+                  <text class="viz-val" x="70" y="20" text-anchor="middle">19.5 萬</text>
+                </g>
+                <g><title>2023 年：13.7 萬人</title>
+                  <circle class="viz-dot" cx="200" cy="58" r="4.5"></circle>
+                  <text class="viz-val" x="200" y="46" text-anchor="middle">13.7 萬</text>
+                </g>
+                <text class="viz-lab" x="70" y="141" text-anchor="middle">2013</text>
+                <text class="viz-lab" x="200" y="141" text-anchor="middle">2023</text>
+                <text class="viz-delta" x="132" y="105" text-anchor="middle">約 −30%</text>
+              </svg>
+            </div>
+            <div class="fig-panel">
+              <h4>其中由助產師接生</h4>
+              <p class="pnote">同期間</p>
+              <svg viewBox="0 0 250 165" role="img" aria-label="由助產師接生的新生兒數由 2013 年 95 人增加至 2023 年 299 人，成長約三倍。">
+                <line class="viz-axis" x1="30" y1="125" x2="235" y2="125"></line>
+                <path class="viz-line" d="M70 95 L200 36"></path>
+                <g><title>2013 年：95 人</title>
+                  <circle class="viz-dot" cx="70" cy="95" r="4.5"></circle>
+                  <text class="viz-val" x="70" y="112" text-anchor="middle">95 人</text>
+                </g>
+                <g><title>2023 年：299 人</title>
+                  <circle class="viz-dot" cx="200" cy="36" r="4.5"></circle>
+                  <text class="viz-val" x="200" y="24" text-anchor="middle">299 人</text>
+                </g>
+                <text class="viz-lab" x="70" y="141" text-anchor="middle">2013</text>
+                <text class="viz-lab" x="200" y="141" text-anchor="middle">2023</text>
+                <text class="viz-delta" x="140" y="78" text-anchor="middle">約 3 倍</text>
+              </svg>
+            </div>
+          </div>
+          <figcaption><strong>兩個方向相反的十年。</strong>兩張圖各有自己的尺度，刻意不併成一張——19.5 萬與 95 人放進同一個座標軸，只會讓後者變成一條看不見的線。<br>資料來源：出生通報統計，引自中國時報 2025-02-04 報導。</figcaption>
+        </figure>
         <p>我必須誠實地補一句：比例仍然極小。助產師接生占全台新生兒不到 1%，超過 99% 的孩子仍由醫師接生。但一個在總量萎縮的環境裡逆勢成長三倍的數字，方向是清楚的。</p>
         <p>另一組數字，也許解釋了為什麼會有人開始往外走：<strong>台灣的剖腹產率近年在 32%–37% 之間</strong>，曾被列為世界第二高；而世界衛生組織認為，基於醫療需求的合理剖腹產率是 <strong>10%–15%</strong>。</p>
+
+        <figure class="fig">
+          <svg class="fig-narrow" viewBox="0 0 400 152" role="img" aria-label="台灣剖腹產率近年介於 32% 至 37%；世界衛生組織認為基於醫療需求的合理範圍是 10% 至 15%。兩者相差約兩到三倍。">
+            <g><title>台灣：近年 32–37%</title>
+              <path class="viz-bar" d="M76 36 H287.2 V54 H76 Z"></path>
+              <path class="viz-bar" opacity="0.45" d="M287.2 36 H316.2 a4 4 0 0 1 4 4 V50 a4 4 0 0 1 -4 4 H287.2 Z"></path>
+            </g>
+            <text class="viz-lab" x="66" y="50" text-anchor="end">台灣</text>
+            <text class="viz-val" x="328" y="50">32–37%</text>
+
+            <g opacity="0.5"><title>WHO 認為基於醫療需求的合理範圍：10–15%</title>
+              <path class="viz-bar" d="M76 78 H142 V96 H76 Z"></path>
+              <path class="viz-bar" opacity="0.45" d="M142 78 H171 a4 4 0 0 1 4 4 V92 a4 4 0 0 1 -4 4 H142 Z"></path>
+            </g>
+            <text class="viz-lab" x="66" y="92" text-anchor="end">WHO 建議</text>
+            <text class="viz-val" x="183" y="92" opacity="0.75">10–15%</text>
+
+            <line class="viz-axis" x1="76" y1="112" x2="340" y2="112"></line>
+            <g class="viz-lab">
+              <text x="76" y="128" text-anchor="middle">0</text>
+              <text x="142" y="128" text-anchor="middle">10%</text>
+              <text x="208" y="128" text-anchor="middle">20%</text>
+              <text x="274" y="128" text-anchor="middle">30%</text>
+              <text x="340" y="128" text-anchor="middle">40%</text>
+            </g>
+            <text class="viz-lab" x="76" y="146">淺色段為區間上緣</text>
+          </svg>
+          <figcaption><strong>差距大約是兩到三倍。</strong>兩條用同一個顏色，因為它們是同一件事的兩個數字——不是兩種類別。這不代表每一台剖腹產都不必要，它代表這個數字值得被問。<br>資料來源：行政院性別平等會統計（衛福部資料）；WHO 對剖腹產率之立場。</figcaption>
+        </figure>
 
         <h2>她們為什麼走這條路</h2>
         <p>這一題，我找到兩個彼此獨立、卻說著同一件事的來源。</p>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>文章｜Birth with Milliya 欣妙在陪妳</title>
-  <meta name="description" content="Birth with Milliya（欣妙）的孕產文章：把實證研究、真實陪伴經驗與身心靈整合視角揉在一起，寫給正在懷孕、準備生產與成為母親的妳。台北北投・日本湘南。">
+  <meta name="description" content="Birth with Milliya（欣妙）的孕產文章：生產選擇的實證整理、跨語言書單，以及一路上影響我的老師們。把研究、真實的陪伴經驗與身心靈整合視角揉在一起。台北北投・日本湘南。">
   <link rel="canonical" href="https://birthwithmilliya.com/blog/">
   <meta property="og:title" content="文章｜Birth with Milliya 欣妙在陪妳">
   <meta property="og:description" content="把實證研究、真實陪伴經驗與身心靈整合視角揉在一起，寫給正在走過孕產轉化的妳。">
@@ -36,8 +36,65 @@
   </script>
 
   <style>
-    .post-list{max-width:760px;margin:0 auto;}
-    .post-card{margin-bottom:24px;}
+    .list-wrap{max-width:1040px;margin:0 auto;}
+
+    /* ── 分類篩選 ─────────────────────────── */
+    .filters{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:0 0 32px;}
+    .filters button{font-family:inherit;font-size:.9rem;letter-spacing:.03em;
+      color:var(--cocoa-soft);background:transparent;
+      border:1px solid var(--line);border-radius:999px;
+      padding:8px 18px;cursor:pointer;transition:all .25s ease;}
+    .filters button:hover{border-color:var(--rose);color:var(--cocoa);}
+    .filters button[aria-pressed="true"]{background:var(--rose-deep,#C97E68);
+      border-color:var(--rose-deep,#C97E68);color:#fff;}
+    .filters button .fc{opacity:.6;font-size:.82em;margin-left:5px;
+      font-variant-numeric:tabular-nums;}
+    .filters button[aria-pressed="true"] .fc{opacity:.78;}
+
+    /* ── 系列說明（切到「我的老師們」才出現）── */
+    .series-hint{border:1px solid var(--line);border-radius:14px;
+      padding:16px 20px;margin:0 0 26px;font-size:.9rem;line-height:1.85;
+      color:var(--cocoa-soft);display:none;background:var(--cream,#faf6f2);}
+    .series-hint.show{display:block;}
+    .series-hint b{color:var(--cocoa);font-weight:500;}
+
+    /* ── 卡片格 ───────────────────────────── */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 26px;}
+    @media(max-width:820px){.grid{grid-template-columns:1fr;gap:24px;}}
+
+    .card{display:flex;flex-direction:column;text-decoration:none;
+      border:1px solid var(--line);border-radius:18px;overflow:hidden;
+      background:var(--cream,#faf6f2);
+      transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+    .card:hover{transform:translateY(-3px);border-color:rgba(226,155,134,.55);
+      box-shadow:0 22px 44px -30px rgba(90,74,66,.55);}
+    .card.is-hidden{display:none;}
+
+    .card .cthumb{aspect-ratio:16/10;overflow:hidden;background:#efe6e0;}
+    .card .cthumb img{width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform .5s ease;}
+    .card:hover .cthumb img{transform:scale(1.035);}
+
+    .card .cbody{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1;}
+    .card .cmeta{font-size:.78rem;color:var(--cocoa-soft);opacity:.9;
+      letter-spacing:.04em;margin:0 0 9px;display:flex;flex-wrap:wrap;
+      gap:6px 10px;align-items:center;}
+    .card .ccat{color:var(--rose-deep);background:rgba(226,155,134,.14);
+      padding:2px 9px;border-radius:4px;font-size:.72rem;letter-spacing:.06em;}
+    .card h3{font-size:1.1rem;line-height:1.6;margin:0 0 10px;color:var(--cocoa);}
+    .card .cdesc{font-size:.92rem;line-height:1.85;color:var(--cocoa-soft);
+      margin:0 0 16px;flex:1;}
+    .card .cdesc strong{color:var(--cocoa);font-weight:500;}
+    .card .cmore{font-size:.88rem;color:var(--rose-deep);letter-spacing:.03em;}
+
+    @media(max-width:520px){
+      .card .cbody{padding:18px 18px 20px;}
+      .card h3{font-size:1.05rem;}
+    }
+
+    .empty{display:none;text-align:center;color:var(--cocoa-soft);
+      font-size:.95rem;padding:40px 0;}
+    .empty.show{display:block;}
   </style>
 </head>
 <body>
@@ -58,106 +115,116 @@
   </section>
 
   <section class="svc-section">
-    <div class="container reveal">
-      <div class="post-list">
+    <div class="container">
+      <div class="list-wrap">
 
-        <a href="zoya-lu/" class="post-card">
+        <div class="filters" id="filters">
+          <button type="button" data-cat="all" aria-pressed="true">全部<span class="fc">9</span></button>
+          <button type="button" data-cat="choices" aria-pressed="false">生產選擇<span class="fc">4</span></button>
+          <button type="button" data-cat="booklist" aria-pressed="false">書單<span class="fc">2</span></button>
+          <button type="button" data-cat="teachers" aria-pressed="false">我的老師們<span class="fc">3</span></button>
+        </div>
 
-          <p class="post-meta">2026 年 8 月 9 日 · 我的老師們</p>
+        <div class="series-hint" id="seriesHint">
+          <b>我的老師們</b>是一個系列，依對我的影響深淺排序。<br>
+          已寫：Maha Al Musa、卓雅 Zoya Lu、三浦順子。之後還有：盧郁汶 Allison、Free Birth Society、林雅雯老師。
+        </div>
 
-          <h3>卓雅 Zoya Lu：怎麼造一個容器</h3>
+        <div class="grid" id="grid">
 
-          <p>她出生於白俄羅斯，住過印度與馬爾他，現在人在台灣——而且用中文教學。我 2026 年完成了她的引導師認證，但學到最有用的不是女人圈本身，是「怎麼造一個讓人敢敞開的容器」——讓人敢敞開，不是天賦，是手藝。</p>
+          <a href="zoya-lu/" class="card" data-cat="teachers">
+            <div class="cthumb"><img src="../images/thumbs/zoya-lu.jpg" alt="夜空中的滿月" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">我的老師們</span><span>2026 年 8 月 9 日</span></p>
+              <h3>卓雅 Zoya Lu：怎麼造一個容器</h3>
+              <p class="cdesc">白俄羅斯人、住過印度與馬爾他、現居台灣，而且用中文教學。她讓我看見：<strong>讓人敢敞開，不是天賦，是手藝。</strong></p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-          <span class="service-more">讀這篇 →</span>
+          <a href="maha-al-musa/" class="card" data-cat="teachers">
+            <div class="cthumb"><img src="../images/thumbs/maha-al-musa.jpg" alt="一雙手托著孕肚" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">我的老師們</span><span>2026 年 8 月 9 日</span></p>
+              <h3>Maha Al Musa：不是陣痛，是擴張</h3>
+              <p class="cdesc">她不說 contractions，她說 <strong>expansions</strong>——因為身體不是在收縮，是在打開。她的巴勒斯坦祖母在村落的生產小屋裡生下九個孩子。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-        </a>
+          <a href="junko-miura/" class="card" data-cat="teachers">
+            <div class="cthumb"><img src="../images/thumbs/junko-miura.jpg" alt="三浦順子與 Milliya 合影" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">我的老師們</span><span>2026 年 8 月 9 日</span></p>
+              <h3>三浦順子：從時尚雜誌到倫敦產房</h3>
+              <p class="cdesc">「催產素，是一種<strong>害羞的荷爾蒙</strong>。」Doula UK 第一位日本籍導樂，陪伴超過 300 場生產——曾經是 Vogue 的攝影師。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-        
+          <a href="birth-picture-books/" class="card" data-cat="booklist">
+            <div class="cthumb"><img src="../images/thumbs/birth-picture-books.jpg" alt="三本生產繪本的書封" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">書單</span><span>2026 年 8 月 9 日</span></p>
+              <h3>生產繪本書單：陪大寶等二寶</h3>
+              <p class="cdesc">查完 11 本我才發現問錯了問題——中文繪本不是只畫醫院，是<strong>根本不畫生產</strong>。依孩子現在的狀態分類。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-        <a href="maha-al-musa/" class="post-card">
+          <a href="birth-methods/" class="card" data-cat="choices">
+            <div class="cthumb"><img src="../images/thumbs/birth-methods.jpg" alt="雙手在孕肚上比出愛心" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">生產選擇</span><span>2026 年 8 月 9 日</span></p>
+              <h3>多元生產方式：12 種選擇的簡單介紹</h3>
+              <p class="cdesc">把十二種並排，看起來像十二個平等的選項——<strong>它們並不平等。</strong>每一種都標明證據站在哪裡，包括「零研究」。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-          <p class="post-meta">2026 年 8 月 9 日 · 我的老師們</p>
+          <a href="gentle-birth-books/" class="card" data-cat="booklist">
+            <div class="cthumb"><img src="../images/thumbs/gentle-birth-books.jpg" alt="孕婦在窗邊的柔和光線中" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">書單</span><span>2026 年 8 月 9 日</span></p>
+              <h3>溫柔生產書單：中文、英文、日文</h3>
+              <p class="cdesc">溫柔生產的六位奠基作者，繁體中文譯本<strong>零本</strong>。所以這份書單混編三種語言，照妳現在的狀態分。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-          <h3>Maha Al Musa：不是陣痛，是擴張</h3>
+          <a href="waterbirth/" class="card" data-cat="choices">
+            <div class="cthumb"><img src="../images/thumbs/waterbirth.jpg" alt="居家水中生產的產池" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">生產選擇</span><span>2026 年 8 月 8 日</span></p>
+              <h3>水中生產：好處、迷思，與該問的 16 個問題</h3>
+              <p class="cdesc">幾乎每個數字都往好的方向走，只有一項風險上升——而那一項，很可能跟<strong>「妳的接生者熟不熟」</strong>有關。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-          <p>2023 年我在中國上了她的課，11 月 23 日在她的飯店房間裡提出邀請：來台灣吧。她的巴勒斯坦祖母 Aminah 在村落的生產小屋裡生下九個孩子；她自己 46 歲在家水中蓮花生產，把女兒取名 Aminah。這篇記錄她給我的那個字——不是陣痛，是擴張。</p>
+          <a href="what-is-freebirth/" class="card" data-cat="choices">
+            <div class="cthumb"><img src="../images/thumbs/what-is-freebirth.jpg" alt="柔焦的花朵" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">生產選擇</span><span>2026 年 8 月 8 日</span></p>
+              <h3>什麼是自主生產 freebirth？</h3>
+              <p class="cdesc"><strong>一份整理，不是一份主張。</strong>詞彙怎麼分、研究知道什麼與不知道什麼、台日處境有何不同——每個說法都標了證據層級。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-          <span class="service-more">讀這篇 →</span>
+          <a href="birth-choices-spectrum/" class="card" data-cat="choices">
+            <div class="cthumb"><img src="../images/thumbs/birth-choices-spectrum.jpg" alt="母親抱著新生兒" loading="lazy" width="640" height="420"></div>
+            <div class="cbody">
+              <p class="cmeta"><span class="ccat">生產選擇</span><span>2026 年 8 月 7 日</span></p>
+              <h3>「生產不是病」——自主生產的趨勢</h3>
+              <p class="cdesc">十年之間台灣的新生兒少了三成，由助產師接生的孩子卻<strong>從 95 人變成 299 人</strong>。這不是錯覺。</p>
+              <span class="cmore">讀這篇 →</span>
+            </div>
+          </a>
 
-        </a>
+        </div>
 
-        
-
-        <a href="junko-miura/" class="post-card">
-
-          <p class="post-meta">2026 年 8 月 9 日 · 我的老師們</p>
-
-          <h3>三浦順子：從時尚雜誌到倫敦產房</h3>
-
-          <p>2026 年 6 月，我在鎌倉第一次聽她講課。三浦－マイナリ順子，旅居倫敦的日本人陪產員，Doula UK 第一位日本籍導樂，陪伴超過 300 場生產。她曾是 FIGARO、Vogue 的攝影與撰稿人，在尼泊爾遇見一位真正的瑜伽行者之後轉了彎。這篇記錄她說過的、我捨不得忘的三句話——其中一句是：催產素，是一種害羞的荷爾蒙。</p>
-
-          <span class="service-more">讀這篇 →</span>
-
-        </a>
-
-        
-
-        <a href="birth-picture-books/" class="post-card">
-
-          <p class="post-meta">2026 年 8 月 9 日 · 書單</p>
-
-          <h3>生產繪本書單：陪大寶等二寶</h3>
-
-          <p>我原本以為中文的生產繪本都把生產畫在醫院裡，想找的是有沒有例外。查完之後發現我問錯了問題——不是多數繪本只畫醫院，是多數繪本根本不畫生產。11 本買得到的中文繪本，分兩區：陪大寶等二寶、跟孩子講寶寶怎麼來的。每本標明適讀年齡、流通狀況，以及它怎麼處理「生產」。</p>
-
-          <span class="service-more">讀這篇 →</span>
-
-        </a>
-
-        
-
-        <a href="birth-methods/" class="post-card">
-
-          <p class="post-meta">2026 年 8 月 9 日 · 生產選擇</p>
-
-          <h3>多元生產方式：12 種選擇的簡單介紹</h3>
-
-          <p>幾年前我做過一張投影片，上面列了十二種生產方式。但那張投影片有個問題：它把十二種並排，看起來像十二個平等的選項——它們並不平等。有些有幾十個隨機試驗撐著，有些連一篇同儕審查研究都沒有。這篇重做了那張表，每一種都標明證據站在哪裡。</p>
-
-          <span class="service-more">讀這篇 →</span>
-
-        </a>
-
-        
-
-        <a href="gentle-birth-books/" class="post-card">
-          <p class="post-meta">2026 年 8 月 9 日 · 書單</p>
-          <h3>溫柔生產書單：中文、英文、日文，照妳現在的狀態挑</h3>
-          <p>整理的時候我先查了一件以為不用查的事：Ina May Gaskin 的書，中文有沒有版本。答案是一本都沒有——這個運動的六位奠基作者，繁體中文譯本零本。所以這份書單混編三種語言，不照語言分，照妳現在的狀態分。每本標明適合誰與流通狀況，絕版的直接寫絕版。</p>
-          <span class="service-more">讀這篇 →</span>
-        </a>
-
-        <a href="waterbirth/" class="post-card">
-          <p class="post-meta">2026 年 8 月 8 日 · 生產選擇</p>
-          <h3>水中生產：好處、迷思，與妳該問的 16 個問題</h3>
-          <p>幾乎每一個數字都往好的方向走——出血少、感染少、新生兒需要急救的少。只有一項風險明顯上升，而那一項很可能跟「妳的接生者熟不熟」有關。附準備項目與一份可以印出來帶去的提問清單。</p>
-          <span class="service-more">讀這篇 →</span>
-        </a>
-
-        <a href="what-is-freebirth/" class="post-card">
-          <p class="post-meta">2026 年 8 月 8 日 · 生產選擇</p>
-          <h3>什麼是自主生產 freebirth？——詞彙、研究現況與台日對照</h3>
-          <p>一份整理，不是一份主張。這組詞彙到底怎麼分、研究知道什麼與不知道什麼、日本與台灣的處境有什麼不同、法律又是怎麼規定的。每個說法都標了來源與證據層級——同儕審查、官方文件、媒體轉引，或是確認的研究空白。</p>
-          <span class="service-more">讀這篇 →</span>
-        </a>
-
-        <a href="birth-choices-spectrum/" class="post-card">
-          <p class="post-meta">2026 年 8 月 7 日 · 生產選擇</p>
-          <h3>「生產不是病」——自主生產的趨勢，與一條選擇的光譜</h3>
-          <p>今年七月，我接觸過的兩個產家先後生了——一組在家自己生、沒有助產師在場，另一組原本也打算這樣，最後找了助產師來。十年之間，台灣的新生兒少了三成，由助產師接生的孩子卻從 95 人變成 299 人。這不是錯覺。但「介入」從來不是有或沒有，而是一條光譜——而且有兩件事，我想分開說。</p>
-          <span class="service-more">讀這篇 →</span>
-        </a>
+        <p class="empty" id="empty">這個分類還沒有文章。</p>
 
       </div>
     </div>
@@ -177,6 +244,47 @@
     <p class="footer-copy">© 2026 Birth with Milliya・欣妙　|　<a href="../" style="color:inherit;">回首頁</a></p>
   </footer>
 
+  <script>
+    // 分類篩選。沒有 JS 時全部照常顯示，不會壞。
+    (function () {
+      var filters = document.getElementById('filters');
+      var grid = document.getElementById('grid');
+      if (!filters || !grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+      var empty = document.getElementById('empty');
+      var hint = document.getElementById('seriesHint');
+      var VALID = ['all', 'choices', 'booklist', 'teachers'];
+
+      function apply(cat) {
+        var shown = 0;
+        cards.forEach(function (c) {
+          var ok = (cat === 'all') || (c.getAttribute('data-cat') === cat);
+          c.classList.toggle('is-hidden', !ok);
+          if (ok) shown++;
+        });
+        empty.classList.toggle('show', shown === 0);
+        hint.classList.toggle('show', cat === 'teachers');
+        Array.prototype.forEach.call(filters.querySelectorAll('button'), function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === cat));
+        });
+        try {
+          var u = new URL(location.href);
+          if (cat === 'all') u.searchParams.delete('cat'); else u.searchParams.set('cat', cat);
+          history.replaceState(null, '', u);
+        } catch (e) {}
+      }
+
+      filters.addEventListener('click', function (e) {
+        var b = e.target.closest ? e.target.closest('button[data-cat]') : null;
+        if (b) apply(b.getAttribute('data-cat'));
+      });
+
+      try {
+        var init = new URL(location.href).searchParams.get('cat');
+        if (init && VALID.indexOf(init) > -1) apply(init);
+      } catch (e) {}
+    })();
+  </script>
   <script src="../script.js"></script>
 </body>
 </html>

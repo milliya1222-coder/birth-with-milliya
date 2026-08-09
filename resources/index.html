@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台灣溫柔生產資源地圖：助產所、友善院所、社群｜Birth with Milliya</title>
+  <meta name="description" content="想在台灣溫柔生產、居家生產，可以找誰？整理實際有在接生的助產所、支持溫柔生產的醫院與診所、可以自己查詢的官方名冊，以及仍在運作的社群。每一項標明查核日期與資料來源。">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://birthwithmilliya.com/resources/">
+  <meta property="og:title" content="台灣溫柔生產資源地圖">
+  <meta property="og:description" content="想溫柔生產可以找誰？助產所、友善院所、官方查詢管道與社群，附查核日期。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://birthwithmilliya.com/resources/">
+  <meta property="og:image" content="https://birthwithmilliya.com/images/og-cover.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../images/logo/icon.png">
+  <link rel="apple-touch-icon" href="../images/logo/icon.png">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .article-head{max-width:780px;margin:0 auto;}
+    .article-kicker{font-family:"Cormorant Garamond",serif;font-style:italic;
+      color:var(--sage);font-size:1.05rem;letter-spacing:.06em;margin-bottom:10px;}
+    .article-intro{background:rgba(251,247,242,.94);backdrop-filter:blur(6px);
+      border:1px solid rgba(231,218,208,.9);border-radius:18px;
+      padding:26px 28px 22px;margin-top:26px;
+      box-shadow:0 18px 40px -28px rgba(90,74,66,.5);text-align:left;}
+    .article-lede{font-size:1rem;line-height:1.92;color:var(--cocoa);
+      border-left:3px solid var(--rose);padding-left:18px;margin:0;}
+    .checked{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;
+      font-size:.85rem;color:var(--cocoa-soft);margin-top:18px;
+      padding-top:14px;border-top:1px solid var(--line);}
+    .checked b{color:var(--rose-deep);font-weight:500;}
+    @media(max-width:560px){.article-intro{padding:22px 20px 18px;}.article-lede{font-size:.95rem;}}
+
+    .res-body{max-width:780px;margin:0 auto;}
+    .res-body p{margin-bottom:18px;color:var(--cocoa-soft);}
+    .res-body h2{font-size:clamp(1.3rem,3vw,1.65rem);margin:58px 0 8px;}
+    .res-body h3{font-size:1.05rem;margin:30px 0 10px;color:var(--cocoa);}
+    .res-body strong{color:var(--cocoa);font-weight:500;}
+    .sect-note{font-size:.94rem;color:var(--cocoa-soft);line-height:1.88;
+      border-left:3px solid var(--rose);padding-left:16px;margin:0 0 24px;}
+
+    /* 機構卡 */
+    .orgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+      gap:16px;margin:22px 0;}
+    .org{background:var(--cream,#faf6f2);border:1px solid var(--line);
+      border-radius:14px;padding:18px 20px 16px;}
+    .org .oname{font-family:"Noto Serif TC",serif;font-size:1.02rem;font-weight:600;
+      color:var(--cocoa);line-height:1.5;margin:0 0 3px;display:block;}
+    .org .oplace{font-size:.8rem;color:var(--rose-deep);letter-spacing:.04em;margin:0 0 9px;}
+    .org .odo{font-size:.9rem;line-height:1.8;color:var(--cocoa-soft);margin:0 0 9px;}
+    .org .odo b{color:var(--cocoa);font-weight:500;}
+    .org .olinks{font-size:.83rem;line-height:1.9;margin:0;}
+    .org .olinks a{color:var(--rose-deep);text-decoration:none;
+      border-bottom:1px solid rgba(226,155,134,.4);}
+    .org .otel{font-variant-numeric:tabular-nums;color:var(--cocoa-soft);}
+
+    /* 狀態標籤 */
+    .tag{display:inline-block;font-size:.71rem;letter-spacing:.05em;line-height:1.7;
+      padding:2px 8px;border-radius:4px;white-space:nowrap;vertical-align:middle;}
+    .t-birth{color:#2f6e6a;background:rgba(47,110,106,.14);}
+    .t-home{color:#3d5a80;background:rgba(61,90,128,.13);}
+    .t-ask{color:#8a6a24;background:rgba(138,106,36,.15);}
+    .t-water{color:#7a4a86;background:rgba(122,74,134,.13);}
+    .t-quiet{color:#7d6a60;background:rgba(125,106,96,.13);}
+    .t-gone{color:#94413c;background:rgba(148,65,60,.11);}
+
+    /* 官方查詢：最重要，做成顯眼區塊 */
+    .official{background:linear-gradient(160deg,#fbf1ea 0%,#f6e7e0 100%);
+      border:1px solid var(--line);border-radius:18px;padding:26px 28px 22px;margin:26px 0;}
+    .official h3{margin:0 0 6px;font-size:1.08rem;}
+    .official p{font-size:.92rem;line-height:1.85;margin:0 0 16px;}
+    .off-list{display:grid;gap:12px;}
+    .off-item{background:rgba(255,255,255,.62);border-radius:12px;padding:14px 16px;}
+    .off-item a{color:var(--rose-deep);font-weight:500;text-decoration:none;
+      border-bottom:1px solid rgba(226,155,134,.5);}
+    .off-item span{display:block;font-size:.85rem;color:var(--cocoa-soft);
+      line-height:1.75;margin-top:5px;}
+    @media(max-width:560px){.official{padding:22px 20px 18px;}}
+
+    /* 名冊表 */
+    .listwrap{margin:22px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+    .lrow{display:grid;grid-template-columns:1.25fr .62fr 1.1fr;gap:12px;
+      padding:11px 16px;border-bottom:1px solid var(--line);font-size:.89rem;
+      line-height:1.65;align-items:baseline;}
+    .lrow:last-child{border-bottom:none;}
+    .lhead{background:var(--cream,#faf6f2);font-size:.82rem;color:var(--cocoa);}
+    .lname{color:var(--cocoa);font-weight:500;}
+    .lcell{color:var(--cocoa-soft);}
+    .llab{display:none;}
+    @media(max-width:600px){
+      .lhead{display:none;}
+      .lrow{grid-template-columns:1fr;gap:3px;padding:13px 16px;}
+      .lname{font-size:.94rem;margin-bottom:2px;}
+      .llab{display:inline-block;width:3.6em;font-size:.76rem;
+        color:var(--cocoa-soft);opacity:.7;letter-spacing:.04em;}
+      .lcell{font-size:.86rem;}
+    }
+
+    .callout{background:var(--cream,#faf6f2);border-left:3px solid var(--rose);
+      border-radius:0 14px 14px 0;padding:22px 24px;margin:26px 0;}
+    .callout p{margin:0 0 12px;font-size:.94rem;line-height:1.88;}
+    .callout p:last-child{margin-bottom:0;}
+    .callout .c-label{display:block;font-family:"Cormorant Garamond",serif;font-style:italic;
+      color:var(--rose-deep);font-size:1rem;letter-spacing:.05em;margin-bottom:10px;}
+    .callout.alert{background:rgba(148,65,60,.06);border-left-color:#94413c;}
+    .callout.alert .c-label{color:#94413c;}
+
+    .sources{font-size:.82rem;color:var(--cocoa-soft);line-height:1.8;
+      margin-top:26px;padding-top:16px;border-top:1px solid var(--line);}
+    .sources a{color:inherit;}
+    .sources ul{padding-left:18px;margin:0 0 14px;}
+    .sources li{margin-bottom:6px;}
+
+    .guide-hook{background:linear-gradient(160deg,#fbf1ea 0%,#f7e6dd 100%);
+      border:1px solid var(--line);border-radius:var(--radius);
+      padding:34px 34px 30px;margin-top:44px;text-align:center;}
+    .guide-hook h3{font-size:1.22rem;margin-bottom:12px;}
+    .guide-hook p{color:var(--cocoa-soft);font-size:.94rem;margin-bottom:20px;}
+    @media(max-width:560px){.guide-hook{padding:28px 24px 24px;}}
+  </style>
+</head>
+<body>
+
+  <header class="svc-topbar">
+    <div class="nav-inner">
+      <a href="../" class="svc-back brand-lockup"><img src="../images/logo/icon.png" alt="Birth with Milliya 欣妙在陪妳" class="brand-mark"><span class="brand-text"><span class="brand-zh">欣妙在陪妳</span><span class="brand-en">BIRTH WITH MILLIYA</span></span></a>
+      <a href="../#contact" class="nav-cta">預約對話</a>
+    </div>
+  </header>
+
+  <section class="svc-hero">
+    <div class="reveal article-head">
+      <p class="article-kicker">資源 · Resources</p>
+      <h1>台灣溫柔生產<br>資源地圖</h1>
+      <div class="article-intro">
+        <p class="article-lede">想在台灣<strong>溫柔生產、居家生產</strong>，可以找誰？這一頁整理了：實際有在接生的助產所、支持溫柔生產的醫院與診所、<strong>妳可以自己查、而且每天更新的官方名冊</strong>，以及還在運作的社群。<br>每一項都標明查核日期與資料來源。<strong>沒有查到的，就寫沒有查到。</strong></p>
+        <div class="checked">
+          <span>整理：Milliya（欣妙）</span>
+          <span>查核日：<b>2026 年 8 月 9 日</b></span>
+          <a href="../about/" style="color:var(--rose-deep);text-decoration:none;">關於我 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc-section">
+    <div class="container">
+      <div class="res-body">
+
+        <div class="callout alert">
+          <span class="c-label">先講最重要的一件事</span>
+          <p><strong>「有登記」不等於「有接生」。</strong></p>
+          <p>全台助產所約 21–24 家、健保特約 15 家。但依中華民國助產師助產士公會全國聯合會理事長 2025 年 9 月受訪的說法，<strong>實際在執行接生的助產師只有大約 8 位，分屬 6 家助產所</strong>，一年接生約 200 名嬰兒。</p>
+          <p>所以看到一份「助產所名單」不要直接打電話說要生。多數助產所做的是<strong>產檢、抹片、居家訪視、產後照護</strong>，不接生。這一頁把兩者分開列。</p>
+        </div>
+
+        <h2>妳可以自己查的官方管道</h2>
+        <p class="sect-note">這一區放在最前面，是因為它<strong>不會過期</strong>。這一頁的資料會慢慢變舊，但下面這些是政府每天更新的。</p>
+
+        <div class="official">
+          <h3>三個可以自己查的地方</h3>
+          <p>如果只記得一件事，記得這三個連結。</p>
+          <div class="off-list">
+            <div class="off-item">
+              <a href="https://ma.mohw.gov.tw/Accessibility/BASSearch/MASearchBAS" target="_blank" rel="noopener">衛福部　醫事機構查詢 →</a>
+              <span>「機構類別」選 <b>助產機構</b>，再選縣市與鄉鎮區。官方登記資料，即時更新。這是找妳家附近有沒有助產所最直接的方式。</span>
+            </div>
+            <div class="off-item">
+              <a href="https://data.gov.tw/dataset/168341" target="_blank" rel="noopener">健保署　特約醫療院所名冊（政府資料開放平臺）→</a>
+              <span>每日更新的原始檔。篩選「特約類別＝8」就是助產所。想確認某一家還在不在特約，這裡最準。</span>
+            </div>
+            <div class="off-item">
+              <a href="https://birth1020.org/birth_resource/" target="_blank" rel="noopener">生動盟　台灣助產資源清單 →</a>
+              <span>台灣生育改革行動聯盟整理，<b>目前唯一公開標明「哪一家真的有接生」</b>的清單，還註明有沒有居家生產、有沒有生產教育課程。（該頁為圖檔，發布於 2024 年 6 月）</span>
+            </div>
+          </div>
+        </div>
+
+        <h2>實際有在接生的助產所</h2>
+        <p class="sect-note">以下六家在生動盟清單上明確標示<strong>「接生」＋「居家生產：可」＋「有生產教育課程」</strong>，而且六家的健保特約在 2026 年 8 月查詢時全部有效。這六家，就是前面說的那六家。</p>
+
+        <div class="orgs">
+
+          <div class="org">
+            <span class="oname">好孕助產所（好孕工作室）</span>
+            <p class="oplace">臺北市大安區　<span class="tag t-birth">接生</span> <span class="tag t-home">居家生產</span></p>
+            <p class="odo">陳鈺萍醫師創辦、高嘉黛助產師任所長的<b>順勢生產團隊</b>——婦產科醫師＋助產師＋國際泌乳顧問。居家生產服務範圍含北北基、宜蘭、高雄；另有合作生產院所。有孕期課程與泌乳諮詢。</p>
+            <p class="olinks"><a href="https://www.monisclassroom.com/service/" target="_blank" rel="noopener">官網服務說明</a>　·　<span class="otel">02-2369-9362</span></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">周玉惠助產所</span>
+            <p class="oplace">新北市三峽區　<span class="tag t-birth">接生</span> <span class="tag t-home">居家生產</span></p>
+            <p class="odo">周玉惠（所長）、林郁晴兩位助產師。1995 年起特約至今，是全台最資深的助產所之一。林郁晴助產師同時在推動「醫院開放助產師」，橫跨醫院與助產所兩種現場。</p>
+            <p class="olinks"><span class="otel">02-2671-9892</span>　·　新北市三峽區永安街 9 巷 66 號</p>
+          </div>
+
+          <div class="org">
+            <span class="oname">大溪婦幼助產所</span>
+            <p class="oplace">桃園市大溪區　<span class="tag t-birth">接生</span> <span class="tag t-home">居家生產</span></p>
+            <p class="odo">邱秋香（所長）帶領的四人助產師團隊。邱秋香於 2024 年 11 月當選桃園市助產師助產士公會理事長，公開推動居家生產文化。</p>
+            <p class="olinks"><span class="otel">03-388-1868</span>　·　桃園市大溪區金城路 36 巷 8 號</p>
+          </div>
+
+          <div class="org">
+            <span class="oname">恩生助產所</span>
+            <p class="oplace">南投縣埔里鎮　<span class="tag t-birth">接生</span> <span class="tag t-home">居家生產</span> <span class="tag t-water">水中生產</span></p>
+            <p class="odo">王秀霞（所長）帶領的<b>老中青三代四人團隊</b>，1996 年特約至今。2026 年起與台中慈濟醫院合作共照門診，把服務延伸到台中——<b>中台灣的產家可以從這裡問起</b>。</p>
+            <p class="olinks"><span class="otel">049-291-1048</span>　·　南投縣埔里鎮中山路三段 470 號</p>
+          </div>
+
+          <div class="org">
+            <span class="oname">貝斯特助產所</span>
+            <p class="oplace">宜蘭縣五結鄉　<span class="tag t-birth">接生</span> <span class="tag t-home">居家生產</span></p>
+            <p class="odo">萬美麗、鄧靜芳兩位助產師。除接生與產檢外，另開設賦權生產（empowered birth）課程。</p>
+            <p class="olinks"><span class="otel">03-960-6525</span>　·　宜蘭縣五結鄉自強東路 28 號</p>
+          </div>
+
+          <div class="org">
+            <span class="oname">邱明秀助產所</span>
+            <p class="oplace">花蓮縣花蓮市　<span class="tag t-birth">接生</span> <span class="tag t-home">居家生產</span> <span class="tag t-ask">量能請洽詢</span></p>
+            <p class="odo">邱明秀是<b>台灣首位執業助產師，執照編號 000001</b>，著有《第一個擁抱》。台灣助產專業斷層之後重新接起來的第一人。所長年事已高，<b>目前的接生量能請務必先電話確認</b>。</p>
+            <p class="olinks"><span class="otel">03-832-5379</span>　·　花蓮縣花蓮市林森路 162 號</p>
+          </div>
+
+        </div>
+
+        <h2>支持溫柔生產的醫院與診所</h2>
+        <p class="sect-note">如果妳想要溫柔生產，但希望在醫療院所裡進行——以下這些是<strong>院方自己公開宣示</strong>，或有官方新聞稿、主流媒體報導佐證的。每一項都註明「它實際提供什麼」，因為差異很大。</p>
+
+        <div class="orgs">
+
+          <div class="org">
+            <span class="oname">衛生福利部桃園醫院</span>
+            <p class="oplace">桃園市桃園區　<span class="tag t-birth">院內接生</span></p>
+            <p class="odo">全台<b>官網宣示最明確的公立醫院</b>——設有溫柔生產專頁，明白寫「溫柔生產＝生產賦權」，並獲 SNQ 國家品質標章。院內有助產師門診（陳如萍、游中寧），可與醫師共同照護接生。婦產科主任呂理政。</p>
+            <p class="olinks"><a href="https://www.tygh.mohw.gov.tw/?aid=93&amp;pid=73&amp;page_name=detail&amp;iid=12" target="_blank" rel="noopener">醫院溫柔生產專頁</a>　·　助產師門診時段請電洽 <span class="otel">03-369-4252</span></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">臺北市立聯合醫院　和平婦幼院區</span>
+            <p class="oplace">臺北市中正區　<span class="tag t-birth">院內接生</span> <span class="tag t-water">水中生產</span></p>
+            <p class="odo"><b>五師共照</b>：婦產科醫師＋小兒科醫師＋助產師＋護理師＋個案管理師。2025 年 5 月完成<b>全台北市第一例水中分娩</b>（助產師林郁晴＋產科醫師張伊）。市府 2025 年 12 月官方新聞稿正式對外說明此模式。</p>
+            <p class="olinks"><a href="https://tpech.gov.taipei/mp109181/News_Content.aspx?n=4F68C4105839B6EC&amp;s=FFAC84D2D3903D75" target="_blank" rel="noopener">市府新聞稿</a>　·　<a href="https://tpech.gov.taipei/mp109161/" target="_blank" rel="noopener">和平婦幼院區</a></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">樂寶兒婦幼診所</span>
+            <p class="oplace">新北市新莊區　<span class="tag t-birth">院內接生</span> <span class="tag t-water">水中生產</span></p>
+            <p class="odo">官網明列<b>水中生產（進口舒緩產痛浴缸）</b>與<b>助產師門診</b>（林燕芳助產師），院內助產師陪產。連續十年獲衛福部母嬰親善績優認證。</p>
+            <p class="olinks"><a href="https://www.wcha.com.tw/about" target="_blank" rel="noopener">診所官網</a>　·　<span class="otel">02-2990-1122</span></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">協和婦女醫院（陳鈺萍醫師）</span>
+            <p class="oplace">臺北市中山區　<span class="tag t-birth">院內接生</span> <span class="tag t-ask">掛號方式特殊</span></p>
+            <p class="odo">《生產，本該無傷》作者、好孕助產所創辦人的執業醫院。順勢生產、24 小時接生、泌乳諮詢。<br><b>注意：週二、週四晚上門診已改為「個別門診」，不接受網路及電話預約。</b>其他時段請依醫院公告。</p>
+            <p class="olinks"><a href="https://www.woman.org.tw/" target="_blank" rel="noopener">協和婦女醫院</a>　·　<span class="otel">02-2507-2222</span></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">台中慈濟醫院</span>
+            <p class="oplace">臺中市潭子區　<span class="tag t-birth">共照門診</span></p>
+            <p class="odo">與<b>恩生助產所</b>合作設置助產師諮詢門診（每隔週週六），提供生產計畫書共享決策、產前會陰按摩指導、產程非藥物支持、家屬培訓。婦產科醫師蘇修緯。<br><b>這是目前中台灣唯一有官方媒體報導佐證的溫柔生產共照選項。</b></p>
+            <p class="olinks"><a href="https://health.ltn.com.tw/article/breakingnews/5414254" target="_blank" rel="noopener">自由時報報導（2026-04-24）</a></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">陳澤彥婦產科醫院</span>
+            <p class="oplace">臺南市北區　<span class="tag t-birth">院內接生</span> <span class="tag t-home">居家生產可</span></p>
+            <p class="odo">設有<b>助產師門診（溫柔生產諮詢）</b>，黃貴美助產師；可與醫師共同照護接生。生動盟清單載明居家生產「可」。<b>南台灣的產家可以從這裡問起。</b></p>
+            <p class="olinks"><a href="https://www.cty-obs.com.tw/" target="_blank" rel="noopener">醫院官網</a></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">木生婦幼診所</span>
+            <p class="oplace">臺北市中山區　<span class="tag t-birth">院內接生</span></p>
+            <p class="odo">院內助產師陳艾、蔡和蓉，接生需與醫師共同照護。</p>
+            <p class="olinks">生動盟助產資源清單收錄</p>
+          </div>
+
+          <div class="org">
+            <span class="oname">聖保祿醫院</span>
+            <p class="oplace">桃園市桃園區　<span class="tag t-birth">院內接生</span></p>
+            <p class="odo">母嬰親善與母乳哺育為主軸（週四下午母嬰哺乳諮詢門診，需電話預約）。與國北護合作，有助產學生實習跟診、陪產與接生。教學副院長暨婦產科主任楊誠嘉。<b>院內無編制助產師。</b></p>
+            <p class="olinks"><a href="https://www.sph.org.tw/?page_id=3354" target="_blank" rel="noopener">婦產科醫師列表</a>　·　<span class="otel">03-361-3141</span></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">高雄市立大同醫院</span>
+            <p class="oplace">高雄市前金區　<span class="tag t-birth">接生</span> <span class="tag t-ask">醫師門診請先確認</span></p>
+            <p class="odo">委託高雄醫學大學經營。生動盟清單載明有溫柔生產接生，與緩緩工作室謝婉瑜助產師合作；院方曾舉辦「第 100 個溫柔生產大同寶寶」記者會。<b>院內無編制助產師。</b><br><b>個別醫師的門診與接生安排，請直接向醫院確認</b>——名單上的醫師執業地點可能已異動。</p>
+            <p class="olinks"><a href="https://register.kmtth.org.tw/" target="_blank" rel="noopener">網路掛號</a></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">嘉義基督教醫院</span>
+            <p class="oplace">嘉義市東區　<span class="tag t-ask">請洽詢</span></p>
+            <p class="odo">生動盟 2024 年清單載有助產師門診與接生（需共照），助產師陳碧惠。<b>但我無法確認 2026 年助產師門診是否仍開設</b>，請先電話確認。</p>
+            <p class="olinks"><span class="otel">05-276-4994</span></p>
+          </div>
+
+          <div class="org">
+            <span class="oname">花蓮慈濟醫院</span>
+            <p class="oplace">花蓮縣花蓮市　<span class="tag t-ask">需醫師轉診</span></p>
+            <p class="odo">提供順勢生產諮詢，<b>需經婦產科醫師轉診</b>給助產師（王淑芳，兼任）。</p>
+            <p class="olinks">生動盟助產資源清單收錄</p>
+          </div>
+
+          <div class="org">
+            <span class="oname">蘊容診所</span>
+            <p class="oplace">臺中市南屯區　<span class="tag t-quiet">諮詢，非接生</span></p>
+            <p class="odo"><b>不是接生單位。</b>無藥之全自費自然醫學診所，完全預約制，家庭醫學／順勢醫學（法國 CEDH）。提供<b>溫柔生產諮詢、身心靈整合支持與遠距支持</b>。謝欣穎醫師。</p>
+            <p class="olinks"><a href="https://www.unrhung-holistic-clinic.com/" target="_blank" rel="noopener">診所官網</a></p>
+          </div>
+
+        </div>
+
+        <div class="callout">
+          <span class="c-label">關於「找不到」這件事</span>
+          <p>如果妳住的地方在上面找不到——那不是妳搜尋能力的問題。</p>
+          <p><strong>臺中市目前沒有任何健保特約助產所</strong>（最後一家於 2025 年 7 月終止特約）。中部產家目前的兩條路，是南投恩生助產所，或台中慈濟的共照門診。</p>
+          <p>其他縣市也有大片空白。這是台灣助產專業斷層留下的結果，不是妳的運氣不好。</p>
+        </div>
+
+        <h2>全部健保特約助產所（15 家）</h2>
+        <p class="sect-note">以下是 2026 年 8 月 8 日健保署名冊中，特約類別為「助產所」且未終止合約的全部機構。<strong>再說一次：有特約不等於有接生。</strong>多數提供的是產檢、抹片、居家訪視與產後照護——這些本身也很有價值，尤其產後訪視。</p>
+
+        <div class="listwrap">
+          <div class="lrow lhead"><span>機構</span><span>縣市</span><span>電話</span></div>
+          <div class="lrow"><span class="lname">好孕助產所　<span class="tag t-birth">接生</span></span><span class="lcell"><span class="llab">縣市</span>臺北市大安區</span><span class="lcell otel"><span class="llab">電話</span>02-2369-9362</span></div>
+          <div class="lrow"><span class="lname">周玉惠助產所　<span class="tag t-birth">接生</span></span><span class="lcell"><span class="llab">縣市</span>新北市三峽區</span><span class="lcell otel"><span class="llab">電話</span>02-2671-9892</span></div>
+          <div class="lrow"><span class="lname">大溪婦幼助產所　<span class="tag t-birth">接生</span></span><span class="lcell"><span class="llab">縣市</span>桃園市大溪區</span><span class="lcell otel"><span class="llab">電話</span>03-388-1868</span></div>
+          <div class="lrow"><span class="lname">林沛瀅助產所</span><span class="lcell"><span class="llab">縣市</span>桃園市八德區</span><span class="lcell otel"><span class="llab">電話</span>03-371-3875</span></div>
+          <div class="lrow"><span class="lname">明月助產所　<span class="tag t-ask">服務項目請洽詢</span></span><span class="lcell"><span class="llab">縣市</span>新竹縣竹北市</span><span class="lcell otel"><span class="llab">電話</span>03-599-0360</span></div>
+          <div class="lrow"><span class="lname">貝斯特助產所　<span class="tag t-birth">接生</span></span><span class="lcell"><span class="llab">縣市</span>宜蘭縣五結鄉</span><span class="lcell otel"><span class="llab">電話</span>03-960-6525</span></div>
+          <div class="lrow"><span class="lname">恩生助產所　<span class="tag t-birth">接生</span></span><span class="lcell"><span class="llab">縣市</span>南投縣埔里鎮</span><span class="lcell otel"><span class="llab">電話</span>049-291-1048</span></div>
+          <div class="lrow"><span class="lname">一生助產院</span><span class="lcell"><span class="llab">縣市</span>雲林縣斗六市</span><span class="lcell otel"><span class="llab">電話</span>05-532-5603</span></div>
+          <div class="lrow"><span class="lname">蔡秀姬助產所</span><span class="lcell"><span class="llab">縣市</span>雲林縣北港鎮</span><span class="lcell otel"><span class="llab">電話</span>05-783-0779</span></div>
+          <div class="lrow"><span class="lname">黃助產所</span><span class="lcell"><span class="llab">縣市</span>臺南市中西區</span><span class="lcell otel"><span class="llab">電話</span>06-228-7803</span></div>
+          <div class="lrow"><span class="lname">安心助產所</span><span class="lcell"><span class="llab">縣市</span>臺南市玉井區</span><span class="lcell otel"><span class="llab">電話</span>06-574-6683</span></div>
+          <div class="lrow"><span class="lname">長利助產所</span><span class="lcell"><span class="llab">縣市</span>臺南市白河區</span><span class="lcell otel"><span class="llab">電話</span>06-685-1310</span></div>
+          <div class="lrow"><span class="lname">溫馨聯合助產所</span><span class="lcell"><span class="llab">縣市</span>高雄市橋頭區</span><span class="lcell otel"><span class="llab">電話</span>07-611-8760</span></div>
+          <div class="lrow"><span class="lname">社皮助產所</span><span class="lcell"><span class="llab">縣市</span>屏東縣萬丹鄉</span><span class="lcell otel"><span class="llab">電話</span>08-707-0717</span></div>
+          <div class="lrow"><span class="lname">邱明秀助產所　<span class="tag t-birth">接生</span></span><span class="lcell"><span class="llab">縣市</span>花蓮縣花蓮市</span><span class="lcell otel"><span class="llab">電話</span>03-832-5379</span></div>
+        </div>
+
+        <h2>組織與社群</h2>
+        <p class="sect-note">以下都在 2026 年 8 月確認過活躍狀態。<strong>沉寂或已停止的，我也寫出來</strong>——免得妳花時間去敲一扇沒人在的門。</p>
+
+        <h3>政策倡議與專業組織</h3>
+        <div class="orgs">
+          <div class="org">
+            <span class="oname">台灣生育改革行動聯盟（生動盟）</span>
+            <p class="oplace">全國　<span class="tag t-birth">活躍</span></p>
+            <p class="odo">台灣唯一持續做孕產<b>政策倡議</b>的立案 NGO。2026 年 7 月才召開 CEDAW 會後記者會，呼籲建立產科暴力監管制度。<br><b>適合：</b>想理解制度面、需要有憑據的權益資訊的人。</p>
+            <p class="olinks"><a href="https://birth1020.org/" target="_blank" rel="noopener">官網</a>　·　<a href="https://birth1020.org/birth_resource/" target="_blank" rel="noopener">助產資源清單</a>　·　Podcast「生動盟的聲動時光」</p>
+          </div>
+          <div class="org">
+            <span class="oname">台灣助產學會</span>
+            <p class="oplace">全國　<span class="tag t-birth">活躍</span></p>
+            <p class="odo">助產專業的學術組織，公告更新至 2026 年 8 月。</p>
+            <p class="olinks"><a href="https://www.midwife.org.tw/" target="_blank" rel="noopener">官網</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">中華民國助產師助產士公會全國聯合會</span>
+            <p class="oplace">全國　<span class="tag t-birth">活躍</span></p>
+            <p class="odo">執業助產人員的公會。網站有助產機構專區、健保特約助產所名單，以及<b>各縣市公會的電話與地址</b>——想找在地助產師，可以從縣市公會問起。</p>
+            <p class="olinks"><a href="https://www.midwifery.org.tw/" target="_blank" rel="noopener">官網</a>　·　<a href="http://www.midwifery.org.tw/modules/Content/C138.html" target="_blank" rel="noopener">各縣市公會聯絡方式</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">國健署　孕產婦關懷網站</span>
+            <p class="oplace">官方　<span class="tag t-birth">活躍</span></p>
+            <p class="odo">衛福部國民健康署的官方孕產資源，含<b>孕產課程查詢</b>。要引用台灣官方數據或找本地公費資源時最方便。</p>
+            <p class="olinks"><a href="https://mammy.hpa.gov.tw/" target="_blank" rel="noopener">孕產婦關懷網站</a>　·　<a href="https://mammy.hpa.gov.tw/DataColl/ClassAct" target="_blank" rel="noopener">孕產課程查詢</a></p>
+          </div>
+        </div>
+
+        <h3>社群與個人專頁</h3>
+        <div class="orgs">
+          <div class="org">
+            <span class="oname">好孕——順勢多元的孕產照護</span>
+            <p class="oplace">台北・高雄　<span class="tag t-birth">活躍</span></p>
+            <p class="odo">陳鈺萍醫師領軍的團隊帳號，2026 年仍在跑巡迴課程。<b>清單裡最「找得到人執行」的一個。</b></p>
+            <p class="olinks"><a href="https://www.monisclassroom.com/" target="_blank" rel="noopener">官網</a>　·　<a href="https://www.facebook.com/monisclassroom/" target="_blank" rel="noopener">Facebook</a>　·　<a href="https://www.instagram.com/mothernature.tw/" target="_blank" rel="noopener">Instagram</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">婦女保健與母胎健康諮詢（林郁晴助產師）</span>
+            <p class="oplace">新北　<span class="tag t-birth">活躍</span></p>
+            <p class="odo">林郁晴助產師的專業帳號，橫跨醫院與助產所兩種現場。<b>適合想同時了解「醫院內」與「助產所」差別的人。</b></p>
+            <p class="olinks"><a href="https://www.facebook.com/YuChingAunt/" target="_blank" rel="noopener">Facebook</a>　·　<a href="https://www.instagram.com/midwife_yuchinglin/" target="_blank" rel="noopener">Instagram</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">人性化生產</span>
+            <p class="oplace">全國　<span class="tag t-birth">粉專</span></p>
+            <p class="odo">助產師經營的粉專，貼文多為接生現場心得與人性化生產倡議。<b>適合想看助產師第一線視角的人。</b></p>
+            <p class="olinks"><a href="https://www.facebook.com/midwife02/" target="_blank" rel="noopener">Facebook</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">周周孕育</span>
+            <p class="oplace">桃園　<span class="tag t-birth">半活躍</span></p>
+            <p class="odo">桃園在地的孕產／哺育／育兒支持聚會與居家生產陪伴，聚會免費。可查到的最後貼文為 2026 年 2 月。</p>
+            <p class="olinks"><a href="https://www.facebook.com/tinybabymicare/" target="_blank" rel="noopener">Facebook</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">最溫柔的相遇－溫柔生產</span>
+            <p class="oplace">全國　<span class="tag t-ask">社團需審核</span></p>
+            <p class="odo">自主學習型社群。社團簡介明言「這裡不會提供任何服務，妳想要的答案要自己去找」。<b>適合願意自己做功課的人。</b></p>
+            <p class="olinks"><a href="https://www.facebook.com/groups/463636870422595/" target="_blank" rel="noopener">Facebook 社團</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">中部溫柔孕產交流團</span>
+            <p class="oplace">中部　<span class="tag t-ask">社團需審核</span></p>
+            <p class="odo">中部備孕、孕期與溫柔生產交流。<b>中台灣助產資源稀少，在地社群相對重要。</b></p>
+            <p class="olinks"><a href="https://www.facebook.com/groups/1877075765949080/" target="_blank" rel="noopener">Facebook 社團</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">南方孕產支持圈（屏東高雄台南）</span>
+            <p class="oplace">南部　<span class="tag t-ask">社團需審核</span></p>
+            <p class="odo">南台灣少數的孕產健康議題社群，生動盟 Podcast 曾專訪。</p>
+            <p class="olinks"><a href="https://www.facebook.com/groups/783394852007322/" target="_blank" rel="noopener">Facebook 社團</a></p>
+          </div>
+          <div class="org">
+            <span class="oname">家中生產</span>
+            <p class="oplace">全國　<span class="tag t-home">居家生產主題</span></p>
+            <p class="odo">以居家生產為主題的 Facebook 社團。</p>
+            <p class="olinks"><a href="https://www.facebook.com/groups/taiwanhomebirth/" target="_blank" rel="noopener">Facebook 社團</a></p>
+          </div>
+        </div>
+
+        <div class="callout alert">
+          <span class="c-label">兩個要提醒的</span>
+          <p><strong>台灣溫柔生產推廣協會：官網已失效。</strong>網域 DNS 查詢失敗，網頁封存最後一次成功存檔為 2025 年 3 月，之後查無。法人登記仍在，粉專還在但互動極低。<span class="tag t-gone">不建議當現行資源</span></p>
+          <p><strong>台灣陪產員發展協會：網站在，但內容嚴重過時。</strong>文章停在 2015 年，頁面最後修改為 2022 年 11 月。<span class="tag t-quiet">參考用</span></p>
+        </div>
+
+        <div class="guide-hook">
+          <h3>看完清單，還是不知道怎麼選？</h3>
+          <p>名單告訴妳有誰，但選擇是另一回事。《生產方式選擇手冊》用 A·B·C 三個步驟，陪妳釐清自己的生產信念、想要的生產地點，以及怎麼選擇生產隊友。免費線上閱讀。</p>
+          <a href="../guide/" class="btn">翻開手冊 →</a>
+        </div>
+
+        <h2>還有這些</h2>
+        <p><strong>想讀書：</strong>我整理了一份跨中文、英文、日文的〈<a href="../blog/gentle-birth-books/" style="color:var(--rose-deep);">溫柔生產書單</a>〉，照妳現在的狀態分類，每本標明流通狀況。</p>
+        <p><strong>想弄懂各種生產方式：</strong>〈<a href="../blog/birth-choices-spectrum/" style="color:var(--rose-deep);">生產不是病——自主生產的趨勢，與一條選擇的光譜</a>〉、〈<a href="../blog/what-is-freebirth/" style="color:var(--rose-deep);">什麼是自主生產 freebirth</a>〉、〈<a href="../blog/waterbirth/" style="color:var(--rose-deep);">水中生產：好處、迷思與 16 個提問</a>〉。</p>
+        <p><strong>想找人陪：</strong><a href="../doula/" style="color:var(--rose-deep);">溫柔生產陪產服務</a>，或<a href="../#contact" style="color:var(--rose-deep);">直接跟我聊聊</a>。</p>
+
+        <div class="sources">
+          <p><strong>這一頁是怎麼查的。</strong>2026 年 8 月 9 日，以下列來源交叉查核。凡是查不到公開資訊的，一律標「請洽詢」或不列入——<strong>寧可少列一家，也不要讓一位臨盆的媽媽白跑一趟。</strong></p>
+          <ul>
+            <li><a href="https://data.gov.tw/dataset/168341" target="_blank" rel="noopener">健保署 全民健康保險特約醫療院所名冊</a>（政府資料開放平臺，每日更新；本頁採 2026-08-08 版，篩選特約類別＝8 助產所）</li>
+            <li><a href="https://birth1020.org/birth_resource/" target="_blank" rel="noopener">台灣生育改革行動聯盟 台灣助產資源清單</a>（2024-06 發布，唯一標明「是否接生」的公開清單）</li>
+            <li><a href="https://ma.mohw.gov.tw/masearch/" target="_blank" rel="noopener">衛生福利部 醫事機構查詢系統</a></li>
+            <li>各機構官方網站與掛號系統（逐一開啟確認）</li>
+            <li>接生人數與規模：<a href="https://www.taiwanwomencenter.org.tw/zh-tw/NewsMgt/news/Content/6/news1140913_1" target="_blank" rel="noopener">台灣國家婦女館轉載聯合報（2025-09-13）</a>、<a href="https://www.chinatimes.com/realtimenews/20250908002047-260405" target="_blank" rel="noopener">中國時報（2025-09-08）</a></li>
+            <li>北市聯醫水中分娩：<a href="https://health.ltn.com.tw/article/breakingnews/5032826" target="_blank" rel="noopener">自由時報（2025-05-05）</a>；台中慈濟共照：<a href="https://health.ltn.com.tw/article/breakingnews/5414254" target="_blank" rel="noopener">自由時報（2026-04-24）</a></li>
+          </ul>
+          <p><strong>沒有列進來的。</strong>只靠口耳相傳、沒有任何公開執業資訊的助產師，我不列名——那是為了保護當事人。個人手機號碼一律不收錄，本頁只採用政府資料集與機構官網公布的市話。</p>
+          <p><strong>這一頁會過期。</strong>助產所的特約會終止、醫師會換院、社群會沉寂。請把上面那三個官方查詢管道當成正本，這一頁當成起點。<strong>臨盆前，一定要再打一次電話確認。</strong></p>
+          <p>本頁為公開資訊整理，<strong>不構成醫療建議</strong>，列出不代表背書或推薦，也不代表該機構與 Birth with Milliya 有合作關係。如果妳是名單上的機構、希望修改或移除，請<a href="../#contact">與我聯繫</a>，我會立刻處理。</p>
+        </div>
+
+        <p style="margin-top:30px;"><a href="../" class="service-more" style="color:var(--rose-deep);">← 回首頁</a></p>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="svc-cta reveal">
+    <p class="section-eyebrow">如果妳看完更確定了</p>
+    <h2>找到人，只是第一步<br>接下來是把想要的說清楚</h2>
+    <p>知道有誰可以找，跟知道自己要什麼，是兩件事。我可以陪妳把選項、風險與準備一起看清楚。</p>
+    <a href="../#contact" class="btn">預約一次對話</a>
+  </section>
+
+  <footer class="footer">
+    <a href="../" class="brand-lockup"><img src="../images/logo/icon.png" alt="Birth with Milliya 欣妙在陪妳" class="brand-mark"><span class="brand-text"><span class="brand-zh">欣妙在陪妳</span><span class="brand-en">BIRTH WITH MILLIYA</span></span></a>
+    <p class="footer-tag">溫暖但有骨 · 陪伴女性走過孕產的生命轉化</p>
+    <p class="footer-copy">© 2026 Birth with Milliya・欣妙　|　<a href="../" style="color:inherit;">回首頁</a></p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

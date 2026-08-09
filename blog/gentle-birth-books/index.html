@@ -89,8 +89,11 @@
     .book{display:grid;grid-template-columns:96px 1fr;gap:20px;
       padding:22px 0;border-bottom:1px dotted var(--line);align-items:start;}
     .book:last-child{border-bottom:none;}
-    .bcov{width:96px;}
-    .bcov img{width:100%;height:auto;display:block;border-radius:3px;
+    /* 書封外框統一比例：圖片 contain 置中，不裁切也不變形，只讓卡片對齊 */
+    .bcov{width:96px;aspect-ratio:1/1.46;display:flex;align-items:center;
+      justify-content:center;overflow:hidden;}
+    .bcov img{max-width:100%;max-height:100%;width:auto;height:auto;
+      display:block;border-radius:3px;
       box-shadow:0 8px 20px -10px rgba(90,74,66,.55),0 0 0 1px rgba(90,74,66,.07);}
 
     .binfo .bt{font-family:"Noto Serif TC",serif;font-size:1.03rem;font-weight:600;
@@ -105,7 +108,7 @@
 
     @media(max-width:520px){
       .book{grid-template-columns:70px 1fr;gap:14px;padding:18px 0;}
-      .bcov{width:70px;}
+      .book .bcov{width:70px;}
       .binfo .bt{font-size:.98rem;}
       .binfo .bwhy{font-size:.92rem;}
     }
@@ -113,7 +116,8 @@
     /* ── 精簡書格（附錄型區塊）─────────────────── */
     .shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));
       gap:26px 20px;margin:26px 0 8px;}
-    .shelf .sitem .bcov{width:100%;}
+    .shelf .sitem{display:flex;flex-direction:column;}
+    .shelf .sitem .bcov{width:100%;aspect-ratio:1/1.46;}
     .shelf .stitle{font-family:"Noto Serif TC",serif;font-size:.9rem;font-weight:600;
       color:var(--cocoa);line-height:1.55;margin:11px 0 3px;}
     .shelf .sline{font-size:.79rem;color:var(--cocoa-soft);line-height:1.7;margin:0;}

@@ -638,6 +638,64 @@
     .hero-image img { max-height: 360px; }
     .sticky-cta { bottom: 12px; right: 12px; padding: 12px 20px; font-size: 13px; }
   }
+  /* Testimonials */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 760px;
+    margin: 36px auto 0;
+  }
+  @media (min-width: 720px) {
+    .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  }
+  #testimonials .section-eyebrow { color: var(--primary-dark); }
+  .testimonial-card {
+    background: #fff;
+    border: 1px solid #E3D2BC;
+    border-radius: 10px;
+    padding: 32px 28px 26px;
+    position: relative;
+    box-shadow: 0 8px 22px -8px rgba(139, 69, 48, 0.20), 0 2px 6px rgba(139, 69, 48, 0.07);
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Noto Serif JP', serif;
+    font-size: 56px;
+    color: var(--primary);
+    opacity: 0.55;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.95;
+    margin: 18px 0 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-author {
+    background: transparent;
+    font-size: 13px;
+    color: #5C4636;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 14px 0 0;
+    margin: 0;
+    border-top: 1px solid #EFE4D5;
+  }
+  .testimonial-author strong { color: var(--primary-dark); font-weight: 600; }
+  .testimonial-stat {
+    text-align: center;
+    margin: 30px auto 0;
+    font-size: 14px;
+    color: var(--text-soft);
+    letter-spacing: .04em;
+  }
+  .testimonial-stat strong { color: var(--primary-dark); font-size: 17px; }
 </style>
 </head>
 <body>
@@ -656,7 +714,7 @@
   <h1>女性のための<br>アーユルヴェーダ・ケア</h1>
   <p class="hero-sub">五千年のインドの伝統的な癒しの叡智 × 出産に寄り添うドゥーラの視点<br>産後・妊活・婦人科の悩み・心身の疲れに——あなたの巡りを、深く整える</p>
   <div>
-    <span class="hero-tag">創始メンバー10名様 限定 · オープニング特典</span>
+    <span class="hero-tag">創始メンバー 残り 5 名様 · 9/30 まで</span>
   </div>
   <div>
     <span class="hero-location">📍 神奈川・逗子のプライベートサロン / 逗子・葉山エリア出張可</span>
@@ -843,14 +901,14 @@
             <div class="price-option-title">入門体験 · 1.5時間</div>
             <div class="price-option-desc">カウンセリング ＋ アビヤンガ（温オイルマッサージ）＋ シローダーラ（額へのオイルの点滴）＋ 浄化のお香・休息</div>
           </div>
-          <div class="price-option-price">¥16,000</div>
+          <div class="price-option-price">¥18,000</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">じっくり体験 · 2時間</div>
             <div class="price-option-desc">カウンセリング ＋ アビヤンガ（たっぷり）＋ シローダーラ ＋ 浄化のお香・休息</div>
           </div>
-          <div class="price-option-price">¥20,000</div>
+          <div class="price-option-price">¥23,000</div>
         </div>
       </div>
     </div>
@@ -867,14 +925,14 @@
             <div class="price-option-title">フルコース · 約2.5時間</div>
             <div class="price-option-desc">アビヤンガ ＋ シローダーラ ＋ ヨニ・ハーブ蒸し ＋ ハーブ浴</div>
           </div>
-          <div class="price-option-price">¥27,000</div>
+          <div class="price-option-price">¥30,000</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">じっくりフルコース · 約3時間</div>
             <div class="price-option-desc">アビヤンガ（120分）＋ シローダーラ ＋ ヨニ・ハーブ蒸し ＋ ハーブ浴</div>
           </div>
-          <div class="price-option-price">¥32,000</div>
+          <div class="price-option-price">¥36,000</div>
         </div>
       </div>
     </div>
@@ -893,28 +951,29 @@
 <!-- FOUNDING MEMBERS -->
 <section class="earlybird">
   <div class="container">
-    <div class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Founding Members · オープニング特典</div>
+    <div class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Founding Members · 2026年9月30日まで</div>
     <h2>最初に出会う、あなたへ</h2>
-    <p style="font-size: 17px;">このケアを神奈川で本格的に始めるにあたって、<br>まず最初の <strong>10名</strong>のあなたを「創始メンバー」としてお招きしたいと思っています——<br>より親密に、より深く寄り添い、このサービスが芽吹いて育っていく道のりを、一緒に見守ってくださる方として。</p>
+    <p style="font-size: 17px;">このケアを神奈川で本格的に始めるにあたって、<br>まず最初の <strong>10名</strong>のあなたを「創始メンバー」としてお招きしています——<br>より親密に、より深く寄り添い、このサービスが芽吹いて育っていく道のりを、一緒に見守ってくださる方として。</p>
+    <p style="font-size: 17px;">台北ではこの創始メンバー枠がすでに満席となり、通常価格に戻りました。<br><strong>逗子は残り 5 名様、2026 年 9 月 30 日で募集を終了します。</strong></p>
     <div class="price-row">
       <div class="earlybird-item">
         <div class="earlybird-label">入門体験 1.5時間</div>
-        <div class="earlybird-strike">¥16,000</div>
+        <div class="earlybird-strike">¥18,000</div>
         <div class="earlybird-price">¥10,000</div>
       </div>
       <div class="earlybird-item">
         <div class="earlybird-label">じっくり体験 2時間</div>
-        <div class="earlybird-strike">¥20,000</div>
+        <div class="earlybird-strike">¥23,000</div>
         <div class="earlybird-price">¥13,000</div>
       </div>
       <div class="earlybird-item">
         <div class="earlybird-label">フルコース 約2.5時間</div>
-        <div class="earlybird-strike">¥27,000</div>
+        <div class="earlybird-strike">¥30,000</div>
         <div class="earlybird-price">¥18,000</div>
       </div>
       <div class="earlybird-item">
         <div class="earlybird-label">じっくりフルコース 約3時間</div>
-        <div class="earlybird-strike">¥32,000</div>
+        <div class="earlybird-strike">¥36,000</div>
         <div class="earlybird-price">¥22,000</div>
       </div>
     </div>
@@ -922,7 +981,7 @@
       <strong>創始メンバーの特別なところ：</strong>オープニング特典価格に加えて、より長いカウンセリングの時間、オーダーメイドのその後の寄り添い、そして優先予約権を。<br>
       <strong>やさしいお願い：</strong>ケアのあと、感じたことを私に分かち合ってください（匿名のお声として使わせていただくこともできます）。あなたの物語を通して、より多くの女性がこの叡智に出会えますように。
     </p>
-    <p style="font-size: 13px; opacity: 0.7; margin-top: 16px;">定員：10名様 · 残りの枠は IG で随時お知らせします</p>
+    <p style="font-size: 13px; opacity: 0.7; margin-top: 16px;">定員：10名様（残り 5 名様） · 募集は 2026 年 9 月 30 日まで · 残りの枠は IG で随時お知らせします</p>
   </div>
 </section>
 
@@ -1048,6 +1107,45 @@
       <summary>途中で体調が悪くなったら?</summary>
       <div>いつでも止められます。ペースはあなたに合わせます。施術の前後にからだの状態を伺い、記録します。不調があればすぐに調整するか、医療におつなぎします。</div>
     </details>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="about" id="testimonials">
+  <div class="container">
+    <div class="section-eyebrow">Voices · お客様の声</div>
+    <h2 class="section-title">彼女たちは、自分のからだに帰っていきました</h2>
+    <div class="divider"></div>
+    <p class="section-intro">すべて実際にケアを受けてくださった方のお声です。ご本人の同意をいただき、それぞれの許諾の範囲（実名／ニックネーム／匿名）で掲載しています。</p>
+
+    <div class="testimonial-grid">
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">日頃の疲れから深いリラックスへ導いてくれる、最高のご褒美。眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。</p>
+        <footer class="testimonial-author">— <strong>あんり</strong>さん · 逗子・創始メンバー</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">極上のリラックス。自分のためのご褒美です。シローダーラができたこと、それによって落ちれたことがいちばん。普段は疲れていても寝落ちなんてほとんどできないので。翌日も子どもたちを公園に連れて行けて、お昼寝までできました。</p>
+        <footer class="testimonial-author">— <strong>Ayano</strong>さん · 逗子・創始メンバー</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">額にオイルを注がれたその瞬間、神聖な第三の目のスイッチが押されたようでした。静寂のなかで、波に何度も洗われるような、花びらが一枚ずつひらいて解き放たれていくような感覚。</p>
+        <footer class="testimonial-author">— <strong>精霊</strong>さん · 台北のお客様</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">できることなら、すべての女性がひと月に一度こうして丁寧に養われるべきだと思います。急がず、ただ一日を自分のために空けて。そしてこのやさしく愛のあるケアを通して、からだに新しい感覚を入れるのです——「私は、こうして時間をかけて大切にされていい」と。</p>
+        <footer class="testimonial-author">— <strong>Hannah</strong>さん · 台北のお客様</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">お母さんと赤ちゃん、その両方の心とからだを、こんなに大切にしてくださってありがとうございました。慣れない環境でも赤ちゃんが安心して眠れたから、母である私もようやく本当に力を抜けました。</p>
+        <footer class="testimonial-author">— <strong>郁庭</strong>さん · 台北・産後の出張ケア</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">とてもやわらかな手技なのに、Milliya がとても「意識的に」行っているのが伝わってきました。やわらかさの中に深いリラックスがある——そんな体験は初めてでした。</p>
+        <footer class="testimonial-author">— <strong>稍稍</strong>さん · 台北・産後のお母さま</footer>
+      </blockquote>
+    </div>
+
+    <p class="testimonial-stat">創始期のお声 16 件（台北 14・逗子 2）　満足度 平均 <strong>9.2 / 10</strong>　おすすめしたい度 平均 <strong>9.2 / 10</strong></p>
   </div>
 </section>
 

@@ -699,6 +699,64 @@
     .hero-image img { max-height: 360px; }
     .sticky-cta { bottom: 12px; right: 12px; padding: 12px 20px; font-size: 13px; }
   }
+  /* Testimonials */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 760px;
+    margin: 36px auto 0;
+  }
+  @media (min-width: 720px) {
+    .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  }
+  #testimonials .section-eyebrow { color: var(--primary-dark); }
+  .testimonial-card {
+    background: #fff;
+    border: 1px solid #E3D2BC;
+    border-radius: 10px;
+    padding: 32px 28px 26px;
+    position: relative;
+    box-shadow: 0 8px 22px -8px rgba(139, 69, 48, 0.20), 0 2px 6px rgba(139, 69, 48, 0.07);
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Noto Serif TC', Georgia, serif;
+    font-size: 56px;
+    color: var(--primary);
+    opacity: 0.55;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.95;
+    margin: 18px 0 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-author {
+    background: transparent;
+    font-size: 13px;
+    color: #5C4636;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 14px 0 0;
+    margin: 0;
+    border-top: 1px solid #EFE4D5;
+  }
+  .testimonial-author strong { color: var(--primary-dark); font-weight: 600; }
+  .testimonial-stat {
+    text-align: center;
+    margin: 30px auto 0;
+    font-size: 14px;
+    color: var(--text-soft);
+    letter-spacing: .04em;
+  }
+  .testimonial-stat strong { color: var(--primary-dark); font-size: 17px; }
 </style>
 
 <body>
@@ -885,21 +943,21 @@
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Introductory session · 2 hours</div>
-            <div class="price-option-desc">20 min consultation + 90 min warm-oil massage + closing incense and rest</div>
+            <div class="price-option-desc">20 min consultation + 90 min warm-oil massage + <strong>Shirodhara</strong> + closing incense and rest</div>
           </div>
           <div class="price-option-price">NT$ 3,500</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Full therapy · about 2.5 hours</div>
-            <div class="price-option-desc">90 min massage + yoni steam + herbal bath</div>
+            <div class="price-option-desc">90 min massage + <strong>Shirodhara</strong> + yoni steam + herbal bath</div>
           </div>
           <div class="price-option-price">NT$ 5,800</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Extended full therapy · about 3 hours</div>
-            <div class="price-option-desc">120 min massage + yoni steam + herbal bath</div>
+            <div class="price-option-desc">120 min massage + <strong>Shirodhara</strong> + yoni steam + herbal bath</div>
           </div>
           <div class="price-option-price">NT$ 6,800</div>
         </div>
@@ -909,7 +967,7 @@
     <div class="price-tier featured-tier">
       <div class="price-tier-header">
         <span class="price-tier-name">Zushi, Kanagawa · private salon or home visit</span>
-        <span class="price-tier-tag">Japan · includes Shirodhara</span>
+        <span class="price-tier-tag">Japan</span>
       </div>
       <div class="price-options">
         <div class="price-option">
@@ -917,34 +975,34 @@
             <div class="price-option-title">Introductory session · 1.5 hours</div>
             <div class="price-option-desc">Consultation + Abhyanga + Shirodhara + closing incense and rest</div>
           </div>
-          <div class="price-option-price">¥ 16,000</div>
+          <div class="price-option-price">¥ 18,000</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Unhurried session · 2 hours</div>
             <div class="price-option-desc">Consultation + a longer Abhyanga + Shirodhara + closing incense and rest</div>
           </div>
-          <div class="price-option-price">¥ 20,000</div>
+          <div class="price-option-price">¥ 23,000</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Full therapy · about 2.5 hours</div>
             <div class="price-option-desc">Abhyanga + Shirodhara + yoni steam + herbal bath</div>
           </div>
-          <div class="price-option-price">¥ 27,000</div>
+          <div class="price-option-price">¥ 30,000</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Extended full therapy · about 3 hours</div>
             <div class="price-option-desc">120 min Abhyanga + Shirodhara + yoni steam + herbal bath</div>
           </div>
-          <div class="price-option-price">¥ 32,000</div>
+          <div class="price-option-price">¥ 36,000</div>
         </div>
       </div>
     </div>
 
     <p class="price-note">
-      ✨ Every session in Japan includes <strong>Shirodhara</strong> — a thread of warm oil poured onto the centre of the forehead. It is the deepest rest Ayurveda has to offer, and most people very nearly fall asleep.<br>
+      ✨ Every session, in both countries, includes <strong>Shirodhara</strong> — a thread of warm oil poured onto the centre of the forehead. It is the deepest rest Ayurveda has to offer, most people very nearly fall asleep, and it is the single element founding clients mentioned most often in their feedback.<br>
       💫 Taipei: no surcharge at the Beitou studio · home visits in greater Taipei +NT$500–800 by distance · weekends and evenings +NT$500<br>
       💫 Zushi: no surcharge at the salon · home visits in the Zushi–Hayama area +¥1,500–3,000 by distance · weekends and evenings +¥2,000<br>
       All sessions include Ayurvedic tea and aftercare guidance to take home.
@@ -955,31 +1013,36 @@
 <!-- FOUNDING MEMBERS -->
 <section class="earlybird">
   <div class="container">
-    <div class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Founding Members · Taipei</div>
-    <h2>For the first ten of you</h2>
-    <p style="font-size: 17px;">Before this practice opens properly in Taipei,<br>I would like to invite the first <strong>ten</strong> of you to be founding clients —<br>with more time, closer accompaniment, and a hand in shaping what this becomes.</p>
+    <div class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Founding Members · Zushi, until 30 September 2026</div>
+    <h2>For the first ten of you in Japan</h2>
+    <p style="font-size: 17px;">In Taipei the founding places are <strong>now full</strong> and sessions have returned to the standard rate.<br>In Zushi the practice is still finding its feet, so <strong>five places remain</strong> —<br>with more time, closer accompaniment, and a hand in shaping what this becomes.</p>
     <div class="price-row">
       <div class="earlybird-item">
-        <div class="earlybird-label">Introductory · 2hr</div>
-        <div class="earlybird-strike">NT$ 3,500</div>
-        <div class="earlybird-price">NT$ 2,200</div>
+        <div class="earlybird-label">Introductory · 1.5hr</div>
+        <div class="earlybird-strike">¥ 18,000</div>
+        <div class="earlybird-price">¥ 10,000</div>
+      </div>
+      <div class="earlybird-item">
+        <div class="earlybird-label">Unhurried · 2hr</div>
+        <div class="earlybird-strike">¥ 23,000</div>
+        <div class="earlybird-price">¥ 13,000</div>
       </div>
       <div class="earlybird-item">
         <div class="earlybird-label">Full therapy · 2.5hr</div>
-        <div class="earlybird-strike">NT$ 5,800</div>
-        <div class="earlybird-price">NT$ 3,800</div>
+        <div class="earlybird-strike">¥ 30,000</div>
+        <div class="earlybird-price">¥ 18,000</div>
       </div>
       <div class="earlybird-item">
         <div class="earlybird-label">Extended · 3hr</div>
-        <div class="earlybird-strike">NT$ 6,800</div>
-        <div class="earlybird-price">NT$ 4,600</div>
+        <div class="earlybird-strike">¥ 36,000</div>
+        <div class="earlybird-price">¥ 22,000</div>
       </div>
     </div>
     <p style="font-size: 15px; opacity: 0.95; margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
       <strong>What founding clients receive:</strong> beyond the opening rate — a longer consultation, follow-up care shaped around you, and first refusal on appointments.<br>
       <strong>What I ask in return:</strong> tell me afterwards how it was for you. Anonymously is completely fine. Other women find their way here through those words.
     </p>
-    <p style="font-size: 13px; opacity: 0.7; margin-top: 16px;">Ten places · remaining places are posted on Instagram</p>
+    <p style="font-size: 13px; opacity: 0.7; margin-top: 16px;">Five places left · closes 30 September 2026 · remaining places are posted on Instagram</p>
   </div>
 </section>
 
@@ -1110,6 +1173,45 @@
       <summary>What if I feel unwell partway through?</summary>
       <div>You can stop at any moment and the pace follows you. I check in on how your body is doing before and after every session, and if anything is wrong I adjust immediately or refer you on.</div>
     </details>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="about" id="testimonials">
+  <div class="container">
+    <div class="section-eyebrow">Voices</div>
+    <h2 class="section-title">They went back to living in their own bodies</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Every one of these comes from a woman who actually went through this care. All are shared with her consent, at the level she chose — by name, by nickname, or anonymously. Quotes originally given in Chinese or Japanese are translated here.</p>
+
+    <div class="testimonial-grid">
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">It was the moment the oil was poured onto my brow. Something sacred opened. In the silence I felt wave after wave washing over me, as though petals were unfolding and letting go, one at a time.</p>
+        <footer class="testimonial-author">— <strong>Jingling</strong> · Taipei, founding client</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">If it were possible, I think every woman should be nourished like this once a month. Unhurried. Just keep one day for yourself. And then, through this gentle, loving touch, give the body a new sensation — that I am worth spending this kind of time on.</p>
+        <footer class="testimonial-author">— <strong>Hannah</strong> · Taipei, founding client</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">The best reward — it takes you from ordinary tiredness into deep rest. That lovely state just before you fall asleep lasted from the beginning to the end.</p>
+        <footer class="testimonial-author">— <strong>Anri</strong> · Zushi, founding member</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">Thank you for taking such care of both the mother and the baby. My baby slept peacefully even in an unfamiliar room, and only because of that could I really let go.</p>
+        <footer class="testimonial-author">— <strong>Yuting</strong> · Taipei, postpartum home visit</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">The Shirodhara was the thing — it let me drop off, which almost never happens for me however tired I am. The next day I still had enough to take the children to the park, and I napped too.</p>
+        <footer class="testimonial-author">— <strong>Ayano</strong> · Zushi, founding member</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">The touch was very light, yet you could feel how consciously Milliya was working. It was the first time I understood that gentleness can also go deep.</p>
+        <footer class="testimonial-author">— <strong>Shaoshao</strong> · Taipei, new mother</footer>
+      </blockquote>
+    </div>
+
+    <p class="testimonial-stat">16 pieces of founding-client feedback (14 Taipei · 2 Zushi)　Average satisfaction <strong>9.2 / 10</strong>　Average likelihood to recommend <strong>9.2 / 10</strong></p>
   </div>
 </section>
 

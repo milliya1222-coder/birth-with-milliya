@@ -673,6 +673,66 @@
     .hero-image img { max-height: 360px; }
     .sticky-cta { bottom: 12px; right: 12px; padding: 12px 20px; font-size: 13px; }
   }
+  /* Testimonials */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 760px;
+    margin: 36px auto 0;
+  }
+  @media (min-width: 720px) {
+    .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  }
+  /* 見證區標籤加深，米色底上的金字太淡 */
+  #testimonials .section-eyebrow { color: var(--primary-dark); }
+  .testimonial-card {
+    background: #fff;
+    border: 1px solid #E3D2BC;
+    border-radius: 10px;
+    padding: 32px 28px 26px;
+    position: relative;
+    box-shadow: 0 8px 22px -8px rgba(139, 69, 48, 0.20), 0 2px 6px rgba(139, 69, 48, 0.07);
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Noto Serif TC', 'Noto Serif JP', serif;
+    font-size: 56px;
+    color: var(--primary);
+    opacity: 0.55;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.95;
+    margin: 18px 0 18px;
+    position: relative;
+    z-index: 1;
+  }
+  /* 注意：此元素用 <footer>，需覆寫全站 footer 的深色底，否則字會踩在咖啡色背景上 */
+  .testimonial-author {
+    background: transparent;
+    font-size: 13px;
+    color: #5C4636;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 14px 0 0;
+    margin: 0;
+    border-top: 1px solid #EFE4D5;
+  }
+  .testimonial-author strong { color: var(--primary-dark); font-weight: 600; }
+  .testimonial-stat {
+    text-align: center;
+    margin: 30px auto 0;
+    font-size: 14px;
+    color: var(--text-soft);
+    letter-spacing: .04em;
+  }
+  .testimonial-stat strong { color: var(--primary-dark); font-size: 17px; }
 </style>
 </head>
 <body>
@@ -691,7 +751,7 @@
   <h1>阿育吠陀產後按摩<br>暨女性身心調養</h1>
   <p class="hero-sub">五千年印度傳統療癒系統 × 陪產員的身心整合視角<br>為產後媽媽與所有渴望被深深承接的女性</p>
   <div>
-    <span class="hero-tag">創始 10 位名額 · 啟程禮限定</span>
+    <span class="hero-tag">創始 10 位名額已額滿 · 感謝最初的妳們</span>
   </div>
   <div>
     <span class="hero-location">📍 台北北投工作室 · 大台北地區可到府</span>
@@ -898,7 +958,7 @@
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">入門體驗 · 2 小時</div>
-            <div class="price-option-desc">身心諮詢 20 分 ＋ 溫油按摩 90 分 ＋ 淨化薰香・休息 10 分</div>
+            <div class="price-option-desc">身心諮詢 20 分 ＋ 溫油按摩 90 分 ＋ <strong>眉心淋油 Shirodhara</strong> ＋ 淨化薰香・休息 10 分</div>
           </div>
           <div class="price-option-price">NT$ 3,500</div>
         </div>
@@ -915,14 +975,14 @@
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">完整套組 · 約 2.5 小時</div>
-            <div class="price-option-desc">溫油按摩 90 分 ＋ 會陰薰蒸 ＋ 藥草浴</div>
+            <div class="price-option-desc">溫油按摩 90 分 ＋ <strong>眉心淋油 Shirodhara</strong> ＋ 會陰薰蒸 ＋ 藥草浴</div>
           </div>
           <div class="price-option-price">NT$ 5,800</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">加長完整套組 · 約 3 小時</div>
-            <div class="price-option-desc">溫油按摩延長至 120 分 ＋ 會陰薰蒸 ＋ 藥草浴</div>
+            <div class="price-option-desc">溫油按摩延長至 120 分 ＋ <strong>眉心淋油 Shirodhara</strong> ＋ 會陰薰蒸 ＋ 藥草浴</div>
           </div>
           <div class="price-option-price">NT$ 6,800</div>
         </div>
@@ -930,6 +990,7 @@
     </div>
 
     <p class="price-note">
+      ✨ 每一個方案都包含 <strong>Shirodhara（眉心淋油）</strong>——溫油細細落在眉心正中央的那段時間，是阿育吠陀最深的一種休息。創始客戶回饋裡被提到最多次的，就是這一段。<br>
       💫 北投工作室服務無額外費用｜大台北到府 +NT$500–800（依距離）｜假日 / 夜間 +NT$500<br>
       所有療程皆含阿育吠陀茶飲與療程後居家照護建議
     </p>
@@ -939,31 +1000,14 @@
 <!-- FOUNDING MEMBERS -->
 <section class="earlybird">
   <div class="container">
-    <div class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Founding Members · 啟程禮限定</div>
-    <h2>給最初遇見的妳</h2>
-    <p style="font-size: 17px;">這套療程在台北正式開啟之前，<br>我想先邀請最初的 <strong>10 位</strong>妳，成為我的「創始客戶」——<br>用更親密、更深入的方式陪伴妳，並一起見證這個服務從萌芽到成熟。</p>
-    <div class="price-row">
-      <div class="earlybird-item">
-        <div class="earlybird-label">入門體驗 2hr</div>
-        <div class="earlybird-strike">NT$ 3,500</div>
-        <div class="earlybird-price">NT$ 2,200</div>
-      </div>
-      <div class="earlybird-item">
-        <div class="earlybird-label">完整套組 2.5hr</div>
-        <div class="earlybird-strike">NT$ 5,800</div>
-        <div class="earlybird-price">NT$ 3,800</div>
-      </div>
-      <div class="earlybird-item">
-        <div class="earlybird-label">加長完整套組 3hr</div>
-        <div class="earlybird-strike">NT$ 6,800</div>
-        <div class="earlybird-price">NT$ 4,600</div>
-      </div>
-    </div>
+    <div class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Founding Members · 創始期已圓滿</div>
+    <h2>謝謝最初遇見的妳們</h2>
+    <p style="font-size: 17px;">這套療程在台北開始的時候，我邀請了最初的 <strong>10 位</strong>妳，成為創始客戶。<br>後來走進來的，比我原本設想的還多——這段路上，一共有 <strong>16 位</strong>女性讓我把手放在她們身上，<br>並且願意誠實地告訴我，哪裡好、哪裡還可以更好。</p>
+    <p style="font-size: 17px;">這份信任把這個服務養大了。<strong>創始期到此圓滿，台北的療程回到定價。</strong><br>而妳們的話留了下來，就在下面。</p>
     <p style="font-size: 15px; opacity: 0.95; margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
-      <strong>創始客戶的特別之處：</strong>除了啟程禮優惠價，妳也會獲得更長的諮詢時間、客製化的後續陪伴，以及優先預約權。<br>
-      <strong>溫柔的回饋：</strong>療程後與我分享妳的感受（可匿名作為見證），讓更多女性透過妳的故事認識這套智慧。
+      給錯過的妳：定價本身就已經包含完整的諮詢時間、Shirodhara、與療程後的居家照護建議。<br>
+      沒有少給任何東西，只是不再有創始價。
     </p>
-    <p style="font-size: 13px; opacity: 0.7; margin-top: 16px;">名額：10 位 · 剩餘名額會在 IG 公開更新</p>
   </div>
 </section>
 
@@ -1089,6 +1133,53 @@
       <summary>萬一中途身體不適怎麼辦？</summary>
       <div>隨時可以喊停，療程節奏會配合妳。我會在每次療程前後做身體狀況的詢問與紀錄，如有任何不適會立即調整或轉介。</div>
     </details>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="about" id="testimonials">
+  <div class="container">
+    <div class="section-eyebrow">Voices · 真實見證</div>
+    <h2 class="section-title">她們，重新住回了自己的身體</h2>
+    <div class="divider"></div>
+    <p class="section-intro">每一段都來自真實走過這趟調養的女性，皆經本人同意分享，並依各自的授權呈現（具名／暱稱／匿名）。</p>
+
+    <div class="testimonial-grid">
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">是被淋油在眉心的當下，觸動了神聖的第三眼開關。在靜默之中，有一種深深被一波波浪潮沖刷的感覺，彷彿花瓣一片片綻開、釋放。</p>
+        <footer class="testimonial-author">— <strong>精靈</strong> · 創始客戶</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">我覺得如果可以，每個女人都應該每個月被這樣好好滋養一次。不急不忙，就好好留一天給自己，然後透過這樣輕柔、有愛的按摩，為身體注入新的體感——「我值得這樣花時間好好呵護自己」。</p>
+        <footer class="testimonial-author">— <strong>Hannah</strong> · 創始客戶</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">謝謝妳這麼照顧媽媽和寶寶的身心。讓寶寶能在陌生的環境下安心睡著，媽媽也才能好好放鬆。</p>
+        <footer class="testimonial-author">— <strong>郁庭</strong> · 產後媽媽・到府療程</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">過程是很輕柔的手法，但可以感受到欣妙是很有「意識」地在進行。這是我第一次體驗到輕柔，也可以有深層的放鬆。</p>
+        <footer class="testimonial-author">— <strong>稍稍</strong> · 產後媽媽</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">透過欣妙溫柔的聲音與觸碰，身體變得平靜敞開，靈魂也終於得到了好好的、深刻的休息。</p>
+        <footer class="testimonial-author">— <strong>岩岩</strong> · 創始客戶</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">按摩不只是技術，施作者本身的能量也很重要。Milliya 有種讓人可以安心交託的氣質，引導很溫柔，結束後會有一種穩定紮根的力量。</p>
+        <footer class="testimonial-author">— <strong>查理</strong> · 創始客戶</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">眉心滴油舒緩了我的思慮，交感神經得到放鬆，有一種很深沉的安穩感，晚上也特別好睡。</p>
+        <footer class="testimonial-author">— <strong>一位孕期媽媽</strong>（匿名分享）</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">可以感受到被溫油包覆、被守護的力量。</p>
+        <footer class="testimonial-author">— <strong>碰碰</strong> · 創始客戶</footer>
+      </blockquote>
+    </div>
+
+    <p class="testimonial-stat">創始期共 16 份回饋（台北 14・日本 2）　平均滿意度 <strong>9.2 / 10</strong>　平均推薦意願 <strong>9.2 / 10</strong></p>
   </div>
 </section>
 

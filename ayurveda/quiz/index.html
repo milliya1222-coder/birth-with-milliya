@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>妳此刻的能量原型｜阿育吠陀三督夏・身心靈測驗  — Birth with Milliya</title>
+<meta name="description" content="不是冰冷的體質標籤，而是一面溫柔的鏡子。12 道情境題，照見此刻妳身、心、靈各自的能量流動，並給妳當季可以做的一個小練習。" />
+<link rel="canonical" href="https://birthwithmilliya.com/ayurveda/quiz/" />
+<link rel="icon" type="image/png" href="/images/logo/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#FBF6F0;
+    --cream-2:#F4EADF;
+    --ink:#4A3B33;
+    --ink-soft:#7A6A60;
+    --brand:#E29B86;       /* 玫瑰陶土粉・品牌色 */
+    --brand-deep:#C97D66;
+    --vata:#8E9BC4;        /* 風・瓦塔 */
+    --vata-bg:#EBEEF7;
+    --pitta:#D9774E;       /* 火・皮塔 */
+    --pitta-bg:#FBE7DC;
+    --kapha:#7FA88B;       /* 水土・卡法 */
+    --kapha-bg:#E6F0E8;
+    --line:#E7D8C9;
+    --shadow:0 14px 40px rgba(120,80,60,.10);
+    --shadow-sm:0 6px 18px rgba(120,80,60,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(120% 80% at 50% -10%, #FFF8F1 0%, var(--cream) 55%, var(--cream-2) 100%);
+    color:var(--ink);
+    line-height:1.85;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:32px 20px 80px}
+  .serif{font-family:"Noto Serif TC",serif}
+
+  /* ---------- 共用 ---------- */
+  .badge{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:13px;letter-spacing:.14em;color:var(--brand-deep);
+    background:#fff;border:1px solid var(--line);
+    padding:7px 16px;border-radius:999px;box-shadow:var(--shadow-sm);
+  }
+  .btn{
+    appearance:none;border:none;cursor:pointer;font-family:inherit;
+    font-size:17px;font-weight:500;letter-spacing:.04em;
+    padding:16px 38px;border-radius:999px;color:#fff;
+    background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%);
+    box-shadow:0 12px 26px rgba(201,125,102,.32);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(201,125,102,.4)}
+  .btn:active{transform:translateY(0)}
+  .btn-ghost{
+    background:#fff;color:var(--brand-deep);border:1.5px solid var(--brand);
+    box-shadow:var(--shadow-sm);
+  }
+  .btn-ghost:hover{box-shadow:var(--shadow)}
+  .screen{display:none;animation:fade .5s ease both}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  /* ---------- 封面 ---------- */
+  .hero{text-align:center;padding-top:18px}
+  .hero h1{
+    font-size:clamp(28px,6.6vw,42px);font-weight:600;line-height:1.4;
+    margin:24px 0 16px;color:var(--ink);
+  }
+  .hero h1 em{font-style:normal;color:var(--brand-deep)}
+  .hero .lead{font-size:17px;color:var(--ink-soft);max-width:520px;margin:0 auto 14px}
+  .hero .meta{font-size:14px;color:var(--ink-soft);margin:26px 0 30px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .hero .meta span{display:inline-flex;align-items:center;gap:6px}
+  .orbs{display:flex;justify-content:center;gap:14px;margin:34px 0 6px;flex-wrap:wrap}
+  .orb{
+    width:96px;padding:18px 10px;border-radius:20px;background:#fff;
+    box-shadow:var(--shadow-sm);border:1px solid var(--line);
+  }
+  .orb .dot{width:30px;height:30px;border-radius:50%;margin:0 auto 8px}
+  .orb b{display:block;font-size:15px;font-weight:600}
+  .orb small{font-size:12px;color:var(--ink-soft)}
+  .disclaimer{
+    margin-top:34px;font-size:13px;color:var(--ink-soft);
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:16px 20px;text-align:left;line-height:1.7;
+  }
+
+  /* ---------- 題目 ---------- */
+  .topbar{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .progress{flex:1;height:8px;background:var(--cream-2);border-radius:99px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;border-radius:99px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-deep));transition:width .4s ease}
+  .pcount{font-size:14px;color:var(--ink-soft);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .layer-tag{
+    display:inline-flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.1em;
+    padding:6px 14px;border-radius:999px;margin-bottom:18px;font-weight:500;
+  }
+  .layer-身{background:var(--pitta-bg);color:var(--pitta)}
+  .layer-心{background:var(--vata-bg);color:var(--vata)}
+  .layer-靈{background:var(--kapha-bg);color:#5d8a6c}
+  .q-text{font-size:clamp(20px,4.6vw,25px);font-weight:600;line-height:1.55;margin-bottom:28px}
+  .options{display:flex;flex-direction:column;gap:13px}
+  .opt{
+    text-align:left;background:#fff;border:1.5px solid var(--line);
+    border-radius:16px;padding:18px 20px;font-size:16.5px;color:var(--ink);
+    cursor:pointer;font-family:inherit;line-height:1.65;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+    display:flex;gap:14px;align-items:flex-start;
+  }
+  .opt .mark{
+    flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--line);
+    margin-top:2px;transition:all .15s;position:relative;
+  }
+  .opt:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .opt:hover .mark{border-color:var(--brand)}
+  .opt.sel{border-color:var(--brand);background:#FFFBF8;box-shadow:var(--shadow-sm)}
+  .opt.sel .mark{border-color:var(--brand);background:var(--brand)}
+  .opt.sel .mark::after{content:"";position:absolute;inset:5px;border-radius:50%;background:#fff}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
+  .link-btn{background:none;border:none;color:var(--ink-soft);font-size:15px;cursor:pointer;font-family:inherit;padding:8px 4px}
+  .link-btn:hover{color:var(--brand-deep)}
+  .link-btn:disabled{opacity:.35;cursor:default}
+
+  /* ---------- 結果 ---------- */
+  .result-head{text-align:center;margin-bottom:8px}
+  .result-head .kicker{font-size:14px;letter-spacing:.16em;color:var(--ink-soft)}
+  .result-head h2{font-size:clamp(26px,5.6vw,36px);font-weight:600;margin:10px 0 6px;line-height:1.4}
+  .result-head .sub{color:var(--ink-soft);font-size:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px;box-shadow:var(--shadow-sm);margin-top:22px}
+  .card h3{font-size:18px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:9px}
+  .card h3 .ic{font-size:20px}
+  /* 比例條 */
+  .bar-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .bar-row:last-child{margin-bottom:0}
+  .bar-label{width:96px;flex:none;font-size:14px}
+  .bar-label b{display:block;font-weight:600;font-size:15px}
+  .bar-label small{color:var(--ink-soft)}
+  .bar-track{flex:1;height:14px;background:var(--cream-2);border-radius:99px;overflow:hidden}
+  .bar-track > i{display:block;height:100%;border-radius:99px;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+  .bar-pct{width:42px;text-align:right;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+  /* 三股能量・元素球（取代比例條）*/
+  #bars{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:4px}
+  .dorb{text-align:center;animation:orbin .6s ease both}
+  @keyframes orbin{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+  .ring{width:106px;height:106px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)}
+  .hole{width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+  .hole b{font-size:23px;font-weight:600;line-height:1}
+  .hole b span{font-size:13px;font-weight:500}
+  .dname{margin-top:11px}
+  .dname b{display:block;font-size:16px;font-weight:600}
+  .dname small{font-size:12px;color:var(--ink-soft)}
+  /* 身心靈三層 */
+  .layers{display:grid;grid-template-columns:1fr;gap:12px}
+  .layer-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:var(--cream)}
+  .layer-row .ico{width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;font-size:20px;background:#fff;box-shadow:var(--shadow-sm)}
+  .layer-row .txt b{font-size:15px}
+  .layer-row .txt p{font-size:14px;color:var(--ink-soft);margin-top:2px}
+  .layer-row .tag{margin-left:auto;font-size:13px;font-weight:600;padding:5px 12px;border-radius:99px;white-space:nowrap}
+  /* 內文 */
+  .prose p{margin-bottom:14px}
+  .prose p:last-child{margin-bottom:0}
+  .signs{list-style:none;display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
+  .signs li{font-size:14px;background:var(--cream);border:1px solid var(--line);padding:8px 14px;border-radius:99px}
+  .practice{counter-reset:p}
+  .practice li{list-style:none;position:relative;padding:4px 0 18px 44px;margin:0}
+  .practice li:last-child{padding-bottom:0}
+  .practice li::before{
+    counter-increment:p;content:counter(p);position:absolute;left:0;top:2px;
+    width:30px;height:30px;border-radius:50%;background:var(--brand);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;
+  }
+  .practice li b{font-weight:600}
+  .practice li p{font-size:14.5px;color:var(--ink-soft);margin-top:3px}
+  .season{font-size:14px;color:var(--brand-deep);background:#FFF6F0;border:1px dashed var(--brand);border-radius:14px;padding:14px 18px;margin-top:16px;line-height:1.7}
+  /* CTA */
+  .cta{background:linear-gradient(140deg,#FFF3EC,#FCEBE2);border:1px solid var(--line);border-radius:24px;padding:30px 26px;margin-top:26px;text-align:center}
+  .cta h3{justify-content:center;font-size:21px;margin-bottom:10px}
+  .cta p{color:var(--ink-soft);font-size:15.5px;max-width:480px;margin:0 auto 22px}
+  .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .footer-note{text-align:center;margin-top:34px;font-size:13px;color:var(--ink-soft);line-height:1.8}
+  .footer-note a{color:var(--brand-deep)}
+  .restart{text-align:center;margin-top:24px}
+
+  /* ---------- 階段選擇 ---------- */
+  .stage-wrap{text-align:center;padding-top:10px}
+  .stage-wrap h2{font-size:clamp(23px,5vw,30px);font-weight:600;margin:18px 0 10px;line-height:1.5}
+  .stage-wrap .lead{color:var(--ink-soft);font-size:16px;max-width:460px;margin:0 auto 30px}
+  .stage-list{display:flex;flex-direction:column;gap:13px;max-width:460px;margin:0 auto}
+  .stage-opt{
+    display:flex;align-items:center;gap:16px;text-align:left;
+    background:#fff;border:1.5px solid var(--line);border-radius:18px;
+    padding:18px 22px;cursor:pointer;font-family:inherit;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+  }
+  .stage-opt:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .stage-opt .em{font-size:26px;flex:none}
+  .stage-opt b{font-size:17px;font-weight:600;display:block}
+  .stage-opt small{font-size:13.5px;color:var(--ink-soft)}
+
+  /* ---------- 選項：安全閥（中性） ---------- */
+  .opt.neutral{border-style:dashed;color:var(--ink-soft);font-size:15.5px}
+  .opt.neutral .mark{border-style:dashed}
+  .opt.neutral.sel{border-style:solid}
+
+  /* ---------- 結果：孕產階段卡 ---------- */
+  .stage-card{background:linear-gradient(140deg,#F3EFF8,#EFF4F0);border:1px solid var(--line)}
+  .stage-card .stage-head{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--brand-deep);font-weight:600;margin-bottom:6px}
+  .note-soft{background:#FFF6F0;border:1px dashed var(--brand);border-radius:14px;padding:14px 18px;font-size:14px;color:var(--brand-deep);line-height:1.7;margin-bottom:18px}
+
+  /* ---------- 背景曼陀羅（與「元素地圖」同一套視覺）---------- */
+  .backdrop{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .mandala{position:absolute;top:44%;left:50%;width:min(130vw,1000px);height:min(130vw,1000px);
+    transform:translate(-50%,-50%);opacity:.18;color:var(--brand-deep);animation:mspin 150s linear infinite}
+  @keyframes mspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+  /* ---------- Email 深入解析 ---------- */
+  .email-cap{background:linear-gradient(140deg,#FFF3EC,#FBEBE0)}
+  .email-cap .ec-lead{font-size:15px;color:var(--ink-soft);margin-bottom:16px}
+  .email-form{display:flex;flex-direction:column;gap:10px}
+  .email-form input{font-family:inherit;font-size:16px;padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+  .email-form input:focus{outline:none;border-color:var(--brand)}
+  .email-form .row2{display:flex;gap:10px;flex-wrap:wrap}
+  .email-form .row2 input{flex:1;min-width:150px}
+  #emailStatus{font-size:14.5px;margin-top:12px;line-height:1.6}
+  .ec-privacy{font-size:12px;color:var(--ink-soft);margin-top:10px}
+
+  @media(max-width:480px){
+    .orb{width:30%}
+    .bar-label{width:84px}
+  }
+</style>
+</head>
+<body>
+<div class="backdrop"><svg class="mandala" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="0.4" aria-hidden="true"><g id="mandala-g"></g></svg></div>
+<div class="wrap">
+
+  <!-- ============ 封面 ============ -->
+  <section class="screen active" id="intro">
+    <div class="hero">
+      <span class="badge">✦ 阿育吠陀 · 三督夏能量測驗</span>
+      <h1 class="serif">此刻的妳，<br>正流動著<em>哪一股能量</em>？</h1>
+      <p class="lead">這不是要把妳貼上「就是某一型」的標籤。<br>
+        阿育吠陀說，我們身上同時住著三股能量——<b>風、火、水土</b>。<br>
+        重要的不是妳是誰，而是<b>此刻</b>哪一股在帶頭。</p>
+      <div class="orbs">
+        <div class="orb"><div class="dot" style="background:var(--vata)"></div><b>Vāta 風</b><small>瓦塔・流動</small></div>
+        <div class="orb"><div class="dot" style="background:var(--pitta)"></div><b>Pitta 火</b><small>皮塔・轉化</small></div>
+        <div class="orb"><div class="dot" style="background:var(--kapha)"></div><b>Kapha 水土</b><small>卡法・滋養</small></div>
+      </div>
+      <p class="hero meta" style="margin-top:30px">
+        <span>🌿 12 道情境題</span><span>⏱ 約 3 分鐘</span><span>🪞 身・心・靈三層解讀</span>
+      </p>
+      <button class="btn" onclick="show('stage')">開始照鏡子 →</button>
+      <div class="disclaimer">
+        <b>溫柔的提醒：</b>這是一份<b>自我覺察</b>的工具，不是醫療診斷，也不會被存下來。它幫妳看見此刻身心的傾向，給妳一個照顧自己的方向——真正的答案，永遠在妳身體裡。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 階段選擇 ============ -->
+  <section class="screen" id="stage">
+    <div class="stage-wrap">
+      <span class="badge">🌸 在開始前</span>
+      <h2 class="serif">先告訴我，<br>妳現在走在哪一段路上？</h2>
+      <p class="lead">同一股能量，在備孕、孕期、產後、育兒裡，會用很不一樣的方式陪著妳。<br>選一個最接近的，結果會為妳的此刻多寫一段。</p>
+      <div class="stage-list" id="stageList">
+        <button class="stage-opt" onclick="pickStage('pre')"><span class="em">🌱</span><span><b>備孕中</b><small>正在迎接、準備一個新生命</small></span></button>
+        <button class="stage-opt" onclick="pickStage('preg')"><span class="em">🤰</span><span><b>懷孕中</b><small>正帶著寶寶一起，走過這段</small></span></button>
+        <button class="stage-opt" onclick="pickStage('post')"><span class="em">🍼</span><span><b>產後／月子期</b><small>剛把孩子帶到世界上，正在復原</small></span></button>
+        <button class="stage-opt" onclick="pickStage('mom')"><span class="em">👩‍👧</span><span><b>育兒中</b><small>正在媽媽的日常裡，照顧著小小孩</small></span></button>
+        <button class="stage-opt" onclick="pickStage('none')"><span class="em">🪷</span><span><b>都不是，我只是想更認識自己</b><small>單純想看見此刻的身心狀態</small></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 題目 ============ -->
+  <section class="screen" id="quiz">
+    <div class="topbar">
+      <div class="progress"><i id="bar"></i></div>
+      <div class="pcount"><span id="cur">1</span>/12</div>
+    </div>
+    <div id="layerTag" class="layer-tag"></div>
+    <h2 class="q-text serif" id="qText"></h2>
+    <div class="options" id="opts"></div>
+    <div class="nav">
+      <button class="link-btn" id="backBtn" onclick="goBack()">← 上一題</button>
+      <span class="pcount" id="hint">點選最接近的感覺，自動進入下一題</span>
+    </div>
+  </section>
+
+  <!-- ============ 結果 ============ -->
+  <section class="screen" id="result">
+    <div class="result-head">
+      <div class="kicker">妳此刻的能量原型</div>
+      <h2 class="serif" id="rTitle"></h2>
+      <div class="sub" id="rSub"></div>
+    </div>
+
+    <div class="note-soft" id="neutralNote" style="display:none"></div>
+
+    <div class="card">
+      <h3><span class="ic">⚖️</span>妳此刻的三股能量比例</h3>
+      <div id="bars"></div>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin-top:16px">
+        每個人都是三股能量的獨特配方。比例會隨季節、生命階段、壓力而流動——這是妳<b>當下</b>的樣子，不是永遠的定義。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3><span class="ic">🪞</span>身・心・靈，此刻各自偏向</h3>
+      <div class="layers" id="layers"></div>
+    </div>
+
+    <div class="card">
+      <h3><span class="ic" id="rIcon"></span><span id="rName"></span></h3>
+      <div class="prose" id="rBody"></div>
+      <div style="margin-top:20px">
+        <div style="font-size:14px;font-weight:600;margin-bottom:10px;color:var(--ink-soft)">當這股能量失衡時，常先這樣提醒妳：</div>
+        <ul class="signs" id="rSigns"></ul>
+      </div>
+    </div>
+
+    <div class="card stage-card" id="stageCard" style="display:none">
+      <div class="stage-head"><span id="stageEmoji"></span><span id="stageLabel"></span></div>
+      <h3 style="margin-bottom:14px"><span class="ic">🌷</span><span id="stageTitle"></span></h3>
+      <div class="prose" id="stageBody"></div>
+    </div>
+
+    <div class="card">
+      <h3><span class="ic">🌱</span>當季可以為自己做的三件小事</h3>
+      <ol class="practice" id="rPractice"></ol>
+      <div class="season" id="rSeason"></div>
+    </div>
+
+    <div class="card email-cap" id="emailCap" style="display:none">
+      <h3><span class="ic">💌</span>想收到妳的完整結果與建議嗎？</h3>
+      <p class="ec-lead">留下 email，我會把<b>妳的測驗結果與更深入的個人化建議</b>寄給妳——更細的飲食、作息、情緒照顧，以及（若妳在孕產階段）專屬的建議。也會不定期收到「欣妙在陪妳」的服務與孕產身心靈分享。</p>
+      <div class="email-form" id="emailForm">
+        <div class="row2">
+          <input id="nameInput" type="text" placeholder="想怎麼稱呼妳（可留空）" />
+          <input id="emailInput" type="email" placeholder="妳的 email" />
+        </div>
+        <button class="btn" id="emailBtn" onclick="submitEmail()">寄給我深入解析 →</button>
+      </div>
+      <div id="emailStatus"></div>
+      <div class="ec-privacy">＊會用來寄妳的解析、以及未來「欣妙在陪妳」的服務與孕產身心靈分享，不轉發第三方，隨時可取消。</div>
+    </div>
+
+    <div class="cta">
+      <h3 class="serif">想更深地讀懂自己的身體節奏嗎？</h3>
+      <p id="ctaText"></p>
+      <div class="cta-btns">
+        <a class="btn" id="ctaMain" href="/ayurveda/" target="_blank" rel="noopener">了解阿育吠陀照護 →</a>
+        <a class="btn btn-ghost" id="ctaLine" href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">加 LINE 和 Milliya 聊聊</a>
+      </div>
+    </div>
+
+    <div class="restart">
+      <button class="link-btn" onclick="restart()">↺ 重新測一次</button>
+    </div>
+
+    <div class="footer-note">
+      Birth with Milliya ・ 孕產陪伴 × 女性身心靈整合<br>
+      IG <a href="https://instagram.com/birth.with.milliya" target="_blank" rel="noopener">@birth.with.milliya</a>
+      ・ Tridoṣa（三督夏）能量測驗
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   題庫：每題標記 layer（身/心/靈），三個選項各對應一股能量
+   d = dosha：'v' 風 / 'p' 火 / 'k' 水土
+   ============================================================ */
+const QUESTIONS = [
+  { layer:"身", icon:"🔥", q:"換季整理衣櫃時，妳最常對自己身體的感覺是？",
+    opts:[
+      {t:"偏瘦、容易手腳冰冷，常覺得衣服不夠暖", d:"v"},
+      {t:"身型中等結實，比別人怕熱、容易流汗", d:"p"},
+      {t:"身型較豐潤穩重，水分容易積在身上", d:"k"} ]},
+  { layer:"身", icon:"🔥", q:"一整天忙完，妳的消化與食慾通常是？",
+    opts:[
+      {t:"不太規律，有時忘了吃、有時脹氣", d:"v"},
+      {t:"通常很旺盛，容易餓，餓了會有點煩躁", d:"p"},
+      {t:"比較慢，吃不多也不太餓，飯後容易想睡", d:"k"} ]},
+  { layer:"身", icon:"🔥", q:"如果半夜醒來，比較像哪一種？",
+    opts:[
+      {t:"腦袋停不下來、淺眠多夢，容易被聲音吵醒", d:"v"},
+      {t:"因為太熱、或想到沒做完的事而醒，醒了還在轉", d:"p"},
+      {t:"我通常睡得很沉、不太會醒，但早上很難起床", d:"k"} ]},
+  { layer:"身", icon:"🔥", q:"下午三、四點，妳的身體狀態？",
+    opts:[
+      {t:"忽冷忽熱、精神時好時壞，需要點心撐著", d:"v"},
+      {t:"還很有衝勁，但容易急、容易上火", d:"p"},
+      {t:"昏沉想打盹，需要一點推力才動得起來", d:"k"} ]},
+
+  { layer:"心", icon:"💭", q:"孩子在哭、訊息在響、事情堆在眼前——妳的第一反應通常是？",
+    opts:[
+      {t:"心跳加快、有點慌，腦中同時冒出十件事", d:"v"},
+      {t:"火氣上來，想趕快把事情壓下去，誰擋路就煩誰", d:"p"},
+      {t:"先愣住、動作慢半拍，想先深呼吸再說", d:"k"} ]},
+  { layer:"心", icon:"💭", q:"面對一個新選擇（報名一堂課、換種方式生活），妳會？",
+    opts:[
+      {t:"想很多、容易改主意，常常今天要、明天又猶豫", d:"v"},
+      {t:"快速分析利弊，決定了就一路推進到底", d:"p"},
+      {t:"慢慢來、需要時間，不喜歡被催著改變", d:"k"} ]},
+  { layer:"心", icon:"💭", q:"跟伴侶或家人有摩擦時，妳比較像？",
+    opts:[
+      {t:"情緒來得快去得也快，但事後會反覆回想", d:"v"},
+      {t:"據理力爭、話講得直，事後才覺得太衝", d:"p"},
+      {t:"默默忍著、不太想吵，但會悶很久", d:"k"} ]},
+  { layer:"心", icon:"💭", q:"妳的腦袋平常比較像？",
+    opts:[
+      {t:"一直在轉、靈感很多，但也容易分心、焦慮", d:"v"},
+      {t:"邏輯清楚、目標明確，但對自己很嚴格", d:"p"},
+      {t:"沉穩、念舊，想事情慢但記得久", d:"k"} ]},
+
+  { layer:"靈", icon:"🌙", q:"一天當中，妳最有靈感、最像「自己」的時刻？",
+    opts:[
+      {t:"想法總在夜裡或清晨突然湧現，來去像風", d:"v"},
+      {t:"白天精神最旺，一鼓作氣最有效率", d:"p"},
+      {t:"慢慢暖機，傍晚之後才覺得安定自在", d:"k"} ]},
+  { layer:"靈", icon:"🌙", q:"對自己的身體週期（月經、能量起伏），妳的感受比較接近？",
+    opts:[
+      {t:"不太規律、起伏明顯，常摸不準自己", d:"v"},
+      {t:"來得準也來得猛，經期前後容易煩躁上火", d:"p"},
+      {t:"穩定但偏沉重，容易水腫、提不起勁", d:"k"} ]},
+  { layer:"靈", icon:"🌙", q:"理想的週末休息，妳最想要的是？",
+    opts:[
+      {t:"換個環境、來點新鮮刺激，最怕一成不變", d:"v"},
+      {t:"完成一件有成就感的事，休息也要「有產出」", d:"p"},
+      {t:"待在家、慢慢泡茶發呆，什麼都不用趕", d:"k"} ]},
+  { layer:"靈", icon:"🌙", q:"當妳「不太對勁」時，最先出現的訊號通常是？",
+    opts:[
+      {t:"睡不好、停不下來、莫名焦慮擔心", d:"v"},
+      {t:"易怒、急躁，對人對己都變得嚴苛", d:"p"},
+      {t:"提不起勁、想躲起來，什麼都懶得動", d:"k"} ]},
+];
+
+/* ============ 體質內容 ============ */
+const DOSHA = {
+  v:{ key:"v", name:"Vāta 風（瓦塔）", short:"風", color:"var(--vata)",
+      icon:"🌬", title:"風型・流動的創造者",
+      sub:"由「空＋風」組成 ── 妳此刻像風一樣輕盈、靈動、停不下來",
+      body:[
+        "妳的能量像風：來得快、想法多、充滿創造力與直覺。當風流動順暢時，妳是房間裡最有靈感、最敏銳、最能感受細微情緒的那個人。",
+        "但風也容易「吹過頭」。當妳被太多事追著跑、作息一亂，風就會把妳吹得焦慮、淺眠、停不下來，身體變得乾、冷、輕飄飄沒有著地感。",
+        "對妳來說，照顧自己的關鍵字是 <b>溫暖、規律、扎根</b>。不是要妳慢下來變成另一個人，而是給這股美麗的風，一個可以安心降落的地方。" ],
+      signs:["淺眠多夢","莫名焦慮","脹氣便祕","手腳冰冷","停不下來","皮膚乾燥"],
+      practice:[
+        {b:"每天找回一個「固定的錨」",p:"風最需要規律。哪怕只是固定時間吃早餐、固定時間上床——一個小錨，就能讓飄著的妳安定下來。"},
+        {b:"用溫熱、滋潤對抗乾與冷",p:"溫開水、燉煮的食物、一點好油（芝麻油、酥油）。睡前用溫油按摩腳底（abhyanga，阿揚伽自我按摩），是風型最療癒的儀式。"},
+        {b:"每天 5 分鐘「腳踏實地」",p:"赤腳踩地、緩慢的腹式呼吸、把手放在小腹上——任何把注意力帶回身體、帶回當下的動作，都是在替風扎根。"} ] },
+
+  p:{ key:"p", name:"Pitta 火（皮塔）", short:"火", color:"var(--pitta)",
+      icon:"🔥", title:"火型・專注的轉化者",
+      sub:"由「火＋水」組成 ── 妳此刻像火一樣明亮、聚焦、燃燒著",
+      body:[
+        "妳的能量像火：目標清楚、行動力強、條理分明。當火燒得剛好時，妳是那個能把想法落地、帶著大家往前、發著光的人。",
+        "但火也容易「燒過旺」。當妳把行程排太滿、對自己太苛刻，火就會往內燒——變成易怒、上火、發炎、胃酸，還有那個永遠覺得「我還不夠好」的聲音。",
+        "對妳來說，照顧自己的關鍵字是 <b>清涼、留白、自我慈悲</b>。妳不需要更努力，妳需要的是允許自己，偶爾什麼都不做也沒關係。" ],
+      signs:["易怒急躁","胃酸／發炎","皮膚泛紅","完美主義","批判自己","睡前還在想事情"],
+      practice:[
+        {b:"在行程裡刻意「留白」",p:"火型最容易把自己排到滿。每天留一段不排任何產出的空白時間——哪怕 20 分鐘，那是在替過旺的火降溫。"},
+        {b:"選擇清涼，避開火上加油",p:"多吃清涼食物（瓜類、薄荷、椰子水），少在大太陽、辣、酒、咖啡上火上加油。傍晚的月光散步，比正午的衝刺更適合妳。"},
+        {b:"練習對自己說「這樣就夠了」",p:"火型的傷，常是對自己太嚴。睡前回想三件「我今天已經做得很好」的小事——把批判的火，換成溫柔的光。"} ] },
+
+  k:{ key:"k", name:"Kapha 水土（卡法）", short:"水土", color:"var(--kapha)",
+      icon:"🌳", title:"水土型・沉穩的滋養者",
+      sub:"由「土＋水」組成 ── 妳此刻像大地一樣穩定、溫厚、承載著",
+      body:[
+        "妳的能量像大地：穩定、溫柔、有耐力，是身邊人最信任、最有安全感的存在。當水土平衡時，妳沉著、深情、能滋養別人，也能好好滋養自己。",
+        "但土也容易「積太重」。當妳太久沒有變化、動得太少，這股穩定就會變成停滯——倦怠、嗜睡、提不起勁、體重悄悄上升，還有那種「放不下、走不出來」的黏著感。",
+        "對妳來說，照顧自己的關鍵字是 <b>流動、溫熱、刺激</b>。妳已經很會給出穩定了，現在需要的是替自己點一把火，動起來。" ],
+      signs:["倦怠嗜睡","提不起勁","容易水腫","情緒黏著","放不下過去","體重上升"],
+      practice:[
+        {b:"用『動』打破停滯",p:"水土最怕不動。早晨快走、流動一點的瑜伽、跳一首歌——不用激烈，只要讓身體熱起來、能量流起來，整個人就會輕。"},
+        {b:"早起，迎接一天的第一道光",p:"水土型賴床會越睡越沉。試著比平常早 30 分鐘起床，讓晨光替妳啟動——這是替沉重的土，注入輕盈的關鍵。"},
+        {b:"主動換一點新鮮",p:"換條散步路線、學一件新事、清掉一個放很久的舊物。一點點刺激與斷捨離，就能鬆動那份「黏住」的卡關感。"} ] },
+};
+
+/* ============ 孕產階段 × 體質 對應 ============
+   觀點來源：阿育吠陀傳統 + 陪產實務視角（非醫療診斷）
+   產後在阿育吠陀被視為「風（Vata）」最旺的時期——生產帶來巨大的空與流失，
+   因此傳統產後照護的核心，就是用溫暖、油潤、滋養、休息來「安定風」。 */
+const STAGES={
+  pre:{emoji:"🌱",label:"備孕中"},
+  preg:{emoji:"🤰",label:"懷孕中"},
+  post:{emoji:"🍼",label:"產後・月子期"},
+  mom:{emoji:"👩‍👧",label:"育兒中"},
+};
+const STAGE_CONTENT={
+  v:{
+    pre:{title:"備孕中的妳：先給身體「安定」，再談「成功」",
+      body:["風型在備孕時，最容易因為『還沒成功』而焦慮、想太多，月經與排卵也可能比較不規律。",
+            "阿育吠陀觀點：風代表空與動，而孕育需要的是『安定下沉』的土壤。比起更努力控制，妳更需要的是規律作息、溫暖滋養的飲食，和放下一點掌控——讓身體覺得安全，是受孕最好的準備。"]},
+    preg:{title:"懷孕中的妳：把『風』溫柔地安定下來",
+      body:["風型孕期最怕風過旺——失眠、焦慮、坐立難安、思緒停不下來。",
+            "這段路特別適合做減法：減少資訊轟炸、固定作息、多吃溫熱滋潤的食物，睡前用溫油按摩腳底（abhyanga，阿揚伽自我按摩）。把『安定』當成這一胎送給自己的禮物。<br><small>＊任何身體不適仍請以妳的醫療團隊為準，阿育吠陀是溫柔的輔助視角。</small>"]},
+    post:{title:"產後的妳：風上加風，最需要被好好接住",
+      body:["阿育吠陀視產後為『風』最旺的時期；而妳本身就是風型——這代表妳最容易產後焦慮、淺眠、奶量起伏、情緒飄忽。",
+            "這不是妳脆弱，是能量正在大量流失。妳最需要的是：被包覆的溫暖、油潤滋養的月子飲食、規律的休息，以及『有人接住妳』。請允許自己被照顧，這正是產後復原的核心。"]},
+    mom:{title:"育兒中的妳：在混亂裡，替自己找一個錨",
+      body:["風型媽媽常在多工、被孩子的節奏推著跑之中，悄悄把自己耗到見底，停不下來也靜不下來。",
+            "妳不需要做得更多，妳需要的是一個小小的錨：固定的一餐、睡前 5 分鐘把手放在小腹上的深呼吸。當風有了落點，妳會發現自己其實很穩。"]},
+  },
+  p:{
+    pre:{title:"備孕中的妳：別把孕育，變成一個要『達標』的專案",
+      body:["火型在備孕時行動力強、很會做功課，但也最容易把備孕變成一個非成功不可的任務，對自己嚴苛、容易上火與焦躁。",
+            "阿育吠陀觀點：火主轉化，但燒過旺會耗損。試著把備孕從『達標』換成『連結』——留白、降火、找回和身體（與伴侶）的親密，別讓火燒掉了過程裡的溫柔。"]},
+    preg:{title:"懷孕中的妳：允許不完美，替過旺的火降溫",
+      body:["火型孕期容易燥熱、心火大、胃食道逆流，還有那個想把一切都準備到完美的聲音。",
+            "這段路的功課是『夠好就好』：多選清涼食物（瓜類、椰子水），避開大太陽、辣與過勞，把待辦清單砍一半。孕期不是專案，妳已經在做最重要的事了。"]},
+    post:{title:"產後的妳：妳不需要趕快『恢復』，妳需要被允許慢下來",
+      body:["火型產後最容易急著復原、追求當一個滿分媽媽、對自己沒耐心，也要留意傷口發炎與情緒易怒上火。",
+            "阿育吠陀的產後核心是『安定與滋養』，而這恰恰是火型最抗拒、卻最需要的。請把『恢復進度』先放下，允許自己被照顧、被滋養——慢，才是這一刻真正的快。"]},
+    mom:{title:"育兒中的妳：對孩子的耐心，先留一份給自己",
+      body:["火型媽媽容易對孩子、對自己失去耐心，發完火又自責，把『當媽媽』也當成一個要做滿分的專案。",
+            "妳的溫柔，要先從對自己鬆手開始：每天留一段不產出的空白，睡前回想三件『我今天已經做得很好』。把批判的火，換成照亮孩子的光。"]},
+  },
+  k:{
+    pre:{title:"備孕中的妳：穩定是妳的天賦，現在替它加一點流動",
+      body:["水土型在備孕時沉穩、有耐力、身體底子厚——這是很好的孕育基礎。要留意的是代謝偏慢、容易停滯。",
+            "阿育吠陀觀點：土需要被點燃。規律地動起來、晨間早起迎接陽光、飲食清爽一些，讓這份穩定的能量流動起來，會替孕育鋪好路。"]},
+    preg:{title:"懷孕中的妳：在滋養與沉重之間，保持流動",
+      body:["水土型是天生的孕育者，滋養力強、孕期相對安穩；要留意的是水腫、倦怠、增重較快與情緒低落。",
+            "這段路適合『溫和而持續地動』：每天散步、孕婦瑜伽、清淡溫熱的飲食、多曬晨光。讓身體保持流動，沉重感就不會累積成停滯。"]},
+    post:{title:"產後的妳：滋養力是妳的禮物，別讓它沉成低落",
+      body:["水土型產後通常奶水穩、滋養力足；但也最容易產後沉重、提不起勁、情緒低落而黏著。",
+            "在好好休養的同時，記得替自己留一點流動與連結：溫和地動一動、白天讓陽光進來、和能懂妳的人說說話。別讓月子的靜養，變成走不出來的下沉。"]},
+    mom:{title:"育兒中的妳：妳給得太多，記得替自己留一塊空間",
+      body:["水土型媽媽承載力強、給得多，是家裡的定海神針——但也最容易把自己排到最後，累積疲憊與情緒而不自覺。",
+            "妳需要的是『一點新鮮』：換條散步路線、學一件想學的小事、清掉一個放很久的舊物。一點流動與斷捨離，就能鬆開那份悄悄黏住的疲累。"]},
+  },
+};
+
+/* 雙督夏：取前兩名相近時的整合說明 */
+function dualNote(a,b){
+  return `妳此刻同時被 <b>${DOSHA[a].short}</b> 與 <b>${DOSHA[b].short}</b> 兩股能量帶領，兩者勢均力敵。
+  這很常見，也很有力量——代表妳既有 ${DOSHA[a].title.split("・")[1]} 的一面，也有 ${DOSHA[b].title.split("・")[1]} 的一面。
+  下面以妳<b>當前最強</b>的「${DOSHA[a].short}」為主來解讀，但記得：照顧自己時，也要留意第二股能量失衡的訊號。`;
+}
+
+/* ============ 狀態 ============ */
+let idx=0;
+let selectedStage="none";
+const answers=new Array(QUESTIONS.length).fill(null); // 存 'v'/'p'/'k'/'n'(看情況)
+const orders=QUESTIONS.map(()=>shuffle([0,1,2]));      // 每題選項顯示順序（固定一次，避免規律）
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function pickStage(s){selectedStage=s;startQuiz();}
+function startQuiz(){show("quiz");idx=0;render();}
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+
+function render(){
+  const Q=QUESTIONS[idx];
+  document.getElementById("cur").textContent=idx+1;
+  document.getElementById("bar").style.width=((idx)/QUESTIONS.length*100)+"%";
+  const tag=document.getElementById("layerTag");
+  tag.className="layer-tag layer-"+Q.layer;
+  tag.innerHTML=`${Q.icon} <span>${Q.layer==="身"?"身體的訊號":Q.layer==="心"?"心與情緒":"靈性與節奏"}</span>`;
+  document.getElementById("qText").textContent=Q.q;
+  const box=document.getElementById("opts");box.innerHTML="";
+  orders[idx].forEach(oi=>{
+    const o=Q.opts[oi];
+    const el=document.createElement("button");
+    el.className="opt"+(answers[idx]===o.d?" sel":"");
+    el.innerHTML=`<span class="mark"></span><span>${o.t}</span>`;
+    el.onclick=()=>choose(o.d);
+    box.appendChild(el);
+  });
+  // 安全閥：都不太像（不計分）
+  const nu=document.createElement("button");
+  nu.className="opt neutral"+(answers[idx]==="n"?" sel":"");
+  nu.innerHTML=`<span class="mark"></span><span>🌗 都不太像我／很看情況</span>`;
+  nu.onclick=()=>choose("n");
+  box.appendChild(nu);
+
+  document.getElementById("backBtn").disabled=idx===0;
+}
+
+function choose(d){
+  answers[idx]=d;
+  render(); // 顯示選中
+  setTimeout(()=>{
+    if(idx<QUESTIONS.length-1){idx++;render();}
+    else finish();
+  },260);
+}
+function goBack(){if(idx>0){idx--;render();}}
+
+/* ============ 計分與結果 ============ */
+function finish(){
+  document.getElementById("bar").style.width="100%";
+  const total={v:0,p:0,k:0};
+  const byLayer={身:{v:0,p:0,k:0},心:{v:0,p:0,k:0},靈:{v:0,p:0,k:0}};
+  let neutral=0;
+  answers.forEach((d,i)=>{
+    if(d==="n"){neutral++;return;}            // 安全閥不計分
+    total[d]++;byLayer[QUESTIONS[i].layer][d]++;
+  });
+  const sum=total.v+total.p+total.k;          // 以實際作答（非中性）的題數為分母
+
+  // 全部都選「看情況」的極端情況
+  const noteEl=document.getElementById("neutralNote");
+  if(sum===0){
+    document.getElementById("rTitle").textContent="此刻的妳，很難被定義";
+    document.getElementById("rSub").textContent="而這本身，就是一個很美的答案";
+    noteEl.style.display="block";
+    noteEl.innerHTML="🌬 妳幾乎每一題都選了「都不太像／看情況」——這其實常常是 <b>風（Vāta）</b> 的特質：流動、敏感、不願被固定。也許此刻的妳正處在一個變動很大的階段。可以過些日子再測一次，或直接來和我聊聊此刻的感受。";
+    ["bars","layers","rBody","rSigns","rPractice"].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML="";});
+    document.getElementById("stageCard").style.display="none";
+    document.getElementById("rSeason").innerHTML="";
+    document.getElementById("rIcon").textContent="🌗";
+    document.getElementById("rName").textContent="";
+    document.getElementById("ctaText").innerHTML="無論此刻的妳多難被定義，妳都值得被好好理解。歡迎來聊聊。";
+    window.__quizResult={dosha:"flow",short:"風",name:"難以定義",pct:"",dual:""};
+    document.getElementById("emailCap").style.display="block";
+    show("result");return;
+  }
+
+  const pct={v:Math.round(total.v/sum*100),p:Math.round(total.p/sum*100),k:Math.round(total.k/sum*100)};
+  // 修正四捨五入讓總和=100
+  fixTo100(pct);
+  const ranked=["v","p","k"].sort((a,b)=>total[b]-total[a]);
+  const top=ranked[0], second=ranked[1];
+  const isDual=(total[top]-total[second])<=1; // 差距 ≤1 視為雙督夏
+
+  // 中性題偏多時的溫柔提醒
+  if(neutral>=4){
+    noteEl.style.display="block";
+    noteEl.innerHTML=`🌬 妳有 ${neutral} 題選了「都不太像／看情況」——這常是 <b>風（Vāta）</b> 流動、不易被定義的特質，也可能代表妳正在一個變動的階段。下面是依妳其餘回答整理的傾向，參考就好，別當成標籤。`;
+  }else{
+    noteEl.style.display="none";
+  }
+
+  // 標題
+  const D=DOSHA[top];
+  window.__quizResult={dosha:top,short:D.short,name:D.name,pct:JSON.stringify(pct),dual:isDual?DOSHA[second].short:""};
+  document.getElementById("rTitle").innerHTML = isDual
+    ? `${D.short} × ${DOSHA[second].short} 型`
+    : D.title;
+  document.getElementById("rSub").textContent = isDual
+    ? "妳此刻是雙能量並行的混合原型"
+    : D.sub;
+
+  // 三股能量・元素球
+  const bars=document.getElementById("bars");bars.innerHTML="";
+  [["v",pct.v],["p",pct.p],["k",pct.k]].sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+    bars.insertAdjacentHTML("beforeend",
+     `<div class="dorb">
+        <div class="ring" style="background:conic-gradient(${DOSHA[k].color} ${v}%, var(--cream-2) ${v}%)">
+          <div class="hole"><b style="color:${DOSHA[k].color}">${v}<span>%</span></b></div>
+        </div>
+        <div class="dname"><b>${DOSHA[k].short}</b><small>${DOSHA[k].name.split(" ")[0]}</small></div>
+      </div>`);
+  });
+
+  // 身心靈三層
+  const L=document.getElementById("layers");L.innerHTML="";
+  const layerMeta={身:{ic:"🌿",label:"身體"},心:{ic:"💗",label:"心與情緒"},靈:{ic:"🌙",label:"靈性節奏"}};
+  ["身","心","靈"].forEach(ly=>{
+    const c=byLayer[ly];
+    if(c.v+c.p+c.k===0){ // 這一層全選「看情況」
+      L.insertAdjacentHTML("beforeend",
+       `<div class="layer-row">
+          <div class="ico">${layerMeta[ly].ic}</div>
+          <div class="txt"><b>${layerMeta[ly].label}</b><p>這一層妳都選了「看情況」——很流動、難以定義。</p></div>
+          <div class="tag" style="background:${DOSHA.v.color}1f;color:${DOSHA.v.color}">流動</div>
+        </div>`);
+      return;
+    }
+    const win=["v","p","k"].sort((a,b)=>c[b]-c[a]);
+    const tie=c[win[0]]===c[win[1]];
+    const dom=DOSHA[win[0]];
+    L.insertAdjacentHTML("beforeend",
+     `<div class="layer-row">
+        <div class="ico">${layerMeta[ly].ic}</div>
+        <div class="txt"><b>${layerMeta[ly].label}</b><p>${layerLine(ly,win[0],tie,win[1])}</p></div>
+        <div class="tag" style="background:${dom.color}1f;color:${dom.color}">偏 ${tie?dom.short+"·"+DOSHA[win[1]].short:dom.short}</div>
+      </div>`);
+  });
+
+  // 主體描述
+  document.getElementById("rIcon").textContent=D.icon;
+  document.getElementById("rName").textContent=D.name;
+  const bodyHtml = (isDual?`<p style="background:var(--cream);border-radius:12px;padding:14px 16px">${dualNote(top,second)}</p>`:"")
+    + D.body.map(p=>`<p>${p}</p>`).join("");
+  document.getElementById("rBody").innerHTML=bodyHtml;
+  document.getElementById("rSigns").innerHTML=D.signs.map(s=>`<li>${s}</li>`).join("");
+  document.getElementById("rPractice").innerHTML=D.practice.map(p=>`<li><b>${p.b}</b><p>${p.p}</p></li>`).join("");
+
+  // 當季提醒（依月份）
+  document.getElementById("rSeason").innerHTML=seasonTip(top);
+
+  // 孕產階段 × 體質
+  const stageCard=document.getElementById("stageCard");
+  if(selectedStage!=="none" && STAGE_CONTENT[top] && STAGE_CONTENT[top][selectedStage]){
+    const sc=STAGE_CONTENT[top][selectedStage], meta=STAGES[selectedStage];
+    document.getElementById("stageEmoji").textContent=meta.emoji;
+    document.getElementById("stageLabel").textContent=`為妳的此刻：${meta.label}`;
+    document.getElementById("stageTitle").textContent=sc.title;
+    document.getElementById("stageBody").innerHTML=sc.body.map(p=>`<p>${p}</p>`).join("");
+    stageCard.style.display="block";
+  }else{
+    stageCard.style.display="none";
+  }
+
+  // CTA 文案
+  document.getElementById("ctaText").innerHTML =
+    `妳此刻偏向 <b>${D.short}</b> 能量。在我的孕產陪伴與身心靈整合裡，阿育吠陀是讀懂身體節奏、溫柔照顧自己的一把鑰匙——無論妳正在備孕、孕期、產後，還是只是想更靠近自己。歡迎來聊聊，找到屬於妳此刻的照顧方式。`;
+
+  document.getElementById("emailCap").style.display="block";
+  show("result");
+}
+
+function layerLine(layer,dom,tie,sec){
+  const word={v:"流動、敏感、停不下來",p:"專注、有勁、容易上火",k:"穩定、溫厚、偏沉"};
+  if(tie) return `這一層妳 ${DOSHA[dom].short} 與 ${DOSHA[sec].short} 並重，能量交織。`;
+  return `這一層妳偏 ${DOSHA[dom].short}：${word[dom]}。`;
+}
+
+function fixTo100(p){
+  let diff=100-(p.v+p.p+p.k);
+  if(diff!==0){const k=["v","p","k"].sort((a,b)=>p[b]-p[a])[0];p[k]+=diff;}
+}
+
+/* 北半球（台灣／日本）季節 → 哪股能量容易累積 */
+function seasonTip(top){
+  const m=new Date().getMonth()+1;
+  let season,acc,note;
+  if(m>=3&&m<=5){season="春天";acc="k";note="春天濕氣重、容易累積 <b>水土</b> 能量，是身體想「動起來、清一清」的季節。";}
+  else if(m>=6&&m<=8){season="夏天";acc="p";note="夏天熱、容易累積 <b>火</b> 能量，是身體最需要「清涼、留白、別逞強」的季節。";}
+  else if(m>=9&&m<=11){season="秋天";acc="v";note="秋天乾、起風，容易累積 <b>風</b> 能量，是身體渴望「溫暖、滋潤、規律」的季節。";}
+  else {season="冬天";acc="k";note="冬天寒、收藏，容易累積 <b>水土</b>（也別讓 <b>風</b> 的乾冷加劇），是身體想要「溫熱、好好休養」的季節。";}
+  const extra = top===acc
+    ? `而妳此刻本身就偏 <b>${DOSHA[top].short}</b>——同氣相加，這個季節更要替自己留意這股能量，上面三件小事正好派上用場。`
+    : `搭配妳此刻偏 <b>${DOSHA[top].short}</b> 的狀態，記得在照顧自己時把季節也考慮進來。`;
+  return `🍃 <b>當季提醒（現在是${season}）：</b>${note}${extra}`;
+}
+
+function restart(){
+  answers.fill(null);idx=0;selectedStage="none";
+  document.getElementById("neutralNote").style.display="none";
+  document.getElementById("stageCard").style.display="none";
+  document.getElementById("emailCap").style.display="none";
+  show("intro");
+}
+
+/* 背景曼陀羅（與元素地圖同一套視覺） */
+function buildMandala(){
+  const g=document.getElementById("mandala-g"); if(!g) return; let p="";
+  [88,70,52,34,18].forEach(r=>{p+=`<circle cx="100" cy="100" r="${r}"/>`;});
+  for(let i=0;i<12;i++){p+=`<g transform="rotate(${i*30} 100 100)"><path d="M100 30 C112 55 112 78 100 96 C88 78 88 55 100 30 Z"/></g>`;}
+  for(let i=0;i<24;i++){const a=i*15*Math.PI/180,r=94;p+=`<circle cx="${(100+r*Math.cos(a)).toFixed(1)}" cy="${(100+r*Math.sin(a)).toFixed(1)}" r="1.4" fill="currentColor" stroke="none"/>`;}
+  g.innerHTML=p;
+}
+buildMandala();
+
+/* Email 深入解析：送到 Apps Script Web App → 存名單＋自動寄深入解析信 */
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbypy5pOFlc7Jy89B1SijYK5rcj0UX9vbLFnE5rca3u5BiKiDGhP8M1fodQjbtsKmOAQ/exec";
+function submitEmail(){
+  const email=(document.getElementById("emailInput").value||"").trim();
+  const name=(document.getElementById("nameInput").value||"").trim();
+  const st=document.getElementById("emailStatus");
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ st.style.color="#C0392B"; st.textContent="請輸入正確的 email 格式 🙏"; return; }
+  const r=window.__quizResult||{};
+  const btn=document.getElementById("emailBtn"); btn.disabled=true; btn.textContent="送出中…";
+  const body=new URLSearchParams({email,name,dosha:r.dosha||"",pct:r.pct||"",dual:r.dual||"",stage:(typeof selectedStage!=="undefined"?selectedStage:"")});
+  const done=()=>{ st.style.color="var(--brand-deep)"; st.innerHTML="🌿 收到了！妳的深入解析會寄到信箱（記得也看看垃圾信匣）。謝謝妳～"; document.getElementById("emailForm").style.display="none"; };
+  fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",body}).then(done).catch(done);
+}
+</script>
+</body>
+</html>

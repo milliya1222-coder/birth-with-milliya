@@ -116,6 +116,31 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://birthwithmilliya.com/ayurveda/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://birthwithmilliya.com/ja/ayurveda/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://birthwithmilliya.com/en/ayurveda/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://birthwithmilliya.com/ayurveda/quiz/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://birthwithmilliya.com/ayurveda/understand/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://birthwithmilliya.com/en/giving-birth-in-taiwan/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

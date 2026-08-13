@@ -733,9 +733,28 @@
     letter-spacing: .04em;
   }
   .testimonial-stat strong { color: var(--primary-dark); font-size: 17px; }
+
+  /* 回主站 */
+  .site-back{position:fixed;top:18px;left:18px;z-index:999;display:flex;align-items:center;gap:9px;
+    background:rgba(250,246,240,.92);backdrop-filter:blur(8px);border:1px solid #D9C9B5;border-radius:999px;
+    padding:5px 16px 5px 5px;box-shadow:0 6px 20px -12px rgba(61,46,37,.5);
+    text-decoration:none;color:#6B5547;font-size:.85rem;letter-spacing:.04em;transition:transform .2s,box-shadow .2s;}
+  .site-back:hover{transform:translateX(-2px);box-shadow:0 8px 24px -12px rgba(61,46,37,.6);}
+  .site-back img{width:28px;height:28px;border-radius:50%;display:block;}
+  .site-back .sb-arrow{opacity:.55;}
+  @media (max-width:640px){ .site-back .sb-text{display:none;} .site-back{padding:5px;gap:0;} }
+  footer .foot-home{display:inline-block;margin-top:14px;color:inherit;opacity:.85;
+    text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px;}
+  footer .foot-home:hover{opacity:1;}
 </style>
 </head>
 <body>
+
+<!-- 回主站 -->
+<a class="site-back" href="/">
+  <img src="/images/logo/icon.png" alt="">
+  <span class="sb-text"><span class="sb-arrow">←</span> Birth with Milliya</span>
+</a>
 
 <!-- 語言切換 -->
 <div class="lang-switch" style="position:fixed;top:18px;right:18px;z-index:999;display:flex;gap:2px;background:rgba(250,246,240,.92);backdrop-filter:blur(8px);border:1px solid #D9C9B5;border-radius:999px;padding:4px;box-shadow:0 6px 20px -12px rgba(61,46,37,.5);font-family:'Noto Sans JP','Noto Sans TC',sans-serif;font-size:.85rem;letter-spacing:.04em;">
@@ -1042,7 +1061,7 @@
     <div class="flow-table">
       <div class="flow-row">
         <div class="flow-time">第 0–20 分</div>
-        <div class="flow-content">抵達 / 身心諮詢 · Vāta 評估 · 體質判讀 / 阿育吠陀茶</div>
+        <div class="flow-content">抵達 / 身心諮詢 · Vāta 評估 · 體質判讀</div>
       </div>
       <div class="flow-row">
         <div class="flow-time">第 20–110 分</div>
@@ -1058,7 +1077,7 @@
       </div>
       <div class="flow-row">
         <div class="flow-time">第 150–160 分</div>
-        <div class="flow-content">靜養 · 淨化薰香 · 居家照護叮嚀</div>
+        <div class="flow-content">靜養 · 淨化薰香</div>
       </div>
     </div>
   </div>
@@ -1216,6 +1235,7 @@
 <footer>
   <p>© 2026 Milliya · 阿育吠陀產後按摩 暨 女性身心調養</p>
   <p style="margin-top: 8px;">台北北投工作室 · 大台北到府服務 · Email: milliya1222@gmail.com</p>
+  <p><a class="foot-home" href="/">← 回 Birth with Milliya 首頁</a></p>
 </footer>
 
 <a href="https://forms.gle/MCZ38b8pf2ByGyBk8" class="sticky-cta" target="_blank" rel="noopener" aria-label="預約療程">預約療程 →</a>

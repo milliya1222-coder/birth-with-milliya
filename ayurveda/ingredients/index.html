@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿育吠陀食材對照｜先看症狀，再找食材｜Birth with Milliya</title>
+<meta name="description" content="台灣濕熱、冷氣房、冰飲與外食讓身體長期悶濕黏。49 種阿育吠陀香料、藥草與台灣在地食材的對照表：先看症狀，再找食材，最後看怎麼吃。附最容易做錯的五件事。">
+<link rel="canonical" href="https://birthwithmilliya.com/ayurveda/ingredients/">
+<meta property="og:url" content="https://birthwithmilliya.com/ayurveda/ingredients/">
+<meta property="og:image" content="https://birthwithmilliya.com/images/og-cover.jpg">
+<meta name="theme-color" content="#F7F1E6">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿育吠陀食材對照｜先看症狀，再找食材">
+<meta property="og:description" content="49 種香料、藥草與台灣在地食材的查詢表。依症狀或作用方向篩選，含用量與使用方式。">
+<meta property="og:locale" content="zh_TW">
+<link rel="icon" type="image/png" href="/images/logo/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F1E6;
+  --paper-deep:#EFE5D4;
+  --ink:#3A2A1E;
+  --ink-soft:#6B5949;
+  --clay:#B85C38;
+  --gold:#B48A59;
+  --herb:#657A5C;
+  --line:rgba(58,42,30,.14);
+  --serif:"Noto Serif TC",serif;
+  --sans:"Noto Sans TC",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.75;
+  letter-spacing:.02em;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+
+/* ---------- 頁首 ---------- */
+.masthead{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:20px;
+}
+.masthead h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(30px,6.2vw,50px);line-height:1.24;
+  letter-spacing:.01em;
+}
+.masthead h1 em{font-style:normal;color:var(--clay)}
+.standfirst{
+  margin-top:20px;max-width:34em;font-size:15px;color:var(--ink-soft);
+}
+.credit{
+  margin-top:26px;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.06em;
+}
+
+/* ---------- 急救查詢 ---------- */
+.triage{padding:48px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.sec-num{
+  font-family:var(--serif);font-size:13px;color:var(--gold);
+  letter-spacing:.2em;padding-top:4px;
+}
+.sec-head h2{
+  font-family:var(--serif);font-weight:600;font-size:clamp(21px,4vw,27px);
+}
+.sec-note{font-size:13.5px;color:var(--ink-soft);margin:0 0 26px 0}
+
+.triage-grid{
+  display:grid;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:3px;overflow:hidden;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+}
+.tri{background:var(--paper);padding:18px 20px 20px}
+.tri-sym{
+  font-family:var(--serif);font-weight:600;font-size:15.5px;
+  margin-bottom:9px;display:flex;align-items:center;gap:9px;
+}
+.tri-sym::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--clay);flex:none;
+}
+.tri-fix{font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+.tri-fix b{color:var(--ink);font-weight:500}
+
+/* ---------- 篩選 ---------- */
+.filters{padding:52px 0 26px}
+.fgroup{margin-bottom:18px}
+.flabel{
+  font-size:11px;letter-spacing:.24em;color:var(--gold);
+  font-weight:500;margin-bottom:11px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-family:var(--sans);font-size:13px;font-weight:400;
+  padding:7px 15px;border:1px solid var(--line);border-radius:100px;
+  background:transparent;color:var(--ink-soft);cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s;
+  letter-spacing:.04em;
+}
+.chip:hover{border-color:var(--gold);color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
+.chip[aria-pressed="true"]{
+  background:var(--ink);border-color:var(--ink);color:var(--paper);
+}
+.count{
+  font-size:12.5px;color:var(--ink-soft);margin-top:20px;
+  padding-top:16px;border-top:1px solid var(--line);
+}
+
+/* ---------- 搜尋 ---------- */
+.searchwrap{position:relative;margin-bottom:20px}
+.search{
+  width:100%;font-family:var(--sans);font-size:14.5px;font-weight:300;
+  padding:11px 38px 11px 15px;border:1px solid var(--line);border-radius:3px;
+  background:var(--paper);color:var(--ink);letter-spacing:.02em;
+}
+.search::placeholder{color:var(--ink-soft);opacity:.7}
+.search:focus{outline:none;border-color:var(--gold)}
+.searchclear{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  border:0;background:none;color:var(--ink-soft);cursor:pointer;
+  font-size:19px;line-height:1;padding:6px 9px;display:none;
+}
+.searchclear.on{display:block}
+.searchclear:hover{color:var(--clay)}
+mark{background:rgba(180,138,89,.3);color:inherit;border-radius:2px;padding:0 1px}
+
+/* ---------- 食材卡 ---------- */
+.cards{
+  display:grid;gap:16px;padding-bottom:20px;
+  grid-template-columns:repeat(auto-fill,minmax(288px,1fr));
+}
+.card{
+  background:var(--paper-deep);border-radius:4px;padding:20px 20px 22px;
+  border-top:2px solid var(--gold);
+  display:flex;flex-direction:column;
+}
+.card[data-temp="熱"]{border-top-color:var(--clay)}
+.card[data-temp="涼"]{border-top-color:var(--herb)}
+.card-top{
+  display:flex;align-items:flex-start;
+  gap:13px;margin-bottom:16px;
+}
+.ic{
+  width:54px;height:54px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(180,138,89,.14);color:var(--gold);
+  overflow:hidden;position:relative;
+}
+.card[data-temp="熱"] .ic{background:rgba(184,92,56,.12);color:var(--clay)}
+.card[data-temp="涼"] .ic{background:rgba(101,122,92,.13);color:var(--herb)}
+.ic svg{
+  width:32px;height:32px;
+  fill:none;stroke:currentColor;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.ic img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;border-radius:50%;
+}
+.ic img + svg{display:none}
+.ic.has-photo{box-shadow:inset 0 0 0 1px rgba(58,42,30,.12)}
+.hd{flex:1 1 auto;min-width:0}
+.zh{font-family:var(--serif);font-weight:600;font-size:18px;line-height:1.35}
+.temp{
+  font-size:10.5px;letter-spacing:.16em;padding:3px 9px;border-radius:100px;
+  background:rgba(180,138,89,.18);color:var(--gold);flex:none;
+  font-weight:500;margin-top:3px;
+}
+.card[data-temp="熱"] .temp{background:rgba(184,92,56,.15);color:var(--clay)}
+.card[data-temp="涼"] .temp{background:rgba(101,122,92,.16);color:var(--herb)}
+.sk{
+  font-size:11.5px;letter-spacing:.1em;color:var(--gold);
+  font-weight:400;margin-top:2px;line-height:1.5;
+}
+.row{margin-bottom:12px}
+.row:last-of-type{margin-bottom:0}
+.rk{
+  font-size:10.5px;letter-spacing:.2em;color:var(--ink-soft);
+  font-weight:500;margin-bottom:4px;
+}
+.rv{font-size:13.5px;line-height:1.72}
+.warn{
+  margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  font-size:12.5px;color:var(--clay);line-height:1.6;
+}
+.empty{
+  padding:52px 4px;font-size:14px;color:var(--ink-soft);
+  font-family:var(--serif);
+}
+
+/* ---------- 原則 ---------- */
+.rules{
+  padding:56px 0 12px;margin-top:40px;border-top:1px solid var(--line);
+}
+.rule-list{list-style:none;counter-reset:r}
+.rule-list li{
+  counter-increment:r;display:flex;gap:18px;
+  padding:17px 0;border-bottom:1px solid var(--line);
+}
+.rule-list li::before{
+  content:counter(r,decimal-leading-zero);
+  font-family:var(--serif);font-size:12.5px;color:var(--gold);
+  flex:none;padding-top:5px;letter-spacing:.08em;
+}
+.rule-b{font-family:var(--serif);font-weight:600;font-size:15.5px;margin-bottom:3px}
+.rule-t{font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+
+/* ---------- 頁尾 ---------- */
+footer{
+  padding:44px 0 60px;font-size:12.5px;color:var(--ink-soft);line-height:1.85;
+}
+footer .sig{
+  font-family:var(--serif);font-size:14px;color:var(--ink);
+  margin-bottom:8px;
+}
+.disclaimer{
+  margin-top:22px;padding:16px 18px;background:var(--paper-deep);
+  border-radius:3px;font-size:12px;line-height:1.7;
+}
+
+.credits{margin-top:20px;font-size:12px}
+.credits summary{cursor:pointer;color:var(--clay);letter-spacing:.04em}
+.credits summary:hover{text-decoration:underline}
+.cnote{margin:10px 0 8px;line-height:1.7}
+.clist{list-style:none;columns:2;column-gap:26px;font-size:11.5px;line-height:1.9}
+.clist li{break-inside:avoid}
+.clist b{font-weight:500;color:var(--ink)}
+.clist a{color:var(--clay)}
+@media (max-width:600px){.clist{columns:1}}
+
+@media (max-width:600px){
+  .masthead{padding:44px 0 32px}
+  .cards{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+@media print{
+  body{background:#fff}
+  .filters,footer .disclaimer{display:none}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .card{break-inside:avoid;background:#fff;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<g id="g-seedOval"><ellipse cx="16" cy="30" rx="4" ry="9" transform="rotate(-24 16 30)"/><path d="M14 23.5 17.6 36" transform="rotate(-24 16 30)"/><ellipse cx="27" cy="20" rx="4" ry="9" transform="rotate(14 27 20)"/><path d="M25 13.5 28.6 26" transform="rotate(14 27 20)"/><ellipse cx="33" cy="33" rx="3.4" ry="7.6" transform="rotate(-52 33 33)"/></g>
+<g id="g-seedRound"><circle cx="18" cy="29" r="7"/><path d="M13 26.5h10M13 31.5h10"/><circle cx="30" cy="19" r="6"/><path d="M25.5 17h9M25.5 21.5h9"/><circle cx="32" cy="33" r="4.6"/></g>
+<g id="g-seedTiny"><circle cx="16" cy="30" r="2.4"/><circle cx="23" cy="33" r="2.4"/><circle cx="30" cy="30" r="2.4"/><circle cx="19" cy="24" r="2.4"/><circle cx="27" cy="24" r="2.4"/><circle cx="23" cy="18" r="2.4"/><circle cx="34" cy="24" r="2.4"/><circle cx="12" cy="24" r="2.4"/></g>
+<g id="g-seedAngular"><path d="M17 32 22 24 27 32 22 38Z"/><path d="M28 22 32.5 15 37 22 32.5 28Z"/><path d="M11 22 15 16 19 22 15 27Z"/></g>
+<g id="g-pepper"><circle cx="18" cy="29" r="7"/><path d="M14.5 25.5c2 1.5 1 4 3 5s1.5 3 3.5 3.5"/><circle cx="31" cy="20" r="6"/><path d="M28 17c1.7 1.3.8 3.4 2.6 4.3s1.3 2.6 3 3"/><circle cx="32" cy="33" r="4.4"/></g>
+<g id="g-longPepper"><path d="M20 40c0-8 1-16 6-22"/><path d="M26 18c5-2 9 2 8 7s-6 9-11 10c-2-6-1-14 3-17Z"/><path d="M24 22.5c2.6-.4 5 .4 6.6 2M22.5 28c2.8-.3 5.4.6 7 2.4"/></g>
+<g id="g-rhizome"><path d="M13 27c0-4 3-6 6-5s3 4 7 3 4-4 7-3 4 4 2 7-6 3-8 6-4 5-8 4-6-4-6-7 0-3 0-5Z"/><path d="M20 24c1 2 .5 4-.5 5.5M28 26c1.2 1.8 1 3.8 0 5.4"/><path d="M33 22c2-2 4-2.6 6-2"/></g>
+<g id="g-powder"><path d="M10 34c3-8 7-12 14-12s11 4 14 12Z"/><path d="M10 34h28"/><circle cx="18" cy="17" r="1.2"/><circle cx="28" cy="14" r="1.2"/><circle cx="34" cy="19" r="1.2"/><circle cx="23" cy="20" r="1.2"/></g>
+<g id="g-bark"><path d="M14 16h16c0 0-4 3-4 8s4 8 4 8H14Z"/><path d="M14 16c0 0 4 3 4 8s-4 8-4 8"/><path d="M20 20c0 0 2.4 2 2.4 4s-2.4 4-2.4 4"/></g>
+<g id="g-root"><path d="M24 12c0 6-3 8-3 14s4 8 3 12"/><path d="M21 20c-3-2-6-2-8-4M22.5 28c-3.4 0-6 1.4-8.4 3M23 34c2.8-1 5.6-.6 8 .6M22 16c2.6-1.6 5-1.6 7.4-.6"/></g>
+<g id="g-salt"><path d="M12 32 18 20l7 12Z"/><path d="M24 34 30 24l7 10Z"/><path d="M20 22l4-6 4 6"/></g>
+<g id="g-pod"><ellipse cx="21" cy="27" rx="6.5" ry="11" transform="rotate(-18 21 27)"/><path d="M17 17.5 25 35.5" transform="rotate(-18 21 27)"/><path d="M21 16c0-3 0-4 1.5-5.4"/><path d="M31 30c3-3 5-3 7-2"/><ellipse cx="33" cy="22" rx="4" ry="7" transform="rotate(28 33 22)"/></g>
+<g id="g-clove"><path d="M24 38V20"/><path d="M24 20c-4 0-6-3-5-6 2 1 3 0 5 1 2-1 3 0 5-1 1 3-1 6-5 6Z"/><path d="M19.5 15.5c1.6 1 3 2.4 4.5 4.5 1.5-2.1 2.9-3.5 4.5-4.5"/></g>
+<g id="g-leaf"><path d="M34 13c2 11-5 22-16 24C16 26 23 15 34 13Z"/><path d="M34 13 18 37"/><path d="M28 18.5c-1 2.6-1 5 0 7M24 25c-1 2.4-1 4.6 0 6.6"/></g>
+<g id="g-coconut"><circle cx="24" cy="26" r="12"/><circle cx="19.5" cy="22" r="1.8"/><circle cx="28" cy="22" r="1.8"/><circle cx="24" cy="29" r="1.8"/><path d="M18 15c2-4 4-6 6-7 2 1 4 3 6 7"/></g>
+<g id="g-berry"><circle cx="19" cy="30" r="6.5"/><circle cx="31" cy="27" r="5.5"/><path d="M19 23.5c0-4 2-7 5-8M31 21.5c0-3 1.4-5 3.6-6"/><path d="M16.5 28c1-1.4 2.4-2.2 4-2.4"/></g>
+<g id="g-cup"><path d="M13 22h20v8a10 10 0 0 1-20 0Z"/><path d="M33 24h3a4 4 0 0 1 0 8h-3"/><path d="M11 40h24"/><path d="M20 16c0-2 2-2 2-4M27 16c0-2 2-2 2-4"/></g>
+<g id="g-jar"><path d="M15 20h18v16a3 3 0 0 1-3 3H18a3 3 0 0 1-3-3Z"/><path d="M13.5 14h21v6h-21Z"/><path d="M19 27h10M19 32h7"/></g>
+<g id="g-bottle"><path d="M20 10h8v7l4 6v14a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3V23l4-6Z"/><path d="M16 27h16"/><path d="M24 31c1.6 1.8 2.6 3.2 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.2 1-2.6 2.6-4.4Z"/></g>
+<g id="g-bean"><path d="M12 26c0-5 4-9 9-9s9 4 9 9-4 9-9 9-9-4-9-9Z"/><path d="M21 17v18"/><path d="M30 30c3.4 0 6 2 6 4.5S33.4 39 30 39"/></g>
+<g id="g-bowl"><path d="M9 24h30c0 8-6 14-15 14S9 32 9 24Z"/><path d="M7 24h34"/><path d="M18 17c0-3 3-3 3-6M25 17c0-3 3-3 3-6M32 17c0-2.4 2-2.6 2-5"/></g>
+<g id="g-grain"><ellipse cx="16" cy="30" rx="3.6" ry="7" transform="rotate(-20 16 30)"/><path d="M16 24v12" transform="rotate(-20 16 30)"/><ellipse cx="26" cy="22" rx="3.6" ry="7" transform="rotate(10 26 22)"/><path d="M26 16v12" transform="rotate(10 26 22)"/><ellipse cx="32" cy="32" rx="3.4" ry="6.4" transform="rotate(-46 32 32)"/></g>
+<g id="g-radish"><path d="M24 18c5 0 8 4 8 9s-4 13-8 13-8-8-8-13 3-9 8-9Z"/><path d="M24 18c-1-4-4-6-8-6 0 4 3 6 8 6ZM24 18c1-4 4-6 8-6 0 4-3 6-8 6Z"/><path d="M20 26c1 3 1 6 0 8M28 26c-1 3-1 6 0 8"/></g>
+<g id="g-flower"><circle cx="24" cy="25" r="4"/><path d="M24 21c0-5 2-8 0-11-2 3 0 6 0 11ZM28 25c5 0 8-2 11 0-3 2-6 0-11 0ZM24 29c0 5 2 8 0 11-2-3 0-6 0-11ZM20 25c-5 0-8-2-11 0 3 2 6 0 11 0Z"/><path d="M27 22c3.4-3.4 6-4.6 8-4-0.6 2.6-3 4.6-8 4ZM21 28c-3.4 3.4-6 4.6-8 4 .6-2.6 3-4.6 8-4Z"/></g>
+<g id="g-gourd"><path d="M31 12c4 6 5 14 2 20s-9 8-13 4-4-12 0-18 8-9 11-6Z"/><path d="M28 14.5c-3.4 1.6-7 5-9 9M32 20c-3 1.4-6.4 4.6-8.4 8.4"/><path d="M31 12c1-2 3-3 5-3"/></g>
+</defs>
+</svg>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Ayurveda × Taiwan</div>
+    <h1>告別台式「悶、濕、黏」<br><em>阿育吠陀食材對照</em></h1>
+    <p class="standfirst">
+      台灣的濕熱、冷氣房、冰飲與外食，讓身體長期處在「消化火太弱、濕氣排不掉」的狀態。
+      這份對照表把課堂上的香料整理成可以直接查、直接用的版本——先看症狀，再找食材，最後看怎麼吃。
+    </p>
+    <p class="credit">整理自 2026.08.16 阿育吠陀食養料理課（講師 Gitanjali Sonia）／甘乃夏空間 Tanesha</p>
+  </div>
+</header>
+
+<section class="triage">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">壹</span><h2>先看症狀</h2></div>
+    <p class="sec-note">身體發生什麼事，就往哪一格找。</p>
+    <div class="triage-grid">
+      <div class="tri">
+        <div class="tri-sym">吃完就脹氣</div>
+        <div class="tri-fix"><b>印度藏茴香</b>一小撮配溫水，15 分鐘見效。麵食、糯米後特別有效。日常則飯後嚼<b>茴香籽</b>。</div>
+      </div>
+      <div class="tri">
+        <div class="tri-sym">冷氣房水腫、腿沉</div>
+        <div class="tri-fix">早上空腹<b>乾薑粉</b>溫水。煮食用<b>黑芥末籽</b>爆香。台灣在地可搭<b>薏仁</b>。</div>
+      </div>
+      <div class="tri">
+        <div class="tri-sym">麻辣鍋、鹹酥雞隔天</div>
+        <div class="tri-fix"><b>芫荽籽</b>泡水過夜，隔天喝水。加<b>茴香籽</b>更好。避開孜然（會更燥）。</div>
+      </div>
+      <div class="tri">
+        <div class="tri-sym">長痘、口乾、火氣大</div>
+        <div class="tri-fix"><b>芫荽籽＋茴香籽</b>，油改用<b>苦茶油</b>或椰子油。<b>Amla</b> 可長期保養。</div>
+      </div>
+      <div class="tri">
+        <div class="tri-sym">睡不好、長期高壓</div>
+        <div class="tri-fix">睡前 <b>Ashwagandha</b> 溫牛奶，或 <b>Golden Milk</b>。孕期改用 <b>Shatavari</b>。</div>
+      </div>
+      <div class="tri">
+        <div class="tri-sym">排便不順</div>
+        <div class="tri-fix">睡前 <b>Triphala</b> 泡溫水。早上空腹一小匙 <b>Ghee</b> 溫水配下。</div>
+      </div>
+      <div class="tri">
+        <div class="tri-sym">整個人濁濁的、想重開機</div>
+        <div class="tri-fix">連續 3–7 天 <b>Kitchari</b>，白天喝 <b>CCF 茶</b>。感冒後恢復期也適用。</div>
+      </div>
+      <div class="tri">
+        <div class="tri-sym">產後、哺乳、備孕</div>
+        <div class="tri-fix"><b>Shatavari</b>、<b>葫蘆巴籽</b>、<b>黑芝麻油</b>按摩。避開 Ashwagandha 與大量薑黃。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="filters">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">貳</span><h2>食材庫</h2></div>
+    <p class="sec-note">依作用方向或使用情境篩選。同一食材對不同體質效果相反，先看人再看方。</p>
+
+    <div class="fgroup">
+      <div class="flabel">作用方向</div>
+      <div class="chips" id="fx"></div>
+    </div>
+    <div class="fgroup">
+      <div class="flabel">使用情境</div>
+      <div class="chips" id="fs"></div>
+    </div>
+    <div class="searchwrap">
+      <input class="search" id="q" type="search" autocomplete="off"
+             placeholder="或直接搜尋：薑黃、脹氣、Abhyanga、oil pulling…"
+             aria-label="搜尋食材、症狀或用法">
+      <button class="searchclear" id="qclear" type="button" aria-label="清除搜尋">×</button>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cards" id="cards"></div>
+</div>
+
+<section class="rules">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">參</span><h2>最容易做錯的五件事</h2></div>
+    <p class="sec-note">這五點比「吃了什麼」更決定效果。</p>
+    <ul class="rule-list">
+      <li><div>
+        <div class="rule-b">香料沒油爆，等於白吃</div>
+        <div class="rule-t">香料的活性成分是脂溶性的。直接把粉撒在煮好的食物上，吸收率差非常多。順序永遠是：油熱 → 黑芥末籽爆到啪啪聲 → 孜然 → 粉類香料 → 食材。</div>
+      </div></li>
+      <li><div>
+        <div class="rule-b">生蜂蜜不可加熱</div>
+        <div class="rule-t">阿育吠陀認為加熱過的蜂蜜會轉為 Ama（未消化的毒素）。要加就等飲品降到 40 度以下再放。</div>
+      </div></li>
+      <li><div>
+        <div class="rule-b">冷牛奶生痰</div>
+        <div class="rule-t">牛奶一定要煮過，並加薑、薑黃或小豆蔻中和黏液性質。冰牛奶配麥片是最典型的生痰組合。</div>
+      </div></li>
+      <li><div>
+        <div class="rule-b">冰飲直接澆熄消化火</div>
+        <div class="rule-t">這是台灣「悶濕黏」最大的單一原因，影響大過吃了什麼。手搖飲改常溫、餐間不喝冰水，是投報率最高的一步。</div>
+      </div></li>
+      <li><div>
+        <div class="rule-b">別把「排毒」當成通用處方</div>
+        <div class="rule-t">苦瓜清 Pitta，但 Vata 體質吃多會更乾更冷；薑黃很好，但經血量大的人要減量。體質判斷永遠在食材之前。</div>
+      </div></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">Milliya ／ 欣妙</div>
+    <div>Birth with Milliya・生生不息 Gentle Birthing Circle</div>
+    <div>@birth.with.milliya</div>
+    <div style="margin-top:14px">
+      <a href="/ayurveda/" style="color:var(--clay);text-decoration:none;border-bottom:1px solid rgba(184,92,56,.35)">← 回阿育吠陀療程</a>　<a href="/" style="color:var(--clay);text-decoration:none;border-bottom:1px solid rgba(184,92,56,.35)">birthwithmilliya.com</a>
+    </div>
+    <details class="credits">
+      <summary>圖片來源與授權（23 張）</summary>
+      <p class="cnote">照片取自 <a href="https://openverse.org" target="_blank" rel="noopener">Openverse</a>，只篩選可商業使用的授權，並逐張人工確認主體正確。其餘食材顯示手繪線稿。</p>
+      <ul class="clist">
+        <li><b>小豆蔻</b>　Bigul Malayi　CC0 1.0　<a href="https://wordpress.org/photos/photo/8669274741/" target="_blank" rel="noopener">來源</a></li>
+        <li><b>生蜂蜜</b>　USDAgov　公共領域 1.0　<a href="https://www.flickr.com/photos/41284017@N08/15271485215" target="_blank" rel="noopener">來源</a></li>
+        <li><b>生薑</b>　Vishnu Chandra　CC0 1.0　<a href="https://wordpress.org/photos/photo/74569c5422/" target="_blank" rel="noopener">來源</a></li>
+        <li><b>白蘿蔔</b>　.Annna　CC BY 2.0　<a href="https://www.flickr.com/photos/45257563@N00/1119831896" target="_blank" rel="noopener">來源</a></li>
+        <li><b>石榴</b>　U.S. Department of Agriculture　CC0 1.0　<a href="https://www.rawpixel.com/image/2297919/free-illustration-image-fruit-pomegranate-food" target="_blank" rel="noopener">來源</a></li>
+        <li><b>肉桂</b>　Image Catalog　CC0 1.0　<a href="https://www.flickr.com/photos/132795455@N08/20800194998" target="_blank" rel="noopener">來源</a></li>
+        <li><b>岩鹽</b>　James St. John　CC BY 2.0　<a href="https://www.flickr.com/photos/47445767@N05/32237023905" target="_blank" rel="noopener">來源</a></li>
+        <li><b>芫荽籽</b>　Misterneedlemouse　CC0 1.0　<a href="https://commons.wikimedia.org/w/index.php?curid=151971308" target="_blank" rel="noopener">來源</a></li>
+        <li><b>洛神花</b>　Swallowtail Garden Seeds　CC BY 2.0　<a href="https://www.flickr.com/photos/97123293@N07/14677525705" target="_blank" rel="noopener">來源</a></li>
+        <li><b>黑芥末籽</b>　WordRidden　CC BY 2.0　<a href="https://www.flickr.com/photos/97844767@N00/130162843" target="_blank" rel="noopener">來源</a></li>
+        <li><b>黑種草籽</b>　storebukkebruse　CC BY 2.0　<a href="https://www.flickr.com/photos/8536261@N07/14532197662" target="_blank" rel="noopener">來源</a></li>
+        <li><b>椰子油</b>　Veganbaking.net　CC BY-SA 2.0　<a href="https://www.flickr.com/photos/31104779@N02/4404443713" target="_blank" rel="noopener">來源</a></li>
+        <li><b>蓖麻油</b>　Queensland State Archives　公共領域 1.0　<a href="https://www.flickr.com/photos/60455048@N02/27546493094" target="_blank" rel="noopener">來源</a></li>
+        <li><b>薑黃</b>　formulatehealth　CC BY 2.0　<a href="https://commons.wikimedia.org/w/index.php?curid=97084163" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Amla 餘甘子</b>　prashantby　CC BY 2.0　<a href="https://www.flickr.com/photos/72547900@N00/407630345" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Ashwagandha</b>　formulatehealth　CC BY 2.0　<a href="https://www.flickr.com/photos/189590028@N07/50191697031" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Brahmi / Gotu Kola</b>　Bigul Malayi　CC0 1.0　<a href="https://wordpress.org/photos/photo/93268fd173/" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Ghee 印度酥油</b>　fishermansdaughter　CC BY 2.0　<a href="https://www.flickr.com/photos/53194155@N00/5225111742" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Kitchari</b>　spurekar　CC BY 2.0　<a href="https://commons.wikimedia.org/w/index.php?curid=89967349" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Manjistha 茜草</b>　rickbradley　CC BY 2.0　<a href="https://www.flickr.com/photos/89139703@N00/3964894574" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Neem 苦楝</b>　Tatters ✾　CC BY 2.0　<a href="https://www.flickr.com/photos/62938898@N00/4941518502" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Punarnava</b>　Dinesh Valke　CC BY-SA 2.0　<a href="https://www.flickr.com/photos/91314344@N00/2617412567" target="_blank" rel="noopener">來源</a></li>
+        <li><b>Shatavari</b>　Joseph Heymans　CC0 1.0　<a href="https://www.inaturalist.org/photos/255383463" target="_blank" rel="noopener">來源</a></li>
+      </ul>
+    </details>
+    <div class="disclaimer">
+      本表為飲食與生活調理的參考整理，不構成醫療診斷或治療建議。
+      孕期、哺乳期、慢性病用藥中或正在接受治療者，請先與您的醫師或合格治療師確認後再使用。
+      藥草類（Ashwagandha、Neem、蓖麻油等）建議在專業指導下使用。
+    </div>
+  </div>
+</footer>
+
+<script>
+const DATA = [
+  // ── 種籽類 ──
+  {zh:"孜然籽", sk:"Jeera · Cumin", temp:"溫", fx:["助消化"], sc:["脹氣","日常"],
+   use:"最核心的助消化香料，點燃消化火、排氣、幫助養分吸收。暖但不燥。",
+   how:"熱鍋下油，1/2 小匙爆到深棕、香氣出來（約 20 秒）再下其他食材。或 1 小匙煮 500ml 水當茶。"},
+  {zh:"芫荽籽", sk:"Dhanya · Coriander", temp:"涼", fx:["清熱","助消化"], sc:["上火","水腫","日常"],
+   use:"退火、利尿、解油膩、清血。三體質都安全，是重口味隔天的救火隊。",
+   how:"2 小匙泡 500ml 溫水過夜，隔天濾掉喝水。或磨粉拌入湯裡。"},
+  {zh:"茴香籽", sk:"Saunf · Fennel", temp:"涼", fx:["清熱","助消化"], sc:["脹氣","上火","女性"],
+   use:"助消化但不上火，清口氣、催乳。體質偏熱、吃孜然會燥的人更適合。",
+   how:"飯後乾嚼 1/2 小匙，慢慢嚼到甜味出來。孕婦、小孩皆可。"},
+  {zh:"黑芥末籽", sk:"Rai · Black Mustard", temp:"熱", fx:["除濕"], sc:["水腫","日常"],
+   use:"熱性、開胃、化痰濕、促循環。身體沉重、痰多、代謝停滯時的主力。",
+   how:"永遠是下鍋第一個。油熱後丟入並蓋鍋蓋，聽到啪啪爆完才下第二樣。沒爆開等於沒活性。",
+   warn:"體質偏熱、易上火者減量。"},
+  {zh:"印度藏茴香", sk:"Ajwain · Carom", temp:"熱", fx:["除濕","助消化"], sc:["脹氣","女性"],
+   use:"強力排氣、化痰、化解麵食造成的沉重感。急救型香料。",
+   how:"1/4 小匙＋一小撮岩鹽，直接配溫水吞下。麵包、麵條、糯米、水餃後 15 分鐘見效。"},
+  {zh:"葫蘆巴籽", sk:"Methi · Fenugreek", temp:"溫", fx:["除濕"], sc:["女性","日常"],
+   use:"除濕、穩定血糖、催乳、養髮。味苦但效果明確。",
+   how:"泡水一夜再煮，或磨粉入菜。產後媽媽可每日少量。",
+   warn:"孕期避免大量使用。"},
+  {zh:"黑種草籽", sk:"Kalonji · Nigella", temp:"溫", fx:["除濕"], sc:["女性","日常"],
+   use:"抗菌、通鼻竅、產後調理。香氣接近洋蔥與胡椒之間。",
+   how:"撒在餅、烤物、麵包上；或少量與蜂蜜同食。"},
+  {zh:"罌粟籽", sk:"Khus khus · Poppy", temp:"涼", fx:["溫潤"], sc:["睡眠"],
+   use:"安神助眠、潤腸。適合思緒停不下來的人。",
+   how:"磨成糊加入睡前溫牛奶，或入甜點。"},
+
+  // ── 根莖樹皮 ──
+  {zh:"薑黃", sk:"Haldi · Turmeric", temp:"溫", fx:["除濕","清熱"], sc:["皮膚","日常","排毒"],
+   use:"抗發炎、淨血、癒合傷口、清肝。運動後修復很有感。",
+   how:"必配三件套——薑黃＋一小撮黑胡椒＋油脂，否則吸收率極低。睡前 Golden Milk：溫奶 200ml＋薑黃 1/2 小匙＋黑胡椒＋Ghee 1/2 小匙＋小豆蔻一顆。",
+   warn:"經血量大、服用抗凝血藥物者減量。"},
+  {zh:"乾薑粉", sk:"Shunthi · Dry Ginger", temp:"熱", fx:["除濕"], sc:["水腫","日常"],
+   use:"比生薑更「乾」，專門化痰除濕。冷氣房體質的核心用藥。",
+   how:"1/4 小匙＋溫水，早上空腹喝。除濕用乾薑，止吐開胃才用生薑。"},
+  {zh:"生薑", sk:"Ardraka · Ginger", temp:"熱", fx:["助消化"], sc:["脹氣","女性"],
+   use:"暖胃、止吐、開胃。孕吐、暈車適用。",
+   how:"飯前 10 分鐘：薄薑片＋一小撮岩鹽＋幾滴檸檬，含著吃。這是阿育吠陀的開胃儀式。"},
+  {zh:"肉桂", sk:"Twak · Cinnamon", temp:"熱", fx:["除濕"], sc:["日常"],
+   use:"暖身、穩定血糖、促進循環。手腳冰冷者適用。",
+   how:"入茶、燉品，或當甜點的天然甜味替代。"},
+  {zh:"黑胡椒", sk:"Maricha · Black Pepper", temp:"熱", fx:["除濕","助消化"], sc:["日常","排毒"],
+   use:"燃燒 Ama（未消化毒素），並大幅提升其他香料的生物利用率。",
+   how:"現磨最好。幾乎所有配方的助攻角色，尤其薑黃必配。"},
+  {zh:"長胡椒", sk:"Pippali · Long Pepper", temp:"熱", fx:["除濕"], sc:["排毒"],
+   use:"最強的化痰香料，養肺。慢性咳嗽、代謝停滯時使用。",
+   how:"多用於 Trikatu 複方，單用時劑量要小。"},
+  {zh:"甘草", sk:"Yashtimadhu · Licorice", temp:"涼", fx:["清熱","溫潤"], sc:["上火","日常"],
+   use:"潤喉、養胃黏膜、抗壓。胃酸過多、講話多的人適用。",
+   how:"泡茶飲用。",
+   warn:"高血壓者慎用，不宜長期大量。"},
+  {zh:"岩鹽", sk:"Sendha Namak · Rock Salt", temp:"溫", fx:["助消化"], sc:["日常"],
+   use:"阿育吠陀認為是唯一三體質都平衡的鹽，不會像精製鹽一樣加重滯留。",
+   how:"直接取代日常用鹽。"},
+
+  // ── 花果 ──
+  {zh:"小豆蔻", sk:"Elaichi · Cardamom", temp:"涼", fx:["清熱","助消化"], sc:["上火","日常"],
+   use:"中和咖啡與乳製品產生的黏液，解酒、清口氣。",
+   how:"咖啡加一顆壓碎的豆蔻；或煮奶茶時同煮。"},
+  {zh:"丁香", sk:"Lavang · Clove", temp:"熱", fx:["除濕"], sc:["日常"],
+   use:"止牙痛、暖肺、殺菌。",
+   how:"用量要小，一次一至兩顆。牙痛時咬一顆在患處。",
+   warn:"易上火者少用。"},
+  {zh:"月桂葉", sk:"Tejpatta · Bay Leaf", temp:"溫", fx:["助消化"], sc:["日常"],
+   use:"助消化、增添香氣層次。",
+   how:"燉煮時放一至兩片，起鍋前取出。"},
+  {zh:"椰子（新鮮）", sk:"Nariyal · Coconut", temp:"涼", fx:["清熱"], sc:["上火","日常"],
+   use:"清 Pitta 首選，夏天退火。",
+   how:"新鮮椰子水或椰肉直接食用。台灣夏天最好取得的清熱食材之一。"},
+  {zh:"石榴", sk:"Dadima · Pomegranate", temp:"涼", fx:["清熱","溫潤"], sc:["女性","日常"],
+   use:"三體質皆宜，收斂止瀉、養血。",
+   how:"直接吃或榨汁，不加糖。"},
+
+  // ── 複方 ──
+  {zh:"Triphala 三果", sk:"訶子＋餘甘子＋毛訶子", temp:"平", fx:["清熱","排毒"], sc:["排毒","日常"],
+   use:"溫和排毒、調理腸道、明目。阿育吠陀少數可長期服用而不會依賴的配方。",
+   how:"睡前 1/2–1 小匙泡溫水，靜置 10 分鐘後喝掉。味道很澀是正常的。",
+   warn:"孕期避免。"},
+  {zh:"Trikatu 三辛", sk:"乾薑＋黑胡椒＋長胡椒", temp:"熱", fx:["除濕"], sc:["水腫","排毒"],
+   use:"燃燒 Ama、破除代謝停滯。身體沉重如濕木頭時的經典方。",
+   how:"1/4 小匙＋蜂蜜（不加熱），飯前服用。連續使用不超過兩週。",
+   warn:"胃潰瘍、易上火者不適用。"},
+  {zh:"CCF 茶", sk:"孜然＋芫荽＋茴香", temp:"平", fx:["助消化","清熱","除濕"], sc:["日常","排毒","脹氣"],
+   use:"日常排毒茶，三體質都安全。最適合當作入門的第一個處方。",
+   how:"三種各 1 小匙，煮 1000ml 水 5 分鐘，濾出當一天的水喝。"},
+  {zh:"Golden Milk", sk:"薑黃＋黑胡椒＋Ghee＋奶", temp:"溫", fx:["溫潤","除濕"], sc:["睡眠","日常"],
+   use:"睡前抗發炎、助眠、修復。",
+   how:"溫奶 200ml＋薑黃 1/2 小匙＋黑胡椒一小撮＋Ghee 1/2 小匙＋小豆蔻，小火煮 3 分鐘。"},
+  {zh:"Chyawanprash", sk:"餘甘子果醬", temp:"溫", fx:["溫潤"], sc:["日常"],
+   use:"提升免疫、換季保養。味道酸甜帶藥香。",
+   how:"早上空腹一小匙，可配溫牛奶。"},
+
+  // ── 藥草 ──
+  {zh:"Ashwagandha", sk:"南非醉茄 · Winter Cherry", temp:"溫", fx:["溫潤"], sc:["睡眠","日常"],
+   use:"抗壓、養神經、助眠、補氣。長期高壓與腎上腺疲勞的首選。",
+   how:"1/2 小匙加溫牛奶，睡前喝。",
+   warn:"孕期避免。甲狀腺亢進者慎用。"},
+  {zh:"Shatavari", sk:"蘆筍根 · Wild Asparagus", temp:"涼", fx:["溫潤","清熱"], sc:["女性","睡眠"],
+   use:"女性滋養、調經、催乳、潤燥。備孕、產後、更年期的核心藥草。",
+   how:"1/2 小匙溫牛奶或溫水，早晚皆可。孕期哺乳相對安全。"},
+  {zh:"Brahmi / Gotu Kola", sk:"雷公根", temp:"涼", fx:["清熱"], sc:["睡眠","日常"],
+   use:"提升專注、鎮定心神。腦霧、思緒過多時使用。",
+   how:"泡茶或粉末配溫水，早上或下午服用。"},
+  {zh:"Tulsi 聖羅勒", sk:"Holy Basil", temp:"溫", fx:["除濕"], sc:["日常"],
+   use:"化痰、抗壓、通鼻竅。換季感冒的日常茶飲。",
+   how:"乾葉泡茶，每日一至兩杯。"},
+  {zh:"Neem 苦楝", sk:"Neem", temp:"涼", fx:["清熱"], sc:["皮膚","排毒"],
+   use:"苦寒、清血、抗菌。濕疹、痘瘡的短期使用。",
+   how:"粉末配溫水，或外用敷臉。",
+   warn:"孕期與備孕期避免。不宜長期連續服用。"},
+  {zh:"Amla 餘甘子", sk:"Indian Gooseberry", temp:"涼", fx:["清熱","溫潤"], sc:["皮膚","日常"],
+   use:"維生素 C 含量極高，清 Pitta、養髮、養膚。三體質都安全，可長期使用。",
+   how:"粉末泡水，或直接吃 Chyawanprash。"},
+  {zh:"Manjistha 茜草", sk:"Manjistha", temp:"涼", fx:["清熱","排毒"], sc:["皮膚","女性"],
+   use:"淨血、退斑。皮膚暗沉、經血瘀滯時使用。",
+   how:"粉末配溫水，建議在指導下使用。"},
+  {zh:"Punarnava", sk:"Punarnava", temp:"溫", fx:["除濕"], sc:["水腫","排毒"],
+   use:"利水消腫、養腎。頑固型水腫的專門用藥。",
+   how:"粉末或煎劑，建議在指導下使用。"},
+
+  // ── 油脂 ──
+  {zh:"Ghee 印度酥油", sk:"Ghrita", temp:"涼", fx:["溫潤"], sc:["日常","女性","排毒"],
+   use:"把香料的藥性帶進深層組織，潤腸、養神經。便秘、皮膚乾、用腦過度、產後修復。",
+   how:"早上空腹一小匙配溫水；或所有爆香都改用它。"},
+  {zh:"苦茶油", sk:"台灣在地替代", temp:"涼", fx:["清熱","溫潤"], sc:["上火","日常"],
+   use:"涼性、養胃黏膜。台灣濕熱的夏天比麻油更適合。",
+   how:"起鍋後淋、拌麵線、涼拌。低溫使用保留活性。"},
+  {zh:"黑芝麻油", sk:"Tila Taila", temp:"溫", fx:["溫潤"], sc:["女性","睡眠"],
+   use:"暖性，Vata 體質與產後首選。",
+   how:"Abhyanga 自我按摩：加溫到體溫，睡前或洗澡前全身順著四肢長骨方向推 10 分鐘，關節處畫圓。這是最被低估的日常保養。"},
+  {zh:"椰子油", sk:"Narikela Taila", temp:"涼", fx:["清熱"], sc:["上火","皮膚"],
+   use:"Pitta 首選。夏天頭皮按摩、口腔清潔。",
+   how:"Oil Pulling：早上刷牙前含 1 大匙漱 10 分鐘吐掉（不可吞下）。"},
+  {zh:"蓖麻油", sk:"Eranda Taila", temp:"熱", fx:["排毒"], sc:["排毒"],
+   use:"強力通便、短期排毒。",
+   how:"僅短期使用。",
+   warn:"孕期絕對避免。務必在專業指導下使用。"},
+
+  // ── 主食豆類 ──
+  {zh:"綠豆仁", sk:"Mung Dal", temp:"涼", fx:["清熱","除濕"], sc:["排毒","日常"],
+   use:"阿育吠陀的「聖品」，三體質皆宜，最好消化的豆類。",
+   how:"Kitchari 的主角。煮到完全化開最好吸收。"},
+  {zh:"Kitchari", sk:"綠豆仁＋米＋Ghee＋香料", temp:"平", fx:["排毒","助消化"], sc:["排毒","日常"],
+   use:"經典淨化餐。換季、病後恢復、想重開機時的單一食物。",
+   how:"綠豆仁 1/2 杯＋Basmati 米 1/2 杯洗淨；Ghee 爆香黑芥末籽→孜然→薑黃→薑末；倒入米豆＋6 杯水煮到全化開。起鍋加岩鹽、香菜。台灣變體：加薏仁除濕、加山藥補氣。"},
+  {zh:"薏仁", sk:"台灣在地", temp:"涼", fx:["除濕","清熱"], sc:["水腫","日常"],
+   use:"台灣的除濕王牌，對應 Kapha。健脾利水。",
+   how:"煮粥、煮水皆可。可加入 Kitchari。",
+   warn:"孕期不宜大量。"},
+  {zh:"生蜂蜜", sk:"Madhu", temp:"熱", fx:["除濕"], sc:["日常"],
+   use:"阿育吠陀中唯一「刮除」性質的甜味，適合 Kapha 除濕。",
+   how:"絕對不可加熱。要加就等飲品降到 40 度以下。"},
+
+  // ── 台灣在地 ──
+  {zh:"白蘿蔔", sk:"台灣在地", temp:"涼", fx:["除濕"], sc:["水腫","日常"],
+   use:"化痰、下氣。冬天最容易取得的除濕食材。",
+   how:"煮湯、燉煮。生食性質更涼。"},
+  {zh:"洛神花", sk:"台灣在地", temp:"涼", fx:["清熱"], sc:["上火","日常"],
+   use:"涼血、清 Pitta。台灣夏天的天然退火飲。",
+   how:"煮水放涼（不加冰），少糖或不加糖。"},
+  {zh:"陳皮", sk:"台灣在地", temp:"溫", fx:["除濕","助消化"], sc:["脹氣","水腫"],
+   use:"理氣化濕，角色近似阿育吠陀的乾薑。",
+   how:"泡茶或入菜燉煮。"},
+  {zh:"苦瓜", sk:"台灣在地", temp:"涼", fx:["清熱"], sc:["上火","皮膚"],
+   use:"苦味清 Pitta、清血。",
+   how:"煮湯或清炒。",
+   warn:"Vata 體質（偏乾、偏冷、易焦慮）過量會更乾更冷，須搭配油脂。"},
+  {zh:"山藥", sk:"台灣在地", temp:"平", fx:["溫潤"], sc:["日常","女性"],
+   use:"溫和補氣、養胃，三體質皆可。",
+   how:"蒸、煮湯，或加入 Kitchari。"},
+  {zh:"桂圓紅棗", sk:"台灣在地", temp:"熱", fx:["溫潤"], sc:["女性","睡眠"],
+   use:"溫補 Vata、養血安神。",
+   how:"煮茶或入湯。",
+   warn:"濕氣重、容易水腫或長痘時要節制。"}
+];
+
+const ICON = {
+  "孜然籽":"seedOval","茴香籽":"seedOval","印度藏茴香":"seedOval","黑種草籽":"seedOval",
+  "芫荽籽":"seedRound",
+  "黑芥末籽":"seedTiny","罌粟籽":"seedTiny",
+  "葫蘆巴籽":"seedAngular",
+  "黑胡椒":"pepper","長胡椒":"longPepper",
+  "薑黃":"rhizome","生薑":"rhizome",
+  "乾薑粉":"powder","Triphala 三果":"powder","Trikatu 三辛":"powder",
+  "Brahmi / Gotu Kola":"leaf","Manjistha 茜草":"powder","Punarnava":"powder",
+  "Shatavari":"root","Ashwagandha":"root","甘草":"root","山藥":"root",
+  "肉桂":"bark","岩鹽":"salt","小豆蔻":"pod","丁香":"clove",
+  "月桂葉":"leaf","Tulsi 聖羅勒":"leaf","Neem 苦楝":"leaf",
+  "椰子（新鮮）":"coconut","石榴":"berry","Amla 餘甘子":"berry","桂圓紅棗":"berry",
+  "CCF 茶":"cup","Golden Milk":"cup","洛神花":"flower",
+  "Ghee 印度酥油":"jar","Chyawanprash":"jar","生蜂蜜":"jar",
+  "苦茶油":"bottle","黑芝麻油":"bottle","椰子油":"bottle","蓖麻油":"bottle",
+  "綠豆仁":"bean","Kitchari":"bowl","薏仁":"grain",
+  "白蘿蔔":"radish","陳皮":"bark","苦瓜":"gourd"
+};
+
+/* ──────────────────────────────────────────────────────────────
+   照片混用說明
+   把照片放進與本檔案同層的 img/ 資料夾，檔名照下表命名即可。
+   有照片 → 自動顯示照片；沒放或檔名不符 → 自動退回線稿圖示。
+   建議：正方形裁切、短邊 400px 以上、jpg。副檔名可在 IMG_EXT 調整。
+   ────────────────────────────────────────────────────────────── */
+const IMG_DIR = "img/";
+const IMG_EXT = ".jpg";
+
+const PHOTO = {
+  "孜然籽":"cumin","芫荽籽":"coriander","茴香籽":"fennel","黑芥末籽":"mustard",
+  "印度藏茴香":"ajwain","葫蘆巴籽":"fenugreek","黑種草籽":"nigella","罌粟籽":"poppy",
+  "薑黃":"turmeric","乾薑粉":"dry-ginger","生薑":"ginger","肉桂":"cinnamon",
+  "黑胡椒":"black-pepper","長胡椒":"long-pepper","甘草":"licorice","岩鹽":"rock-salt",
+  "小豆蔻":"cardamom","丁香":"clove","月桂葉":"bay-leaf","椰子（新鮮）":"coconut","石榴":"pomegranate",
+  "Triphala 三果":"triphala","Trikatu 三辛":"trikatu","CCF 茶":"ccf-tea",
+  "Golden Milk":"golden-milk","Chyawanprash":"chyawanprash",
+  "Ashwagandha":"ashwagandha","Shatavari":"shatavari","Brahmi / Gotu Kola":"brahmi",
+  "Tulsi 聖羅勒":"tulsi","Neem 苦楝":"neem","Amla 餘甘子":"amla",
+  "Manjistha 茜草":"manjistha","Punarnava":"punarnava",
+  "Ghee 印度酥油":"ghee","苦茶油":"camellia-oil","黑芝麻油":"sesame-oil",
+  "椰子油":"coconut-oil","蓖麻油":"castor-oil",
+  "綠豆仁":"mung-dal","Kitchari":"kitchari","薏仁":"job-tears","生蜂蜜":"honey",
+  "白蘿蔔":"daikon","洛神花":"roselle","陳皮":"dried-tangerine-peel",
+  "苦瓜":"bitter-melon","山藥":"yam","桂圓紅棗":"longan-jujube"
+};
+
+const FX = ["除濕","清熱","溫潤","助消化","排毒"];
+const SC = ["脹氣","水腫","上火","睡眠","女性","皮膚","排毒","日常"];
+const SC_LABEL = {
+  "脹氣":"脹氣排氣","水腫":"水腫除濕","上火":"上火長痘","睡眠":"睡眠與壓力",
+  "女性":"女性與產後","皮膚":"皮膚","排毒":"淨化排毒","日常":"日常保養"
+};
+
+let activeFx = null, activeSc = null, query = "";
+
+const norm = s => (s || "").toLowerCase();
+function matchQuery(d){
+  if(!query) return true;
+  const hay = norm([d.zh, d.sk, d.use, d.how, d.warn, d.temp,
+                    (d.fx||[]).join(" "), (d.sc||[]).map(s=>SC_LABEL[s]||s).join(" ")].join(" "));
+  return query.split(/\s+/).filter(Boolean).every(w => hay.includes(w));
+}
+function hl(text){
+  if(!query || !text) return text;
+  const words = query.split(/\s+/).filter(Boolean)
+    .map(w => w.replace(/[.*+?^${}()|[\]\\]/g, "\\let activeFx = null, activeSc = null;")).sort((a,b)=>b.length-a.length);
+  if(!words.length) return text;
+  return text.replace(new RegExp("(" + words.join("|") + ")", "gi"), "<mark>$1</mark>");
+}
+
+function buildChips(el, items, labelFn, onPick){
+  const all = document.createElement("button");
+  all.className = "chip"; all.textContent = "全部";
+  all.setAttribute("aria-pressed","true");
+  el.appendChild(all);
+  items.forEach(v=>{
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = labelFn(v);
+    b.setAttribute("aria-pressed","false");
+    b.dataset.val = v;
+    el.appendChild(b);
+  });
+  el.addEventListener("click", e=>{
+    const b = e.target.closest(".chip");
+    if(!b) return;
+    [...el.children].forEach(c=>c.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true");
+    onPick(b.dataset.val || null);
+    render();
+  });
+}
+
+function render(){
+  const list = DATA.filter(d=>{
+    if(activeFx && !d.fx.includes(activeFx)) return false;
+    if(activeSc && !d.sc.includes(activeSc)) return false;
+    if(!matchQuery(d)) return false;
+    return true;
+  });
+
+  document.getElementById("count").textContent =
+    `顯示 ${list.length} 項，共 ${DATA.length} 項`;
+
+  const box = document.getElementById("cards");
+  if(!list.length){
+    box.innerHTML = '<p class="empty">' + (query ? '找不到「' + query + '」。換個說法，或清除搜尋再用上面的分類找。' : '這個組合下沒有對應食材，換一個條件試試。') + '</p>';
+    return;
+  }
+  box.innerHTML = list.map(d=>`
+    <article class="card" data-temp="${d.temp}">
+      <div class="card-top">
+        <span class="ic">${PHOTO[d.zh] ? `<img src="${IMG_DIR}${PHOTO[d.zh]}${IMG_EXT}" alt="${d.zh}" width="54" height="54" loading="lazy" decoding="async" onerror="this.parentNode.removeChild(this)" onload="this.parentNode.classList.add('has-photo')">` : ""}<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#g-${ICON[d.zh]||"powder"}"/></svg></span>
+        <div class="hd">
+          <h3 class="zh">${hl(d.zh)}</h3>
+          <div class="sk">${hl(d.sk)}</div>
+        </div>
+        <span class="temp">${d.temp}性</span>
+      </div>
+      <div class="row">
+        <div class="rk">效果與場景</div>
+        <div class="rv">${hl(d.use)}</div>
+      </div>
+      <div class="row">
+        <div class="rk">食用方式</div>
+        <div class="rv">${hl(d.how)}</div>
+      </div>
+      ${d.warn ? `<div class="warn">注意：${d.warn}</div>` : ""}
+    </article>
+  `).join("");
+}
+
+buildChips(document.getElementById("fx"), FX, v=>v, v=>{activeFx=v});
+buildChips(document.getElementById("fs"), SC, v=>SC_LABEL[v], v=>{activeSc=v});
+
+const qEl = document.getElementById("q"), qClear = document.getElementById("qclear");
+let qTimer;
+qEl.addEventListener("input", ()=>{
+  clearTimeout(qTimer);
+  qTimer = setTimeout(()=>{
+    query = norm(qEl.value.trim());
+    qClear.classList.toggle("on", !!qEl.value);
+    render();
+  }, 140);
+});
+qEl.addEventListener("keydown", e=>{ if(e.key === "Escape"){ qEl.value=""; query=""; qClear.classList.remove("on"); render(); } });
+qClear.addEventListener("click", ()=>{ qEl.value=""; query=""; qClear.classList.remove("on"); qEl.focus(); render(); });
+
+render();
+</script>
+</body>
+</html>

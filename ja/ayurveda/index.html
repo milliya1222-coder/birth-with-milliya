@@ -697,6 +697,44 @@
   }
   .testimonial-stat strong { color: var(--primary-dark); font-size: 17px; }
 
+  .quiz-banner {
+    background: linear-gradient(135deg, #F4ECE0 0%, #FBF6F0 100%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 52px 32px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    box-shadow: 0 20px 48px -28px rgba(139, 69, 48, 0.35);
+  }
+  .quiz-dots { display: flex; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .quiz-dots span { width: 14px; height: 14px; border-radius: 50%; }
+  .quiz-banner h2 { font-size: 28px; color: var(--primary-dark); margin-bottom: 14px; }
+  .quiz-banner p {
+    color: var(--text-soft);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto 30px;
+  }
+  .quiz-lang-note {
+    font-size: 13.5px;
+    color: var(--text-soft);
+    max-width: 620px;
+    margin: 26px auto 0;
+    text-align: center;
+    opacity: .9;
+  }
+  .quiz-meta {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 20px;
+    letter-spacing: 1px;
+  }
+  @media (max-width: 600px) {
+    .quiz-banner { padding: 40px 22px; }
+    .quiz-banner h2 { font-size: 23px; }
+  }
+
   /* 創始期回饋數據 —— 手記感，刻意不用圖表 */
   .voices-data {
     max-width: 620px; margin: 46px auto 0; padding: 30px 30px 26px;
@@ -1120,6 +1158,61 @@
         <div class="flow-content">静養</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- RESOURCES CTA -->
+<section>
+  <div class="container">
+    <div class="quiz-banner">
+      <div class="quiz-dots">
+        <span style="background:#8E7CC3;" title="Ākāśa"></span>
+        <span style="background:#7FA8C9;" title="Vāyu"></span>
+        <span style="background:#E08A5B;" title="Agni"></span>
+        <span style="background:#4FA69A;" title="Jala"></span>
+        <span style="background:#C29A63;" title="Pṛthvī"></span>
+      </div>
+      <div class="section-eyebrow">Explore · アーユルヴェーダを知る</div>
+      <h2>あなたは、五つの元素でできています</h2>
+      <p>空・風・火・水・地——アーユルヴェーダでは、宇宙をかたちづくるものが、そのままあなたをかたちづくっていると考えます。五大元素から、あなた自身の体質へ、そして心の三つの性質へ。いまのあなたが何から織られているのかを見にいく、やさしい旅です。</p>
+      <a href="/ayurveda/understand/" class="btn">元素の旅をひらく →</a>
+      <div class="quiz-meta">🪷 インタラクティブな旅 · 五大元素 × 三つのドーシャ × 三つのグナ</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="quiz-banner">
+      <div class="quiz-dots">
+        <span style="background:#C89B3C;" title="Turmeric"></span>
+        <span style="background:#B8654A;" title="Cumin"></span>
+        <span style="background:#7FA88B;" title="Fennel"></span>
+      </div>
+      <div class="section-eyebrow">Kitchen · 台所からはじめる</div>
+      <h2>巡りは、日々の食べものからも整えられます</h2>
+      <p>施術のほかに、毎日なにを食べるかも同じくらい影響します。これはそのまま引ける対照表です——49 種のスパイス・ハーブ・台湾の身近な食材。まず症状から引き、食材を見つけ、使い方と分量を確かめる。張り、むくみ、ほてり、眠りの浅さ、それぞれに載っています。</p>
+      <a href="/ayurveda/ingredients/" class="btn">食材の対照表をひらく →</a>
+      <div class="quiz-meta">🌿 49 種の食材 · 症状や働きから絞り込み · 検索できます</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="quiz-banner">
+      <div class="quiz-dots">
+        <span style="background:#8E9BC4;" title="Vāta"></span>
+        <span style="background:#D9774E;" title="Pitta"></span>
+        <span style="background:#7FA88B;" title="Kapha"></span>
+      </div>
+      <div class="section-eyebrow">Free Quiz · 無料診断</div>
+      <h2>いま、あなたのなかで動いているのはどの力ですか</h2>
+      <p>ヴァータ（風）、ピッタ（火）、カパ（水と土）——アーユルヴェーダでは、この三つの力が誰のなかにも同時に住んでいると考えます。身近な 12 の質問に、約 3 分。いまのあなたの からだ・こころ・たましい がそれぞれどちらへ傾いているかを映し出し、この季節に自分のためにできる小さな練習をひとつ、お渡しします。</p>
+      <a href="/ayurveda/quiz/" class="btn">無料診断をはじめる →</a>
+      <div class="quiz-meta">🌿 12 の質問 · ⏱ 約 3 分 · 🪞 心・からだ・たましいの三層</div>
+    </div>
+    <p class="quiz-lang-note">この三つのページは、いまのところ中国語のみのご用意です。内容を日本語で一緒に読み解いてほしい方は、ご連絡くださるときにひとことお知らせください。</p>
   </div>
 </section>
 

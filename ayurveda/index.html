@@ -734,6 +734,56 @@
   }
   .testimonial-stat strong { color: var(--primary-dark); font-size: 17px; }
 
+  /* 創始期回饋數據 —— 手記感，刻意不用圖表 */
+  .voices-data {
+    max-width: 620px;
+    margin: 46px auto 0;
+    padding: 30px 30px 26px;
+    background: #FFFDFA;
+    border: 1px solid #E3D2BC;
+    border-radius: 10px;
+    box-shadow: 0 8px 22px -12px rgba(139, 69, 48, 0.16);
+  }
+  .voices-data-title {
+    font-family: 'Noto Serif TC', 'Noto Serif JP', serif;
+    font-size: 15px;
+    color: var(--primary-dark);
+    text-align: center;
+    margin: 0 0 22px;
+    letter-spacing: .04em;
+    line-height: 1.9;
+  }
+  .voices-data-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--text-dark);
+    padding: 10px 0;
+  }
+  .voices-data-row + .voices-data-row { border-top: 1px dotted #E7D8C4; }
+  .voices-data-row .label { flex: 0 1 auto; }
+  .voices-data-row .dots {
+    flex: 1 1 auto;
+    min-width: 16px;
+    border-bottom: 1px dotted #D9C4AA;
+    transform: translateY(-4px);
+  }
+  .voices-data-row .num {
+    flex: 0 0 auto;
+    font-family: 'Noto Serif TC', 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--primary-dark);
+  }
+  .voices-data-note {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    line-height: 1.9;
+    margin: 18px 0 0;
+    text-align: center;
+  }
+
   /* 回主站 */
   .site-back{position:fixed;top:18px;left:18px;z-index:999;display:flex;align-items:center;gap:9px;
     background:rgba(250,246,240,.92);backdrop-filter:blur(8px);border:1px solid #D9C9B5;border-radius:999px;
@@ -758,6 +808,31 @@
   .cta-flow strong{color:#fff;font-weight:500;}
   @media (max-width:560px){ .cta-flow{font-size:14.5px;padding:18px 20px;} }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "阿育吠陀產後按摩 · 女性身心調養",
+  "serviceType": "阿育吠陀產後調養療程",
+  "url": "https://birthwithmilliya.com/ayurveda/",
+  "areaServed": [
+    { "@type": "Place", "name": "台北・北投" },
+    { "@type": "Place", "name": "逗子・神奈川" }
+  ],
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Birth with Milliya 欣妙在陪妳",
+    "url": "https://birthwithmilliya.com/"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "9.25",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": "20"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -1225,9 +1300,24 @@
         <p class="testimonial-text">可以感受到被溫油包覆、被守護的力量。</p>
         <footer class="testimonial-author">— <strong>Ponpon</strong> · 創始客戶</footer>
       </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">欣妙給我一種非常安全、可以全然交付的感覺。女人們都應該被好好呵護。</p>
+        <footer class="testimonial-author">— <strong>朱芸</strong> · 創始客戶</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">身體很放鬆，思緒也變清晰了。明明很累，居然還可以繼續工作——可見能量真的有補到。</p>
+        <footer class="testimonial-author">— <strong>MAYO</strong> · 創始客戶</footer>
+      </blockquote>
     </div>
 
-    <p class="testimonial-stat">創始期共 16 份回饋（台北 14・日本 2）　平均滿意度 <strong>9.2 / 10</strong>　平均推薦意願 <strong>9.2 / 10</strong></p>
+    <div class="voices-data">
+      <p class="voices-data-title">創始期 20 位女性的回饋裡，<br>反覆出現的是這幾件事</p>
+      <div class="voices-data-row"><span class="label">情緒比平常穩定、平靜</span><span class="dots"></span><span class="num">17 / 20 位</span></div>
+      <div class="voices-data-row"><span class="label">睡得比平常深沉</span><span class="dots"></span><span class="num">11 / 15 位</span></div>
+      <div class="voices-data-row"><span class="label">平均滿意度</span><span class="dots"></span><span class="num">9.25 / 10</span></div>
+      <div class="voices-data-row"><span class="label">平均推薦意願</span><span class="dots"></span><span class="num">9.2 / 10</span></div>
+      <p class="voices-data-note">睡眠一項的分母是 15 位——另外 5 位填寫回饋時還沒到睡覺時間，因此不計入。<br>資料來自創始期 20 份回饋表（台北 16・日本逗子 4），2026 年 5 月至 9 月。</p>
+    </div>
   </div>
 </section>
 

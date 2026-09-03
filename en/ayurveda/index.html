@@ -29,7 +29,8 @@
   "url":"https://birthwithmilliya.com/en/ayurveda/",
   "areaServed":[{"@type":"Place","name":"Taipei, Taiwan"},{"@type":"Place","name":"Zushi, Kanagawa, Japan"}],
   "availableLanguage":["en","zh-Hant","ja"],
-  "provider":{"@type":"Person","name":"Milliya","jobTitle":"Birth doula and women's body-mind-spirit integration coach","url":"https://birthwithmilliya.com/en/"}
+  "provider":{"@type":"Person","name":"Milliya","jobTitle":"Birth doula and women's body-mind-spirit integration coach","url":"https://birthwithmilliya.com/en/"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"9.25","bestRating":"10","worstRating":"1","ratingCount":"20"}
 }
 </script>
 <script type="application/ld+json">
@@ -758,6 +759,36 @@
   }
   .testimonial-stat strong { color: var(--primary-dark); font-size: 17px; }
 
+  /* Founding-period feedback figures — kept as a hand-noted list, deliberately not a chart */
+  .voices-data {
+    max-width: 620px; margin: 46px auto 0; padding: 30px 30px 26px;
+    background: #FFFDFA; border: 1px solid #E3D2BC; border-radius: 10px;
+    box-shadow: 0 8px 22px -12px rgba(139, 69, 48, 0.16);
+  }
+  .voices-data-title {
+    font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+    font-size: 19px; color: var(--primary-dark); text-align: center;
+    margin: 0 0 22px; letter-spacing: .02em; line-height: 1.65;
+  }
+  .voices-data-row {
+    display: flex; align-items: baseline; gap: 10px;
+    font-size: 15px; color: var(--text-dark); padding: 10px 0;
+  }
+  .voices-data-row + .voices-data-row { border-top: 1px dotted #E7D8C4; }
+  .voices-data-row .label { flex: 0 1 auto; }
+  .voices-data-row .dots {
+    flex: 1 1 auto; min-width: 16px;
+    border-bottom: 1px dotted #D9C4AA; transform: translateY(-4px);
+  }
+  .voices-data-row .num {
+    flex: 0 0 auto; font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 600; color: var(--primary-dark);
+  }
+  .voices-data-note {
+    font-size: 12.5px; color: var(--text-soft); line-height: 1.9;
+    margin: 18px 0 0; text-align: center;
+  }
+
   /* 回主站 */
   .site-back{position:fixed;top:18px;left:18px;z-index:999;display:flex;align-items:center;gap:9px;
     background:rgba(250,246,240,.92);backdrop-filter:blur(8px);border:1px solid #D9C9B5;border-radius:999px;
@@ -1241,7 +1272,14 @@
       </blockquote>
     </div>
 
-    <p class="testimonial-stat">16 pieces of founding-client feedback (14 Taipei · 2 Zushi)　Average satisfaction <strong>9.2 / 10</strong>　Average likelihood to recommend <strong>9.2 / 10</strong></p>
+    <div class="voices-data">
+      <p class="voices-data-title">What came up again and again,<br>across twenty founding clients</p>
+      <div class="voices-data-row"><span class="label">Calmer, steadier in themselves than usual</span><span class="dots"></span><span class="num">17 / 20</span></div>
+      <div class="voices-data-row"><span class="label">Slept more deeply than usual</span><span class="dots"></span><span class="num">11 / 15</span></div>
+      <div class="voices-data-row"><span class="label">Average satisfaction</span><span class="dots"></span><span class="num">9.25 / 10</span></div>
+      <div class="voices-data-row"><span class="label">Average likelihood to recommend</span><span class="dots"></span><span class="num">9.2 / 10</span></div>
+      <p class="voices-data-note">The denominator for sleep is fifteen — the other five had not yet been to bed when they filled the form in.<br>From twenty founding-client feedback forms (16 Taipei · 4 Zushi), May to September 2026.</p>
+    </div>
   </div>
 </section>
 

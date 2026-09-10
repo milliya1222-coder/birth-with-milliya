@@ -141,6 +141,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://birthwithmilliya.com/ja/ayurveda/quiz/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://birthwithmilliya.com/ayurveda/understand/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

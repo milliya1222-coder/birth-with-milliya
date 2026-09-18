@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>阿育吠陀妙日課 · Birth with Milliya</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF6F0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<!--
+  客戶試用版（2026-09-18 上線）
+  - 紀錄只存在客戶自己的瀏覽器（localStorage），不送到任何伺服器，Milliya 看不到。
+  - 體質說明、訊號、「今天怎麼調」的文字取自 ayurveda/quiz/ 測驗（Milliya 自己寫的內容），沒有使用甘乃夏講義。
+  - 標「待 Milliya 撰寫」的地方是留給她的內容位置：搜尋 TODO_MILLIYA。
+  - noindex、未進 sitemap；入口只有測驗結果頁與邀請信。
+-->
+<style>
+  :root{
+    --cream:#FBF6F0; --paper:#FFFFFF; --mist:#F4ECE3;
+    --ink:#4A3B33; --ink-soft:#7A6A60; --ink-faint:#A7968A; --line:#E7D8C9;
+    --brand:#E29B86; --brand-deep:#C97D66; --brand-bg:#FBEAE3;
+    --vata:#6F7FB0; --vata-bg:#EBEEF7;
+    --pitta:#C56A43; --pitta-bg:#FBE7DC;
+    --kapha:#5E8C6B; --kapha-bg:#E6F0E8;
+    --todo:#B08A2E; --todo-bg:#FBF3DC;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    font-weight:400;font-size:15.5px;line-height:1.75;letter-spacing:.012em}
+  .serif{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif}
+  button,textarea{font:inherit;color:inherit}
+  button{cursor:pointer}
+  :focus-visible{outline:2px solid var(--brand-deep);outline-offset:2px;border-radius:8px}
+  .app{max-width:540px;margin:0 auto;padding:env(safe-area-inset-top,0px) 18px calc(96px + env(safe-area-inset-bottom,0px))}
+
+  header.top{padding:22px 0 12px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .brand{margin:0;font-size:1.25rem;font-weight:600;letter-spacing:.14em}
+  .brand small{display:block;font-family:"Noto Sans TC",sans-serif;font-size:.68rem;letter-spacing:.22em;color:var(--ink-faint);font-weight:400;margin-top:2px}
+  .me{font-size:.74rem;color:var(--ink-soft);text-align:right;line-height:1.5;padding-top:4px}
+  .me b{font-weight:500}
+  .banner{background:var(--todo-bg);color:var(--ink);border-radius:12px;padding:10px 14px;font-size:.84rem;margin:0 0 14px}
+
+  .datenav{display:flex;align-items:center;justify-content:space-between;margin:6px 0 16px}
+  .datenav h2{margin:0;font-size:1.5rem;font-weight:600;letter-spacing:.06em}
+  .datenav h2 span{font-family:"Noto Sans TC",sans-serif;font-size:.84rem;font-weight:400;color:var(--ink-faint);margin-left:8px}
+  .iconbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:1.1rem;color:var(--ink-soft)}
+  .iconbtn:disabled{opacity:.35;cursor:default}
+
+  section.block{margin:0 0 26px}
+  .lbl{font-size:.72rem;letter-spacing:.2em;color:var(--ink-faint);margin:0 0 10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .lbl em{font-style:normal;letter-spacing:.04em}
+
+  .habits{display:flex;flex-direction:column;gap:8px}
+  .habit{display:grid;grid-template-columns:26px 1fr;align-items:center;gap:12px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;transition:background .15s}
+  .habit .box{width:24px;height:24px;border-radius:7px;border:1.5px solid var(--ink-faint);display:grid;place-items:center;font-size:.85rem;color:transparent}
+  .habit[aria-pressed="true"]{background:var(--brand-bg);border-color:transparent}
+  .habit[aria-pressed="true"] .box{background:var(--brand-deep);border-color:var(--brand-deep);color:#fff}
+  .habit .must{display:block;font-size:.66rem;letter-spacing:.12em;color:var(--brand-deep);line-height:1.3}
+  .more{background:none;border:none;color:var(--ink-faint);font-size:.82rem;padding:6px 2px}
+
+  .group{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
+  .group h3{margin:0 0 10px;font-size:.92rem;font-weight:500;display:flex;align-items:center;gap:8px}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 13px;font-size:.86rem;color:var(--ink-soft);transition:all .15s}
+  .g-v .chip[aria-pressed="true"]{background:var(--vata-bg);border-color:var(--vata);color:var(--vata);font-weight:500}
+  .g-p .chip[aria-pressed="true"]{background:var(--pitta-bg);border-color:var(--pitta);color:var(--pitta);font-weight:500}
+  .g-k .chip[aria-pressed="true"]{background:var(--kapha-bg);border-color:var(--kapha);color:var(--kapha);font-weight:500}
+  .g-n .chip[aria-pressed="true"]{background:var(--brand-bg);border-color:var(--brand);color:var(--ink);font-weight:500}
+  .stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .stepper button{border:none;background:transparent;width:38px;height:34px;font-size:1.05rem;color:var(--ink-soft)}
+  .stepper output{min-width:70px;text-align:center;font-size:.88rem;font-variant-numeric:tabular-nums}
+  textarea{width:100%;min-height:76px;resize:vertical;border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:12px 14px;line-height:1.6}
+
+  .advice{display:flex;flex-direction:column;gap:10px}
+  .adv{border-radius:16px;padding:16px;background:var(--paper);border:1px solid var(--line)}
+  .adv h4{margin:0 0 8px;font-size:1rem;font-weight:600;letter-spacing:.04em}
+  .adv dl{margin:0}
+  .adv dt{font-weight:500;font-size:.92rem;margin-top:6px}
+  .adv dd{margin:0 0 4px;font-size:.87rem;color:var(--ink-soft)}
+  .adv p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+  .adv.v{background:var(--vata-bg);border-color:transparent}.adv.v h4{color:var(--vata)}
+  .adv.p{background:var(--pitta-bg);border-color:transparent}.adv.p h4{color:var(--pitta)}
+  .adv.k{background:var(--kapha-bg);border-color:transparent}.adv.k h4{color:var(--kapha)}
+  .adv.calm{background:var(--mist);border-color:transparent}
+  .todo{display:inline-block;font-size:.68rem;letter-spacing:.06em;color:var(--todo);background:var(--todo-bg);border:1px dashed var(--todo);border-radius:6px;padding:0 6px;margin-left:4px;vertical-align:1px}
+  .adv.slot{background:var(--todo-bg);border:1px dashed var(--todo)}
+  .adv.slot h4{color:var(--todo)}
+
+  .strip{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin-bottom:6px}
+  .cell{aspect-ratio:1;border-radius:5px;background:var(--mist)}
+  .cell.l1{background:#F2CFC2}.cell.l2{background:#E8AE9A}.cell.l3{background:var(--brand-deep)}
+  .strip-lbl{display:flex;justify-content:space-between;font-size:.68rem;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+  .sum{border-radius:14px;padding:12px 6px;text-align:center}
+  .sum b{display:block;font-size:1.4rem;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
+  .sum span{font-size:.72rem;letter-spacing:.06em}
+  .sum.v{background:var(--vata-bg);color:var(--vata)}.sum.p{background:var(--pitta-bg);color:var(--pitta)}.sum.k{background:var(--kapha-bg);color:var(--kapha)}
+  h3.sec{font-size:1.05rem;font-weight:600;margin:24px 0 10px;letter-spacing:.04em}
+  .days{display:flex;flex-direction:column;gap:8px}
+  .day{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 14px;text-align:left;width:100%}
+  .day .d{font-size:.86rem;line-height:1.3;font-variant-numeric:tabular-nums}
+  .day .d small{display:block;color:var(--ink-faint);font-size:.7rem}
+  .pills{display:flex;flex-wrap:wrap;gap:4px}
+  .pill{font-size:.7rem;border-radius:999px;padding:0 8px}
+  .pill.v{background:var(--vata-bg);color:var(--vata)}.pill.p{background:var(--pitta-bg);color:var(--pitta)}.pill.k{background:var(--kapha-bg);color:var(--kapha)}
+  .day .hb{font-size:.78rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .day .note{grid-column:1/-1;font-size:.8rem;color:var(--ink-faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .empty{color:var(--ink-faint);font-size:.88rem;text-align:center;padding:20px 0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:999px;background:var(--brand-deep);color:#fff;padding:12px 22px;font-size:.95rem;font-weight:500;letter-spacing:.06em}
+  .share{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:10px}
+  .share p{margin:0 0 12px;font-size:.88rem;color:var(--ink-soft)}
+  .share .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .toast{font-size:.82rem;color:var(--kapha)}
+
+  .pick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .pick button{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 6px;font-size:.95rem;line-height:1.35}
+  .pick button small{display:block;font-size:.7rem;color:var(--ink-faint)}
+  .pick button[aria-pressed="true"]{border-color:var(--brand-deep);background:var(--brand-bg)}
+  .stages{display:flex;flex-direction:column;gap:8px}
+  .stages button{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:12px 14px}
+  .stages button[aria-pressed="true"]{border-color:var(--brand-deep);background:var(--brand-bg)}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .card h4{margin:0 0 4px;font-size:1.15rem;font-weight:600}
+  .card .sub{font-size:.84rem;color:var(--ink-faint);margin:0 0 10px}
+  .card p{margin:0 0 10px;font-size:.92rem}
+  .card.v{border-top:3px solid var(--vata)}.card.p{border-top:3px solid var(--pitta)}.card.k{border-top:3px solid var(--kapha)}
+  .tip{font-size:.84rem;color:var(--ink-soft);margin:10px 0 0}
+  a{color:var(--brand-deep)}
+
+  .welcome{position:fixed;inset:0;background:rgba(74,59,51,.35);display:grid;place-items:end center;z-index:20;padding:16px}
+  .welcome .sheet{background:var(--cream);border-radius:22px;max-width:520px;width:100%;padding:24px 22px calc(22px + env(safe-area-inset-bottom,0px));max-height:90vh;overflow:auto}
+  .welcome h2{margin:0 0 10px;font-size:1.3rem;font-weight:600;letter-spacing:.06em}
+  .welcome p{margin:0 0 12px;font-size:.92rem}
+  .welcome ul{margin:0 0 16px;padding-left:1.2em;font-size:.9rem;color:var(--ink-soft)}
+
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(251,246,240,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));z-index:10}
+  nav.tabs .in{max-width:540px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+  nav.tabs button{background:none;border:none;padding:8px 0 6px;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--ink-faint);font-size:.72rem;letter-spacing:.08em}
+  nav.tabs .ic{font-family:"Noto Serif TC",serif;font-size:1.15rem;line-height:1}
+  nav.tabs button[aria-current="page"]{color:var(--ink)}
+  nav.tabs button[aria-current="page"] .ic{color:var(--brand-deep)}
+  .foot{font-size:.72rem;color:var(--ink-faint);text-align:center;margin:28px 0 0;line-height:1.7}
+  [hidden]{display:none!important}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1 class="brand serif">阿育吠陀妙日課<small>BIRTH WITH MILLIYA</small></h1>
+    <div class="me" id="me"></div>
+  </header>
+  <div class="banner" id="nostore" hidden>這個瀏覽器目前無法保存紀錄（可能是無痕模式）。請改用一般模式開啟，紀錄才不會消失。</div>
+  <main id="view"></main>
+  <p class="foot">紀錄只存在妳這支手機的瀏覽器裡，Milliya 和任何人都看不到。<br>這是生活陪伴與自我覺察的工具，不是醫療診斷；身體不適請以妳的醫療團隊為準。</p>
+</div>
+
+<nav class="tabs" aria-label="主選單">
+  <div class="in">
+    <button data-tab="today" aria-current="page"><span class="ic">今</span>今天</button>
+    <button data-tab="history"><span class="ic">錄</span>紀錄</button>
+    <button data-tab="me"><span class="ic">我</span>認識我</button>
+  </div>
+</nav>
+
+<div class="welcome" id="welcome" hidden>
+  <div class="sheet" role="dialog" aria-labelledby="wTitle">
+    <h2 class="serif" id="wTitle">歡迎妳來 🌿</h2>
+    <p>這是一個每天花一分鐘、看見自己身體的小工具。</p>
+    <ul>
+      <li>勾一勾今天做了哪些照顧自己的小事</li>
+      <li>點一點身體今天的訊號，看看今天可以怎麼調</li>
+      <li>一週後回頭看，妳會開始認出自己的節奏</li>
+    </ul>
+    <p><b>妳的紀錄只存在這支手機裡。</b>沒有帳號、不會上傳，Milliya 也看不到。想跟我分享時，「紀錄」頁有一個按鈕，由妳自己決定傳不傳。</p>
+    <p style="color:var(--ink-soft);font-size:.84rem">換手機或清除瀏覽器資料，紀錄就會消失。建議把這一頁加到手機主畫面。</p>
+    <button class="btn" id="wGo">先認識我的體質 →</button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ───────── 內容（Milliya 可以直接改這一段）─────────
+   體質說明、訊號、調法：取自 ayurveda/quiz/ 測驗文字（Milliya 原創）
+   TODO_MILLIYA：日課清單、階段提醒、平衡日的一句話，請她確認或重寫 */
+
+const DOSHA={
+  v:{name:"風 Vāta（瓦塔）",short:"風",sk:"Vāta",title:"風型・流動的創造者",
+     sub:"由「空＋風」組成：輕盈、靈動、停不下來",
+     body:"妳的能量像風：來得快、想法多、充滿創造力與直覺。但風也容易「吹過頭」——作息一亂，就會焦慮、淺眠、停不下來，身體變得乾、冷、沒有著地感。照顧自己的關鍵字是溫暖、規律、扎根。",
+     key:"溫暖、規律、扎根",
+     signs:["淺眠多夢","莫名焦慮","脹氣便祕","手腳冰冷","停不下來","皮膚乾燥"],
+     practice:[
+       ["每天找回一個「固定的錨」","哪怕只是固定時間吃早餐、固定時間上床，一個小錨就能讓飄著的妳安定下來。"],
+       ["用溫熱、滋潤對抗乾與冷","溫開水、燉煮的食物、一點好油。睡前用溫油按摩腳底（abhyanga，阿揚伽自我按摩）。"],
+       ["每天 5 分鐘「腳踏實地」","赤腳踩地、緩慢的腹式呼吸、把手放在小腹上，把注意力帶回身體。"]]},
+  p:{name:"火 Pitta（皮塔）",short:"火",sk:"Pitta",title:"火型・專注的轉化者",
+     sub:"由「火＋水」組成：明亮、聚焦、燃燒著",
+     body:"妳的能量像火：目標清楚、行動力強、條理分明。但火也容易「燒過旺」——行程排太滿、對自己太苛刻，就會易怒、上火、胃酸，還有那個永遠覺得「我還不夠好」的聲音。照顧自己的關鍵字是清涼、留白、自我慈悲。",
+     key:"清涼、留白、自我慈悲",
+     signs:["易怒急躁","胃酸／燒灼感","皮膚泛紅","對自己很嚴","睡前還在想事情"],
+     practice:[
+       ["在行程裡刻意「留白」","每天留一段不排任何產出的空白時間，哪怕 20 分鐘，那是在替過旺的火降溫。"],
+       ["選擇清涼，避開火上加油","多選清涼的食物（瓜類、薄荷、椰子水），少辣、少酒、少咖啡、少曬大太陽。"],
+       ["練習對自己說「這樣就夠了」","睡前回想三件「我今天已經做得很好」的小事。"]]},
+  k:{name:"水土 Kapha（卡法）",short:"水土",sk:"Kapha",title:"水土型・沉穩的滋養者",
+     sub:"由「土＋水」組成：穩定、溫厚、承載著",
+     body:"妳的能量像大地：穩定、溫柔、有耐力。但土也容易「積太重」——太久沒有變化、動得太少，穩定就會變成停滯：倦怠、嗜睡、提不起勁、放不下。照顧自己的關鍵字是流動、溫熱、刺激。",
+     key:"流動、溫熱、刺激",
+     signs:["倦怠嗜睡","提不起勁","容易水腫","身體沉重","情緒黏著"],
+     practice:[
+       ["用「動」打破停滯","早晨快走、流動一點的瑜伽、跳一首歌，讓身體熱起來。"],
+       ["早起，迎接一天的第一道光","試著比平常早 30 分鐘起床，讓晨光替妳啟動。"],
+       ["主動換一點新鮮","換條散步路線、學一件新事、清掉一個放很久的舊物。"]]}
+};
+const ORDER=["v","p","k"];
+
+/* TODO_MILLIYA：每個階段一段話（note 換成文字即可顯示） */
+const STAGES={
+  pre:{label:"備孕中",note:"TODO_MILLIYA"},
+  preg:{label:"懷孕中",note:"TODO_MILLIYA"},
+  post:{label:"產後・月子期",note:"TODO_MILLIYA"},
+  mom:{label:"育兒中",note:"TODO_MILLIYA"},
+  none:{label:"只是想更認識自己",note:""}
+};
+
+/* TODO_MILLIYA：日課清單請確認。孕期、產後是否有要拿掉或加上的？ */
+const HABITS=[
+  {id:"water",t:"起床先喝一杯溫水",must:1},
+  {id:"bowel",t:"固定時間坐馬桶，不用力",must:1},
+  {id:"breath",t:"5 分鐘呼吸，手放在小腹上",must:1},
+  {id:"tongue",t:"刮舌頭，看一眼舌苔"},
+  {id:"oil",t:"溫油按摩腳底（或頭皮）"},
+  {id:"move",t:"動一動，身體微微熱起來就好"},
+  {id:"meal",t:"溫熱的早餐，坐著慢慢吃"},
+  {id:"rest",t:"留一段不做事的空白"},
+  {id:"sleep",t:"昨晚 10 點半前躺下"}
+];
+const SLEEP=["睡得好","夢多","淺眠易醒","很難起床"];
+const STOOL=["順暢","硬／乾","稀／急","沒排"];
+const TONGUE=["乾淨","薄薄一層","很厚"];
+
+/* ───────── helpers ───────── */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const ymd=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parse=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const WK="日一二三四五六";
+const todayStr=()=>ymd(new Date());
+const addDays=(s,n)=>{const d=parse(s);d.setDate(d.getDate()+n);return ymd(d)};
+const md=s=>{const d=parse(s);return (d.getMonth()+1)+"/"+d.getDate()};
+
+/* ───────── storage（只在這台裝置）───────── */
+const KEY="bwm-ayurveda-daily-v1";
+let canStore=true;
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||"null")||{}}catch(e){canStore=false;return {}}}
+let saveT=null;
+function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S.data))}catch(e){canStore=false;$("#nostore").hidden=false}},400)}
+
+const S={tab:"today",date:todayStr(),showAll:false,data:Object.assign({profile:{doshas:[],stage:""},days:{},welcomed:false},load())};
+S.data.profile=S.data.profile||{doshas:[],stage:""};
+S.data.days=S.data.days||{};
+/* 做過測驗的人：體質與階段自動帶入（同一個網站、同一支手機的紀錄） */
+let fromQuiz=false;
+if(!S.data.profile.doshas.length&&!S.data.profile.stage){try{const q=JSON.parse(localStorage.getItem("bwm-ayurveda-quiz")||"null");
+  if(q&&Array.isArray(q.doshas)){S.data.profile.doshas=q.doshas.filter(k=>["v","p","k"].includes(k)).slice(0,2);if(q.stage&&q.stage!=="none"&&STAGES[q.stage])S.data.profile.stage=q.stage;fromQuiz=S.data.profile.doshas.length>0}}catch(e){}}
+function day(d){return S.data.days[d]||(S.data.days[d]={habits:{},signals:{v:[],p:[],k:[]},sleep:"",stool:"",tongue:"",flow:0,note:""})}
+function isEmpty(x){return !x||(!Object.keys(x.habits||{}).length&&!ORDER.some(k=>(x.signals[k]||[]).length)&&!x.sleep&&!x.stool&&!x.tongue&&!x.flow&&!x.note)}
+function scores(x){const s={v:0,p:0,k:0};ORDER.forEach(k=>s[k]=(x.signals[k]||[]).length);
+  if(x.sleep==="夢多"||x.sleep==="淺眠易醒")s.v++;if(x.sleep==="很難起床")s.k++;
+  if(x.stool==="硬／乾")s.v++;if(x.stool==="稀／急")s.p++;
+  return s}
+const hc=x=>HABITS.filter(h=>x.habits[h.id]).length;
+const mc=x=>HABITS.filter(h=>h.must&&x.habits[h.id]).length;
+const flowLabel=()=>S.data.profile.stage==="post"?"惡露":"月經";
+
+/* ───────── views ───────── */
+function chipGroup(key,cls,title,dot,opts,sel,multi){
+  return '<div class="group '+cls+'"><h3>'+(dot?'<span class="dot" style="background:var(--'+dot+')"></span>':'')+esc(title)+'</h3><div class="chips">'+
+    opts.map(o=>{const on=multi?sel.includes(o):sel===o;return '<button class="chip" data-k="'+key+'" data-v="'+esc(o)+'" aria-pressed="'+on+'">'+esc(o)+'</button>'}).join("")+'</div></div>';
+}
+function advice(x){
+  const s=scores(x),hot=ORDER.filter(k=>s[k]>0).sort((a,b)=>s[b]-s[a]);
+  let h=hot.map(k=>{const D=DOSHA[k];
+    return '<div class="adv '+k+'"><h4>'+D.short+'偏多：'+esc(D.key)+'</h4><dl>'+
+      D.practice.map(p=>'<dt>'+esc(p[0])+'</dt><dd>'+esc(p[1])+'</dd>').join("")+'</dl></div>'}).join("");
+  if(!hot.length)h+='<div class="adv calm"><h4>今天看起來很平衡</h4><p>照常做日課，記一句今天身體的感覺就好。</p></div>';
+  const st=STAGES[S.data.profile.stage];
+  /* 階段提醒：Milliya 寫好 note 才顯示（TODO_MILLIYA 時不顯示） */
+  if(st&&st.note&&st.note!=="TODO_MILLIYA")h+='<div class="adv calm"><h4>'+esc(st.label)+'的妳</h4><p>'+esc(st.note)+'</p></div>';
+  return h;
+}
+function viewToday(){
+  const x=day(S.date),isT=S.date===todayStr(),d=parse(S.date);
+  const list=S.showAll?HABITS:HABITS.filter(h=>h.must);
+  const hideFlow=S.data.profile.stage==="preg";
+  return '<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
+  '<h2 class="serif">'+md(S.date)+'<span>週'+WK[d.getDay()]+(isT?' · 今天':'')+'</span></h2>'+
+  '<button class="iconbtn" data-nav="1" aria-label="後一天"'+(isT?' disabled':'')+'>›</button></div>'+
+  '<section class="block"><div class="lbl">今天照顧自己的小事<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
+  list.map(h=>'<button class="habit" data-habit="'+h.id+'" aria-pressed="'+!!x.habits[h.id]+'"><span class="box" aria-hidden="true">✓</span><span>'+(h.must?'<span class="must">基本三件</span>':'')+esc(h.t)+'</span></button>').join("")+
+  '</div><button class="more" data-more>'+(S.showAll?'只看基本三件 ▴':'還有 '+(HABITS.length-3)+' 件可以做 ▾')+'</button></section>'+
+  '<section class="block"><div class="lbl">身體今天的訊號<em>有感覺的才點</em></div>'+
+  ORDER.map(k=>chipGroup(k,"g-"+k,DOSHA[k].short+"的訊號",{v:"vata",p:"pitta",k:"kapha"}[k],DOSHA[k].signs,x.signals[k]||[],true)).join("")+'</section>'+
+  '<section class="block"><div class="lbl">早上的觀察</div>'+
+  chipGroup("sleep","g-n","睡眠",null,SLEEP,x.sleep,false)+
+  chipGroup("stool","g-n","排便",null,STOOL,x.stool,false)+
+  chipGroup("tongue","g-n","舌苔",null,TONGUE,x.tongue,false)+
+  (hideFlow?'':'<div class="group g-n"><h3>'+flowLabel()+'</h3><div class="stepper"><button data-flow="-1" aria-label="減一天">−</button><output>'+(x.flow?'第 '+x.flow+' 天':'沒有')+'</output><button data-flow="1" aria-label="加一天">＋</button></div></div>')+
+  '</section>'+
+  '<section class="block"><div class="lbl">今天可以怎麼調</div><div class="advice" id="advice">'+advice(x)+'</div></section>'+
+  '<section class="block"><div class="lbl">一句話</div><textarea id="note" placeholder="今天身體的感覺、情緒、吃了什麼特別的……">'+esc(x.note||"")+'</textarea></section>';
+}
+function last14(){const t=todayStr(),a=[];for(let i=13;i>=0;i--)a.push(addDays(t,-i));return a}
+function weekSummary(){
+  const t=todayStr(),days=[];for(let i=6;i>=0;i--)days.push(addDays(t,-i));
+  const got=days.filter(d=>!isEmpty(S.data.days[d]));
+  const tot={v:0,p:0,k:0},cnt={};let hab=0;
+  got.forEach(d=>{const x=S.data.days[d],s=scores(x);ORDER.forEach(k=>{tot[k]+=s[k];(x.signals[k]||[]).forEach(v=>cnt[v]=(cnt[v]||0)+1)});hab+=mc(x)});
+  const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]).slice(0,3);
+  let o="Milliya 妳好，這是我這週（"+md(days[0])+"–"+md(t)+"）的日課摘要：\n";
+  o+="・記錄了 "+got.length+" 天，基本三件共完成 "+hab+" 次\n";
+  o+="・訊號：風 "+tot.v+"｜火 "+tot.p+"｜水土 "+tot.k+"\n";
+  if(top.length)o+="・最常出現："+top.map(v=>v+"（"+cnt[v]+" 天）").join("、")+"\n";
+  const notes=got.map(d=>S.data.days[d].note&&md(d)+" "+S.data.days[d].note.trim()).filter(Boolean);
+  if(notes.length)o+="・我的一句話：\n"+notes.map(n=>"  "+n).join("\n")+"\n";
+  return o;
+}
+function viewHistory(){
+  const L=last14(),tot={v:0,p:0,k:0};
+  L.forEach(d=>{if(S.data.days[d]){const s=scores(S.data.days[d]);ORDER.forEach(k=>tot[k]+=s[k])}});
+  const rec=Object.keys(S.data.days).filter(d=>!isEmpty(S.data.days[d])).sort().reverse();
+  let h='<div class="datenav"><h2 class="serif">最近兩週</h2></div>'+
+  '<div class="summary">'+ORDER.map(k=>'<div class="sum '+k+'"><b>'+tot[k]+'</b><span>'+DOSHA[k].short+'的訊號</span></div>').join("")+'</div>'+
+  '<div class="lbl">基本三件 · 每格一天<em>越深做越多</em></div><div class="strip">'+
+  L.map(d=>{const c=S.data.days[d]?mc(S.data.days[d]):0;return '<div class="cell'+(c?' l'+c:'')+'" title="'+md(d)+' 基本三件 '+c+'/3"></div>'}).join("")+'</div>'+
+  '<div class="strip-lbl"><span>'+md(L[0])+'</span><span>今天</span></div>'+
+  '<h3 class="sec serif">想讓 Milliya 看看這週嗎？</h3><div class="share"><p>按下去會產生一段本週摘要，由妳自己決定要不要傳給我。不按，就只有妳看得到。</p><div class="row"><button class="btn" id="shareBtn">產生本週摘要</button><span class="toast" id="toast" aria-live="polite"></span></div></div>'+
+  '<h3 class="sec serif">每一天</h3>';
+  if(!rec.length)h+='<p class="empty">還沒有紀錄。從「今天」勾下第一格吧。</p>';
+  else h+='<div class="days">'+rec.map(d=>{const x=S.data.days[d],s=scores(x),dd=parse(d);
+    return '<button class="day" data-go="'+d+'"><span class="d">'+md(d)+'<small>週'+WK[dd.getDay()]+'</small></span><span class="pills">'+
+    ORDER.filter(k=>s[k]).map(k=>'<span class="pill '+k+'">'+DOSHA[k].short+' '+s[k]+'</span>').join("")+'</span><span class="hb">'+hc(x)+'/'+HABITS.length+'</span>'+
+    (x.note?'<span class="note">'+esc(x.note)+'</span>':'')+'</button>'}).join("")+'</div>';
+  h+='<p class="tip">每週找一天問問自己：這週哪一股能量比較多？哪一天最舒服，那天做了什麼不一樣？</p>';
+  return h;
+}
+function viewMe(){
+  const P=S.data.profile;
+  let h='<div class="datenav"><h2 class="serif">認識我</h2></div>'+
+  (fromQuiz?'<p class="banner" style="background:var(--brand-bg)">已經幫妳帶入測驗結果。想調整的話，直接點下面的按鈕就好。</p>':'')+
+  '<section class="block"><div class="lbl">我的體質<em>可選一到兩個</em></div>'+
+  '<div class="pick">'+ORDER.map(k=>'<button data-dosha="'+k+'" aria-pressed="'+P.doshas.includes(k)+'">'+DOSHA[k].short+'<small>'+DOSHA[k].sk+'</small></button>').join("")+'</div>'+
+  '<p class="tip">還不知道？先做 3 分鐘的 <a href="/ayurveda/quiz/" target="_blank" rel="noopener">三督夏・身心靈能量測驗</a>，再回來選。</p></section>'+
+  '<section class="block"><div class="lbl">我現在的階段</div><div class="stages">'+
+  Object.keys(STAGES).map(k=>'<button data-stage="'+k+'" aria-pressed="'+(P.stage===k)+'">'+esc(STAGES[k].label)+'</button>').join("")+'</div></section>';
+  if(P.doshas.length){h+='<section class="block"><div class="lbl">我的能量</div><div class="advice">'+
+    P.doshas.map(k=>{const D=DOSHA[k];return '<div class="card '+k+'"><h4 class="serif">'+esc(D.title)+'</h4><p class="sub">'+esc(D.sub)+'</p><p>'+esc(D.body)+'</p><p style="font-size:.84rem;color:var(--ink-soft);margin:0">常見訊號：'+D.signs.map(esc).join("、")+'</p></div>'}).join("")+
+    '</div></section>'}
+  h+='<section class="block"><div class="lbl">關於這個工具</div><div class="card"><p>這是 Birth with Milliya 的試用版日課。紀錄只存在這支手機的瀏覽器裡；換手機或清除瀏覽器資料就會消失。</p><p style="margin:0">有任何想法，歡迎在 <a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">LINE @birthwithmilliya</a> 告訴我。</p></div></section>';
+  return h;
+}
+function renderMe(){const P=S.data.profile;const ds=P.doshas.map(k=>DOSHA[k].short).join("＋");
+  const st=P.stage&&STAGES[P.stage]?STAGES[P.stage].label:"";
+  $("#me").innerHTML=(ds?'<b>'+esc(ds)+'型</b>':'')+(ds&&st?'<br>':'')+esc(st)}
+function render(){
+  const focusNote=document.activeElement&&document.activeElement.id==="note";
+  $("#view").innerHTML=S.tab==="today"?viewToday():S.tab==="history"?viewHistory():viewMe();
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-current",b.dataset.tab===S.tab?"page":"false"));
+  renderMe();
+  if(focusNote){const n=$("#note");if(n)n.focus()}
+}
+
+/* ───────── events ───────── */
+async function share(){
+  const text=weekSummary(),t=$("#toast");
+  if(navigator.share){try{await navigator.share({text});t.textContent="已開啟分享";return}catch(e){if(e&&e.name==="AbortError")return}}
+  try{await navigator.clipboard.writeText(text);t.innerHTML='已複製。到 <a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">LINE</a> 貼給我就可以了'}
+  catch(e){t.textContent="這個瀏覽器無法自動複製，請截圖這一頁傳給我"}
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.id==="wGo"){S.data.welcomed=true;save();$("#welcome").hidden=true;S.tab="me";render();return}
+  if(b.id==="shareBtn"){share();return}
+  if(b.dataset.tab){S.tab=b.dataset.tab;render();window.scrollTo(0,0);return}
+  if(b.dataset.nav){const n=addDays(S.date,+b.dataset.nav);if(n<=todayStr()){S.date=n;render()}return}
+  if(b.hasAttribute("data-more")){S.showAll=!S.showAll;render();return}
+  if(b.dataset.go){S.date=b.dataset.go;S.tab="today";render();window.scrollTo(0,0);return}
+  const P=S.data.profile;
+  if(b.dataset.dosha){const k=b.dataset.dosha,i=P.doshas.indexOf(k);if(i>=0)P.doshas.splice(i,1);else{P.doshas.push(k);if(P.doshas.length>2)P.doshas.shift()}save();render();return}
+  if(b.dataset.stage){P.stage=P.stage===b.dataset.stage?"":b.dataset.stage;save();render();return}
+  const x=day(S.date);
+  if(b.dataset.habit){const id=b.dataset.habit;if(x.habits[id])delete x.habits[id];else x.habits[id]=true;
+    b.setAttribute("aria-pressed",!!x.habits[id]);$("#hcount").textContent="基本 "+mc(x)+"/3　全部 "+hc(x)+"/"+HABITS.length;save();return}
+  if(b.dataset.flow){x.flow=Math.max(0,Math.min(60,(x.flow||0)+ +b.dataset.flow));save();render();return}
+  if(b.dataset.k){const k=b.dataset.k,v=b.dataset.v;
+    if(ORDER.includes(k)){const a=x.signals[k]=x.signals[k]||[],i=a.indexOf(v);if(i>=0)a.splice(i,1);else a.push(v);b.setAttribute("aria-pressed",i<0)}
+    else{x[k]=x[k]===v?"":v;b.parentNode.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.v===x[k]))}
+    $("#advice").innerHTML=advice(x);save();return}
+});
+document.addEventListener("input",e=>{if(e.target.id==="note"){day(S.date).note=e.target.value;save()}});
+
+/* ───────── boot ───────── */
+try{localStorage.setItem(KEY+"-t","1");localStorage.removeItem(KEY+"-t")}catch(e){canStore=false}
+if(!canStore)$("#nostore").hidden=false;
+if(!S.data.welcomed)$("#welcome").hidden=false;
+if(fromQuiz){$("#wGo").textContent="看看我的體質 →";save()}
+render();
+})();
+</script>
+</body>
+</html>

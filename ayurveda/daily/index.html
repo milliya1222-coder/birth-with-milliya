@@ -359,7 +359,7 @@ function viewMe(){
   (fromQuiz?'<p class="banner" style="background:var(--brand-bg)">已經幫妳帶入測驗結果。想調整的話，直接點下面的按鈕就好。</p>':'')+
   '<section class="block"><div class="lbl">我的體質<em>可選一到兩個</em></div>'+
   '<div class="pick">'+ORDER.map(k=>'<button data-dosha="'+k+'" aria-pressed="'+P.doshas.includes(k)+'">'+DOSHA[k].short+'<small>'+DOSHA[k].sk+'</small></button>').join("")+'</div>'+
-  '<p class="tip">還不知道？先做 3 分鐘的 <a href="/ayurveda/quiz/" target="_blank" rel="noopener">三督夏・身心靈能量測驗</a>，再回來選。</p></section>'+
+  '<p class="tip">還不知道？先做 5 分鐘的 <a href="/ayurveda/quiz/" target="_blank" rel="noopener">三督夏・身心靈能量測驗</a>，再回來選。</p></section>'+
   '<section class="block"><div class="lbl">我現在的階段</div><div class="stages">'+
   Object.keys(STAGES).map(k=>'<button data-stage="'+k+'" aria-pressed="'+(P.stage===k)+'">'+esc(STAGES[k].label)+'</button>').join("")+'</div></section>';
   if(P.doshas.length){h+='<section class="block"><div class="lbl">我的能量</div><div class="advice">'+

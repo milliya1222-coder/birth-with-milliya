@@ -6,6 +6,13 @@
 <title>アーユルヴェーダ妙日課 · Birth with Milliya</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#FBF6F0">
+<link rel="manifest" href="/ja/ayurveda/daily/manifest.webmanifest">
+<link rel="icon" type="image/png" href="/ayurveda/daily/icon-192.png">
+<link rel="apple-touch-icon" href="/ayurveda/daily/icon-180.png">
+<meta name="apple-mobile-web-app-title" content="妙日課">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
@@ -146,6 +153,7 @@
   .wbtns{display:flex;flex-wrap:wrap;gap:10px}
   .btn.ghost{background:transparent;color:var(--brand-deep);border:1px solid var(--brand);text-decoration:none}
   .wnote{font-size:.78rem!important;color:var(--ink-faint);margin:10px 0 0!important}
+  .weekcard.a2hs{background:var(--mist)}
   .weekcard{background:var(--brand-bg);border-radius:16px;padding:18px;margin:0 0 22px}
   .weekcard h3{margin:0 0 6px;font-size:1.05rem;font-weight:600}
   .weekcard p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft)}
@@ -328,11 +336,17 @@ function weekCard(){
   return '<div class="weekcard"><h3 class="serif">自分に寄り添って、1週間になりました 🌿</h3><p>この1週間を Milliya に送ってみませんか？ 読んで、ひとことお返事します。送らなくても大丈夫。記録はずっとあなたのスマホの中にあります。</p>'+
     '<div class="row"><button class="btn" data-weekshare>今週のまとめをつくる</button><button class="linkbtn" data-weeklater>また今度</button><span class="toast" id="weekToast" aria-live="polite"></span></div></div>';
 }
+function isStandalone(){return navigator.standalone===true||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)}
+function a2hsCard(){
+  if(isStandalone()||S.data.a2hsDone||!$('#inapp').hidden)return '';
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent);
+  return '<div class="weekcard a2hs"><h3 class="serif">妙日課をホーム画面に 🌿</h3><p>ホーム画面に追加して毎日アイコンから開けば、記録がずっと同じ場所に残ります。<br>'+(ios?'Safari でこのページを開く →下の共有ボタン（四角に上向き矢印）→「ホーム画面に追加」→ 右上の「追加」。':'右上の「⋮」→「ホーム画面に追加」または「アプリをインストール」。')+'</p><div class="row"><button class="linkbtn" data-a2hsdone>わかりました</button></div></div>';
+}
 function viewToday(){
   const x=day(S.date),isT=S.date===todayStr(),d=parse(S.date);
   const list=S.showAll?HABITS:HABITS.filter(h=>h.must);
   const hideFlow=S.data.profile.stage==="preg";
-  return weekCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前の日">‹</button>'+
+  return weekCard()+a2hsCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前の日">‹</button>'+
   '<h2 class="serif">'+md(S.date)+'<span>（'+WK[d.getDay()]+'）'+(isT?' · 今日':'')+'</span></h2>'+
   '<button class="iconbtn" data-nav="1" aria-label="次の日"'+(isT?' disabled':'')+'>›</button></div>'+
   '<section class="block"><div class="lbl">今日の小さなセルフケア<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
@@ -459,6 +473,7 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
   if(b.id==="wGo"){S.data.welcomed=true;save();track("daily_start");$("#welcome").hidden=true;S.tab="me";render();return}
   if(b.id==="shareBtn"){share();return}
+  if(b.hasAttribute("data-a2hsdone")){S.data.a2hsDone=true;save();render();return}
   if(b.hasAttribute("data-backup")){backup();return}
   if(b.hasAttribute("data-showrestore")){const r=$("#restoreBox");r.hidden=!r.hidden;return}
   if(b.hasAttribute("data-restore")){restore();return}
@@ -489,6 +504,7 @@ try{localStorage.setItem(KEY+"-t","1");localStorage.removeItem(KEY+"-t")}catch(e
 if(!canStore)$("#nostore").hidden=false;
 if(!S.data.welcomed)$("#welcome").hidden=false;
 inAppNotice();
+if(isStandalone())track("daily_homescreen_open");
 if(fromQuiz){$("#wGo").textContent="わたしの体質を見る →";save()}
 render();
 })();

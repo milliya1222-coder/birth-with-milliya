@@ -6,6 +6,13 @@
 <title>阿育吠陀妙日課 · Birth with Milliya</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#FBF6F0">
+<link rel="manifest" href="/ayurveda/daily/manifest.webmanifest">
+<link rel="icon" type="image/png" href="/ayurveda/daily/icon-192.png">
+<link rel="apple-touch-icon" href="/ayurveda/daily/icon-180.png">
+<meta name="apple-mobile-web-app-title" content="妙日課">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -145,6 +152,7 @@
   .wbtns{display:flex;flex-wrap:wrap;gap:10px}
   .btn.ghost{background:transparent;color:var(--brand-deep);border:1px solid var(--brand);text-decoration:none}
   .wnote{font-size:.78rem!important;color:var(--ink-faint);margin:10px 0 0!important}
+  .weekcard.a2hs{background:var(--mist)}
   .weekcard{background:var(--brand-bg);border-radius:16px;padding:18px;margin:0 0 22px}
   .weekcard h3{margin:0 0 6px;font-size:1.05rem;font-weight:600}
   .weekcard p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft)}
@@ -327,11 +335,17 @@ function weekCard(){
   return '<div class="weekcard"><h3 class="serif">妳已經陪自己一週了 🌿</h3><p>要不要把這一週傳給 Milliya？她會讀完，回妳一段話。不傳也沒關係，紀錄一直都在妳手機裡。</p>'+
     '<div class="row"><button class="btn" data-weekshare>產生本週摘要</button><button class="linkbtn" data-weeklater>之後再說</button><span class="toast" id="weekToast" aria-live="polite"></span></div></div>';
 }
+function isStandalone(){return navigator.standalone===true||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)}
+function a2hsCard(){
+  if(isStandalone()||S.data.a2hsDone||!$('#inapp').hidden)return '';
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent);
+  return '<div class="weekcard a2hs"><h3 class="serif">把妙日課放到主畫面 🌿</h3><p>放到主畫面後，每天從圖示打開，紀錄就會一直在同一個地方。<br>'+(ios?'用 Safari 打開這一頁 → 點下方的分享鈕（方框加向上箭頭）→「加入主畫面」→ 右上角「加入」。':'點右上角「⋮」→「加到主畫面」或「安裝應用程式」。')+'</p><div class="row"><button class="linkbtn" data-a2hsdone>好，我知道了</button></div></div>';
+}
 function viewToday(){
   const x=day(S.date),isT=S.date===todayStr(),d=parse(S.date);
   const list=S.showAll?HABITS:HABITS.filter(h=>h.must);
   const hideFlow=S.data.profile.stage==="preg";
-  return weekCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
+  return weekCard()+a2hsCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
   '<h2 class="serif">'+md(S.date)+'<span>週'+WK[d.getDay()]+(isT?' · 今天':'')+'</span></h2>'+
   '<button class="iconbtn" data-nav="1" aria-label="後一天"'+(isT?' disabled':'')+'>›</button></div>'+
   '<section class="block"><div class="lbl">今天照顧自己的小事<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
@@ -458,6 +472,7 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
   if(b.id==="wGo"){S.data.welcomed=true;save();track("daily_start");$("#welcome").hidden=true;S.tab="me";render();return}
   if(b.id==="shareBtn"){share();return}
+  if(b.hasAttribute("data-a2hsdone")){S.data.a2hsDone=true;save();render();return}
   if(b.hasAttribute("data-backup")){backup();return}
   if(b.hasAttribute("data-showrestore")){const r=$("#restoreBox");r.hidden=!r.hidden;return}
   if(b.hasAttribute("data-restore")){restore();return}
@@ -488,6 +503,7 @@ try{localStorage.setItem(KEY+"-t","1");localStorage.removeItem(KEY+"-t")}catch(e
 if(!canStore)$("#nostore").hidden=false;
 if(!S.data.welcomed)$("#welcome").hidden=false;
 inAppNotice();
+if(isStandalone())track("daily_homescreen_open");
 if(fromQuiz){$("#wGo").textContent="看看我的體質 →";save()}
 render();
 })();

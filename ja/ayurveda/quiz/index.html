@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>今のあなたのエネルギー原型｜アーユルヴェーダ・トリドーシャ 心と体のチェック — Birth with Milliya</title>
-<meta name="description" content="冷たい体質ラベルではなく、やさしい鏡。12の質問で、今のあなたの体・心・魂それぞれのエネルギーの流れを映し、今の季節にできる小さなセルフケアをひとつお渡しします。" />
+<meta name="description" content="冷たい体質ラベルではなく、やさしい鏡。18の質問で、今のあなたの体・心・魂それぞれのエネルギーの流れと、体型・消化の火を映し、今の季節にできる小さなセルフケアをひとつお渡しします。" />
 <link rel="canonical" href="https://birthwithmilliya.com/ja/ayurveda/quiz/" />
 <meta property="og:title" content="今のあなたのエネルギー原型｜アーユルヴェーダ・トリドーシャ 心と体のチェック">
-<meta property="og:description" content="冷たい体質ラベルではなく、やさしい鏡。12の質問で、今のあなたのエネルギーの流れを映します。">
+<meta property="og:description" content="冷たい体質ラベルではなく、やさしい鏡。18の質問で、今のあなたのエネルギーの流れと、体型・消化の火を映します。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://birthwithmilliya.com/ja/ayurveda/quiz/">
 <meta property="og:image" content="https://birthwithmilliya.com/images/og-cover.jpg">
@@ -186,6 +186,23 @@
   .practice li b{font-weight:600}
   .practice li p{font-size:14.5px;color:var(--ink-soft);margin-top:3px}
   .season{font-size:14px;color:var(--brand-deep);background:#FFF6F0;border:1px dashed var(--brand);border-radius:14px;padding:14px 18px;margin-top:16px;line-height:1.7}
+  .q-hint{font-size:14.5px;color:var(--ink-soft);margin:-16px 0 22px}
+  .bm-self{display:flex;gap:16px;align-items:center;background:var(--cream);border-radius:14px;padding:14px 16px}
+  .bm-self p{font-size:14px;color:var(--ink-soft)}
+  .bm-score{flex:none;width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;gap:1px;color:var(--brand-deep)}
+  .bm-score b{font-size:26px;line-height:1}.bm-score span{font-size:13px;color:var(--ink-soft)}
+  .bm-note{font-size:15px;margin:14px 0 6px}
+  .bm-row{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+  .bm-k{font-size:13px;letter-spacing:.08em;color:var(--brand-deep);font-weight:600;padding-top:3px}
+  .bm-row p{font-size:15px}
+  .bm-foot{font-size:13.5px;color:var(--ink-soft);margin-top:10px;background:var(--cream);border-radius:12px;padding:12px 14px}
+  .daily-inv{background:var(--paper,#fff);border:1px solid var(--line);border-radius:24px;padding:26px 24px;margin-top:26px}
+  .daily-inv h3{font-size:20px;margin-bottom:10px}
+  .daily-inv p{color:var(--ink-soft);font-size:15px;margin:0 0 12px}
+  .daily-inv ul{margin:0 0 18px;padding-left:1.2em;color:var(--ink-soft);font-size:14.5px}
+  .daily-inv .btn{display:inline-flex;text-decoration:none}
+  .daily-tip{font-size:13.5px!important;margin-top:12px!important}
+  #stageEmoji svg{width:20px;height:20px;display:block}
   .cta{background:linear-gradient(140deg,#FFF3EC,#FCEBE2);border:1px solid var(--line);border-radius:24px;padding:30px 26px;margin-top:26px;text-align:center}
   .cta h3{justify-content:center;font-size:21px;margin-bottom:10px}
   .cta p{color:var(--ink-soft);font-size:15.5px;max-width:480px;margin:0 auto 22px}
@@ -206,8 +223,11 @@
     transition:border-color .15s,transform .12s,box-shadow .15s;
   }
   .stage-opt:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
-  .stage-opt .em{font-size:26px;flex:none}
-  .stage-opt b{font-size:17px;font-weight:600;display:block}
+  .stage-opt{color:var(--ink)}
+  .stage-opt .em{flex:none;width:50px;height:50px;border-radius:50%;background:#FBEFE9;color:var(--brand-deep);display:flex;align-items:center;justify-content:center;transition:background .15s}
+  .stage-opt .em svg{width:32px;height:32px;display:block}
+  .stage-opt:hover .em{background:#F7E1D7}
+  .stage-opt b{font-size:17px;font-weight:600;display:block;color:var(--ink)}
   .stage-opt small{font-size:13.5px;color:var(--ink-soft)}
 
   .opt.neutral{border-style:dashed;color:var(--ink-soft);font-size:15.5px}
@@ -272,7 +292,7 @@
         <div class="orb"><div class="dot" style="background:var(--kapha)"></div><b>Kapha 水土</b><small>カパ・滋養</small></div>
       </div>
       <p class="hero meta" style="margin-top:30px">
-        <span>🌿 12の質問</span><span>⏱ 約3分</span><span>🪞 体・心・魂の3層で読み解き</span>
+        <span>🌿 18の質問</span><span>⏱ 約5分</span><span>🪞 体・心・魂の3層で読み解き</span>
       </p>
       <button class="btn" onclick="show('stage')">鏡をのぞいてみる →</button>
       <div class="disclaimer">
@@ -288,11 +308,11 @@
       <h2 class="serif">まず教えてください。<br>今、どのステージにいますか？</h2>
       <p class="lead">同じエネルギーでも、妊活・妊娠・産後・子育てでは、まったくちがう形であなたに寄り添います。<br>いちばん近いものを選ぶと、結果に「今のあなた」への一節が加わります。</p>
       <div class="stage-list" id="stageList">
-        <button class="stage-opt" onclick="pickStage('pre')"><span class="em">🌱</span><span><b>妊活中</b><small>新しい命を迎える準備をしている</small></span></button>
-        <button class="stage-opt" onclick="pickStage('preg')"><span class="em">🤰</span><span><b>妊娠中</b><small>赤ちゃんと一緒に、この時期を歩いている</small></span></button>
-        <button class="stage-opt" onclick="pickStage('post')"><span class="em">🍼</span><span><b>産後・産褥期</b><small>赤ちゃんを迎えたばかり、回復の途中</small></span></button>
-        <button class="stage-opt" onclick="pickStage('mom')"><span class="em">👩‍👧</span><span><b>子育て中</b><small>ママの日常で、小さな子を育てている</small></span></button>
-        <button class="stage-opt" onclick="pickStage('none')"><span class="em">🪷</span><span><b>どれでもない。ただ自分をもっと知りたい</b><small>今の心と体の状態を見てみたい</small></span></button>
+        <button class="stage-opt" onclick="pickStage('pre')"><span class="em"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5V11.5"/><path d="M12 13.2C8.6 13.2 6.3 11.2 5.8 7.8c3.4 0 5.7 2 6.2 5.4z"/><path d="M12 11.2c0-3.4 2.1-5.8 5.9-6.3.2 3.7-2.2 6.1-5.9 6.3z"/><path d="M7.5 20.5h9"/></svg></span><span><b>妊活中</b><small>新しい命を迎える準備をしている</small></span></button>
+        <button class="stage-opt" onclick="pickStage('preg')"><span class="em"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12.5" r="7.2"/><circle cx="13.2" cy="13.6" r="2.6"/><path d="M8.2 7.3c1-.8 2.3-1.3 3.8-1.3"/></svg></span><span><b>妊娠中</b><small>赤ちゃんと一緒に、この時期を歩いている</small></span></button>
+        <button class="stage-opt" onclick="pickStage('post')"><span class="em"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.8 4.6a8 8 0 1 0 3.6 12.1 6.4 6.4 0 0 1-3.6-12.1z"/><circle cx="11.2" cy="13.4" r="2"/></svg></span><span><b>産後・産褥期</b><small>赤ちゃんを迎えたばかり、回復の途中</small></span></button>
+        <button class="stage-opt" onclick="pickStage('mom')"><span class="em"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.8" cy="7.2" r="2.5"/><path d="M4.4 20.5c0-3.7 2-6.2 4.4-6.2s4.4 2.5 4.4 6.2"/><circle cx="16.8" cy="10.6" r="1.9"/><path d="M14.1 20.5c0-2.6 1.2-4.2 2.7-4.2s2.7 1.6 2.7 4.2"/><path d="M12.3 15.6l2.3 1.4"/></svg></span><span><b>子育て中</b><small>ママの日常で、小さな子を育てている</small></span></button>
+        <button class="stage-opt" onclick="pickStage('none')"><span class="em"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9.3" r="5.6"/><path d="M12 14.9v6"/><path d="M10 20.9h4"/><path d="M9.6 7.4a3.2 3.2 0 0 1 2.4-1.2"/></svg></span><span><b>どれでもない。ただ自分をもっと知りたい</b><small>今の心と体の状態を見てみたい</small></span></button>
       </div>
     </div>
   </section>
@@ -301,10 +321,11 @@
   <section class="screen" id="quiz">
     <div class="topbar">
       <div class="progress"><i id="bar"></i></div>
-      <div class="pcount"><span id="cur">1</span>/12</div>
+      <div class="pcount"><span id="cur">1</span>/<span id="qTotal">18</span></div>
     </div>
     <div id="layerTag" class="layer-tag"></div>
     <h2 class="q-text serif" id="qText"></h2>
+    <p class="q-hint" id="qHint" style="display:none"></p>
     <div class="options" id="opts"></div>
     <div class="nav">
       <button class="link-btn" id="backBtn" onclick="goBack()">← 前へ</button>
@@ -344,6 +365,11 @@
       </div>
     </div>
 
+    <div class="card" id="bodyCard" style="display:none">
+      <h3><span class="ic">🌿</span>今の体のマップ</h3>
+      <div id="bodyMap"></div>
+    </div>
+
     <div class="card stage-card" id="stageCard" style="display:none">
       <div class="stage-head"><span id="stageEmoji"></span><span id="stageLabel"></span></div>
       <h3 style="margin-bottom:14px"><span class="ic">🌷</span><span id="stageTitle"></span></h3>
@@ -368,6 +394,22 @@
       </div>
       <div id="emailStatus"></div>
       <div class="ec-privacy">＊あなたの解説と、今後の「Birth with Milliya」のサービス・妊娠出産・女性の心と体のお話をお送りするために使います。第三者には渡しません。いつでも配信停止できます。</div>
+    </div>
+
+    <div class="daily-inv" id="dailyInv">
+      <h3 class="serif">この気づきを、毎日につなげてみませんか？</h3>
+      <p>「アーユルヴェーダ妙日課」は、毎日1分の小さな道具。1週間、無料でお試しいただけます：</p>
+      <ul>
+        <li>毎朝1分、自分のためにできた小さなことにチェックし、体のサインをタップ</li>
+        <li>あなたの<span id="dailyDosha">体質</span>と今日のサインに合わせて、今日の整え方をお伝えします</li>
+        <li>記録はあなたのスマホの中だけ。1週間後にまとめを送ってくれたら、ひとことお返事します。気に入ったら、もう一歩深く一緒に歩みましょう</li>
+      </ul>
+      <div class="daily-btns">
+        <a class="btn" href="/ja/ayurveda/daily/" target="_blank" rel="noopener">妙日課を無料で試す →</a>
+      </div>
+      <p class="daily-tip">このスマホで開くと、今のチェック結果が自動で反映されます。「ホーム画面に追加」すれば、アプリのように使えます。</p>
+      <p style="margin-top:18px">わたしと一緒に歩みたい方は、LINE でひとこと声をかけてください。一人ひとりの記録をしっかり読みたいので、人数は限らせていただいています。</p>
+      <a class="btn btn-ghost" href="https://line.me/R/oaMessage/@859uhxmv/?%E5%A6%99%E6%97%A5%E8%AA%B2%E3%81%AE%E4%BC%B4%E8%B5%B0%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99" target="_blank" rel="noopener">LINEで「試してみたい」と送る →</a>
     </div>
 
     <div class="cta">
@@ -461,7 +503,68 @@ const QUESTIONS = [
       {t:"眠れない、止まらない、なぜか不安で心配になる", d:"v"},
       {t:"怒りっぽく、急いて、人にも自分にも厳しくなる", d:"p"},
       {t:"やる気が出ず、隠れたくなる。何もかも億劫", d:"k"} ]},
+
+  /* ── 体の日常：体型（本質）＋ 消化・お通じ・目覚め・肌（今の状態）＋ 自己評価 ──
+     d:"b" = 整っていて心地よい（3ドーシャの比率には入れず、体のマップに使う）／ s1–s5 = 自己評価 */
+  { layer:"body", tag:"🌿 体の日常", key:"frame", q:"鏡に映る自分。骨格や体型は、どちらに近い？",
+    hint:"ふだんの自分で選んでください。産後で体型が変わっている途中なら、妊娠前のあなたを思い出して。",
+    opts:[
+      {t:"骨格が細め、やせ型で、あまり肉がつかない", d:"v"},
+      {t:"中くらいの体格で、筋肉のラインがはっきり。体重は安定", d:"p"},
+      {t:"骨格がしっかり、ふくよかで、太りやすくやせにくい", d:"k"} ]},
+  { layer:"body", tag:"🌿 体の日常", key:"agni", q:"しっかり食べた食事から2〜3時間たつと、ふだんは？",
+    opts:[
+      {t:"心地よい日もあれば、お腹が張る日も。毎日ちがう", d:"v"},
+      {t:"すぐお腹がすく。食事が遅れると胃酸が出て、イライラする", d:"p"},
+      {t:"胃がまだ重く、あまりお腹がすかない。横になりたい", d:"k"},
+      {t:"軽くて心地よく、次の食事のころに自然とお腹がすく", d:"b"} ]},
+  { layer:"body", tag:"🌿 体の日常", key:"stool", q:"お通じは、ふだんどんな感じ？",
+    opts:[
+      {t:"硬めで乾いていて不規則。数日出ないことも", d:"v"},
+      {t:"1日1〜数回。やわらかめ〜ゆるめで、ときどき熱っぽい感じ", d:"p"},
+      {t:"規則的だけどゆっくり。粘りがあり、出しきれない感じ", d:"k"},
+      {t:"毎日だいたい同じ時間に、形があってスムーズ。すっきり", d:"b"} ]},
+  { layer:"body", tag:"🌿 体の日常", key:"wake", q:"朝、目が覚めた瞬間のあなたは？",
+    opts:[
+      {t:"早く目が覚める・何度も起きる。体は疲れているのに、頭はもう回っている", d:"v"},
+      {t:"起きた瞬間にスイッチが入り、今日やることがすぐ浮かぶ", d:"p"},
+      {t:"なかなか起きられず、エンジンがかかるまで時間がかかる", d:"k"},
+      {t:"自然に目が覚めて、よく眠れたと感じる", d:"b"} ]},
+  { layer:"body", tag:"🌿 体の日常", key:"skin", q:"最近の肌と体温は？",
+    opts:[
+      {t:"乾燥しやすく、粉をふくことも。手足はよく冷たい", d:"v"},
+      {t:"赤くなりやすい、ニキビや肌あれ。体はほてりがち", d:"p"},
+      {t:"脂っぽく、むくみやすい。体はひんやりしっとり", d:"k"},
+      {t:"うるおいがあって安定。暑さ寒さもだいたい平気", d:"b"} ]},
+  { layer:"body", tag:"🪷 自分に聞いてみる", key:"self", q:"1を「とても乱れている」、5を「とても整っている」とすると、今のあなたは何点？",
+    fixed:true, noNeutral:true,
+    opts:[
+      {t:"1・自分から遠く離れてしまった気がする", d:"s1"},
+      {t:"2・どこか調子がおかしいと感じることが多い", d:"s2"},
+      {t:"3・いい日も悪い日もある", d:"s3"},
+      {t:"4・だいたい安定、ときどき乱れる", d:"s4"},
+      {t:"5・心も体もとても穏やか", d:"s5"} ]},
 ];
+
+/* ============ 体のマップの内容（TODO_MILLIYA：ネイティブチェック待ち） ============ */
+const FRAME_TXT={
+  v:"骨格が細く、肉がつきにくい：あなたの<b>本質</b>（Prakṛti＝生まれ持った体質）には、風が多めかもしれません。",
+  p:"中くらいの体格で、ラインがはっきり：あなたの<b>本質</b>（Prakṛti＝生まれ持った体質）には、火が多めかもしれません。",
+  k:"骨格がしっかり、ふくよか：あなたの<b>本質</b>（Prakṛti＝生まれ持った体質）には、水土が多めかもしれません。"
+};
+const AGNI_TXT={
+  v:{n:"不規則な火 Viṣama Agni（ヴィシャマ・アグニ）",t:"消化が風のように強くなったり弱くなったり。食事の時間を決めて、温かく火を通したものを食べることが、いちばんの安定になります。"},
+  p:{n:"強すぎる火 Tīkṣṇa Agni（ティークシュナ・アグニ）",t:"消化力は強いけれど、燃えすぎやすい。空腹を我慢しすぎず、辛いもの・揚げものは控えめに。食事中は手を止めて。"},
+  k:{n:"弱い火 Manda Agni（マンダ・アグニ）",t:"消化がゆっくりで、重くなりがち。お腹がすかないときは無理に食べず、夕食は早めに軽く。食後に10分の散歩を。"},
+  b:{n:"整った火 Sama Agni（サマ・アグニ）",t:"しっかり食べられて、消化できて、次の食事のころに自然とお腹がすく——アーユルヴェーダがいちばん大切にする状態です。食事のリズムを守ってあげて。"}
+};
+const SELF_TXT={
+  high_ok:"あなたの感覚と、体の日常が同じことを伝えています：今はとても安定。今のリズムを続けてください。",
+  high_low:"自分では大丈夫と感じていても、体の日常にはいくつか小さなサインが出ています。ママはつい自分をあと回しにして、体の声まで後ろに並べてしまいがち。そのサインに、少し耳を傾けてみて。",
+  low_ok:"とても乱れていると感じていても、食事・お通じ・目覚めといった土台はちゃんと支えてくれています。疲れているのは体より、心のほうかもしれません。まずは、誰かに受けとめてもらうことを自分に許して。",
+  low_low:"心も体も「ケアしてほしい」と言っています。一度に全部を変えなくていい。白湯を一杯、決まった寝る時間ひとつから。誰かと一緒がよければ、わたしがいます。",
+  mid:"いい日も悪い日もある、それがとてもリアルな姿です。毎日整っていることを目指すより、心地よかった日に何が違ったかに気づいていきましょう。"
+};
 
 /* ============ ドーシャの内容 ============ */
 const DOSHA = {
@@ -510,10 +613,10 @@ const DOSHA = {
    アーユルヴェーダでは産後は「風（Vāta）」がもっとも高まる時期とされ、
    出産による大きな空虚と消耗を、あたたかさ・オイル・滋養・休息で「風を鎮める」ことが伝統的産後ケアの核心。 */
 const STAGES={
-  pre:{emoji:"🌱",label:"妊活中"},
-  preg:{emoji:"🤰",label:"妊娠中"},
-  post:{emoji:"🍼",label:"産後・産褥期"},
-  mom:{emoji:"👩‍👧",label:"子育て中"},
+  pre:{emoji:"🌱",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5V11.5"/><path d="M12 13.2C8.6 13.2 6.3 11.2 5.8 7.8c3.4 0 5.7 2 6.2 5.4z"/><path d="M12 11.2c0-3.4 2.1-5.8 5.9-6.3.2 3.7-2.2 6.1-5.9 6.3z"/><path d="M7.5 20.5h9"/></svg>',label:"妊活中"},
+  preg:{emoji:"🤰",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12.5" r="7.2"/><circle cx="13.2" cy="13.6" r="2.6"/><path d="M8.2 7.3c1-.8 2.3-1.3 3.8-1.3"/></svg>',label:"妊娠中"},
+  post:{emoji:"🍼",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.8 4.6a8 8 0 1 0 3.6 12.1 6.4 6.4 0 0 1-3.6-12.1z"/><circle cx="11.2" cy="13.4" r="2"/></svg>',label:"産後・産褥期"},
+  mom:{emoji:"👩‍👧",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.8" cy="7.2" r="2.5"/><path d="M4.4 20.5c0-3.7 2-6.2 4.4-6.2s4.4 2.5 4.4 6.2"/><circle cx="16.8" cy="10.6" r="1.9"/><path d="M14.1 20.5c0-2.6 1.2-4.2 2.7-4.2s2.7 1.6 2.7 4.2"/><path d="M12.3 15.6l2.3 1.4"/></svg>',label:"子育て中"},
 };
 const STAGE_CONTENT={
   v:{
@@ -571,7 +674,7 @@ function dualNote(a,b){
 let idx=0;
 let selectedStage="none";
 const answers=new Array(QUESTIONS.length).fill(null);
-const orders=QUESTIONS.map(()=>shuffle([0,1,2]));
+const orders=QUESTIONS.map(Q=>Q.fixed?Q.opts.map((_,i)=>i):shuffle([0,1,2]).concat(Q.opts.slice(3).map((_,i)=>i+3))); // 3ドーシャの選択肢はシャッフル、「整っている」は最後、自己評価はそのまま
 
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
@@ -584,11 +687,13 @@ const LAYER_TAG={body:{ic:"🔥",label:"体のサイン"},mind:{ic:"💭",label:
 function render(){
   const Q=QUESTIONS[idx];
   document.getElementById("cur").textContent=idx+1;
+  document.getElementById("qTotal").textContent=QUESTIONS.length;
   document.getElementById("bar").style.width=((idx)/QUESTIONS.length*100)+"%";
   const tag=document.getElementById("layerTag");
   tag.className="layer-tag layer-"+Q.layer;
-  tag.innerHTML=`${LAYER_TAG[Q.layer].ic} <span>${LAYER_TAG[Q.layer].label}</span>`;
+  tag.innerHTML=Q.tag?`<span>${Q.tag}</span>`:`${LAYER_TAG[Q.layer].ic} <span>${LAYER_TAG[Q.layer].label}</span>`;
   document.getElementById("qText").textContent=Q.q;
+  const hint=document.getElementById("qHint");hint.textContent=Q.hint||"";hint.style.display=Q.hint?"block":"none";
   const box=document.getElementById("opts");box.innerHTML="";
   orders[idx].forEach(oi=>{
     const o=Q.opts[oi];
@@ -598,6 +703,7 @@ function render(){
     el.onclick=()=>choose(o.d);
     box.appendChild(el);
   });
+  if(Q.noNeutral){document.getElementById("backBtn").disabled=idx===0;return;}
   const nu=document.createElement("button");
   nu.className="opt neutral"+(answers[idx]==="n"?" sel":"");
   nu.innerHTML=`<span class="mark"></span><span>🌗 どれも当てはまらない／場合による</span>`;
@@ -617,6 +723,24 @@ function choose(d){
 }
 function goBack(){if(idx>0){idx--;render();}}
 
+/* ============ 体のマップ ============ */
+function ans(key){const i=QUESTIONS.findIndex(Q=>Q.key===key);return i<0?null:answers[i];}
+function renderBodyMap(){
+  const card=document.getElementById("bodyCard"),out=[];
+  const frame=ans("frame"),agni=ans("agni"),self=ans("self");
+  const okN=["agni","stool","wake","skin"].map(ans).filter(d=>d==="b").length;
+  const sN=self&&self[0]==="s"?+self.slice(1):0;
+  if(sN){
+    const k=sN>=4?(okN>=3?"high_ok":okN<=1?"high_low":"mid"):sN<=2?(okN>=3?"low_ok":okN<=1?"low_low":"mid"):"mid";
+    out.push(`<div class="bm-self"><div class="bm-score"><b>${sN}</b><span>/5</span></div><div><b>今のあなたの自己評価は ${sN} 点</b><p>体の日常の4つの質問のうち、<b>${okN}</b> つが「整っていて心地よい」でした。</p></div></div><p class="bm-note">${SELF_TXT[k]}</p>`);
+  }
+  if(frame&&FRAME_TXT[frame])out.push(`<div class="bm-row"><span class="bm-k">体型</span><p>${FRAME_TXT[frame]}</p></div>`);
+  if(agni&&AGNI_TXT[agni])out.push(`<div class="bm-row"><span class="bm-k">消化の火</span><p><b>${AGNI_TXT[agni].n}</b><br>${AGNI_TXT[agni].t}</p></div>`);
+  if(FRAME_TXT[frame])out.push(`<p class="bm-foot">体型はおもにあなたの<b>本質</b>を、消化・お通じ・目覚め・肌は<b>今の状態</b>（Vikṛti＝今のアンバランス）を映しています。二つが違うのは、ごく自然なこと——本質は変えなくていい、今はケアできる。</p>`);
+  card.style.display=out.length?"block":"none";
+  document.getElementById("bodyMap").innerHTML=out.join("");
+}
+
 /* ============ 採点と結果 ============ */
 function finish(){
   document.getElementById("bar").style.width="100%";
@@ -625,6 +749,7 @@ function finish(){
   let neutral=0;
   answers.forEach((d,i)=>{
     if(d==="n"){neutral++;return;}
+    if(!(d in total))return;   // 整っている(b)・自己評価(s1–s5)は比率に入れない
     total[d]++;byLayer[QUESTIONS[i].layer][d]++;
   });
   const sum=total.v+total.p+total.k;
@@ -637,6 +762,7 @@ function finish(){
     noteEl.innerHTML="🌬 ほとんどの質問で「どれも当てはまらない／場合による」を選びました——これはよく <b>風（Vāta）</b> の特質です：流れ、敏感さ、固定されたくなさ。今のあなたは、変化の大きい時期にいるのかもしれません。しばらくしてまた試すか、今の感じを直接わたしに話しに来てください。";
     ["bars","layers","rBody","rSigns","rPractice"].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML="";});
     document.getElementById("stageCard").style.display="none";
+    renderBodyMap();
     document.getElementById("rSeason").innerHTML="";
     document.getElementById("rIcon").textContent="🌗";
     document.getElementById("rName").textContent="";
@@ -658,6 +784,10 @@ function finish(){
   }else{
     noteEl.style.display="none";
   }
+
+  // 結果はこのスマホにだけ保存（妙日課に自動で反映。送信はしない）
+  try{localStorage.setItem("bwm-ayurveda-quiz",JSON.stringify({doshas:(isDual||pct[second]>=30)?[top,second]:[top],stage:selectedStage||"",agni:ans("agni")||"",self:ans("self")||"",at:new Date().toISOString()}))}catch(e){}
+  document.getElementById("dailyDosha").textContent=((isDual||pct[second]>=30)?DOSHA[top].short+"×"+DOSHA[second].short:DOSHA[top].short)+"タイプ";
 
   const D=DOSHA[top];
   window.__quizResult={dosha:top,short:D.short,name:D.name,pct:JSON.stringify(pct),dual:isDual?DOSHA[second].short:""};
@@ -711,12 +841,13 @@ function finish(){
   document.getElementById("rSigns").innerHTML=D.signs.map(s=>`<li>${s}</li>`).join("");
   document.getElementById("rPractice").innerHTML=D.practice.map(p=>`<li><b>${p.b}</b><p>${p.p}</p></li>`).join("");
 
+  renderBodyMap();
   document.getElementById("rSeason").innerHTML=seasonTip(top);
 
   const stageCard=document.getElementById("stageCard");
   if(selectedStage!=="none" && STAGE_CONTENT[top] && STAGE_CONTENT[top][selectedStage]){
     const sc=STAGE_CONTENT[top][selectedStage], meta=STAGES[selectedStage];
-    document.getElementById("stageEmoji").textContent=meta.emoji;
+    document.getElementById("stageEmoji").innerHTML=meta.icon||meta.emoji;
     document.getElementById("stageLabel").textContent=`今のあなたへ：${meta.label}`;
     document.getElementById("stageTitle").textContent=sc.title;
     document.getElementById("stageBody").innerHTML=sc.body.map(p=>`<p>${p}</p>`).join("");
@@ -761,6 +892,7 @@ function restart(){
   answers.fill(null);idx=0;selectedStage="none";
   document.getElementById("neutralNote").style.display="none";
   document.getElementById("stageCard").style.display="none";
+  document.getElementById("bodyCard").style.display="none";
   document.getElementById("emailCap").style.display="none";
   show("intro");
 }

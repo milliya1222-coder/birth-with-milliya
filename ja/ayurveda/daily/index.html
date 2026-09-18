@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>アーユルヴェーダ妙日課 · Birth with Milliya</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF6F0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<!--
+  日本語版（2026-09-18）＝ ayurveda/daily/ の翻訳。内容を直したら両方そろえること。
+  客戶試用版（2026-09-18 上線）
+  - 紀錄只存在客戶自己的瀏覽器（localStorage），不送到任何伺服器，Milliya 看不到。
+  - 2026-09-18 起加上 GA4（/analytics.js）只計算使用人數與次數；自訂事件只有名稱，不帶任何紀錄內容。
+  - 體質說明、訊號、「今天怎麼調」的文字取自 ayurveda/quiz/ 測驗（Milliya 自己寫的內容），沒有使用甘乃夏講義。
+  - 標「待 Milliya 撰寫」的地方是留給她的內容位置：搜尋 TODO_MILLIYA。
+  - noindex、未進 sitemap；入口只有測驗結果頁與邀請信。
+-->
+<style>
+  :root{
+    --cream:#FBF6F0; --paper:#FFFFFF; --mist:#F4ECE3;
+    --ink:#4A3B33; --ink-soft:#7A6A60; --ink-faint:#A7968A; --line:#E7D8C9;
+    --brand:#E29B86; --brand-deep:#C97D66; --brand-bg:#FBEAE3;
+    --vata:#6F7FB0; --vata-bg:#EBEEF7;
+    --pitta:#C56A43; --pitta-bg:#FBE7DC;
+    --kapha:#5E8C6B; --kapha-bg:#E6F0E8;
+    --todo:#B08A2E; --todo-bg:#FBF3DC;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    font-weight:400;font-size:15.5px;line-height:1.75;letter-spacing:.012em}
+  .serif{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+  button,textarea{font:inherit;color:inherit}
+  button{cursor:pointer}
+  :focus-visible{outline:2px solid var(--brand-deep);outline-offset:2px;border-radius:8px}
+  .app{max-width:540px;margin:0 auto;padding:env(safe-area-inset-top,0px) 18px calc(96px + env(safe-area-inset-bottom,0px))}
+
+  header.top{padding:22px 0 12px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .brand{margin:0;font-size:1.25rem;font-weight:600;letter-spacing:.14em}
+  .brand small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:.68rem;letter-spacing:.22em;color:var(--ink-faint);font-weight:400;margin-top:2px}
+  .me{font-size:.74rem;color:var(--ink-soft);text-align:right;line-height:1.5;padding-top:4px}
+  .me b{font-weight:500}
+  .banner{background:var(--todo-bg);color:var(--ink);border-radius:12px;padding:10px 14px;font-size:.84rem;margin:0 0 14px}
+
+  .datenav{display:flex;align-items:center;justify-content:space-between;margin:6px 0 16px}
+  .datenav h2{margin:0;font-size:1.5rem;font-weight:600;letter-spacing:.06em}
+  .datenav h2 span{font-family:"Noto Sans JP",sans-serif;font-size:.84rem;font-weight:400;color:var(--ink-faint);margin-left:8px}
+  .iconbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:1.1rem;color:var(--ink-soft)}
+  .iconbtn:disabled{opacity:.35;cursor:default}
+
+  section.block{margin:0 0 26px}
+  .lbl{font-size:.72rem;letter-spacing:.2em;color:var(--ink-faint);margin:0 0 10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .lbl em{font-style:normal;letter-spacing:.04em}
+
+  .habits{display:flex;flex-direction:column;gap:8px}
+  .habit{display:grid;grid-template-columns:26px 1fr;align-items:center;gap:12px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;transition:background .15s}
+  .habit .box{width:24px;height:24px;border-radius:7px;border:1.5px solid var(--ink-faint);display:grid;place-items:center;font-size:.85rem;color:transparent}
+  .habit[aria-pressed="true"]{background:var(--brand-bg);border-color:transparent}
+  .habit[aria-pressed="true"] .box{background:var(--brand-deep);border-color:var(--brand-deep);color:#fff}
+  .habit .must{display:block;font-size:.66rem;letter-spacing:.12em;color:var(--brand-deep);line-height:1.3}
+  .more{background:none;border:none;color:var(--ink-faint);font-size:.82rem;padding:6px 2px}
+
+  .group{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
+  .group h3{margin:0 0 10px;font-size:.92rem;font-weight:500;display:flex;align-items:center;gap:8px}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 13px;font-size:.86rem;color:var(--ink-soft);transition:all .15s}
+  .g-v .chip[aria-pressed="true"]{background:var(--vata-bg);border-color:var(--vata);color:var(--vata);font-weight:500}
+  .g-p .chip[aria-pressed="true"]{background:var(--pitta-bg);border-color:var(--pitta);color:var(--pitta);font-weight:500}
+  .g-k .chip[aria-pressed="true"]{background:var(--kapha-bg);border-color:var(--kapha);color:var(--kapha);font-weight:500}
+  .g-n .chip[aria-pressed="true"]{background:var(--brand-bg);border-color:var(--brand);color:var(--ink);font-weight:500}
+  .stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .stepper button{border:none;background:transparent;width:38px;height:34px;font-size:1.05rem;color:var(--ink-soft)}
+  .stepper output{min-width:70px;text-align:center;font-size:.88rem;font-variant-numeric:tabular-nums}
+  textarea{width:100%;min-height:76px;resize:vertical;border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:12px 14px;line-height:1.6}
+
+  .advice{display:flex;flex-direction:column;gap:10px}
+  .adv{border-radius:16px;padding:16px;background:var(--paper);border:1px solid var(--line)}
+  .adv h4{margin:0 0 8px;font-size:1rem;font-weight:600;letter-spacing:.04em}
+  .adv dl{margin:0}
+  .adv dt{font-weight:500;font-size:.92rem;margin-top:6px}
+  .adv dd{margin:0 0 4px;font-size:.87rem;color:var(--ink-soft)}
+  .adv p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+  .adv.v{background:var(--vata-bg);border-color:transparent}.adv.v h4{color:var(--vata)}
+  .adv.p{background:var(--pitta-bg);border-color:transparent}.adv.p h4{color:var(--pitta)}
+  .adv.k{background:var(--kapha-bg);border-color:transparent}.adv.k h4{color:var(--kapha)}
+  .adv.calm{background:var(--mist);border-color:transparent}
+  .todo{display:inline-block;font-size:.68rem;letter-spacing:.06em;color:var(--todo);background:var(--todo-bg);border:1px dashed var(--todo);border-radius:6px;padding:0 6px;margin-left:4px;vertical-align:1px}
+  .adv.slot{background:var(--todo-bg);border:1px dashed var(--todo)}
+  .adv.slot h4{color:var(--todo)}
+
+  .strip{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin-bottom:6px}
+  .cell{aspect-ratio:1;border-radius:5px;background:var(--mist)}
+  .cell.l1{background:#F2CFC2}.cell.l2{background:#E8AE9A}.cell.l3{background:var(--brand-deep)}
+  .strip-lbl{display:flex;justify-content:space-between;font-size:.68rem;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+  .sum{border-radius:14px;padding:12px 6px;text-align:center}
+  .sum b{display:block;font-size:1.4rem;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
+  .sum span{font-size:.72rem;letter-spacing:.06em}
+  .sum.v{background:var(--vata-bg);color:var(--vata)}.sum.p{background:var(--pitta-bg);color:var(--pitta)}.sum.k{background:var(--kapha-bg);color:var(--kapha)}
+  h3.sec{font-size:1.05rem;font-weight:600;margin:24px 0 10px;letter-spacing:.04em}
+  .days{display:flex;flex-direction:column;gap:8px}
+  .day{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 14px;text-align:left;width:100%}
+  .day .d{font-size:.86rem;line-height:1.3;font-variant-numeric:tabular-nums}
+  .day .d small{display:block;color:var(--ink-faint);font-size:.7rem}
+  .pills{display:flex;flex-wrap:wrap;gap:4px}
+  .pill{font-size:.7rem;border-radius:999px;padding:0 8px}
+  .pill.v{background:var(--vata-bg);color:var(--vata)}.pill.p{background:var(--pitta-bg);color:var(--pitta)}.pill.k{background:var(--kapha-bg);color:var(--kapha)}
+  .day .hb{font-size:.78rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .day .note{grid-column:1/-1;font-size:.8rem;color:var(--ink-faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .empty{color:var(--ink-faint);font-size:.88rem;text-align:center;padding:20px 0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:999px;background:var(--brand-deep);color:#fff;padding:12px 22px;font-size:.95rem;font-weight:500;letter-spacing:.06em}
+  .share{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:10px}
+  .share p{margin:0 0 12px;font-size:.88rem;color:var(--ink-soft)}
+  .share .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .toast{font-size:.82rem;color:var(--kapha)}
+
+  .pick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .pick button{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 6px;font-size:.95rem;line-height:1.35}
+  .pick button small{display:block;font-size:.7rem;color:var(--ink-faint)}
+  .pick button[aria-pressed="true"]{border-color:var(--brand-deep);background:var(--brand-bg)}
+  .stages{display:flex;flex-direction:column;gap:8px}
+  .stages button{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:12px 14px}
+  .stages button[aria-pressed="true"]{border-color:var(--brand-deep);background:var(--brand-bg)}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .card h4{margin:0 0 4px;font-size:1.15rem;font-weight:600}
+  .card .sub{font-size:.84rem;color:var(--ink-faint);margin:0 0 10px}
+  .card p{margin:0 0 10px;font-size:.92rem}
+  .card.v{border-top:3px solid var(--vata)}.card.p{border-top:3px solid var(--pitta)}.card.k{border-top:3px solid var(--kapha)}
+  .tip{font-size:.84rem;color:var(--ink-soft);margin:10px 0 0}
+  a{color:var(--brand-deep)}
+
+  .welcome{position:fixed;inset:0;background:rgba(74,59,51,.35);display:grid;place-items:end center;z-index:20;padding:16px}
+  .welcome .sheet{background:var(--cream);border-radius:22px;max-width:520px;width:100%;padding:24px 22px calc(22px + env(safe-area-inset-bottom,0px));max-height:90vh;overflow:auto}
+  .welcome h2{margin:0 0 10px;font-size:1.3rem;font-weight:600;letter-spacing:.06em}
+  .welcome p{margin:0 0 12px;font-size:.92rem}
+  .welcome ul{margin:0 0 16px;padding-left:1.2em;font-size:.9rem;color:var(--ink-soft)}
+  .wbtns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn.ghost{background:transparent;color:var(--brand-deep);border:1px solid var(--brand);text-decoration:none}
+  .wnote{font-size:.78rem!important;color:var(--ink-faint);margin:10px 0 0!important}
+  .weekcard{background:var(--brand-bg);border-radius:16px;padding:18px;margin:0 0 22px}
+  .weekcard h3{margin:0 0 6px;font-size:1.05rem;font-weight:600}
+  .weekcard p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft)}
+  .weekcard .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .linkbtn{background:none;border:none;color:var(--ink-faint);font-size:.85rem;padding:8px 4px}
+
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(251,246,240,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));z-index:10}
+  nav.tabs .in{max-width:540px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+  nav.tabs button{background:none;border:none;padding:8px 0 6px;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--ink-faint);font-size:.72rem;letter-spacing:.08em}
+  nav.tabs .ic{font-family:"Noto Serif JP",serif;font-size:1.15rem;line-height:1}
+  nav.tabs button[aria-current="page"]{color:var(--ink)}
+  nav.tabs button[aria-current="page"] .ic{color:var(--brand-deep)}
+  .foot{font-size:.72rem;color:var(--ink-faint);text-align:center;margin:28px 0 0;line-height:1.7}
+  [hidden]{display:none!important}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<script src="/analytics.js" defer></script>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1 class="brand serif">アーユルヴェーダ妙日課<small>MYŌ NIKKA · BIRTH WITH MILLIYA</small></h1>
+    <div class="me" id="me"></div>
+  </header>
+  <div class="banner" id="nostore" hidden>このブラウザでは記録を保存できません（シークレットモードかもしれません）。通常モードで開くと、記録が消えません。</div>
+  <main id="view"></main>
+  <p class="foot">記録はこのスマホのブラウザの中だけに保存され、Milliya にも誰にも見えません。<br>このページは利用人数だけを数えていて、あなたの記録の中身は送信しません。<br>暮らしに寄り添い、自分に気づくための道具で、医療的な診断ではありません。体調に不安があるときは、医療機関の指示を優先してください。</p>
+</div>
+
+<nav class="tabs" aria-label="メインメニュー">
+  <div class="in">
+    <button data-tab="today" aria-current="page"><span class="ic">今</span>今日</button>
+    <button data-tab="history"><span class="ic">録</span>記録</button>
+    <button data-tab="me"><span class="ic">私</span>わたし</button>
+  </div>
+</nav>
+
+<div class="welcome" id="welcome" hidden>
+  <div class="sheet" role="dialog" aria-labelledby="wTitle">
+    <h2 class="serif" id="wTitle">ようこそ 🌿</h2>
+    <p>毎日1分で、自分の体を見つめる小さな道具です。</p>
+    <ul>
+      <li>今日、自分のためにできた小さなことにチェック</li>
+      <li>今日の体のサインをタップして、今日の整え方を見る</li>
+      <li>1週間後に振り返ると、自分のリズムが見えてきます</li>
+    </ul>
+    <p><b>記録はこのスマホの中だけに残ります。</b>アカウント登録なし、アップロードもなし。Milliya にも見えません。わたしにシェアしたいときは「記録」ページのボタンから。送るかどうかは、あなたが決めます。</p>
+    <p style="color:var(--ink-soft);font-size:.84rem">スマホを替えたり、ブラウザのデータを消したりすると記録も消えます。このページをホーム画面に追加しておくのがおすすめです。このページは利用人数だけを数え、記録の中身は送信しません。</p>
+    <div class="wbtns">
+      <button class="btn" id="wGo">まず自分の体質を知る →</button>
+      <a class="btn ghost" id="wHello" href="https://line.me/R/oaMessage/@859uhxmv/?%E5%A6%99%E6%97%A5%E8%AA%B2%E3%82%92%E5%A7%8B%E3%82%81%E3%81%BE%E3%81%97%E3%81%9F%20%F0%9F%8C%BF" target="_blank" rel="noopener">Milliya に「始めたよ」と伝える</a>
+    </div>
+    <p class="wnote">押すと LINE が開きます。送信するのはあなた自身。押さなくても、まったく大丈夫です。</p>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ───────── 內容（Milliya 可以直接改這一段）─────────
+   體質說明、訊號、調法：取自 ayurveda/quiz/ 測驗文字（Milliya 原創）
+   TODO_MILLIYA：日課清單、階段提醒、平衡日的一句話，請她確認或重寫 */
+
+const DOSHA={
+  v:{name:"風 Vāta（ヴァータ）",short:"風",sk:"Vāta",title:"風タイプ・流れる創造者",
+     sub:"「空＋風」からなる：軽やかで、動きがあり、止まらない",
+     body:"あなたのエネルギーは風のよう。来るのが速く、発想が多く、創造力と直感にあふれています。でも風は「吹きすぎる」ことも——生活リズムが乱れると、不安になり、眠りが浅くなり、止まれなくなります。体は乾き、冷え、地に足がつかない感じに。セルフケアのキーワードは、あたため・規則・グラウンディング。",
+     key:"あたため・規則・グラウンディング",
+     signs:["眠りが浅い・夢が多い","理由のない不安","お腹の張り・便秘","手足の冷え","止まれない","肌の乾燥"],
+     practice:[
+       ["毎日ひとつ「決まった錨（いかり）」を持つ","朝ごはんの時間、寝る時間を決めるだけでも。小さな錨が、漂うあなたを落ち着かせます。"],
+       ["あたたかさと潤いで、乾きと冷えに","白湯、煮込み料理、良質な油を少し。寝る前に、温かいオイルを足裏にやさしくなじませて（アビヤンガ＝オイルでのセルフケア）。"],
+       ["毎日5分、地に足をつける","はだしで地面に立つ、ゆっくり腹式呼吸、手を下腹に当てる。意識を体に戻します。"]]},
+  p:{name:"火 Pitta（ピッタ）",short:"火",sk:"Pitta",title:"火タイプ・集中する変革者",
+     sub:"「火＋水」からなる：明るく、集中し、燃えている",
+     body:"あなたのエネルギーは火のよう。目標がはっきりし、行動力があり、筋道立てて考えられます。でも火は「燃えすぎる」ことも——予定を詰め込み、自分に厳しすぎると、怒りっぽさ、ほてり、胃酸、そして「まだ足りない」という声に。セルフケアのキーワードは、クールダウン・余白・自分への慈しみ。",
+     key:"クールダウン・余白・自分への慈しみ",
+     signs:["怒りっぽい・焦り","胃酸・胸やけ","肌の赤み","自分に厳しい","寝る前も考えごと"],
+     practice:[
+       ["予定にわざと「余白」をつくる","成果を求めない空白の時間を毎日。20分でも、燃えすぎた火を冷ましてくれます。"],
+       ["クールを選び、火に油を注がない","体を冷ます食べもの（瓜類・ミント・ココナッツウォーター）を多めに。辛いもの・お酒・コーヒー・強い日差しは控えめに。"],
+       ["「これで十分」と自分に言う練習","寝る前に「今日よくやれた」小さなことを三つ思い出す。"]]},
+  k:{name:"水土 Kapha（カパ）",short:"水土",sk:"Kapha",title:"水土タイプ・どっしり潤す滋養者",
+     sub:"「土＋水」からなる：安定し、あたたかく、包み込む",
+     body:"あなたのエネルギーは大地のよう。安定し、やさしく、粘り強い。でも土は「積もりすぎる」ことも——変化が少なく動かなすぎると、安定が停滞に。だるさ、眠気、やる気の出なさ、手放せない感じ。セルフケアのキーワードは、流れ・あたため・刺激。",
+     key:"流れ・あたため・刺激",
+     signs:["だるさ・眠気","やる気が出ない","むくみやすい","体が重い","感情が粘る"],
+     practice:[
+       ["「動く」で停滞を破る","朝の早歩き、流れのあるヨガ、一曲踊る。体を温めて、エネルギーを流しましょう。"],
+       ["早起きして、一日の最初の光を","いつもより30分早く起きて、朝の光にスイッチを入れてもらう。"],
+       ["自分から少し新しさを","散歩の道を変える、新しいことを一つ学ぶ、長く置いた物を一つ手放す。"]]}
+};
+const ORDER=["v","p","k"];
+
+/* TODO_MILLIYA：每個階段一段話（note 換成文字即可顯示） */
+const STAGES={
+  pre:{label:"妊活中",note:"TODO_MILLIYA"},
+  preg:{label:"妊娠中",note:"TODO_MILLIYA"},
+  post:{label:"産後・産褥期",note:"TODO_MILLIYA"},
+  mom:{label:"子育て中",note:"TODO_MILLIYA"},
+  none:{label:"ただ自分をもっと知りたい",note:""}
+};
+
+/* TODO_MILLIYA：日課清單請確認。孕期、產後是否有要拿掉或加上的？ */
+const HABITS=[
+  {id:"water",t:"起きたら、まず白湯を一杯",must:1},
+  {id:"bowel",t:"決まった時間にトイレへ（いきまない）",must:1},
+  {id:"breath",t:"下腹に手を当てて5分の呼吸",must:1},
+  {id:"tongue",t:"舌をこすって、舌苔をひと目チェック"},
+  {id:"oil",t:"温かいオイルを足裏（または頭皮）に"},
+  {id:"move",t:"体を動かす（じんわり温まるくらいで）"},
+  {id:"meal",t:"温かい朝ごはんを、座ってゆっくり"},
+  {id:"rest",t:"何もしない余白の時間"},
+  {id:"sleep",t:"昨夜は22:30までに横になった"}
+];
+const SLEEP=["よく眠れた","夢が多い","眠りが浅い","起きられない"];
+const STOOL=["スムーズ","硬い・乾いている","ゆるい・急に","出なかった"];
+const TONGUE=["きれい","うっすら","厚い"];
+
+/* ───────── helpers ───────── */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const ymd=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parse=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const WK="日月火水木金土";
+const todayStr=()=>ymd(new Date());
+const addDays=(s,n)=>{const d=parse(s);d.setDate(d.getDate()+n);return ymd(d)};
+const md=s=>{const d=parse(s);return (d.getMonth()+1)+"/"+d.getDate()};
+
+/* ───────── storage（只在這台裝置）───────── */
+const KEY="bwm-ayurveda-daily-ja-v1";  /* 中文版と記録を分ける（サインの言葉が違うため） */
+let canStore=true;
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||"null")||{}}catch(e){canStore=false;return {}}}
+let saveT=null;
+function save(){if(!S.data.start)S.data.start=todayStr();clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S.data))}catch(e){canStore=false;$("#nostore").hidden=false}},400)}
+
+const S={tab:"today",date:todayStr(),showAll:false,data:Object.assign({profile:{doshas:[],stage:""},days:{},welcomed:false},load())};
+S.data.profile=S.data.profile||{doshas:[],stage:""};
+S.data.days=S.data.days||{};
+function track(name){try{if(window.gtag)window.gtag("event",name)}catch(e){}}  /* 只送事件名稱，不含紀錄內容 */
+/* 做過測驗的人：體質與階段自動帶入（同一個網站、同一支手機的紀錄） */
+let fromQuiz=false;
+if(!S.data.profile.doshas.length&&!S.data.profile.stage){try{const q=JSON.parse(localStorage.getItem("bwm-ayurveda-quiz")||"null");
+  if(q&&Array.isArray(q.doshas)){S.data.profile.doshas=q.doshas.filter(k=>["v","p","k"].includes(k)).slice(0,2);if(q.stage&&q.stage!=="none"&&STAGES[q.stage])S.data.profile.stage=q.stage;fromQuiz=S.data.profile.doshas.length>0}}catch(e){}}
+function markUsed(){const t=todayStr();S.data.pinged=S.data.pinged||{};if(!S.data.pinged[t]){S.data.pinged[t]=1;track("daily_record")}}
+function day(d){return S.data.days[d]||(S.data.days[d]={habits:{},signals:{v:[],p:[],k:[]},sleep:"",stool:"",tongue:"",flow:0,note:""})}
+function isEmpty(x){return !x||(!Object.keys(x.habits||{}).length&&!ORDER.some(k=>(x.signals[k]||[]).length)&&!x.sleep&&!x.stool&&!x.tongue&&!x.flow&&!x.note)}
+function scores(x){const s={v:0,p:0,k:0};ORDER.forEach(k=>s[k]=(x.signals[k]||[]).length);
+  if(x.sleep==="夢が多い"||x.sleep==="眠りが浅い")s.v++;if(x.sleep==="起きられない")s.k++;
+  if(x.stool==="硬い・乾いている")s.v++;if(x.stool==="ゆるい・急に")s.p++;
+  return s}
+const hc=x=>HABITS.filter(h=>x.habits[h.id]).length;
+const mc=x=>HABITS.filter(h=>h.must&&x.habits[h.id]).length;
+const flowLabel=()=>S.data.profile.stage==="post"?"悪露":"生理";
+
+/* ───────── views ───────── */
+function chipGroup(key,cls,title,dot,opts,sel,multi){
+  return '<div class="group '+cls+'"><h3>'+(dot?'<span class="dot" style="background:var(--'+dot+')"></span>':'')+esc(title)+'</h3><div class="chips">'+
+    opts.map(o=>{const on=multi?sel.includes(o):sel===o;return '<button class="chip" data-k="'+key+'" data-v="'+esc(o)+'" aria-pressed="'+on+'">'+esc(o)+'</button>'}).join("")+'</div></div>';
+}
+function advice(x){
+  const s=scores(x),hot=ORDER.filter(k=>s[k]>0).sort((a,b)=>s[b]-s[a]);
+  let h=hot.map(k=>{const D=DOSHA[k];
+    return '<div class="adv '+k+'"><h4>'+D.short+'が多め：'+esc(D.key)+'</h4><dl>'+
+      D.practice.map(p=>'<dt>'+esc(p[0])+'</dt><dd>'+esc(p[1])+'</dd>').join("")+'</dl></div>'}).join("");
+  if(!hot.length)h+='<div class="adv calm"><h4>今日はバランスがとれているようです</h4><p>いつもの日課を続けて、今日の体の感じをひとこと残しましょう。</p></div>';
+  const st=STAGES[S.data.profile.stage];
+  /* 階段提醒：Milliya 寫好 note 才顯示（TODO_MILLIYA 時不顯示） */
+  if(st&&st.note&&st.note!=="TODO_MILLIYA")h+='<div class="adv calm"><h4>'+esc(st.label)+'のあなたへ</h4><p>'+esc(st.note)+'</p></div>';
+  return h;
+}
+function weekCard(){
+  if(!S.data.start||S.data.weekAsked||S.date!==todayStr())return '';
+  const used=Math.round((parse(todayStr())-parse(S.data.start))/864e5);
+  const any=Object.keys(S.data.days).some(k=>!isEmpty(S.data.days[k]));
+  if(used<6||!any)return '';
+  return '<div class="weekcard"><h3 class="serif">自分に寄り添って、1週間になりました 🌿</h3><p>この1週間を Milliya に送ってみませんか？ 読んで、ひとことお返事します。送らなくても大丈夫。記録はずっとあなたのスマホの中にあります。</p>'+
+    '<div class="row"><button class="btn" data-weekshare>今週のまとめをつくる</button><button class="linkbtn" data-weeklater>また今度</button><span class="toast" id="weekToast" aria-live="polite"></span></div></div>';
+}
+function viewToday(){
+  const x=day(S.date),isT=S.date===todayStr(),d=parse(S.date);
+  const list=S.showAll?HABITS:HABITS.filter(h=>h.must);
+  const hideFlow=S.data.profile.stage==="preg";
+  return weekCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前の日">‹</button>'+
+  '<h2 class="serif">'+md(S.date)+'<span>（'+WK[d.getDay()]+'）'+(isT?' · 今日':'')+'</span></h2>'+
+  '<button class="iconbtn" data-nav="1" aria-label="次の日"'+(isT?' disabled':'')+'>›</button></div>'+
+  '<section class="block"><div class="lbl">今日の小さなセルフケア<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
+  list.map(h=>'<button class="habit" data-habit="'+h.id+'" aria-pressed="'+!!x.habits[h.id]+'"><span class="box" aria-hidden="true">✓</span><span>'+(h.must?'<span class="must">基本の3つ</span>':'')+esc(h.t)+'</span></button>').join("")+
+  '</div><button class="more" data-more>'+(S.showAll?'基本の3つだけ表示 ▴':'ほかに '+(HABITS.length-3)+' つ ▾')+'</button></section>'+
+  '<section class="block"><div class="lbl">今日の体のサイン<em>感じたものだけ</em></div>'+
+  ORDER.map(k=>chipGroup(k,"g-"+k,DOSHA[k].short+"のサイン",{v:"vata",p:"pitta",k:"kapha"}[k],DOSHA[k].signs,x.signals[k]||[],true)).join("")+'</section>'+
+  '<section class="block"><div class="lbl">朝の観察</div>'+
+  chipGroup("sleep","g-n","睡眠",null,SLEEP,x.sleep,false)+
+  chipGroup("stool","g-n","お通じ",null,STOOL,x.stool,false)+
+  chipGroup("tongue","g-n","舌苔",null,TONGUE,x.tongue,false)+
+  (hideFlow?'':'<div class="group g-n"><h3>'+flowLabel()+'</h3><div class="stepper"><button data-flow="-1" aria-label="1日減らす">−</button><output>'+(x.flow?x.flow+' 日目':'なし')+'</output><button data-flow="1" aria-label="1日増やす">＋</button></div></div>')+
+  '</section>'+
+  '<section class="block"><div class="lbl">今日の整え方</div><div class="advice" id="advice">'+advice(x)+'</div></section>'+
+  '<section class="block"><div class="lbl">ひとこと</div><textarea id="note" placeholder="今日の体の感じ、気持ち、いつもと違って食べたもの……">'+esc(x.note||"")+'</textarea></section>';
+}
+function last14(){const t=todayStr(),a=[];for(let i=13;i>=0;i--)a.push(addDays(t,-i));return a}
+function weekSummary(){
+  const t=todayStr(),days=[];for(let i=6;i>=0;i--)days.push(addDays(t,-i));
+  const got=days.filter(d=>!isEmpty(S.data.days[d]));
+  const tot={v:0,p:0,k:0},cnt={};let hab=0;
+  got.forEach(d=>{const x=S.data.days[d],s=scores(x);ORDER.forEach(k=>{tot[k]+=s[k];(x.signals[k]||[]).forEach(v=>cnt[v]=(cnt[v]||0)+1)});hab+=mc(x)});
+  const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]).slice(0,3);
+  let o="Milliya さん、今週（"+md(days[0])+"–"+md(t)+"）の日課のまとめです：\n";
+  o+="・記録した日："+got.length+" 日、基本の3つ：合計 "+hab+" 回\n";
+  o+="・サイン：風 "+tot.v+"｜火 "+tot.p+"｜水土 "+tot.k+"\n";
+  if(top.length)o+="・よく出たサイン："+top.map(v=>v+"（"+cnt[v]+" 日）").join("、")+"\n";
+  const notes=got.map(d=>S.data.days[d].note&&md(d)+" "+S.data.days[d].note.trim()).filter(Boolean);
+  if(notes.length)o+="・わたしのひとこと：\n"+notes.map(n=>"  "+n).join("\n")+"\n";
+  return o;
+}
+function viewHistory(){
+  const L=last14(),tot={v:0,p:0,k:0};
+  L.forEach(d=>{if(S.data.days[d]){const s=scores(S.data.days[d]);ORDER.forEach(k=>tot[k]+=s[k])}});
+  const rec=Object.keys(S.data.days).filter(d=>!isEmpty(S.data.days[d])).sort().reverse();
+  let h='<div class="datenav"><h2 class="serif">最近の2週間</h2></div>'+
+  '<div class="summary">'+ORDER.map(k=>'<div class="sum '+k+'"><b>'+tot[k]+'</b><span>'+DOSHA[k].short+'のサイン</span></div>').join("")+'</div>'+
+  '<div class="lbl">基本の3つ · 1マス＝1日<em>濃いほどたくさん</em></div><div class="strip">'+
+  L.map(d=>{const c=S.data.days[d]?mc(S.data.days[d]):0;return '<div class="cell'+(c?' l'+c:'')+'" title="'+md(d)+' 基本の3つ '+c+'/3"></div>'}).join("")+'</div>'+
+  '<div class="strip-lbl"><span>'+md(L[0])+'</span><span>今日</span></div>'+
+  '<h3 class="sec serif">今週を Milliya に見せてみる？</h3><div class="share"><p>押すと今週のまとめができます。送るかどうかはあなた次第。押さなければ、あなただけのものです。</p><div class="row"><button class="btn" id="shareBtn">今週のまとめをつくる</button><span class="toast" id="toast" aria-live="polite"></span></div></div>'+
+  '<h3 class="sec serif">毎日の記録</h3>';
+  if(!rec.length)h+='<p class="empty">まだ記録がありません。「今日」から最初のチェックを。</p>';
+  else h+='<div class="days">'+rec.map(d=>{const x=S.data.days[d],s=scores(x),dd=parse(d);
+    return '<button class="day" data-go="'+d+'"><span class="d">'+md(d)+'<small>（'+WK[dd.getDay()]+'）</small></span><span class="pills">'+
+    ORDER.filter(k=>s[k]).map(k=>'<span class="pill '+k+'">'+DOSHA[k].short+' '+s[k]+'</span>').join("")+'</span><span class="hb">'+hc(x)+'/'+HABITS.length+'</span>'+
+    (x.note?'<span class="note">'+esc(x.note)+'</span>':'')+'</button>'}).join("")+'</div>';
+  h+='<p class="tip">週に一度、自分に聞いてみましょう：今週はどのエネルギーが多かった？ いちばん心地よかった日、何がいつもと違った？</p>';
+  return h;
+}
+function viewMe(){
+  const P=S.data.profile;
+  let h='<div class="datenav"><h2 class="serif">わたしを知る</h2></div>'+
+  (fromQuiz?'<p class="banner" style="background:var(--brand-bg)">チェックの結果を反映しました。変えたいときは、下のボタンを押すだけで大丈夫です。</p>':'')+
+  '<section class="block"><div class="lbl">わたしの体質<em>1〜2つ選べます</em></div>'+
+  '<div class="pick">'+ORDER.map(k=>'<button data-dosha="'+k+'" aria-pressed="'+P.doshas.includes(k)+'">'+DOSHA[k].short+'<small>'+DOSHA[k].sk+'</small></button>').join("")+'</div>'+
+  '<p class="tip">まだわからない？ 5分の <a href="/ja/ayurveda/quiz/" target="_blank" rel="noopener">トリドーシャ・エネルギーチェック</a> をしてから選んでください。</p></section>'+
+  '<section class="block"><div class="lbl">今のステージ</div><div class="stages">'+
+  Object.keys(STAGES).map(k=>'<button data-stage="'+k+'" aria-pressed="'+(P.stage===k)+'">'+esc(STAGES[k].label)+'</button>').join("")+'</div></section>';
+  if(P.doshas.length){h+='<section class="block"><div class="lbl">わたしのエネルギー</div><div class="advice">'+
+    P.doshas.map(k=>{const D=DOSHA[k];return '<div class="card '+k+'"><h4 class="serif">'+esc(D.title)+'</h4><p class="sub">'+esc(D.sub)+'</p><p>'+esc(D.body)+'</p><p style="font-size:.84rem;color:var(--ink-soft);margin:0">よく出るサイン：'+D.signs.map(esc).join("、")+'</p></div>'}).join("")+
+    '</div></section>'}
+  h+='<section class="block"><div class="lbl">この道具について</div><div class="card"><p>Birth with Milliya のお試し版の日課です。記録はこのスマホのブラウザの中だけに保存され、スマホを替えたりデータを消したりすると消えます。ページは利用人数だけを数え、記録の中身は送信しません。</p><p style="margin:0">感想やご意見は <a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">LINE @birthwithmilliya</a> へお気軽にどうぞ。</p></div></section>';
+  return h;
+}
+function renderMe(){const P=S.data.profile;const ds=P.doshas.map(k=>DOSHA[k].short).join("＋");
+  const st=P.stage&&STAGES[P.stage]?STAGES[P.stage].label:"";
+  $("#me").innerHTML=(ds?'<b>'+esc(ds)+'タイプ</b>':'')+(ds&&st?'<br>':'')+esc(st)}
+function render(){
+  const focusNote=document.activeElement&&document.activeElement.id==="note";
+  $("#view").innerHTML=S.tab==="today"?viewToday():S.tab==="history"?viewHistory():viewMe();
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-current",b.dataset.tab===S.tab?"page":"false"));
+  renderMe();
+  if(focusNote){const n=$("#note");if(n)n.focus()}
+}
+
+/* ───────── events ───────── */
+async function share(t){
+  const text=weekSummary();t=t||$("#toast");track("weekly_summary");S.data.weekAsked=true;save();
+  if(navigator.share){try{await navigator.share({text});t.textContent="共有画面を開きました";return}catch(e){if(e&&e.name==="AbortError")return}}
+  try{await navigator.clipboard.writeText(text);t.innerHTML='コピーしました。<a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">LINE</a> に貼り付けて送ってください'}
+  catch(e){t.textContent="このブラウザでは自動でコピーできません。この画面のスクリーンショットを送ってください"}
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.id==="wGo"){S.data.welcomed=true;save();track("daily_start");$("#welcome").hidden=true;S.tab="me";render();return}
+  if(b.id==="shareBtn"){share();return}
+  if(b.hasAttribute("data-weekshare")){share($("#weekToast"));return}
+  if(b.hasAttribute("data-weeklater")){S.data.weekAsked=true;save();render();return}
+  if(b.dataset.tab){S.tab=b.dataset.tab;render();window.scrollTo(0,0);return}
+  if(b.dataset.nav){const n=addDays(S.date,+b.dataset.nav);if(n<=todayStr()){S.date=n;render()}return}
+  if(b.hasAttribute("data-more")){S.showAll=!S.showAll;render();return}
+  if(b.dataset.go){S.date=b.dataset.go;S.tab="today";render();window.scrollTo(0,0);return}
+  const P=S.data.profile;
+  if(b.dataset.dosha){const k=b.dataset.dosha,i=P.doshas.indexOf(k);if(i>=0)P.doshas.splice(i,1);else{P.doshas.push(k);if(P.doshas.length>2)P.doshas.shift()}save();render();return}
+  if(b.dataset.stage){P.stage=P.stage===b.dataset.stage?"":b.dataset.stage;save();render();return}
+  const x=day(S.date);
+  if(b.dataset.habit){const id=b.dataset.habit;if(x.habits[id])delete x.habits[id];else x.habits[id]=true;
+    markUsed();b.setAttribute("aria-pressed",!!x.habits[id]);$("#hcount").textContent="基本 "+mc(x)+"/3　全部 "+hc(x)+"/"+HABITS.length;save();return}
+  if(b.dataset.flow){x.flow=Math.max(0,Math.min(60,(x.flow||0)+ +b.dataset.flow));save();render();return}
+  if(b.dataset.k){const k=b.dataset.k,v=b.dataset.v;
+    if(ORDER.includes(k)){const a=x.signals[k]=x.signals[k]||[],i=a.indexOf(v);if(i>=0)a.splice(i,1);else a.push(v);b.setAttribute("aria-pressed",i<0)}
+    else{x[k]=x[k]===v?"":v;b.parentNode.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.v===x[k]))}
+    $("#advice").innerHTML=advice(x);markUsed();save();return}
+});
+document.addEventListener("input",e=>{if(e.target.id==="note"){day(S.date).note=e.target.value;markUsed();save()}});
+document.addEventListener("click",e=>{const a=e.target.closest("#wHello");if(a){track("daily_hello");S.data.welcomed=true;save();$("#welcome").hidden=true;S.tab="me";render()}});
+
+/* ───────── boot ───────── */
+try{localStorage.setItem(KEY+"-t","1");localStorage.removeItem(KEY+"-t")}catch(e){canStore=false}
+if(!canStore)$("#nostore").hidden=false;
+if(!S.data.welcomed)$("#welcome").hidden=false;
+if(fromQuiz){$("#wGo").textContent="わたしの体質を見る →";save()}
+render();
+})();
+</script>
+</body>
+</html>

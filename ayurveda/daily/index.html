@@ -116,6 +116,10 @@
   .share{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:10px}
   .share p{margin:0 0 12px;font-size:.88rem;color:var(--ink-soft)}
   .share .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  #restoreBox textarea{min-height:90px;margin-top:12px;font-size:.8rem}
+  #inapp{display:flex;flex-direction:column;gap:8px}
+  #inapp .row{display:flex;flex-wrap:wrap;gap:8px}
+  #inapp .btn{padding:8px 16px;font-size:.85rem}
   .toast{font-size:.82rem;color:var(--kapha)}
 
   .pick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -165,6 +169,7 @@
     <h1 class="brand serif">阿育吠陀妙日課<small>BIRTH WITH MILLIYA</small></h1>
     <div class="me" id="me"></div>
   </header>
+  <div class="banner" id="inapp" hidden></div>
   <div class="banner" id="nostore" hidden>這個瀏覽器目前無法保存紀錄（可能是無痕模式）。請改用一般模式開啟，紀錄才不會消失。</div>
   <main id="view"></main>
   <p class="foot">紀錄只存在妳這支手機的瀏覽器裡，Milliya 和任何人都看不到。<br>這個頁面只計算使用人數，不會傳送妳的紀錄內容。<br>這是生活陪伴與自我覺察的工具，不是醫療診斷；身體不適請以妳的醫療團隊為準。</p>
@@ -188,7 +193,7 @@
       <li>一週後回頭看，妳會開始認出自己的節奏</li>
     </ul>
     <p><b>妳的紀錄只存在這支手機裡。</b>沒有帳號、不會上傳，Milliya 也看不到。想跟我分享時，「紀錄」頁有一個按鈕，由妳自己決定傳不傳。</p>
-    <p style="color:var(--ink-soft);font-size:.84rem">換手機或清除瀏覽器資料，紀錄就會消失。建議把這一頁加到手機主畫面。這個頁面只計算使用人數，不會傳送妳的紀錄內容。</p>
+    <p style="color:var(--ink-soft);font-size:.84rem">紀錄存在「這個瀏覽器」裡：請一直用同一個方式開啟（建議用 Safari，或加到主畫面後都從圖示打開）。在 LINE、IG 裡直接打開的話，紀錄可能會不見。想換手機或換瀏覽器，用「紀錄」頁的「備份」就能搬過去。這個頁面只計算使用人數，不會傳送妳的紀錄內容。</p>
     <div class="wbtns">
       <button class="btn" id="wGo">先認識我的體質 →</button>
       <a class="btn ghost" id="wHello" href="https://line.me/R/oaMessage/@859uhxmv/?%E6%88%91%E9%96%8B%E5%A7%8B%E7%94%A8%E5%A6%99%E6%97%A5%E8%AA%B2%E4%BA%86%20%F0%9F%8C%BF" target="_blank" rel="noopener">跟 Milliya 說我開始了</a>
@@ -368,7 +373,7 @@ function viewHistory(){
   L.map(d=>{const c=S.data.days[d]?mc(S.data.days[d]):0;return '<div class="cell'+(c?' l'+c:'')+'" title="'+md(d)+' 基本三件 '+c+'/3"></div>'}).join("")+'</div>'+
   '<div class="strip-lbl"><span>'+md(L[0])+'</span><span>今天</span></div>'+
   '<h3 class="sec serif">想讓 Milliya 看看這週嗎？</h3><div class="share"><p>按下去會產生一段本週摘要，由妳自己決定要不要傳給我。不按，就只有妳看得到。</p><div class="row"><button class="btn" id="shareBtn">產生本週摘要</button><span class="toast" id="toast" aria-live="polite"></span></div></div>'+
-  '<h3 class="sec serif">每一天</h3>';
+  '<h3 class="sec serif">備份與搬家</h3><div class="share"><p>換手機、換瀏覽器之前，先按「備份」，把產生的一段文字存給自己（例如傳到自己的 LINE Keep）。到新的地方打開妙日課，貼上就能還原。這段文字包含妳的紀錄，請只傳給自己。</p>'+'<div class="row"><button class="btn" data-backup>備份我的紀錄</button><button class="btn ghost" data-showrestore>我要還原</button><span class="toast" id="bkToast" aria-live="polite"></span></div>'+'<div id="restoreBox" hidden><textarea id="restoreText" placeholder="把備份的那段文字貼在這裡"></textarea><div class="row" style="margin-top:8px"><button class="btn" data-restore>還原</button><span class="toast" id="rsToast" aria-live="polite"></span></div></div></div>'+'<h3 class="sec serif">每一天</h3>';
   if(!rec.length)h+='<p class="empty">還沒有紀錄。從「今天」勾下第一格吧。</p>';
   else h+='<div class="days">'+rec.map(d=>{const x=S.data.days[d],s=scores(x),dd=parse(d);
     return '<button class="day" data-go="'+d+'"><span class="d">'+md(d)+'<small>週'+WK[dd.getDay()]+'</small></span><span class="pills">'+
@@ -403,6 +408,45 @@ function render(){
   if(focusNote){const n=$("#note");if(n)n.focus()}
 }
 
+/* ───────── 備份／還原（只在使用者自己手上流動，不經過任何伺服器）───────── */
+const BK_PREFIX="MYONIKKA1:";
+function toB64(str){return btoa(unescape(encodeURIComponent(str)))}
+function fromB64(b){return decodeURIComponent(escape(atob(b)))}
+function dayWeight(x){return x?Object.keys(x.habits||{}).length+ORDER.reduce((n,k)=>n+((x.signals||{})[k]||[]).length,0)+(x.note?x.note.length:0)+(x.sleep?1:0)+(x.stool?1:0)+(x.tongue?1:0)+(x.flow?1:0):0}
+async function backup(){
+  const code=BK_PREFIX+toB64(JSON.stringify(S.data)),t=$("#bkToast");track("daily_backup");
+  if(navigator.share){try{await navigator.share({title:"妙日課備份",text:code});t.textContent="已開啟分享，請存給自己";return}catch(e){if(e&&e.name==="AbortError")return}}
+  try{await navigator.clipboard.writeText(code);t.textContent="已複製，請貼到自己的 LINE Keep 或筆記裡"}
+  catch(e){$("#restoreBox").hidden=false;$("#restoreText").value=code;t.textContent="無法自動複製，請截圖或手動複製這段文字"}
+}
+function restore(){
+  const raw=($("#restoreText").value||"").trim(),t=$("#rsToast");
+  const i=raw.indexOf(BK_PREFIX);
+  let data=null;try{if(i>=0)data=JSON.parse(fromB64(raw.slice(i+BK_PREFIX.length).split(/\s/)[0]))}catch(e){}
+  if(!data||typeof data!=="object"||!data.days){t.textContent="這段文字看起來不是妙日課的備份，請確認有完整貼上";return}
+  if(!confirm("要把備份裡的紀錄加進這裡嗎？同一天兩邊都有紀錄時，會保留內容比較多的那一份。"))return;
+  let n=0;
+  Object.keys(data.days).forEach(d=>{const b=data.days[d];if(!b)return;const c=S.data.days[d];if(dayWeight(b)>dayWeight(c)){S.data.days[d]=b;n++}});
+  const P=S.data.profile,BP=data.profile||{};
+  if(!P.doshas.length&&BP.doshas)P.doshas=BP.doshas.slice(0,2);
+  if(!P.stage&&BP.stage)P.stage=BP.stage;
+  if(!S.data.start||(data.start&&data.start<S.data.start))S.data.start=data.start||S.data.start;
+  S.data.welcomed=true;save();track("daily_restore");
+  render();const t2=$("#rsToast");if(t2)t2.textContent="還原好了：加入了 {n} 天的紀錄".replace("{n}",n);
+}
+/* ───────── App 內瀏覽器提醒 ───────── */
+function inAppNotice(){
+  const ua=navigator.userAgent||"";
+  const isLine=/\bLine\//i.test(ua);
+  const isApp=isLine||/Instagram|FBAN|FBAV|FB_IAB|Messenger|MicroMessenger|KAKAOTALK/i.test(ua)||(/iPhone|iPad|iPod/.test(ua)&&!/Safari\//.test(ua)&&!/CriOS|FxiOS|EdgiOS/.test(ua));
+  if(!isApp)return;
+  const box=$("#inapp"),url=location.origin+location.pathname;
+  box.innerHTML='<div>'+(isLine?"妳現在是在 LINE 裡打開妙日課，這裡的紀錄可能會不見。":"妳現在是在 App 裡的瀏覽器打開妙日課，這裡的紀錄可能會不見。")+'<br><span style="color:var(--ink-soft)">建議用 Safari 打開（右上角「⋯」→「用瀏覽器開啟」）。</span></div><div class="row">'+
+    (isLine?'<a class="btn" href="'+url+'?openExternalBrowser=1">改用瀏覽器打開</a>':'')+
+    '<button class="btn ghost" data-copyurl>複製網址</button><span class="toast" id="urlToast"></span></div>';
+  box.hidden=false;
+}
+
 /* ───────── events ───────── */
 async function share(t){
   const text=weekSummary();t=t||$("#toast");track("weekly_summary");S.data.weekAsked=true;save();
@@ -414,6 +458,10 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
   if(b.id==="wGo"){S.data.welcomed=true;save();track("daily_start");$("#welcome").hidden=true;S.tab="me";render();return}
   if(b.id==="shareBtn"){share();return}
+  if(b.hasAttribute("data-backup")){backup();return}
+  if(b.hasAttribute("data-showrestore")){const r=$("#restoreBox");r.hidden=!r.hidden;return}
+  if(b.hasAttribute("data-restore")){restore();return}
+  if(b.hasAttribute("data-copyurl")){const u=location.origin+location.pathname;navigator.clipboard&&navigator.clipboard.writeText(u).then(()=>{$("#urlToast").textContent="已複製，請貼到 Safari 打開"}).catch(()=>{$("#urlToast").textContent=u});return}
   if(b.hasAttribute("data-weekshare")){share($("#weekToast"));return}
   if(b.hasAttribute("data-weeklater")){S.data.weekAsked=true;save();render();return}
   if(b.dataset.tab){S.tab=b.dataset.tab;render();window.scrollTo(0,0);return}
@@ -439,6 +487,7 @@ document.addEventListener("click",e=>{const a=e.target.closest("#wHello");if(a){
 try{localStorage.setItem(KEY+"-t","1");localStorage.removeItem(KEY+"-t")}catch(e){canStore=false}
 if(!canStore)$("#nostore").hidden=false;
 if(!S.data.welcomed)$("#welcome").hidden=false;
+inAppNotice();
 if(fromQuiz){$("#wGo").textContent="看看我的體質 →";save()}
 render();
 })();

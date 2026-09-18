@@ -12,6 +12,7 @@
 <!--
   客戶試用版（2026-09-18 上線）
   - 紀錄只存在客戶自己的瀏覽器（localStorage），不送到任何伺服器，Milliya 看不到。
+  - 2026-09-18 起加上 GA4（/analytics.js）只計算使用人數與次數；自訂事件只有名稱，不帶任何紀錄內容。
   - 體質說明、訊號、「今天怎麼調」的文字取自 ayurveda/quiz/ 測驗（Milliya 自己寫的內容），沒有使用甘乃夏講義。
   - 標「待 Milliya 撰寫」的地方是留給她的內容位置：搜尋 TODO_MILLIYA。
   - noindex、未進 sitemap；入口只有測驗結果頁與邀請信。
@@ -137,6 +138,14 @@
   .welcome h2{margin:0 0 10px;font-size:1.3rem;font-weight:600;letter-spacing:.06em}
   .welcome p{margin:0 0 12px;font-size:.92rem}
   .welcome ul{margin:0 0 16px;padding-left:1.2em;font-size:.9rem;color:var(--ink-soft)}
+  .wbtns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn.ghost{background:transparent;color:var(--brand-deep);border:1px solid var(--brand);text-decoration:none}
+  .wnote{font-size:.78rem!important;color:var(--ink-faint);margin:10px 0 0!important}
+  .weekcard{background:var(--brand-bg);border-radius:16px;padding:18px;margin:0 0 22px}
+  .weekcard h3{margin:0 0 6px;font-size:1.05rem;font-weight:600}
+  .weekcard p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft)}
+  .weekcard .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .linkbtn{background:none;border:none;color:var(--ink-faint);font-size:.85rem;padding:8px 4px}
 
   nav.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(251,246,240,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));z-index:10}
   nav.tabs .in{max-width:540px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
@@ -148,6 +157,7 @@
   [hidden]{display:none!important}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<script src="/analytics.js" defer></script>
 </head>
 <body>
 <div class="app">
@@ -157,7 +167,7 @@
   </header>
   <div class="banner" id="nostore" hidden>這個瀏覽器目前無法保存紀錄（可能是無痕模式）。請改用一般模式開啟，紀錄才不會消失。</div>
   <main id="view"></main>
-  <p class="foot">紀錄只存在妳這支手機的瀏覽器裡，Milliya 和任何人都看不到。<br>這是生活陪伴與自我覺察的工具，不是醫療診斷；身體不適請以妳的醫療團隊為準。</p>
+  <p class="foot">紀錄只存在妳這支手機的瀏覽器裡，Milliya 和任何人都看不到。<br>這個頁面只計算使用人數，不會傳送妳的紀錄內容。<br>這是生活陪伴與自我覺察的工具，不是醫療診斷；身體不適請以妳的醫療團隊為準。</p>
 </div>
 
 <nav class="tabs" aria-label="主選單">
@@ -178,8 +188,12 @@
       <li>一週後回頭看，妳會開始認出自己的節奏</li>
     </ul>
     <p><b>妳的紀錄只存在這支手機裡。</b>沒有帳號、不會上傳，Milliya 也看不到。想跟我分享時，「紀錄」頁有一個按鈕，由妳自己決定傳不傳。</p>
-    <p style="color:var(--ink-soft);font-size:.84rem">換手機或清除瀏覽器資料，紀錄就會消失。建議把這一頁加到手機主畫面。</p>
-    <button class="btn" id="wGo">先認識我的體質 →</button>
+    <p style="color:var(--ink-soft);font-size:.84rem">換手機或清除瀏覽器資料，紀錄就會消失。建議把這一頁加到手機主畫面。這個頁面只計算使用人數，不會傳送妳的紀錄內容。</p>
+    <div class="wbtns">
+      <button class="btn" id="wGo">先認識我的體質 →</button>
+      <a class="btn ghost" id="wHello" href="https://line.me/R/oaMessage/@859uhxmv/?%E6%88%91%E9%96%8B%E5%A7%8B%E7%94%A8%E5%A6%99%E6%97%A5%E8%AA%B2%E4%BA%86%20%F0%9F%8C%BF" target="_blank" rel="noopener">跟 Milliya 說我開始了</a>
+    </div>
+    <p class="wnote">按「跟 Milliya 說」會打開 LINE，由妳按送出；不按也完全沒關係。</p>
   </div>
 </div>
 
@@ -263,15 +277,17 @@ const KEY="bwm-ayurveda-daily-v1";
 let canStore=true;
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||"null")||{}}catch(e){canStore=false;return {}}}
 let saveT=null;
-function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S.data))}catch(e){canStore=false;$("#nostore").hidden=false}},400)}
+function save(){if(!S.data.start)S.data.start=todayStr();clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S.data))}catch(e){canStore=false;$("#nostore").hidden=false}},400)}
 
 const S={tab:"today",date:todayStr(),showAll:false,data:Object.assign({profile:{doshas:[],stage:""},days:{},welcomed:false},load())};
 S.data.profile=S.data.profile||{doshas:[],stage:""};
 S.data.days=S.data.days||{};
+function track(name){try{if(window.gtag)window.gtag("event",name)}catch(e){}}  /* 只送事件名稱，不含紀錄內容 */
 /* 做過測驗的人：體質與階段自動帶入（同一個網站、同一支手機的紀錄） */
 let fromQuiz=false;
 if(!S.data.profile.doshas.length&&!S.data.profile.stage){try{const q=JSON.parse(localStorage.getItem("bwm-ayurveda-quiz")||"null");
   if(q&&Array.isArray(q.doshas)){S.data.profile.doshas=q.doshas.filter(k=>["v","p","k"].includes(k)).slice(0,2);if(q.stage&&q.stage!=="none"&&STAGES[q.stage])S.data.profile.stage=q.stage;fromQuiz=S.data.profile.doshas.length>0}}catch(e){}}
+function markUsed(){const t=todayStr();S.data.pinged=S.data.pinged||{};if(!S.data.pinged[t]){S.data.pinged[t]=1;track("daily_record")}}
 function day(d){return S.data.days[d]||(S.data.days[d]={habits:{},signals:{v:[],p:[],k:[]},sleep:"",stool:"",tongue:"",flow:0,note:""})}
 function isEmpty(x){return !x||(!Object.keys(x.habits||{}).length&&!ORDER.some(k=>(x.signals[k]||[]).length)&&!x.sleep&&!x.stool&&!x.tongue&&!x.flow&&!x.note)}
 function scores(x){const s={v:0,p:0,k:0};ORDER.forEach(k=>s[k]=(x.signals[k]||[]).length);
@@ -298,11 +314,19 @@ function advice(x){
   if(st&&st.note&&st.note!=="TODO_MILLIYA")h+='<div class="adv calm"><h4>'+esc(st.label)+'的妳</h4><p>'+esc(st.note)+'</p></div>';
   return h;
 }
+function weekCard(){
+  if(!S.data.start||S.data.weekAsked||S.date!==todayStr())return '';
+  const used=Math.round((parse(todayStr())-parse(S.data.start))/864e5);
+  const any=Object.keys(S.data.days).some(k=>!isEmpty(S.data.days[k]));
+  if(used<6||!any)return '';
+  return '<div class="weekcard"><h3 class="serif">妳已經陪自己一週了 🌿</h3><p>要不要把這一週傳給 Milliya？她會讀完，回妳一段話。不傳也沒關係，紀錄一直都在妳手機裡。</p>'+
+    '<div class="row"><button class="btn" data-weekshare>產生本週摘要</button><button class="linkbtn" data-weeklater>之後再說</button><span class="toast" id="weekToast" aria-live="polite"></span></div></div>';
+}
 function viewToday(){
   const x=day(S.date),isT=S.date===todayStr(),d=parse(S.date);
   const list=S.showAll?HABITS:HABITS.filter(h=>h.must);
   const hideFlow=S.data.profile.stage==="preg";
-  return '<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
+  return weekCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
   '<h2 class="serif">'+md(S.date)+'<span>週'+WK[d.getDay()]+(isT?' · 今天':'')+'</span></h2>'+
   '<button class="iconbtn" data-nav="1" aria-label="後一天"'+(isT?' disabled':'')+'>›</button></div>'+
   '<section class="block"><div class="lbl">今天照顧自己的小事<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
@@ -365,7 +389,7 @@ function viewMe(){
   if(P.doshas.length){h+='<section class="block"><div class="lbl">我的能量</div><div class="advice">'+
     P.doshas.map(k=>{const D=DOSHA[k];return '<div class="card '+k+'"><h4 class="serif">'+esc(D.title)+'</h4><p class="sub">'+esc(D.sub)+'</p><p>'+esc(D.body)+'</p><p style="font-size:.84rem;color:var(--ink-soft);margin:0">常見訊號：'+D.signs.map(esc).join("、")+'</p></div>'}).join("")+
     '</div></section>'}
-  h+='<section class="block"><div class="lbl">關於這個工具</div><div class="card"><p>這是 Birth with Milliya 的試用版日課。紀錄只存在這支手機的瀏覽器裡；換手機或清除瀏覽器資料就會消失。</p><p style="margin:0">有任何想法，歡迎在 <a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">LINE @birthwithmilliya</a> 告訴我。</p></div></section>';
+  h+='<section class="block"><div class="lbl">關於這個工具</div><div class="card"><p>這是 Birth with Milliya 的試用版日課。紀錄只存在這支手機的瀏覽器裡；換手機或清除瀏覽器資料就會消失。頁面只計算使用人數，不會傳送紀錄內容。</p><p style="margin:0">有任何想法，歡迎在 <a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">LINE @birthwithmilliya</a> 告訴我。</p></div></section>';
   return h;
 }
 function renderMe(){const P=S.data.profile;const ds=P.doshas.map(k=>DOSHA[k].short).join("＋");
@@ -380,16 +404,18 @@ function render(){
 }
 
 /* ───────── events ───────── */
-async function share(){
-  const text=weekSummary(),t=$("#toast");
+async function share(t){
+  const text=weekSummary();t=t||$("#toast");track("weekly_summary");S.data.weekAsked=true;save();
   if(navigator.share){try{await navigator.share({text});t.textContent="已開啟分享";return}catch(e){if(e&&e.name==="AbortError")return}}
   try{await navigator.clipboard.writeText(text);t.innerHTML='已複製。到 <a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">LINE</a> 貼給我就可以了'}
   catch(e){t.textContent="這個瀏覽器無法自動複製，請截圖這一頁傳給我"}
 }
 document.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
-  if(b.id==="wGo"){S.data.welcomed=true;save();$("#welcome").hidden=true;S.tab="me";render();return}
+  if(b.id==="wGo"){S.data.welcomed=true;save();track("daily_start");$("#welcome").hidden=true;S.tab="me";render();return}
   if(b.id==="shareBtn"){share();return}
+  if(b.hasAttribute("data-weekshare")){share($("#weekToast"));return}
+  if(b.hasAttribute("data-weeklater")){S.data.weekAsked=true;save();render();return}
   if(b.dataset.tab){S.tab=b.dataset.tab;render();window.scrollTo(0,0);return}
   if(b.dataset.nav){const n=addDays(S.date,+b.dataset.nav);if(n<=todayStr()){S.date=n;render()}return}
   if(b.hasAttribute("data-more")){S.showAll=!S.showAll;render();return}
@@ -399,14 +425,15 @@ document.addEventListener("click",e=>{
   if(b.dataset.stage){P.stage=P.stage===b.dataset.stage?"":b.dataset.stage;save();render();return}
   const x=day(S.date);
   if(b.dataset.habit){const id=b.dataset.habit;if(x.habits[id])delete x.habits[id];else x.habits[id]=true;
-    b.setAttribute("aria-pressed",!!x.habits[id]);$("#hcount").textContent="基本 "+mc(x)+"/3　全部 "+hc(x)+"/"+HABITS.length;save();return}
+    markUsed();b.setAttribute("aria-pressed",!!x.habits[id]);$("#hcount").textContent="基本 "+mc(x)+"/3　全部 "+hc(x)+"/"+HABITS.length;save();return}
   if(b.dataset.flow){x.flow=Math.max(0,Math.min(60,(x.flow||0)+ +b.dataset.flow));save();render();return}
   if(b.dataset.k){const k=b.dataset.k,v=b.dataset.v;
     if(ORDER.includes(k)){const a=x.signals[k]=x.signals[k]||[],i=a.indexOf(v);if(i>=0)a.splice(i,1);else a.push(v);b.setAttribute("aria-pressed",i<0)}
     else{x[k]=x[k]===v?"":v;b.parentNode.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.v===x[k]))}
-    $("#advice").innerHTML=advice(x);save();return}
+    $("#advice").innerHTML=advice(x);markUsed();save();return}
 });
-document.addEventListener("input",e=>{if(e.target.id==="note"){day(S.date).note=e.target.value;save()}});
+document.addEventListener("input",e=>{if(e.target.id==="note"){day(S.date).note=e.target.value;markUsed();save()}});
+document.addEventListener("click",e=>{const a=e.target.closest("#wHello");if(a){track("daily_hello");S.data.welcomed=true;save();$("#welcome").hidden=true;S.tab="me";render()}});
 
 /* ───────── boot ───────── */
 try{localStorage.setItem(KEY+"-t","1");localStorage.removeItem(KEY+"-t")}catch(e){canStore=false}

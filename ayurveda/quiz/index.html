@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>妳此刻的能量原型｜阿育吠陀三督夏・身心靈測驗  — Birth with Milliya</title>
-<meta name="description" content="不是冰冷的體質標籤，而是一面溫柔的鏡子。12 道情境題，照見此刻妳身、心、靈各自的能量流動，並給妳當季可以做的一個小練習。" />
+<meta name="description" content="不是冰冷的體質標籤，而是一面溫柔的鏡子。18 道情境題，照見此刻妳身、心、靈各自的能量流動、體型與消化之火，並給妳當季可以做的一個小練習。" />
 <link rel="canonical" href="https://birthwithmilliya.com/ayurveda/quiz/" />
 <link rel="alternate" hreflang="zh-Hant" href="https://birthwithmilliya.com/ayurveda/quiz/" />
 <link rel="alternate" hreflang="ja" href="https://birthwithmilliya.com/ja/ayurveda/quiz/" />
 <link rel="alternate" hreflang="x-default" href="https://birthwithmilliya.com/ayurveda/quiz/" />
 <meta property="og:title" content="妳此刻的能量原型｜阿育吠陀三督夏・身心靈測驗">
-<meta property="og:description" content="不是冰冷的體質標籤，而是一面溫柔的鏡子。12 道情境題，照見此刻妳身心的能量原型。">
+<meta property="og:description" content="不是冰冷的體質標籤，而是一面溫柔的鏡子。18 道情境題，照見此刻妳身心的能量原型、體型與消化之火。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://birthwithmilliya.com/ayurveda/quiz/">
 <meta property="og:image" content="https://birthwithmilliya.com/images/og-cover.jpg">
@@ -189,7 +189,22 @@
   .practice li b{font-weight:600}
   .practice li p{font-size:14.5px;color:var(--ink-soft);margin-top:3px}
   .season{font-size:14px;color:var(--brand-deep);background:#FFF6F0;border:1px dashed var(--brand);border-radius:14px;padding:14px 18px;margin-top:16px;line-height:1.7}
+  .q-hint{font-size:14.5px;color:var(--ink-soft);margin:-16px 0 22px}
+  .bm-self{display:flex;gap:16px;align-items:center;background:var(--cream);border-radius:14px;padding:14px 16px}
+  .bm-self p{font-size:14px;color:var(--ink-soft)}
+  .bm-score{flex:none;width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;gap:1px;color:var(--brand-deep)}
+  .bm-score b{font-size:26px;line-height:1}.bm-score span{font-size:13px;color:var(--ink-soft)}
+  .bm-note{font-size:15px;margin:14px 0 6px}
+  .bm-row{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+  .bm-k{font-size:13px;letter-spacing:.08em;color:var(--brand-deep);font-weight:600;padding-top:3px}
+  .bm-row p{font-size:15px}
+  .bm-foot{font-size:13.5px;color:var(--ink-soft);margin-top:10px;background:var(--cream);border-radius:12px;padding:12px 14px}
   /* CTA */
+  .daily-inv{background:var(--paper,#fff);border:1px solid var(--line);border-radius:24px;padding:26px 24px;margin-top:26px}
+  .daily-inv h3{font-size:20px;margin-bottom:10px}
+  .daily-inv p{color:var(--ink-soft);font-size:15px;margin:0 0 12px}
+  .daily-inv ul{margin:0 0 18px;padding-left:1.2em;color:var(--ink-soft);font-size:14.5px}
+  .daily-inv .btn{display:inline-flex;text-decoration:none}
   .cta{background:linear-gradient(140deg,#FFF3EC,#FCEBE2);border:1px solid var(--line);border-radius:24px;padding:30px 26px;margin-top:26px;text-align:center}
   .cta h3{justify-content:center;font-size:21px;margin-bottom:10px}
   .cta p{color:var(--ink-soft);font-size:15.5px;max-width:480px;margin:0 auto 22px}
@@ -281,7 +296,7 @@
         <div class="orb"><div class="dot" style="background:var(--kapha)"></div><b>Kapha 水土</b><small>卡法・滋養</small></div>
       </div>
       <p class="hero meta" style="margin-top:30px">
-        <span>🌿 12 道情境題</span><span>⏱ 約 3 分鐘</span><span>🪞 身・心・靈三層解讀</span>
+        <span>🌿 18 道情境題</span><span>⏱ 約 5 分鐘</span><span>🪞 身・心・靈三層解讀</span>
       </p>
       <button class="btn" onclick="show('stage')">開始照鏡子 →</button>
       <div class="disclaimer">
@@ -310,10 +325,11 @@
   <section class="screen" id="quiz">
     <div class="topbar">
       <div class="progress"><i id="bar"></i></div>
-      <div class="pcount"><span id="cur">1</span>/12</div>
+      <div class="pcount"><span id="cur">1</span>/<span id="qTotal">18</span></div>
     </div>
     <div id="layerTag" class="layer-tag"></div>
     <h2 class="q-text serif" id="qText"></h2>
+    <p class="q-hint" id="qHint" style="display:none"></p>
     <div class="options" id="opts"></div>
     <div class="nav">
       <button class="link-btn" id="backBtn" onclick="goBack()">← 上一題</button>
@@ -353,6 +369,11 @@
       </div>
     </div>
 
+    <div class="card" id="bodyCard" style="display:none">
+      <h3><span class="ic">🌿</span>此刻的身體地圖</h3>
+      <div id="bodyMap"></div>
+    </div>
+
     <div class="card stage-card" id="stageCard" style="display:none">
       <div class="stage-head"><span id="stageEmoji"></span><span id="stageLabel"></span></div>
       <h3 style="margin-bottom:14px"><span class="ic">🌷</span><span id="stageTitle"></span></h3>
@@ -377,6 +398,18 @@
       </div>
       <div id="emailStatus"></div>
       <div class="ec-privacy">＊會用來寄妳的解析、以及未來「欣妙在陪妳」的服務與孕產身心靈分享，不轉發第三方，隨時可取消。</div>
+    </div>
+
+    <div class="daily-inv" id="dailyInv">
+      <h3 class="serif">想讓這份理解，每天延續下去嗎？</h3>
+      <p>我在陪伴幾位媽媽試用「阿育吠陀妙日課」，先試一週：</p>
+      <ul>
+        <li>每天早上花一分鐘，勾一勾今天為自己做的小事、點一點身體的訊號</li>
+        <li>它會依妳的<span id="dailyDosha">體質</span>和當天的訊號，告訴妳今天可以怎麼調</li>
+        <li>紀錄只存在妳的手機裡；一週後把摘要傳給我，我會回妳一段話；喜歡的話，我們再一起走得更深</li>
+      </ul>
+      <p>這次名額不多，因為每一位的摘要我都想好好讀。想加入的話，在 LINE 跟我說一聲，我再把連結傳給妳。</p>
+      <a class="btn" href="https://line.me/R/oaMessage/@859uhxmv/?%E6%88%91%E6%83%B3%E8%A9%A6%E8%A9%A6%E6%97%A5%E8%AA%B2%E9%99%AA%E4%BC%B4" target="_blank" rel="noopener">在 LINE 說「我想試試」→</a>
     </div>
 
     <div class="cta">
@@ -469,7 +502,68 @@ const QUESTIONS = [
       {t:"睡不好、停不下來、莫名焦慮擔心", d:"v"},
       {t:"易怒、急躁，對人對己都變得嚴苛", d:"p"},
       {t:"提不起勁、想躲起來，什麼都懶得動", d:"k"} ]},
+
+  /* ── 身體的日常：體型（本質）＋ 消化・排便・睡醒・皮膚（此刻）＋ 自評平衡 ──
+     d:"b" = 平衡舒服（不計入三督夏比例，計入「身體地圖」）；s1–s5 = 自評分數 */
+  { layer:"身", tag:"🌿 身體的日常", key:"frame", q:"看著鏡子裡的自己，妳的骨架與體型比較像？",
+    hint:"以大部分時候的自己來選；產後身形正在變化的話，想想懷孕前的妳。",
+    opts:[
+      {t:"骨架纖細、偏瘦，不太容易長肉", d:"v"},
+      {t:"中等身材、肌肉線條明顯，體重穩定", d:"p"},
+      {t:"骨架寬厚、身形圓潤，容易長肉也不容易瘦", d:"k"} ]},
+  { layer:"身", tag:"🌿 身體的日常", key:"agni", q:"吃完一頓正餐後的兩三個小時，妳通常？",
+    opts:[
+      {t:"有時舒服、有時脹氣，每天都不太一樣", d:"v"},
+      {t:"很快又餓了，太晚吃就胃酸、心情變差", d:"p"},
+      {t:"胃還沉沉的，不太餓，只想躺下來", d:"k"},
+      {t:"輕鬆舒服，到下一餐前自然覺得餓", d:"b"} ]},
+  { layer:"身", tag:"🌿 身體的日常", key:"stool", q:"妳的排便通常是？",
+    opts:[
+      {t:"偏乾偏硬、不規律，有時好幾天才一次", d:"v"},
+      {t:"一天一到數次，偏軟或偏稀，有時有灼熱感", d:"p"},
+      {t:"規律但慢，偏黏，常覺得沒有排乾淨", d:"k"},
+      {t:"每天差不多同個時間，成形、順暢，排完很輕鬆", d:"b"} ]},
+  { layer:"身", tag:"🌿 身體的日常", key:"wake", q:"早上醒來的那一刻，妳比較像？",
+    opts:[
+      {t:"醒得早或斷斷續續，身體還累，腦子已經在轉", d:"v"},
+      {t:"一醒就進入狀態，馬上想到今天要做的事", d:"p"},
+      {t:"很難起床，要好一段時間才開機", d:"k"},
+      {t:"自然醒，覺得有睡飽", d:"b"} ]},
+  { layer:"身", tag:"🌿 身體的日常", key:"skin", q:"最近妳的皮膚和體溫，比較像？",
+    opts:[
+      {t:"乾燥、容易脫屑，手腳常常是冰的", d:"v"},
+      {t:"容易泛紅、長痘或過敏，身體偏熱", d:"p"},
+      {t:"偏油、容易浮腫，身體涼涼濕濕的", d:"k"},
+      {t:"滋潤穩定，冷熱都還好", d:"b"} ]},
+  { layer:"身", tag:"🪷 問問自己", key:"self", q:"如果 1 是「很失衡」、5 是「很平衡」，此刻的妳，會給自己幾分？",
+    fixed:true, noNeutral:true,
+    opts:[
+      {t:"1・我好像離自己很遠了", d:"s1"},
+      {t:"2・常常覺得哪裡不太對勁", d:"s2"},
+      {t:"3・有好有壞，時好時壞", d:"s3"},
+      {t:"4・大致穩定，偶爾失衡", d:"s4"},
+      {t:"5・身心都很安穩", d:"s5"} ]},
 ];
+
+/* ============ 身體地圖內容（TODO_MILLIYA：請確認用字） ============ */
+const FRAME_TXT={
+  v:"骨架纖細、不易長肉：妳的<b>本質</b>（Prakṛti，先天體質）裡，風可能占得比較多。",
+  p:"中等結實、線條明顯：妳的<b>本質</b>（Prakṛti，先天體質）裡，火可能占得比較多。",
+  k:"骨架寬厚、身形圓潤：妳的<b>本質</b>（Prakṛti，先天體質）裡，水土可能占得比較多。"
+};
+const AGNI_TXT={
+  v:{n:"不規律之火 Viṣama Agni（維沙瑪・阿格尼）",t:"消化像風一樣忽強忽弱。固定時間吃飯、吃溫熱煮熟的食物，是給它最好的安定。"},
+  p:{n:"過旺之火 Tīkṣṇa Agni（提克許納・阿格尼）",t:"消化力很強，但容易燒過頭。別讓自己餓太久，少辣少炸，吃飯時先放下手上的事。"},
+  k:{n:"微弱之火 Manda Agni（曼達・阿格尼）",t:"消化慢、容易沉重。不餓就不用硬吃，晚餐早一點、清淡一點，飯後散步十分鐘。"},
+  b:{n:"平衡之火 Sama Agni（薩瑪・阿格尼）",t:"吃得下、消化得了、到下一餐自然會餓——這是阿育吠陀最珍惜的狀態。好好守住吃飯的節奏。"}
+};
+const SELF_TXT={
+  high_ok:"妳的感覺，和身體的日常說的是同一件事：此刻很穩。維持現在的節奏就好。",
+  high_low:"妳覺得自己還好，但身體的日常有幾處正在輕聲提醒。很多媽媽習慣把自己排在最後，連身體的訊號也一起往後排——這幾處，值得妳停下來聽一聽。",
+  low_ok:"妳覺得很失衡，但吃飯、排便、睡醒這些基本盤其實還撐著。也許累的不是身體，而是心。先允許自己，被好好接住一下。",
+  low_low:"身和心都在說：需要被照顧了。不用一次改變全部，從一杯溫水、一個固定的睡覺時間開始就好。如果想有人陪，我在。",
+  mid:"時好時壞，是很真實的樣子。與其追求每天都平衡，不如開始認得：哪些日子舒服、那天做了什麼不一樣。"
+};
 
 /* ============ 體質內容 ============ */
 const DOSHA = {
@@ -579,7 +673,7 @@ function dualNote(a,b){
 let idx=0;
 let selectedStage="none";
 const answers=new Array(QUESTIONS.length).fill(null); // 存 'v'/'p'/'k'/'n'(看情況)
-const orders=QUESTIONS.map(()=>shuffle([0,1,2]));      // 每題選項顯示順序（固定一次，避免規律）
+const orders=QUESTIONS.map(Q=>Q.fixed?Q.opts.map((_,i)=>i):shuffle([0,1,2]).concat(Q.opts.slice(3).map((_,i)=>i+3))); // 三督夏選項打散；「平衡」選項固定放最後、自評題不打散
 
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
@@ -590,11 +684,13 @@ function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.re
 function render(){
   const Q=QUESTIONS[idx];
   document.getElementById("cur").textContent=idx+1;
+  document.getElementById("qTotal").textContent=QUESTIONS.length;
   document.getElementById("bar").style.width=((idx)/QUESTIONS.length*100)+"%";
   const tag=document.getElementById("layerTag");
   tag.className="layer-tag layer-"+Q.layer;
-  tag.innerHTML=`${Q.icon} <span>${Q.layer==="身"?"身體的訊號":Q.layer==="心"?"心與情緒":"靈性與節奏"}</span>`;
+  tag.innerHTML=Q.tag?`<span>${Q.tag}</span>`:`${Q.icon} <span>${Q.layer==="身"?"身體的訊號":Q.layer==="心"?"心與情緒":"靈性與節奏"}</span>`;
   document.getElementById("qText").textContent=Q.q;
+  const hint=document.getElementById("qHint");hint.textContent=Q.hint||"";hint.style.display=Q.hint?"block":"none";
   const box=document.getElementById("opts");box.innerHTML="";
   orders[idx].forEach(oi=>{
     const o=Q.opts[oi];
@@ -604,7 +700,8 @@ function render(){
     el.onclick=()=>choose(o.d);
     box.appendChild(el);
   });
-  // 安全閥：都不太像（不計分）
+  // 安全閥：都不太像（不計分）；自評題不需要
+  if(Q.noNeutral){document.getElementById("backBtn").disabled=idx===0;return;}
   const nu=document.createElement("button");
   nu.className="opt neutral"+(answers[idx]==="n"?" sel":"");
   nu.innerHTML=`<span class="mark"></span><span>🌗 都不太像我／很看情況</span>`;
@@ -624,6 +721,24 @@ function choose(d){
 }
 function goBack(){if(idx>0){idx--;render();}}
 
+/* ============ 身體地圖 ============ */
+function ans(key){const i=QUESTIONS.findIndex(Q=>Q.key===key);return i<0?null:answers[i];}
+function renderBodyMap(){
+  const card=document.getElementById("bodyCard"),out=[];
+  const frame=ans("frame"),agni=ans("agni"),self=ans("self");
+  const okN=["agni","stool","wake","skin"].map(ans).filter(d=>d==="b").length;
+  const sN=self&&self[0]==="s"?+self.slice(1):0;
+  if(sN){
+    const k=sN>=4?(okN>=3?"high_ok":okN<=1?"high_low":"mid"):sN<=2?(okN>=3?"low_ok":okN<=1?"low_low":"mid"):"mid";
+    out.push(`<div class="bm-self"><div class="bm-score"><b>${sN}</b><span>/5</span></div><div><b>妳給此刻的自己 ${sN} 分</b><p>身體日常的 4 個問題裡，有 <b>${okN}</b> 個是舒服平衡的。</p></div></div><p class="bm-note">${SELF_TXT[k]}</p>`);
+  }
+  if(frame&&FRAME_TXT[frame])out.push(`<div class="bm-row"><span class="bm-k">體型</span><p>${FRAME_TXT[frame]}</p></div>`);
+  if(agni&&AGNI_TXT[agni])out.push(`<div class="bm-row"><span class="bm-k">消化之火</span><p><b>${AGNI_TXT[agni].n}</b><br>${AGNI_TXT[agni].t}</p></div>`);
+  if(FRAME_TXT[frame])out.push(`<p class="bm-foot">體型多半反映妳的<b>本質</b>；消化、排便、睡醒、皮膚，比較像<b>此刻</b>的狀態（Vikṛti，當下的失衡）。兩者不一樣，很正常——本質不用改，此刻可以照顧。</p>`);
+  card.style.display=out.length?"block":"none";
+  document.getElementById("bodyMap").innerHTML=out.join("");
+}
+
 /* ============ 計分與結果 ============ */
 function finish(){
   document.getElementById("bar").style.width="100%";
@@ -632,6 +747,7 @@ function finish(){
   let neutral=0;
   answers.forEach((d,i)=>{
     if(d==="n"){neutral++;return;}            // 安全閥不計分
+    if(!(d in total))return;                  // 平衡(b)、自評(s1–s5)不計入三督夏比例
     total[d]++;byLayer[QUESTIONS[i].layer][d]++;
   });
   const sum=total.v+total.p+total.k;          // 以實際作答（非中性）的題數為分母
@@ -645,6 +761,7 @@ function finish(){
     noteEl.innerHTML="🌬 妳幾乎每一題都選了「都不太像／看情況」——這其實常常是 <b>風（Vāta）</b> 的特質：流動、敏感、不願被固定。也許此刻的妳正處在一個變動很大的階段。可以過些日子再測一次，或直接來和我聊聊此刻的感受。";
     ["bars","layers","rBody","rSigns","rPractice"].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML="";});
     document.getElementById("stageCard").style.display="none";
+    renderBodyMap();
     document.getElementById("rSeason").innerHTML="";
     document.getElementById("rIcon").textContent="🌗";
     document.getElementById("rName").textContent="";
@@ -668,6 +785,10 @@ function finish(){
   }else{
     noteEl.style.display="none";
   }
+
+  // 把結果記在這支手機，日課打開時自動帶入（不上傳）
+  try{localStorage.setItem("bwm-ayurveda-quiz",JSON.stringify({doshas:(isDual||pct[second]>=30)?[top,second]:[top],stage:selectedStage||"",agni:ans("agni")||"",self:ans("self")||"",at:new Date().toISOString()}))}catch(e){}
+  document.getElementById("dailyDosha").textContent=((isDual||pct[second]>=30)?DOSHA[top].short+"×"+DOSHA[second].short:DOSHA[top].short)+"型體質";
 
   // 標題
   const D=DOSHA[top];
@@ -725,6 +846,8 @@ function finish(){
   document.getElementById("rSigns").innerHTML=D.signs.map(s=>`<li>${s}</li>`).join("");
   document.getElementById("rPractice").innerHTML=D.practice.map(p=>`<li><b>${p.b}</b><p>${p.p}</p></li>`).join("");
 
+  renderBodyMap();
+
   // 當季提醒（依月份）
   document.getElementById("rSeason").innerHTML=seasonTip(top);
 
@@ -778,6 +901,7 @@ function restart(){
   answers.fill(null);idx=0;selectedStage="none";
   document.getElementById("neutralNote").style.display="none";
   document.getElementById("stageCard").style.display="none";
+  document.getElementById("bodyCard").style.display="none";
   document.getElementById("emailCap").style.display="none";
   show("intro");
 }

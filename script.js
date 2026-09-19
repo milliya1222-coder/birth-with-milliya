@@ -59,3 +59,15 @@ if ('IntersectionObserver' in window) {
 } else {
   showAll();
 }
+
+/* 線上預約：data-booking-src 有網址才嵌入 Google 日曆預約頁並顯示該區塊 */
+document.querySelectorAll('[data-booking-src]').forEach(function (box) {
+  var src = (box.getAttribute('data-booking-src') || '').trim();
+  if (!src) return;
+  var frame = document.createElement('iframe');
+  frame.src = src;
+  frame.title = '線上預約時段';
+  frame.loading = 'lazy';
+  box.querySelector('.booking-frame').appendChild(frame);
+  box.hidden = false;
+});

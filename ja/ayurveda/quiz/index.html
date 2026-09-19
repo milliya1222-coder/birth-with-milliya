@@ -405,11 +405,11 @@
         <li>記録はあなたのスマホの中だけ。1週間後にまとめを送ってくれたら、ひとことお返事します。気に入ったら、もう一歩深く一緒に歩みましょう</li>
       </ul>
       <div class="daily-btns">
-        <a class="btn" href="/ja/ayurveda/daily/" target="_blank" rel="noopener">妙日課を無料で試す →</a>
+        <a class="btn" href="/ja/ayurveda/daily/" target="_blank" rel="noopener" onclick="qtrack('quiz_to_daily')">妙日課を無料で試す →</a>
       </div>
       <p class="daily-tip">このスマホで開くと、今のチェック結果が自動で反映されます。「ホーム画面に追加」すれば、アプリのように使えます。</p>
       <p style="margin-top:18px">わたしと一緒に歩みたい方は、LINE でひとこと声をかけてください。一人ひとりの記録をしっかり読みたいので、人数は限らせていただいています。</p>
-      <a class="btn btn-ghost" href="https://line.me/R/oaMessage/@859uhxmv/?%E5%A6%99%E6%97%A5%E8%AA%B2%E3%81%AE%E4%BC%B4%E8%B5%B0%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99" target="_blank" rel="noopener">LINEで「試してみたい」と送る →</a>
+      <a class="btn btn-ghost" onclick="qtrack('quiz_line_try')" href="https://line.me/R/oaMessage/@859uhxmv/?%E5%A6%99%E6%97%A5%E8%AA%B2%E3%81%AE%E4%BC%B4%E8%B5%B0%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99" target="_blank" rel="noopener">LINEで「試してみたい」と送る →</a>
     </div>
 
     <div class="cta">
@@ -702,7 +702,8 @@ const orders=QUESTIONS.map(Q=>Q.fixed?Q.opts.map((_,i)=>i):shuffle([0,1,2]).conc
 
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-function pickStage(s){selectedStage=s;startQuiz();}
+function qtrack(n){try{if(window.gtag)window.gtag("event",n)}catch(e){}}  /* 只送事件名稱，不含答案 */
+function pickStage(s){selectedStage=s;qtrack("quiz_start");startQuiz();}
 function startQuiz(){show("quiz");idx=0;render();}
 function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 
@@ -796,6 +797,7 @@ function finish(){
     document.getElementById("ctaText").innerHTML="今のあなたがどれだけ定義しづらくても、あなたはちゃんと理解される価値がある人です。よかったら、お話ししましょう。";
     window.__quizResult={dosha:"flow",short:"風",name:"定義しづらい",pct:"",dual:""};
     document.getElementById("emailCap").style.display="block";
+    qtrack("quiz_finish");
     show("result");return;
   }
 
@@ -890,6 +892,7 @@ function finish(){
     `今のあなたは <b>${D.short}</b> のエネルギー寄り。わたしの産前産後のケアと、女性の心と体の統合ケアのなかで、アーユルヴェーダは、体のリズムを読み解き、自分をやさしくケアするための一つの鍵です——妊活・妊娠・産後、あるいはただ自分にもっと近づきたいときも。よかったら、今のあなたに合ったケアの形を、一緒に見つけましょう。`;
 
   document.getElementById("emailCap").style.display="block";
+  qtrack("quiz_finish");
   show("result");
 }
 
@@ -941,6 +944,7 @@ buildMandala();
    lang:'ja' を付けて送るので、スクリプト側で日本語メールに分岐できます */
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbypy5pOFlc7Jy89B1SijYK5rcj0UX9vbLFnE5rca3u5BiKiDGhP8M1fodQjbtsKmOAQ/exec";
 function submitEmail(){
+  qtrack("quiz_email");
   const email=(document.getElementById("emailInput").value||"").trim();
   const name=(document.getElementById("nameInput").value||"").trim();
   const st=document.getElementById("emailStatus");

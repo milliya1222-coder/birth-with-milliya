@@ -414,11 +414,11 @@
         <li>紀錄只存在妳的手機裡；一週後把摘要傳給我，我會回妳一段話；喜歡的話，我們再一起走得更深</li>
       </ul>
       <div class="daily-btns">
-        <a class="btn" href="/ayurveda/daily/" target="_blank" rel="noopener">免費試用妙日課 →</a>
+        <a class="btn" href="/ayurveda/daily/" target="_blank" rel="noopener" onclick="qtrack('quiz_to_daily')">免費試用妙日課 →</a>
       </div>
       <p class="daily-tip">用這支手機打開，妳剛剛的測驗結果會自動帶進去。打開後「加到主畫面」，就像一個 app。</p>
       <p style="margin-top:18px">想要我陪妳一起走？這次名額不多，因為每一位的摘要我都想好好讀。在 LINE 跟我說一聲就好。</p>
-      <a class="btn btn-ghost" href="https://line.me/R/oaMessage/@859uhxmv/?%E6%88%91%E6%83%B3%E8%A9%A6%E8%A9%A6%E6%97%A5%E8%AA%B2%E9%99%AA%E4%BC%B4" target="_blank" rel="noopener">在 LINE 說「我想試試」→</a>
+      <a class="btn btn-ghost" onclick="qtrack('quiz_line_try')" href="https://line.me/R/oaMessage/@859uhxmv/?%E6%88%91%E6%83%B3%E8%A9%A6%E8%A9%A6%E6%97%A5%E8%AA%B2%E9%99%AA%E4%BC%B4" target="_blank" rel="noopener">在 LINE 說「我想試試」→</a>
     </div>
 
     <div class="cta">
@@ -710,7 +710,8 @@ const orders=QUESTIONS.map(Q=>Q.fixed?Q.opts.map((_,i)=>i):shuffle([0,1,2]).conc
 
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-function pickStage(s){selectedStage=s;startQuiz();}
+function qtrack(n){try{if(window.gtag)window.gtag("event",n)}catch(e){}}  /* 只送事件名稱，不含答案 */
+function pickStage(s){selectedStage=s;qtrack("quiz_start");startQuiz();}
 function startQuiz(){show("quiz");idx=0;render();}
 function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 
@@ -804,6 +805,7 @@ function finish(){
     document.getElementById("ctaText").innerHTML="無論此刻的妳多難被定義，妳都值得被好好理解。歡迎來聊聊。";
     window.__quizResult={dosha:"flow",short:"風",name:"難以定義",pct:"",dual:""};
     document.getElementById("emailCap").style.display="block";
+    qtrack("quiz_finish");
     show("result");return;
   }
 
@@ -908,6 +910,7 @@ function finish(){
     `妳此刻偏向 <b>${D.short}</b> 能量。在我的孕產陪伴與身心靈整合裡，阿育吠陀是讀懂身體節奏、溫柔照顧自己的一把鑰匙——無論妳正在備孕、孕期、產後，還是只是想更靠近自己。歡迎來聊聊，找到屬於妳此刻的照顧方式。`;
 
   document.getElementById("emailCap").style.display="block";
+  qtrack("quiz_finish");
   show("result");
 }
 
@@ -958,6 +961,7 @@ buildMandala();
 /* Email 深入解析：送到 Apps Script Web App → 存名單＋自動寄深入解析信 */
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbypy5pOFlc7Jy89B1SijYK5rcj0UX9vbLFnE5rca3u5BiKiDGhP8M1fodQjbtsKmOAQ/exec";
 function submitEmail(){
+  qtrack("quiz_email");
   const email=(document.getElementById("emailInput").value||"").trim();
   const name=(document.getElementById("nameInput").value||"").trim();
   const st=document.getElementById("emailStatus");

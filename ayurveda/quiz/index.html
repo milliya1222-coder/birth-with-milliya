@@ -206,6 +206,8 @@
   .daily-inv ul{margin:0 0 18px;padding-left:1.2em;color:var(--ink-soft);font-size:14.5px}
   .daily-inv .btn{display:inline-flex;text-decoration:none}
   .daily-tip{font-size:13.5px!important;margin-top:12px!important}
+  .ec-lead ul{margin:10px 0;padding-left:1.3em;text-align:left}
+  .ec-lead li{margin:3px 0}
   .cta{background:linear-gradient(140deg,#FFF3EC,#FCEBE2);border:1px solid var(--line);border-radius:24px;padding:30px 26px;margin-top:26px;text-align:center}
   .cta h3{justify-content:center;font-size:21px;margin-bottom:10px}
   .cta p{color:var(--ink-soft);font-size:15.5px;max-width:480px;margin:0 auto 22px}
@@ -909,6 +911,7 @@ function finish(){
   document.getElementById("ctaText").innerHTML =
     `妳此刻偏向 <b>${D.short}</b> 能量。在我的孕產陪伴與身心靈整合裡，阿育吠陀是讀懂身體節奏、溫柔照顧自己的一把鑰匙——無論妳正在備孕、孕期、產後，還是只是想更靠近自己。歡迎來聊聊，找到屬於妳此刻的照顧方式。`;
 
+  fillEmailCap(D.short);
   document.getElementById("emailCap").style.display="block";
   qtrack("quiz_finish");
   show("result");
@@ -960,6 +963,19 @@ buildMandala();
 
 /* Email 深入解析：送到 Apps Script Web App → 存名單＋自動寄深入解析信 */
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbypy5pOFlc7Jy89B1SijYK5rcj0UX9vbLFnE5rca3u5BiKiDGhP8M1fodQjbtsKmOAQ/exec";
+/* 結果頁的 email 邀請：依體質寫清楚信裡會收到什麼（內容對應解析信的四段＋階段提醒） */
+function fillEmailCap(short){
+  const st=(selectedStage!=="none"&&STAGES[selectedStage])?STAGES[selectedStage].label:"";
+  document.querySelector("#emailCap h3").innerHTML=`<span class="ic">💌</span>把妳的「${short}型」照顧指南寄給妳`;
+  document.querySelector("#emailCap .ec-lead").innerHTML=`留下 email，我會寄給妳一封專屬的信：<ul>`+
+    `<li>🍲 適合${short}型的吃法：多選什麼、少碰什麼</li>`+
+    `<li>🕯 作息怎麼安排，比較不容易失衡</li>`+
+    `<li>🌬 情緒卡住的時候，可以怎麼做</li>`+
+    `<li>💆 一個睡前就能做的小儀式</li>`+
+    (st?`<li>🌷 給「${st}」的妳，一段提醒</li>`:"")+
+    `</ul>也會不定期收到「欣妙在陪妳」的服務與孕產身心靈分享。`;
+  document.getElementById("emailBtn").textContent=`把我的${short}型指南寄給我 →`;
+}
 function submitEmail(){
   qtrack("quiz_email");
   const email=(document.getElementById("emailInput").value||"").trim();

@@ -203,6 +203,8 @@
   .daily-inv .btn{display:inline-flex;text-decoration:none}
   .daily-tip{font-size:13.5px!important;margin-top:12px!important}
   #stageEmoji svg{width:20px;height:20px;display:block}
+  .ec-lead ul{margin:10px 0;padding-left:1.3em;text-align:left}
+  .ec-lead li{margin:3px 0}
   .cta{background:linear-gradient(140deg,#FFF3EC,#FCEBE2);border:1px solid var(--line);border-radius:24px;padding:30px 26px;margin-top:26px;text-align:center}
   .cta h3{justify-content:center;font-size:21px;margin-bottom:10px}
   .cta p{color:var(--ink-soft);font-size:15.5px;max-width:480px;margin:0 auto 22px}
@@ -891,6 +893,7 @@ function finish(){
   document.getElementById("ctaText").innerHTML =
     `今のあなたは <b>${D.short}</b> のエネルギー寄り。わたしの産前産後のケアと、女性の心と体の統合ケアのなかで、アーユルヴェーダは、体のリズムを読み解き、自分をやさしくケアするための一つの鍵です——妊活・妊娠・産後、あるいはただ自分にもっと近づきたいときも。よかったら、今のあなたに合ったケアの形を、一緒に見つけましょう。`;
 
+  fillEmailCap(D.short);
   document.getElementById("emailCap").style.display="block";
   qtrack("quiz_finish");
   show("result");
@@ -943,6 +946,19 @@ buildMandala();
 /* Email くわしい解説：Apps Script Web App へ送信 → リスト保存＋自動でくわしい解説メールを送る
    lang:'ja' を付けて送るので、スクリプト側で日本語メールに分岐できます */
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbypy5pOFlc7Jy89B1SijYK5rcj0UX9vbLFnE5rca3u5BiKiDGhP8M1fodQjbtsKmOAQ/exec";
+/* 結果ページのメール案内：体質ごとに、届く内容を具体的に（解説メールの4項目＋ステージのひとこと） */
+function fillEmailCap(short){
+  const st=(selectedStage!=="none"&&STAGES[selectedStage])?STAGES[selectedStage].label:"";
+  document.querySelector("#emailCap h3").innerHTML=`<span class="ic">💌</span>あなたの「${short}タイプ」ケアガイドをお届けします`;
+  document.querySelector("#emailCap .ec-lead").innerHTML=`メールアドレスを残していただくと、あなた専用のメールをお送りします：<ul>`+
+    `<li>🍲 ${short}タイプに合う食べ方：多めにとりたいもの・控えたいもの</li>`+
+    `<li>🕯 乱れにくい生活リズムの整え方</li>`+
+    `<li>🌬 気持ちが行き詰まったときにできること</li>`+
+    `<li>💆 寝る前にできる小さな儀式</li>`+
+    (st?`<li>🌷 「${st}」のあなたへのひとこと</li>`:"")+
+    `</ul>ときどき「Birth with Milliya」のサービスや、妊娠・出産・女性の心と体のお話もお届けします。`;
+  document.getElementById("emailBtn").textContent=`${short}タイプのガイドを受け取る →`;
+}
 function submitEmail(){
   qtrack("quiz_email");
   const email=(document.getElementById("emailInput").value||"").trim();

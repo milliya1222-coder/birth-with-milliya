@@ -201,6 +201,11 @@
   .daily-inv p{color:var(--ink-soft);font-size:15px;margin:0 0 12px}
   .daily-inv ul{margin:0 0 18px;padding-left:1.2em;color:var(--ink-soft);font-size:14.5px}
   .daily-inv .btn{display:inline-flex;text-decoration:none}
+  .daily-cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .daily-shot{margin:0;flex:none;width:170px}
+  .daily-shot img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:#FBF6F0}
+  .daily-shot figcaption{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:8px}
+  @media (max-width:520px){.daily-cta{gap:14px}.daily-shot{width:132px}}
   .daily-tip{font-size:13.5px!important;margin-top:12px!important}
   #stageEmoji svg{width:20px;height:20px;display:block}
   .ec-lead ul{margin:10px 0;padding-left:1.3em;text-align:left}
@@ -392,11 +397,14 @@
         <li>あなたの<span id="dailyDosha">体質</span>と今日のサインに合わせて、今日の整え方をお伝えします</li>
         <li>記録はあなたのスマホの中だけ。1週間後にまとめを送ってくれたら、ひとことお返事します。気に入ったら、もう一歩深く一緒に歩みましょう</li>
       </ul>
-      <div class="daily-btns">
+      <div class="daily-cta">
+        <figure class="daily-shot"><img src="/ayurveda/daily/app-ja.png" alt="アーユルヴェーダ妙日課の画面：今日のセルフケアと体のサイン" width="390" height="800" loading="lazy"><figcaption>妙日課の「今日」の画面</figcaption></figure>
+        <div class="daily-btns">
         <a class="btn" href="/ja/ayurveda/daily/" target="_blank" rel="noopener" onclick="qtrack('quiz_to_daily')">妙日課を無料で試す →</a>
+        </div>
       </div>
       <p class="daily-tip">このスマホで開くと、今のチェック結果が自動で反映されます。「ホーム画面に追加」すれば、アプリのように使えます。</p>
-      <p style="margin-top:18px">わたしと一緒に歩みたい方は、LINE でひとこと声をかけてください。一人ひとりの記録をしっかり読みたいので、人数は限らせていただいています。</p>
+      <p style="margin-top:18px">この記録を一緒に見てくれる人がほしいときは、LINE でひとこと声をかけてください。<br>1週間後にまとめを送ってくださったら、読んでお返事します——一つひとつをていねいに読みたいので、同時にご一緒できる人数は多くありません。</p>
       <a class="btn btn-ghost" onclick="qtrack('quiz_line_try')" href="https://line.me/R/oaMessage/@859uhxmv/?%E5%A6%99%E6%97%A5%E8%AA%B2%E3%81%AE%E4%BC%B4%E8%B5%B0%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99" target="_blank" rel="noopener">LINEで「試してみたい」と送る →</a>
     </div>
 

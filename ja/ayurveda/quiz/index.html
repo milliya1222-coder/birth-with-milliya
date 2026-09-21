@@ -201,16 +201,16 @@
   .daily-inv p{color:var(--ink-soft);font-size:15px;margin:0 0 12px}
   .daily-inv ul{margin:0 0 18px;padding-left:1.2em;color:var(--ink-soft);font-size:14.5px}
   .daily-inv .btn{display:inline-flex;text-decoration:none}
-  .daily-cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-  .daily-btns{flex:1 1 220px}
+  .daily-shots{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:linear-gradient(180deg,#FFF8F1,#FBF1E7);border:1px solid var(--line);border-radius:20px;padding:14px 14px 0;margin:4px 0 18px;overflow:hidden}
+  .daily-shots figure{margin:0}
+  .daily-shots figcaption{font-size:12px;letter-spacing:.1em;color:var(--ink-soft);text-align:center;margin:0 0 8px}
+  .daily-shots img{display:block;width:100%;height:auto;border-radius:14px 14px 0 0;border:1px solid var(--line);border-bottom:0;background:#FBF6F0;box-shadow:0 10px 26px rgba(120,80,60,.12);-webkit-mask-image:linear-gradient(#000 74%,transparent 100%);mask-image:linear-gradient(#000 74%,transparent 100%)}
   .daily-app{display:flex;align-items:center;gap:12px;margin-bottom:14px}
   .daily-app img{width:52px;height:52px;border-radius:13px;border:1px solid var(--line);display:block}
-  .daily-app b{display:block;font-size:16px;font-weight:600;color:var(--ink)}
+  .daily-app b{display:block;font-size:16px;font-weight:600;color:var(--ink);line-height:1.5}
   .daily-app small{font-size:13px;color:var(--ink-soft)}
-  .daily-shot{margin:0;flex:none;width:170px}
-  .daily-shot img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:#FBF6F0}
-  .daily-shot figcaption{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:8px}
-  @media (max-width:520px){.daily-cta{gap:14px}.daily-shot{width:132px}}
+  .daily-inv .btn.daily-go{display:flex;width:100%;justify-content:center}
+  @media (min-width:560px){.daily-shots{max-width:420px;margin-left:auto;margin-right:auto}.daily-inv .btn.daily-go{display:inline-flex;width:auto}}
   .daily-tip{font-size:13.5px!important;margin-top:12px!important}
   #stageEmoji svg{width:20px;height:20px;display:block}
   .ec-lead ul{margin:10px 0;padding-left:1.3em;text-align:left}
@@ -402,13 +402,12 @@
         <li>あなたの<span id="dailyDosha">体質</span>と今日のサインに合わせて、今日の整え方をお伝えします</li>
         <li>記録はあなたのスマホの中だけ。1週間後にまとめを送ってくれたら、ひとことお返事します。気に入ったら、もう一歩深く一緒に歩みましょう</li>
       </ul>
-      <div class="daily-cta">
-        <div class="daily-btns">
-          <div class="daily-app"><img src="/ayurveda/daily/icon-180.png" alt="" width="52" height="52"><div><b>アーユルヴェーダ妙日課</b><small>毎日 1 分</small></div></div>
-        <a class="btn" href="/ja/ayurveda/daily/" target="_blank" rel="noopener" onclick="qtrack('quiz_to_daily')">妙日課を無料で試す →</a>
-        </div>
-        <figure class="daily-shot"><img src="/ayurveda/daily/app-ja.png" alt="アーユルヴェーダ妙日課の画面：今日のセルフケアと体のサイン" width="390" height="800" loading="lazy"><figcaption>妙日課の「今日」の画面</figcaption></figure>
+      <div class="daily-shots">
+        <figure><figcaption>今日</figcaption><img src="/ayurveda/daily/shot-today-ja.png" alt="妙日課の「今日」の画面：今日の小さなセルフケアと体のサイン" width="600" height="815" loading="lazy"></figure>
+        <figure><figcaption>この1週間</figcaption><img src="/ayurveda/daily/shot-week-ja.png" alt="妙日課の「記録」の画面：最近2週間のサインと一日ごとの記録" width="600" height="815" loading="lazy"></figure>
       </div>
+      <div class="daily-app"><img src="/ayurveda/daily/icon-180.png" alt="" width="52" height="52"><div><b>アーユルヴェーダ妙日課</b><small>毎日 1 分・1週間無料でお試し</small></div></div>
+      <a class="btn daily-go" href="/ja/ayurveda/daily/" target="_blank" rel="noopener" onclick="qtrack('quiz_to_daily')">妙日課を無料で試す →</a>
       <p class="daily-tip">このスマホで開くと、今のチェック結果が自動で反映されます。「ホーム画面に追加」すれば、アプリのように使えます。</p>
       <p style="margin-top:18px">この記録を一緒に見てくれる人がほしいときは、LINE でひとこと声をかけてください。<br>1週間後にまとめを送ってくださったら、読んでお返事します——一つひとつをていねいに読みたいので、同時にご一緒できる人数は多くありません。</p>
       <a class="btn btn-ghost" onclick="qtrack('quiz_line_try')" href="https://line.me/R/oaMessage/@859uhxmv/?%E5%A6%99%E6%97%A5%E8%AA%B2%E3%81%AE%E4%BC%B4%E8%B5%B0%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99" target="_blank" rel="noopener">LINEで「試してみたい」と送る →</a>

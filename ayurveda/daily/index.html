@@ -157,6 +157,9 @@
   .weekcard h3{margin:0 0 6px;font-size:1.05rem;font-weight:600}
   .weekcard p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft)}
   .weekcard .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .weekcard .row a.btn{text-decoration:none}
+  .weekcard.end{background:var(--brand-bg);border:1px solid var(--brand)}
+  .weekcard.end p:last-of-type{margin-bottom:16px}
   .linkbtn{background:none;border:none;color:var(--ink-faint);font-size:.85rem;padding:8px 4px}
 
   nav.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(251,246,240,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));z-index:10}
@@ -331,9 +334,16 @@ function weekCard(){
   if(!S.data.start||S.data.weekAsked||S.date!==todayStr())return '';
   const used=Math.round((parse(todayStr())-parse(S.data.start))/864e5);
   const any=Object.keys(S.data.days).some(k=>!isEmpty(S.data.days[k]));
-  if(used<6||!any)return '';
+  if(used<6||used>6||!any)return '';
   return '<div class="weekcard"><h3 class="serif">妳已經陪自己一週了 🌿</h3><p>要不要把這一週傳給 Milliya？她會讀完，回妳一段話。不傳也沒關係，紀錄一直都在妳手機裡。</p>'+
     '<div class="row"><button class="btn" data-weekshare>產生本週摘要</button><button class="linkbtn" data-weeklater>之後再說</button><span class="toast" id="weekToast" aria-live="polite"></span></div></div>';
+}
+function endCard(){
+  if(!S.data.start||S.data.endDone||S.date!==todayStr())return '';
+  const used=Math.round((parse(todayStr())-parse(S.data.start))/864e5);
+  if(used<7)return '';
+  if(!Object.keys(S.data.days).some(k=>!isEmpty(S.data.days[k])))return '';
+  return '<div class="weekcard end"><h3 class="serif">這一週，謝謝妳讓我陪著 🌿</h3><p>免費試用的一週到這裡了。妙日課不會關起來——它會一直免費留在妳手機裡，想記就繼續記。</p><p>只是接下來，沒有人在旁邊陪妳讀這些紀錄。如果妳想要有人一起看、一起調整，在 LINE 跟我說一聲就好。（想把這一週傳給我，隨時可以到〔紀錄〕頁產生摘要。）</p><div class="row"><a class="btn" data-endline href="https://line.me/R/oaMessage/@859uhxmv/?%E6%88%91%E7%94%A8%E5%A6%99%E6%97%A5%E8%AA%B2%E6%BB%BF%E4%B8%80%E9%80%B1%E4%BA%86%20%F0%9F%8C%BF" target="_blank" rel="noopener">在 LINE 跟 Milliya 說</a><button class="linkbtn" data-enddone>我先自己走走看</button></div></div>';
 }
 function isStandalone(){return navigator.standalone===true||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)}
 function a2hsCard(){
@@ -345,7 +355,7 @@ function viewToday(){
   const x=day(S.date),isT=S.date===todayStr(),d=parse(S.date);
   const list=S.showAll?HABITS:HABITS.filter(h=>h.must);
   const hideFlow=S.data.profile.stage==="preg";
-  return weekCard()+a2hsCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
+  return endCard()+weekCard()+a2hsCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
   '<h2 class="serif">'+md(S.date)+'<span>週'+WK[d.getDay()]+(isT?' · 今天':'')+'</span></h2>'+
   '<button class="iconbtn" data-nav="1" aria-label="後一天"'+(isT?' disabled':'')+'>›</button></div>'+
   '<section class="block"><div class="lbl">今天照顧自己的小事<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
@@ -479,6 +489,7 @@ document.addEventListener("click",e=>{
   if(b.hasAttribute("data-copyurl")){const u=location.origin+location.pathname;navigator.clipboard&&navigator.clipboard.writeText(u).then(()=>{$("#urlToast").textContent="已複製，請貼到 Safari 打開"}).catch(()=>{$("#urlToast").textContent=u});return}
   if(b.hasAttribute("data-weekshare")){share($("#weekToast"));return}
   if(b.hasAttribute("data-weeklater")){S.data.weekAsked=true;save();render();return}
+  if(b.hasAttribute("data-enddone")){S.data.endDone=true;save();track("daily_end_later");render();return}
   if(b.dataset.tab){S.tab=b.dataset.tab;render();window.scrollTo(0,0);return}
   if(b.dataset.nav){const n=addDays(S.date,+b.dataset.nav);if(n<=todayStr()){S.date=n;render()}return}
   if(b.hasAttribute("data-more")){S.showAll=!S.showAll;render();return}
@@ -496,6 +507,7 @@ document.addEventListener("click",e=>{
     $("#advice").innerHTML=advice(x);markUsed();save();return}
 });
 document.addEventListener("input",e=>{if(e.target.id==="note"){day(S.date).note=e.target.value;markUsed();save()}});
+document.addEventListener("click",e=>{const el=e.target.closest("[data-endline]");if(el){track("daily_end_line");S.data.endDone=true;save();setTimeout(render,50)}});
 document.addEventListener("click",e=>{const a=e.target.closest("#wHello");if(a){track("daily_hello");S.data.welcomed=true;save();$("#welcome").hidden=true;S.tab="me";render()}});
 
 /* ───────── boot ───────── */

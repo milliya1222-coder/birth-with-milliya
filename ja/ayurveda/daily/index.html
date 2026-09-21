@@ -158,6 +158,9 @@
   .weekcard h3{margin:0 0 6px;font-size:1.05rem;font-weight:600}
   .weekcard p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft)}
   .weekcard .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .weekcard .row a.btn{text-decoration:none}
+  .weekcard.end{background:var(--brand-bg);border:1px solid var(--brand)}
+  .weekcard.end p:last-of-type{margin-bottom:16px}
   .linkbtn{background:none;border:none;color:var(--ink-faint);font-size:.85rem;padding:8px 4px}
 
   nav.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(251,246,240,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));z-index:10}
@@ -332,9 +335,16 @@ function weekCard(){
   if(!S.data.start||S.data.weekAsked||S.date!==todayStr())return '';
   const used=Math.round((parse(todayStr())-parse(S.data.start))/864e5);
   const any=Object.keys(S.data.days).some(k=>!isEmpty(S.data.days[k]));
-  if(used<6||!any)return '';
+  if(used<6||used>6||!any)return '';
   return '<div class="weekcard"><h3 class="serif">自分に寄り添って、1週間になりました 🌿</h3><p>この1週間を Milliya に送ってみませんか？ 読んで、ひとことお返事します。送らなくても大丈夫。記録はずっとあなたのスマホの中にあります。</p>'+
     '<div class="row"><button class="btn" data-weekshare>今週のまとめをつくる</button><button class="linkbtn" data-weeklater>また今度</button><span class="toast" id="weekToast" aria-live="polite"></span></div></div>';
+}
+function endCard(){
+  if(!S.data.start||S.data.endDone||S.date!==todayStr())return '';
+  const used=Math.round((parse(todayStr())-parse(S.data.start))/864e5);
+  if(used<7)return '';
+  if(!Object.keys(S.data.days).some(k=>!isEmpty(S.data.days[k])))return '';
+  return '<div class="weekcard end"><h3 class="serif">この1週間、そばにいさせてくれてありがとう 🌿</h3><p>無料でお試しの1週間は、ここまで。妙日課が閉じることはありません——このままずっと無料で、あなたのスマホの中に残ります。</p><p>ただ、これからは記録を一緒に読む人がいません。誰かと一緒に見て、一緒に整えたくなったら、LINE でひとこと声をかけてください。（今週のまとめは〔記録〕のページでいつでもつくれます。）</p><div class="row"><a class="btn" data-endline href="https://line.me/R/oaMessage/@859uhxmv/?%E5%A6%99%E6%97%A5%E8%AA%B2%E3%82%921%E9%80%B1%E9%96%93%E3%81%A4%E3%81%A5%E3%81%91%E3%81%BE%E3%81%97%E3%81%9F%20%F0%9F%8C%BF" target="_blank" rel="noopener">LINE で Milliya に伝える</a><button class="linkbtn" data-enddone>まずは一人で歩いてみる</button></div></div>';
 }
 function isStandalone(){return navigator.standalone===true||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)}
 function a2hsCard(){
@@ -346,7 +356,7 @@ function viewToday(){
   const x=day(S.date),isT=S.date===todayStr(),d=parse(S.date);
   const list=S.showAll?HABITS:HABITS.filter(h=>h.must);
   const hideFlow=S.data.profile.stage==="preg";
-  return weekCard()+a2hsCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前の日">‹</button>'+
+  return endCard()+weekCard()+a2hsCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前の日">‹</button>'+
   '<h2 class="serif">'+md(S.date)+'<span>（'+WK[d.getDay()]+'）'+(isT?' · 今日':'')+'</span></h2>'+
   '<button class="iconbtn" data-nav="1" aria-label="次の日"'+(isT?' disabled':'')+'>›</button></div>'+
   '<section class="block"><div class="lbl">今日の小さなセルフケア<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
@@ -480,6 +490,7 @@ document.addEventListener("click",e=>{
   if(b.hasAttribute("data-copyurl")){const u=location.origin+location.pathname;navigator.clipboard&&navigator.clipboard.writeText(u).then(()=>{$("#urlToast").textContent="コピーしました。Safari に貼り付けて開いてください"}).catch(()=>{$("#urlToast").textContent=u});return}
   if(b.hasAttribute("data-weekshare")){share($("#weekToast"));return}
   if(b.hasAttribute("data-weeklater")){S.data.weekAsked=true;save();render();return}
+  if(b.hasAttribute("data-enddone")){S.data.endDone=true;save();track("daily_end_later");render();return}
   if(b.dataset.tab){S.tab=b.dataset.tab;render();window.scrollTo(0,0);return}
   if(b.dataset.nav){const n=addDays(S.date,+b.dataset.nav);if(n<=todayStr()){S.date=n;render()}return}
   if(b.hasAttribute("data-more")){S.showAll=!S.showAll;render();return}
@@ -497,6 +508,7 @@ document.addEventListener("click",e=>{
     $("#advice").innerHTML=advice(x);markUsed();save();return}
 });
 document.addEventListener("input",e=>{if(e.target.id==="note"){day(S.date).note=e.target.value;markUsed();save()}});
+document.addEventListener("click",e=>{const el=e.target.closest("[data-endline]");if(el){track("daily_end_line");S.data.endDone=true;save();setTimeout(render,50)}});
 document.addEventListener("click",e=>{const a=e.target.closest("#wHello");if(a){track("daily_hello");S.data.welcomed=true;save();$("#welcome").hidden=true;S.tab="me";render()}});
 
 /* ───────── boot ───────── */

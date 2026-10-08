@@ -140,6 +140,8 @@
   .result-head .kicker{font-size:14px;letter-spacing:.16em;color:var(--ink-soft)}
   .result-head h2{font-size:clamp(26px,5.6vw,36px);font-weight:600;margin:10px 0 6px;line-height:1.4}
   .result-head .sub{color:var(--ink-soft);font-size:16px}
+  .result-head .timestamp{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--brand-deep);
+    background:#fff;border:1px solid var(--line);padding:6px 16px;border-radius:999px;margin-top:16px;letter-spacing:.02em}
   .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px;box-shadow:var(--shadow-sm);margin-top:22px}
   .card h3{font-size:18px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:9px}
   .card h3 .ic{font-size:20px}
@@ -357,6 +359,7 @@
       <div class="kicker">妳此刻的能量原型</div>
       <h2 class="serif" id="rTitle"></h2>
       <div class="sub" id="rSub"></div>
+      <div class="timestamp" id="rTimestamp"></div>
     </div>
 
     <div class="note-soft" id="neutralNote" style="display:none"></div>
@@ -458,87 +461,69 @@ const QUESTIONS = [
       {t:"手腳容易冰冷，常覺得衣服穿不夠暖", d:"v"},
       {t:"比別人怕熱，很容易流汗", d:"p"},
       {t:"水分容易留在身上，換季總覺得沉", d:"k"},
-      {t:"手腳常是冰的，身體卻又容易燥熱", d:"vp"},
       {t:"冷熱都還好，換季時身體也適應得不錯", d:"b"} ]},
   { layer:"身", icon:"🔥", q:"一整天忙完，妳的消化與食慾通常是？",
     opts:[
       {t:"不太規律，常忘了吃，或容易脹氣", d:"v"},
       {t:"食慾旺盛，餓太久就容易煩躁", d:"p"},
       {t:"消化比較慢，飯後總想睡", d:"k"},
-      {t:"容易餓，卻常常忙到忘記吃", d:"vp"},
       {t:"三餐大致規律，吃得下，也消化得好", d:"b"} ]},
   { layer:"身", icon:"🔥", q:"如果半夜醒來，比較像哪一種？",
     opts:[
       {t:"淺眠多夢，容易被一點聲音吵醒", d:"v"},
       {t:"常因為太熱而醒，醒了腦袋還在轉", d:"p"},
       {t:"睡得很沉，但早上很難清醒", d:"k"},
-      {t:"容易被吵醒，醒了就開始想明天的事", d:"vp"},
       {t:"大多一覺到天亮，醒來精神還不錯", d:"b"} ]},
   { layer:"身", icon:"🔥", q:"下午三、四點，妳的身體狀態？",
     opts:[
       {t:"精神時好時壞，需要點心撐著", d:"v"},
       {t:"還很有衝勁，但容易急躁", d:"p"},
-      {t:"昏沉想打盹，需要一點推力才動得起來", d:"k"},
-      {t:"明明很累，還是一邊硬撐一邊趕事情", d:"vp"},
-      {t:"午餐後有點想睡，但撐過去就能把事情做完", d:"pk"} ]},
+      {t:"昏沉想打盹，需要一點推力才動得起來", d:"k"} ]},
 
   { layer:"心", icon:"💭", q:"手機一直震動、訊息在響、事情堆在眼前——妳的第一反應通常是？",
     opts:[
       {t:"心跳加快，腦中同時冒出好幾件事", d:"v"},
       {t:"火氣上來，想趕快解決、誰擋路就煩誰", d:"p"},
       {t:"先愣住、動作慢半拍，想先深呼吸再說", d:"k"},
-      {t:"先慌又急，忍不住想發脾氣", d:"vp"},
       {t:"大致穩得住，先處理最急的那一件", d:"b"} ]},
   { layer:"心", icon:"💭", q:"面對一個新選擇（報名一堂課、換種方式生活），妳會？",
     opts:[
       {t:"容易改主意，常常今天要、明天就猶豫", d:"v"},
       {t:"快速分析利弊，決定了就一路推進到底", d:"p"},
-      {t:"慢慢來、需要時間，不喜歡被催著改變", d:"k"},
-      {t:"很快被吸引、很想馬上開始，但做一陣子又容易轉向", d:"vp"},
-      {t:"想很久才決定，但一決定就會堅持到底", d:"pk"} ]},
+      {t:"慢慢來、需要時間，不喜歡被催著改變", d:"k"} ]},
   { layer:"心", icon:"💭", q:"跟伴侶或家人有摩擦時，妳比較像？",
     opts:[
       {t:"情緒來得快去得也快，但事後會反覆回想", d:"v"},
       {t:"話講得直，事後才覺得自己太衝", d:"p"},
       {t:"默默忍著、不太想吵，但會悶很久", d:"k"},
-      {t:"當下話很衝，事後又反覆想、睡不著", d:"vp"},
       {t:"能說出自己的感受，也聽得進對方", d:"b"} ]},
   { layer:"心", icon:"💭", q:"妳的腦袋平常比較像？",
     opts:[
       {t:"靈感很多，但也容易分心焦慮", d:"v"},
       {t:"邏輯清楚、目標明確，但對自己很嚴格", d:"p"},
-      {t:"沉穩、念舊，想事情慢但記得久", d:"k"},
-      {t:"點子很多、動得很快，也常對自己要求很高", d:"vp"},
-      {t:"想得清楚、做事穩，但不太喜歡改變", d:"pk"} ]},
+      {t:"沉穩、念舊，想事情慢但記得久", d:"k"} ]},
 
   { layer:"靈", icon:"🌙", q:"一天當中，妳最有靈感、最像「自己」的時刻？",
     opts:[
       {t:"想法總在夜裡或清晨突然湧現，來去像風", d:"v"},
       {t:"白天精神最旺，一鼓作氣最有效率", d:"p"},
-      {t:"慢慢暖機，傍晚之後才覺得安定自在", d:"k"},
-      {t:"清晨或深夜靈感特別多，白天也衝得很快", d:"vp"},
-      {t:"上午慢熱，過了中午越做越順", d:"pk"} ]},
+      {t:"慢慢暖機，傍晚之後才覺得安定自在", d:"k"} ]},
   { layer:"靈", icon:"🌙", q:"對自己精力與情緒的起伏週期（不論是生理週期，還是工作生活裡的高低起伏），妳的感受比較接近？",
     opts:[
       {t:"不太規律、起伏明顯，常摸不準自己", d:"v"},
       {t:"來得準也來得猛，低潮前特別煩躁", d:"p"},
       {t:"穩定但偏沉重，常提不起勁", d:"k"},
-      {t:"時間不太準，低潮前特別煩躁", d:"vp"},
       {t:"大致規律，高低起伏也還算舒服", d:"b"} ]},
   { layer:"靈", icon:"🌙", q:"理想的週末休息，妳最想要的是？",
     opts:[
       {t:"換個環境、來點新鮮刺激，最怕一成不變", d:"v"},
       {t:"完成一件有成就感的事，休息也要「有產出」", d:"p"},
-      {t:"待在家、慢慢泡茶發呆，什麼都不用趕", d:"k"},
-      {t:"想出門走走，也想順便把幾件事做完", d:"vp"},
-      {t:"想待在家休息，但也希望有一點小成就", d:"pk"} ]},
+      {t:"待在家、慢慢泡茶發呆，什麼都不用趕", d:"k"} ]},
   { layer:"靈", icon:"🌙", q:"當妳「不太對勁」時，最先出現的訊號通常是？",
     opts:[
       {t:"睡不好，停不下來，莫名焦慮", d:"v"},
       {t:"易怒、急躁，對人對己都變得嚴苛", d:"p"},
-      {t:"提不起勁、想躲起來，什麼都懶得動", d:"k"},
-      {t:"先是睡不好，接著就變得很容易煩躁", d:"vp"},
-      {t:"先是煩躁，接著就提不起勁、想躲起來", d:"pk"} ]},
+      {t:"提不起勁、想躲起來，什麼都懶得動", d:"k"} ]},
 
   /* ── 身體的日常：體型（本質）＋ 消化・排便・睡醒・皮膚（此刻）＋ 自評平衡 ──
      d:"b" = 平衡舒服（不計入三督夏比例，計入「身體地圖」）；s1–s5 = 自評分數 */
@@ -778,8 +763,15 @@ function renderBodyMap(){
 }
 
 /* ============ 計分與結果 ============ */
+function fmtTimestamp(){
+  const d=new Date();
+  const w=["日","一","二","三","四","五","六"][d.getDay()];
+  const pad=n=>String(n).padStart(2,"0");
+  return `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())}（週${w}）${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
 function finish(){
   document.getElementById("bar").style.width="100%";
+  document.getElementById("rTimestamp").innerHTML = `🕐 測驗於 ${fmtTimestamp()}・這是妳<b>此刻</b>的狀態，不是永遠的標籤`;
   const total={v:0,p:0,k:0};
   const byLayer={身:{v:0,p:0,k:0},心:{v:0,p:0,k:0},靈:{v:0,p:0,k:0}};
   let neutral=0,balanced=0;

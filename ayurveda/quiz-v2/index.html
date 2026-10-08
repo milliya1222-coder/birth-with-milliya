@@ -257,6 +257,10 @@
   .parts-tips{max-width:480px;margin:22px auto 0;text-align:left;display:grid;gap:10px}
   .parts-tips p{font-size:13.5px;color:var(--ink-soft);line-height:1.8;background:var(--cream);border-radius:12px;padding:12px 16px}
   .parts-tips p b{color:var(--ink)}
+  .mode-btns{display:flex;flex-direction:column;gap:12px;max-width:380px;margin:16px auto 0}
+  .mode-btns .btn{display:flex;flex-direction:column;gap:2px;padding:16px 28px}
+  .mode-btns .btn small{font-weight:400;font-size:12.5px;opacity:.85}
+  .mode-btns .btn-ghost small{color:var(--ink-soft)}
 
   /* ---------- 選項：安全閥（中性） ---------- */
   .opt.neutral{border-style:dashed;color:var(--ink-soft);font-size:15.5px}
@@ -316,17 +320,17 @@
   <section class="screen active" id="intro">
     <div class="hero">
       <span class="badge">✦ 阿育吠陀 · 三督夏能量測驗</span>
-      <h1 class="serif">此刻的妳，<br>正流動著<em>哪一股能量</em>？</h1>
+      <h1 class="serif">妳，由哪一股<em>能量</em>組成？</h1>
       <p class="lead">這不是要把妳貼上「就是某一型」的標籤。<br>
         阿育吠陀說，我們身上同時住著三股能量——<b>風、火、水土</b>。<br>
-        重要的不是妳是誰，而是<b>此刻</b>哪一股在帶頭。</p>
+        有些從出生就跟著妳，有些隨著<b>此刻</b>的妳流動。</p>
       <div class="orbs">
         <div class="orb"><div class="dot" style="background:var(--vata)"></div><b>Vāta 風</b><small>瓦塔・流動</small></div>
         <div class="orb"><div class="dot" style="background:var(--pitta)"></div><b>Pitta 火</b><small>皮塔・轉化</small></div>
         <div class="orb"><div class="dot" style="background:var(--kapha)"></div><b>Kapha 水土</b><small>卡法・滋養</small></div>
       </div>
       <p class="hero meta" style="margin-top:30px">
-        <span>🌿 21 道情境題</span><span>⏱ 約 6 分鐘</span><span>🪞 身・心・靈三層解讀</span>
+        <span>🌿 17–21 道情境題</span><span>⏱ 約 5–6 分鐘</span><span>🪞 身・心・靈三層解讀</span>
       </p>
       <button class="btn" onclick="show('parts')">開始照鏡子 →</button>
       <div class="disclaimer">
@@ -357,7 +361,11 @@
         <p><b>誠實觀察，而非期待。</b>選「真實的妳」，不是「希望成為的妳」——沒有哪種體質比較好，每種能量都有天賦，也有要留意的地方。</p>
         <p><b>每題只選一個，第一直覺最準。</b>大多數人是混合體質，不用糾結。</p>
       </div>
-      <button class="btn" onclick="show('stage')">開始 →</button>
+      <p class="lead" style="margin-top:28px;font-size:15px">妳想怎麼測？</p>
+      <div class="mode-btns">
+        <button class="btn" onclick="chooseMode('full')">完整版：天生＋此刻的我<small>21 題・約 6 分鐘</small></button>
+        <button class="btn btn-ghost" onclick="chooseMode('now')">只測此刻的我<small>17 題・約 5 分鐘</small></button>
+      </div>
     </div>
   </section>
 
@@ -500,7 +508,7 @@
    題庫：每題標記 layer（身/心/靈），三個選項各對應一股能量
    d = dosha：'v' 風 / 'p' 火 / 'k' 水土
    ============================================================ */
-const QUESTIONS = [
+const ALL_QUESTIONS = [
   { part:"A", tag:"🌱 基礎體質（從小到大）", key:"frame", q:"看著鏡子裡的自己，妳的骨架與體型比較像？",
     hint:"以大部分時候的自己來選；產後身形正在變化的話，想想懷孕前的妳。",
     opts:[
@@ -755,14 +763,23 @@ function dualNote(a,b){
 /* ============ 狀態 ============ */
 let idx=0;
 let selectedStage="none";
-const answers=new Array(QUESTIONS.length).fill(null); // 存 'v'/'p'/'k'/'n'(看情況)
-const orders=QUESTIONS.map(Q=>Q.fixed?Q.opts.map((_,i)=>i):shuffle([0,1,2]).concat(Q.opts.slice(3).map((_,i)=>i+3))); // 三督夏選項打散；「平衡」選項固定放最後、自評題不打散
+let quizMode="full"; // 'full' = 天生+此刻（21題）／'now' = 只測此刻（17題，不含 Part A）
+let QUESTIONS=ALL_QUESTIONS;
+let answers=new Array(QUESTIONS.length).fill(null); // 存 'v'/'p'/'k'/'n'(看情況)
+let orders=[];
 
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function buildOrders(){return QUESTIONS.map(Q=>Q.fixed?Q.opts.map((_,i)=>i):shuffle([0,1,2]).concat(Q.opts.slice(3).map((_,i)=>i+3)));} // 三督夏選項打散；「平衡」選項固定放最後、自評題不打散
 
 function qtrack(n){try{if(window.gtag)window.gtag("event",n)}catch(e){}}  /* 只送事件名稱，不含答案 */
+function chooseMode(m){quizMode=m;qtrack("quiz_mode_"+m);show("stage");}
 function pickStage(s){selectedStage=s;qtrack("quiz_start");startQuiz();}
-function startQuiz(){show("quiz");idx=0;render();}
+function startQuiz(){
+  QUESTIONS = quizMode==="full" ? ALL_QUESTIONS : ALL_QUESTIONS.filter(q=>q.part!=="A");
+  answers = new Array(QUESTIONS.length).fill(null);
+  orders = buildOrders();
+  show("quiz");idx=0;render();
+}
 function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 
 function render(){

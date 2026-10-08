@@ -330,7 +330,7 @@
         <div class="orb"><div class="dot" style="background:var(--kapha)"></div><b>Kapha 水土</b><small>卡法・滋養</small></div>
       </div>
       <p class="hero meta" style="margin-top:30px">
-        <span>🌿 17–21 道情境題</span><span>⏱ 約 5–6 分鐘</span><span>🪞 身・心・靈三層解讀</span>
+        <span>🌿 17–23 道情境題</span><span>⏱ 約 5–7 分鐘</span><span>🪞 身・心・靈三層解讀</span>
       </p>
       <button class="btn" onclick="show('parts')">開始照鏡子 →</button>
       <div class="disclaimer">
@@ -363,7 +363,7 @@
       </div>
       <p class="lead" style="margin-top:28px;font-size:15px">妳想怎麼測？</p>
       <div class="mode-btns">
-        <button class="btn" onclick="chooseMode('full')">完整版：天生＋此刻的我<small>21 題・約 6 分鐘</small></button>
+        <button class="btn" onclick="chooseMode('full')">完整版：天生＋此刻的我<small>23 題・約 7 分鐘</small></button>
         <button class="btn btn-ghost" onclick="chooseMode('now')">只測此刻的我<small>17 題・約 5 分鐘</small></button>
       </div>
     </div>
@@ -543,6 +543,18 @@ const ALL_QUESTIONS = [
       {t:"偏油、偏薄軟，容易泛紅敏感", d:"p"},
       {t:"偏油潤、偏濃密，膚質厚實", d:"k"},
       {t:"從小到大都算穩定，不太有狀況", d:"b"} ]},
+  { part:"A", tag:"🌱 基礎體質（從小到大）", q:"從小到大，妳的身體柔軟度與關節大致上是？",
+    opts:[
+      {t:"很靈活，甚至有點過鬆，蹲久了關節容易卡卡作響", d:"v"},
+      {t:"中等靈活，動起來算協調，很少特別留意關節", d:"p"},
+      {t:"偏緊實穩固，不容易扭傷，但沒那麼柔軟，拉筋要花時間", d:"k"},
+      {t:"靈活度剛好，很少特別去想這件事", d:"b"} ]},
+  { part:"A", tag:"🌱 基礎體質（從小到大）", q:"從小到大，妳記事情的方式比較像？",
+    opts:[
+      {t:"記得快也忘得快，靈光一閃但留不住細節", d:"v"},
+      {t:"記重點記得準，尤其是邏輯清楚、有道理的事", d:"p"},
+      {t:"記得比較慢，但一旦記住了就很難忘記", d:"k"},
+      {t:"需要的時候想得起來，沒有特別突出的傾向", d:"b"} ]},
 
   { layer:"身", icon:"🔥", q:"換季整理衣櫃時，妳最常對自己身體的感覺是？",
     opts:[

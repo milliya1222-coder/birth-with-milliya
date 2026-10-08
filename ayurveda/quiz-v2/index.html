@@ -244,6 +244,20 @@
   .stage-opt b{font-size:17px;font-weight:600;display:block;color:var(--ink)}
   .stage-opt small{font-size:13.5px;color:var(--ink-soft)}
 
+  /* ---------- Part A / Part B 說明 ---------- */
+  .parts-cards{display:flex;flex-direction:column;gap:14px;max-width:480px;margin:28px auto 0;text-align:left}
+  @media(min-width:640px){.parts-cards{flex-direction:row}}
+  .part-card{flex:1;border-radius:18px;padding:22px 22px 20px;border:1px solid var(--line);background:#fff;border-left:4px solid}
+  .part-card.part-a{border-left-color:var(--kapha)}
+  .part-card.part-b{border-left-color:var(--vata)}
+  .part-label{font-size:12.5px;letter-spacing:.14em;color:var(--ink-soft);font-weight:600}
+  .part-card h3{font-family:"Noto Serif TC",serif;font-size:19px;font-weight:600;margin:8px 0 10px;line-height:1.4}
+  .part-card .serif-em{font-style:italic;color:var(--brand-deep);font-size:15px}
+  .part-card p{font-size:14px;color:var(--ink-soft);line-height:1.75}
+  .parts-tips{max-width:480px;margin:22px auto 0;text-align:left;display:grid;gap:10px}
+  .parts-tips p{font-size:13.5px;color:var(--ink-soft);line-height:1.8;background:var(--cream);border-radius:12px;padding:12px 16px}
+  .parts-tips p b{color:var(--ink)}
+
   /* ---------- 選項：安全閥（中性） ---------- */
   .opt.neutral{border-style:dashed;color:var(--ink-soft);font-size:15.5px}
   .opt.neutral .mark{border-style:dashed}
@@ -312,12 +326,38 @@
         <div class="orb"><div class="dot" style="background:var(--kapha)"></div><b>Kapha 水土</b><small>卡法・滋養</small></div>
       </div>
       <p class="hero meta" style="margin-top:30px">
-        <span>🌿 18 道情境題</span><span>⏱ 約 5 分鐘</span><span>🪞 身・心・靈三層解讀</span>
+        <span>🌿 21 道情境題</span><span>⏱ 約 6 分鐘</span><span>🪞 身・心・靈三層解讀</span>
       </p>
-      <button class="btn" onclick="show('stage')">開始照鏡子 →</button>
+      <button class="btn" onclick="show('parts')">開始照鏡子 →</button>
       <div class="disclaimer">
         <b>溫柔的提醒：</b>這是一份<b>自我覺察</b>的工具，不是醫療診斷，也不會被存下來。它幫妳看見此刻身心的傾向，給妳一個照顧自己的方向——真正的答案，永遠在妳身體裡。
       </div>
+    </div>
+  </section>
+
+  <!-- ============ Part A / Part B 說明 ============ -->
+  <section class="screen" id="parts">
+    <div class="stage-wrap">
+      <span class="badge">🌗 這份測驗怎麼問</span>
+      <h2 class="serif">分成兩個部分</h2>
+      <p class="lead">因為阿育吠陀看妳，看的是兩種時間尺度。</p>
+      <div class="parts-cards">
+        <div class="part-card part-a">
+          <span class="part-label">PART A</span>
+          <h3>基礎體質<br><span class="serif-em">Prakṛti</span></h3>
+          <p>妳長期以來、多數時候的狀態——不是最近，是從小到大大致不變的妳。</p>
+        </div>
+        <div class="part-card part-b">
+          <span class="part-label">PART B</span>
+          <h3>此刻狀態<br><span class="serif-em">Vikṛti</span></h3>
+          <p>妳最近這段時間實際感受到的自己——會隨壓力、季節、生活而流動。</p>
+        </div>
+      </div>
+      <div class="parts-tips">
+        <p><b>誠實觀察，而非期待。</b>選「真實的妳」，不是「希望成為的妳」——沒有哪種體質比較好，每種能量都有天賦，也有要留意的地方。</p>
+        <p><b>每題只選一個，第一直覺最準。</b>大多數人是混合體質，不用糾結。</p>
+      </div>
+      <button class="btn" onclick="show('stage')">開始 →</button>
     </div>
   </section>
 
@@ -362,10 +402,15 @@
       <div class="timestamp" id="rTimestamp"></div>
     </div>
 
+    <div class="card prakriti-card" id="prakritiCard" style="display:none">
+      <h3><span class="ic">🌱</span>妳的基礎體質 <span class="serif-em" style="font-style:italic;font-weight:400;color:var(--ink-soft);font-size:14px">Prakṛti</span></h3>
+      <p id="prakritiText" style="font-size:15px;color:var(--ink-soft)"></p>
+    </div>
+
     <div class="note-soft" id="neutralNote" style="display:none"></div>
 
     <div class="card">
-      <h3><span class="ic">⚖️</span>妳此刻的三股能量比例</h3>
+      <h3><span class="ic">⚖️</span>妳此刻的三股能量比例 <span style="font-style:italic;font-weight:400;color:var(--ink-soft);font-size:14px">Vikṛti</span></h3>
       <div id="bars"></div>
       <p style="font-size:13.5px;color:var(--ink-soft);margin-top:16px">
         每個人都是三股能量的獨特配方。比例會隨季節、生命階段、壓力而流動——這是妳<b>當下</b>的樣子，不是永遠的定義。
@@ -456,6 +501,28 @@
    d = dosha：'v' 風 / 'p' 火 / 'k' 水土
    ============================================================ */
 const QUESTIONS = [
+  { part:"A", tag:"🌱 基礎體質（從小到大）", key:"frame", q:"看著鏡子裡的自己，妳的骨架與體型比較像？",
+    hint:"以大部分時候的自己來選；產後身形正在變化的話，想想懷孕前的妳。",
+    opts:[
+      {t:"骨架纖細，不太容易長肉", d:"v"},
+      {t:"中等身材、肌肉線條明顯，體重穩定", d:"p"},
+      {t:"骨架寬厚，容易長肉也不容易瘦", d:"k"} ]},
+  { part:"A", tag:"🌱 基礎體質（從小到大）", q:"撇開最近，從小到大，妳的食量與食慾大致上是？",
+    opts:[
+      {t:"不太固定，有時忘記吃也不奇怪", d:"v"},
+      {t:"量大，一餓就要馬上吃，不然不舒服", d:"p"},
+      {t:"穩定偏小，不吃也撐得住", d:"k"} ]},
+  { part:"A", tag:"🌱 基礎體質（從小到大）", q:"從小到大，妳走路、說話、做事的步調，大致上是？",
+    opts:[
+      {t:"快、跳躍，常常一心多用", d:"v"},
+      {t:"中等偏快，有目標、講效率", d:"p"},
+      {t:"慢而穩，不喜歡匆忙", d:"k"} ]},
+  { part:"A", tag:"🌱 基礎體質（從小到大）", q:"撇開最近的狀態，妳從小到大的皮膚和髮質底子比較像？",
+    opts:[
+      {t:"偏乾、偏薄，容易乾燥脫屑", d:"v"},
+      {t:"偏油、偏薄軟，容易泛紅敏感", d:"p"},
+      {t:"偏油潤、偏濃密，膚質厚實", d:"k"} ]},
+
   { layer:"身", icon:"🔥", q:"換季整理衣櫃時，妳最常對自己身體的感覺是？",
     opts:[
       {t:"手腳容易冰冷，常覺得衣服穿不夠暖", d:"v"},
@@ -525,14 +592,8 @@ const QUESTIONS = [
       {t:"易怒、急躁，對人對己都變得嚴苛", d:"p"},
       {t:"提不起勁、想躲起來，什麼都懶得動", d:"k"} ]},
 
-  /* ── 身體的日常：體型（本質）＋ 消化・排便・睡醒・皮膚（此刻）＋ 自評平衡 ──
+  /* ── 身體的日常：消化・排便・睡醒・皮膚（此刻）＋ 自評平衡 ──
      d:"b" = 平衡舒服（不計入三督夏比例，計入「身體地圖」）；s1–s5 = 自評分數 */
-  { layer:"身", tag:"🌿 身體的日常", key:"frame", q:"看著鏡子裡的自己，妳的骨架與體型比較像？",
-    hint:"以大部分時候的自己來選；產後身形正在變化的話，想想懷孕前的妳。",
-    opts:[
-      {t:"骨架纖細，不太容易長肉", d:"v"},
-      {t:"中等身材、肌肉線條明顯，體重穩定", d:"p"},
-      {t:"骨架寬厚，容易長肉也不容易瘦", d:"k"} ]},
   { layer:"身", tag:"🌿 身體的日常", key:"agni", q:"吃完一頓正餐後的兩三個小時，妳通常？",
     opts:[
       {t:"有時舒服、有時脹氣，每天都不太一樣", d:"v"},
@@ -772,10 +833,33 @@ function fmtTimestamp(){
 function finish(){
   document.getElementById("bar").style.width="100%";
   document.getElementById("rTimestamp").innerHTML = `🕐 測驗於 ${fmtTimestamp()}・這是妳<b>此刻</b>的狀態，不是永遠的標籤`;
+
+  // Part A（基礎體質 Prakṛti）獨立計分，不計入 Part B 的此刻比例
+  const totalA={v:0,p:0,k:0};
+  answers.forEach((d,i)=>{
+    if(QUESTIONS[i].part!=="A"||d==="n"||!d)return;
+    if(d in totalA) totalA[d]+=1;
+  });
+  const sumA=totalA.v+totalA.p+totalA.k;
+  const prakritiCard=document.getElementById("prakritiCard");
+  if(sumA>0){
+    const rankedA=["v","p","k"].sort((a,b)=>totalA[b]-totalA[a]);
+    const topA=rankedA[0], secondA=rankedA[1];
+    const isDualA=totalA[secondA]>0&&(totalA[topA]-totalA[secondA])<=1;
+    const DA=DOSHA[topA];
+    document.getElementById("prakritiText").innerHTML = isDualA
+      ? `底子偏向 <b>${DA.short} × ${DOSHA[secondA].short}</b> 混合型。這是妳出生時就帶著的配方，從小到大大致不變，不太會因為壓力、季節而改變。`
+      : `底子偏向 <b>${DA.short}型</b>——${DA.sub.replace("妳此刻像","妳天生就像").replace(/妳此刻/g,"妳")}。這是妳出生時就帶著的配方，從小到大大致不變。`;
+    prakritiCard.style.display="block";
+  }else{
+    prakritiCard.style.display="none";
+  }
+
   const total={v:0,p:0,k:0};
   const byLayer={身:{v:0,p:0,k:0},心:{v:0,p:0,k:0},靈:{v:0,p:0,k:0}};
   let neutral=0,balanced=0;
   answers.forEach((d,i)=>{
+    if(QUESTIONS[i].part==="A")return;         // Part A 不計入「此刻」比例
     if(d==="n"){neutral++;return;}            // 安全閥不計分
     if(d==="b"&&!QUESTIONS[i].key){balanced++;return;}  // 前 12 題的「平衡」選項
     const ks=[...(d||"")].filter(c=>c in total); // "vp" ＝ 風火各半分；b、s1–s5 不計入比例

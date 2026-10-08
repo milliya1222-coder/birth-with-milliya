@@ -96,17 +96,17 @@ img{max-width:100%;display:block;}
   box-shadow:0 4px 24px -16px rgba(90,74,66,.4);
 }
 .nav-inner{
-  max-width:var(--maxw);margin:0 auto;padding:20px 26px;
+  max-width:1320px;margin:0 auto;padding:20px 26px;
   display:flex;align-items:center;justify-content:space-between;
   transition:padding .4s var(--ease);
 }
 .nav.scrolled .nav-inner{padding:14px 26px;}
-.logo{display:inline-flex;align-items:center;}
+.logo{display:inline-flex;align-items:center;flex-shrink:0;}
 .logo img{height:46px;width:auto;display:block;}
-.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links{display:flex;align-items:center;gap:26px;flex-shrink:1;}
 .nav-links a{
   color:var(--cocoa);font-size:.96rem;letter-spacing:.04em;position:relative;
-  transition:color .25s;
+  transition:color .25s;white-space:nowrap;flex-shrink:0;
 }
 .nav-links a:not(.nav-cta):hover{color:var(--rose-deep);}
 .nav-links a:not(.nav-cta)::after{
@@ -231,8 +231,35 @@ img{max-width:100%;display:block;}
 .service-card--cta .btn-small{background:#fff;color:var(--rose-deep);border-color:#fff;}
 .service-card--cta .btn-small:hover{background:var(--ivory);}
 
+/* ---- 主要服務：阿育吠陀 featured 區塊 ---- */
+.service-featured{
+  display:block;position:relative;text-decoration:none;color:#fff;
+  border-radius:var(--radius);overflow:hidden;margin-bottom:64px;
+  min-height:420px;box-shadow:var(--shadow);
+}
+.service-featured img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 35%;
+  transition:transform .6s var(--ease);
+}
+.service-featured:hover img{transform:scale(1.04);}
+.service-featured::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(40,22,14,.88) 0%, rgba(40,22,14,.55) 38%, rgba(40,22,14,.15) 65%);
+}
+.service-featured-body{position:relative;z-index:1;padding:48px 40px;max-width:640px;}
+.service-featured .pillar-axis{color:#F3D9C4;}
+.service-featured h3{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:6px;color:#fff;}
+.service-featured .service-tag{color:#F3D9C4;}
+.service-featured p.service-desc{color:#F3E6D8;font-size:1.02rem;max-width:520px;}
+.service-featured .service-more{color:#fff;font-weight:500;}
+
 /* ---- 兩大主軸分組 ---- */
 .pillar{margin-bottom:58px;}
+.pillar-secondary .pillar-head h3{font-size:clamp(1.25rem,2.6vw,1.6rem);}
+.pillar-secondary .service-card{padding:28px 24px;}
+.pillar-secondary .service-icon{width:42px;height:42px;font-size:1.2rem;margin-bottom:14px;}
+.pillar-secondary .service-card h3,.pillar-secondary .service-card h4{font-size:1.1rem;}
+.pillar-secondary .service-card .service-desc{font-size:.88rem;}
 .pillar-head{text-align:center;max-width:600px;margin:0 auto 30px;}
 .pillar-axis{
   font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:.16em;

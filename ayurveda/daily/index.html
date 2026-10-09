@@ -338,9 +338,14 @@ function moonCard(date){
   const idx=Math.floor(((age+seg/2)%29.530588853)/seg)%8;
   return Object.assign({day:Math.round(age)},MOON_PHASES[idx]);
 }
+const TERM_ICON={
+  小寒:"❄️",大寒:"🥶",立春:"🌱",雨水:"🌧️",驚蟄:"🐛",春分:"⚖️",清明:"🌤️",穀雨:"🌾",
+  立夏:"🌿",小滿:"🌻",芒種:"🌽",夏至:"☀️",小暑:"🌡️",大暑:"🔥",立秋:"🍂",處暑:"🍃",
+  白露:"💧",秋分:"⚖️",寒露:"🍁",霜降:"🧊",立冬:"⛄",小雪:"🌨️",大雪:"❄️",冬至:"🕯️"
+};
 function seasonCards(date){
   const t=currentTerm(date),adv=TERM_ADVICE[t.name]||["",""],m=moonCard(date);
-  return '<div class="adv season"><h4>'+esc(t.name)+' <span class="todo">草稿</span></h4><p>'+esc(adv[0])+'　'+esc(adv[1])+'</p></div>'+
+  return '<div class="adv season"><h4>'+(TERM_ICON[t.name]||"")+' '+esc(t.name)+' <span class="todo">草稿</span></h4><p>'+esc(adv[0])+'　'+esc(adv[1])+'</p></div>'+
     '<div class="adv lunar"><h4>'+m.ic+' '+esc(m.n)+' <span class="todo">草稿</span></h4><p>'+esc(m.t)+'　'+esc(m.a)+'</p></div>';
 }
 
@@ -425,6 +430,7 @@ function viewToday(){
   return endCard()+weekCard()+a2hsCard()+'<div class="datenav"><button class="iconbtn" data-nav="-1" aria-label="前一天">‹</button>'+
   '<h2 class="serif">'+md(S.date)+'<span>週'+WK[d.getDay()]+(isT?' · 今天':'')+'</span></h2>'+
   '<button class="iconbtn" data-nav="1" aria-label="後一天"'+(isT?' disabled':'')+'>›</button></div>'+
+  '<section class="block"><div class="lbl">此刻的節氣與月相</div><div class="advice">'+seasonCards(d)+'</div></section>'+
   '<section class="block"><div class="lbl">今天照顧自己的小事<em id="hcount">基本 '+mc(x)+'/3　全部 '+hc(x)+'/'+HABITS.length+'</em></div><div class="habits">'+
   list.map(h=>'<button class="habit" data-habit="'+h.id+'" aria-pressed="'+!!x.habits[h.id]+'"><span class="box" aria-hidden="true">✓</span><span>'+(h.must?'<span class="must">基本三件</span>':'')+esc(h.t)+'</span></button>').join("")+
   '</div><button class="more" data-more>'+(S.showAll?'只看基本三件 ▴':'還有 '+(HABITS.length-3)+' 件可以做 ▾')+'</button></section>'+
@@ -437,7 +443,6 @@ function viewToday(){
   (hideFlow?'':'<div class="group g-n"><h3>'+flowLabel()+'</h3><div class="stepper"><button data-flow="-1" aria-label="減一天">−</button><output>'+(x.flow?'第 '+x.flow+' 天':'沒有')+'</output><button data-flow="1" aria-label="加一天">＋</button></div></div>')+
   '</section>'+
   '<section class="block"><div class="lbl">今天可以怎麼調</div><div class="advice" id="advice">'+advice(x)+'</div></section>'+
-  '<section class="block"><div class="lbl">此刻的節氣與月相</div><div class="advice">'+seasonCards(d)+'</div></section>'+
   '<section class="block"><div class="lbl">一句話</div><textarea id="note" placeholder="今天身體的感覺、情緒、吃了什麼特別的……">'+esc(x.note||"")+'</textarea></section>';
 }
 function last14(){const t=todayStr(),a=[];for(let i=13;i>=0;i--)a.push(addDays(t,-i));return a}

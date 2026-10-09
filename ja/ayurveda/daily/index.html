@@ -22,6 +22,7 @@
   - 紀錄只存在客戶自己的瀏覽器（localStorage），不送到任何伺服器，Milliya 看不到。
   - 2026-09-18 起加上 GA4（/analytics.js）只計算使用人數與次數；自訂事件只有名稱，不帶任何紀錄內容。
   - 體質說明、訊號、「今天怎麼調」的文字取自 ayurveda/quiz/ 測驗（Milliya 自己寫的內容），沒有使用甘乃夏講義。
+  - 「今日の節気と月の満ち欠け」（2026-10-09 加，對應中文版「此刻的節氣與月相」）：節氣用天文算法算出今天實際對應哪個節氣；文字是 Claude 依節氣與通用阿育吠陀季節觀翻譯整理的草稿（卡片上有「草稿」標籤），尚待 Milliya 確認日文語感再拿掉標籤。改這裡要同步中文版 ayurveda/daily/。
   - 標「待 Milliya 撰寫」的地方是留給她的內容位置：搜尋 TODO_MILLIYA。
   - noindex、未進 sitemap；入口只有測驗結果頁與邀請信。
 -->
@@ -34,6 +35,7 @@
     --pitta:#C56A43; --pitta-bg:#FBE7DC;
     --kapha:#5E8C6B; --kapha-bg:#E6F0E8;
     --todo:#B08A2E; --todo-bg:#FBF3DC;
+    --season:#8A8151; --season-bg:#F2EEDC; --lunar:#8B7399; --lunar-bg:#EFE6F2;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -96,6 +98,8 @@
   .adv.p{background:var(--pitta-bg);border-color:transparent}.adv.p h4{color:var(--pitta)}
   .adv.k{background:var(--kapha-bg);border-color:transparent}.adv.k h4{color:var(--kapha)}
   .adv.calm{background:var(--mist);border-color:transparent}
+  .adv.season{background:var(--season-bg);border-color:transparent}.adv.season h4{color:var(--season)}
+  .adv.lunar{background:var(--lunar-bg);border-color:transparent}.adv.lunar h4{color:var(--lunar)}
   .todo{display:inline-block;font-size:.68rem;letter-spacing:.06em;color:var(--todo);background:var(--todo-bg);border:1px dashed var(--todo);border-radius:6px;padding:0 6px;margin-left:4px;vertical-align:1px}
   .adv.slot{background:var(--todo-bg);border:1px dashed var(--todo)}
   .adv.slot h4{color:var(--todo)}
@@ -278,6 +282,69 @@ const SLEEP=["よく眠れた","夢が多い","眠りが浅い","起きられな
 const STOOL=["スムーズ","硬い・乾いている","ゆるい・急に","出なかった"];
 const TONGUE=["きれい","うっすら","厚い"];
 
+/* 節気／月の満ち欠け：Claude が天文計算で整理した下書き。どの体質にも通じる内容で、Milliya の語感確認待ち（カードの「下書き」タグ参照） */
+const SOLAR_TERM_NAMES=["小寒","大寒","立春","雨水","驚蟄","春分","清明","穀雨","立夏","小満","芒種","夏至","小暑","大暑","立秋","処暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"];
+const TERM_OFFSET=[0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758];
+function termDate(y,n){return new Date(31556925974.7*(y-1900)+TERM_OFFSET[n]*60000+Date.UTC(1900,0,6,2,5,0))}
+function currentTerm(date){
+  const y=date.getFullYear(),list=[];
+  for(let yy=y-1;yy<=y+1;yy++)for(let n=0;n<24;n++)list.push({name:SOLAR_TERM_NAMES[n],date:termDate(yy,n)});
+  list.sort((a,b)=>a.date-b.date);
+  let idx=0;for(let k=0;k<list.length;k++){if(list[k].date<=date)idx=k;else break}
+  const cur=list[idx],next=list[idx+1];
+  return {name:cur.name,days:Math.floor((date-cur.date)/86400000),nextName:next.name,toNext:Math.max(1,Math.ceil((next.date-date)/86400000))};
+}
+const TERM_ADVICE={
+  小寒:["一年でいちばん寒い時季。体がいちばん温かさを欲しがります。","体全体を温かく。首元に冷たい風が直接当たらないように。朝起きたら、まず白湯を一杯。"],
+  大寒:["冬の最後の寒さ。年末で心も体も疲れがたまりやすい時季。","早めに休んで、無理をしない。滋養をとるときも、あっさり温かいものを。"],
+  立春:["陽の気が動き出し、体も動きたくなってくる頃。","暖かくしながら、少しずつ体を動かす量を増やして。朝に軽くストレッチを。"],
+  雨水:["湿気が増え、体が重だるく感じやすい時季。","冷たいもの・生ものは控えめに。すっきりする時間を少し持って。"],
+  驚蟄:["すべてが目覚める頃。気持ちも一緒に揺さぶられ、落ち着かなくなりがち。","規則正しい生活で自分を支えて。新しい刺激を一度に増やしすぎないように。"],
+  春分:["昼と夜が同じ長さになる、心と体のバランスを見つめ直す時季。","最近、頑張りすぎていないか、逆にゆるみすぎていないか、立ち止まって確認を。"],
+  清明:["気候が暖かく、湿っぽくなってくる頃。","朝ごはんは温かく消化にやさしいものを。生ものは控えめに。"],
+  穀雨:["一年でいちばん雨が多い時季、湿気も最大。","汗ばむ運動で湿気を流して。ただし日に当たりすぎないように。"],
+  立夏:["陽の気が上昇し始める出発点。","辛いもの・揚げ物を少しずつ減らして。しっかりした食事はお昼に、夜は軽めに。"],
+  小満:["蒸し暑さが増し、消化がもたつきやすい時季。","腹八分目を心がけて。朝、舌の様子をちょっと見てみて。"],
+  芒種:["高温が近づき、気持ちも焦りやすくなる頃。","仕事を無理に続けて感情が高ぶらないように。こまめに水分を。"],
+  夏至:["一年でいちばん陽の気が強く、昼がいちばん長い日。","正午の直射日光は避けて。冷たい水より常温の水を。夜は早めに休んで。"],
+  小暑:["蒸し暑さが本格化し始める頃。","冷たいものは控えめに。冷房の風が頭に直接当たらないように。"],
+  大暑:["一年でいちばん暑く、心と体がいちばんバランスを崩しやすい時季。","この時季は基本のケアを守るだけで十分。新しいことを始めるのは控えて。"],
+  立秋:["暑さは残るけれど、もう秋。朝晩の気温差が出てくる頃。","朝晩は一枚羽織って。日中はまだ涼しくして大丈夫。"],
+  処暑:["暑さが引き始め、秋の乾燥が顔を出す頃。","温かい水を多めに。日中の暑さにだまされないよう、少しずつ潤いを補って。"],
+  白露:["朝晩が涼しくなり、乾燥がはっきりしてくる頃。","肌や唇が乾きやすいので、保湿を少し多めに。"],
+  秋分:["昼と夜がまた同じ長さに。秋が本格的に始まる頃。","生活リズムを少しずつ前倒しに。夜更かしは控えて。"],
+  寒露:["寒さが深まってくる頃。","足元を温かく。寝る前の足湯もおすすめ。"],
+  霜降:["一年でいちばん自分を大切にケアしたい時季のひとつ。","この数週間は、規則正しい生活をいちばんに。"],
+  立冬:["冬の始まり。消化力はむしろ強くなるので、滋養をとるのに向く時季。","温かく滋養のあるものを。あっさりしすぎなくて大丈夫。"],
+  小雪:["陰の気が強まり、静かに過ごしたい時季。","夜は早めに灯りを落として、暗さと静けさを体に。"],
+  大雪:["一年でいちばん心を静めるのに向いている時季。","ゆっくり、余白を持って。年末だからと無理に頑張りすぎないで。"],
+  冬至:["一年でいちばん陰の気が強く、夜がいちばん長い日。ここから少しずつ陽が戻ってきます。","自分をケアすることを、義務ではなく自分への贈り物として。"]
+};
+function moonAge(date){
+  const syn=29.530588853,known=Date.UTC(2000,0,6,18,14),diff=(date.getTime()-known)/86400000;
+  return ((diff%syn)+syn)%syn;
+}
+const MOON_PHASES=[
+  {n:"新月",ic:"🌑",t:"内側に向かう日。",a:"予定を詰め込みすぎず、静かな時間を少し残して。"},
+  {n:"三日月",ic:"🌒",t:"新しい芽が出たばかりの頃。",a:"まだできていない小さな習慣を、ひとつ始めてみるのに向いています。"},
+  {n:"上弦の月",ic:"🌓",t:"エネルギーは強まるけれど、まだ不安定。",a:"規則正しさで自分を支えて。一気に飛ばしすぎないように。"},
+  {n:"満ちていく月",ic:"🌔",t:"行動力が高まる数日。",a:"集中できるときほど燃えすぎやすいので、余白を忘れずに。"},
+  {n:"満月",ic:"🌕",t:"昔から、感情がいちばん揺れやすいとされる数日。",a:"今日のセルフケアは、無理にすべてやろうとしなくて大丈夫。"},
+  {n:"欠けていく月",ic:"🌖",t:"満月のあとの、消化していく時季。",a:"ここ最近のことを振り返って、体の感じをちょっと確かめて。"},
+  {n:"下弦の月",ic:"🌗",t:"手放す・整理するのに向く頃。",a:"ずっと手放せずにいたことを、少し緩めてみて。"},
+  {n:"細くなる月",ic:"🌘",t:"月が尽きる頃。いちばん労わってほしい数日。",a:"早めに休んで、自分にやさしく。最後まで無理をしないで。"}
+];
+function moonCard(date){
+  const age=moonAge(date),seg=29.530588853/8;
+  const idx=Math.floor(((age+seg/2)%29.530588853)/seg)%8;
+  return Object.assign({day:Math.round(age)},MOON_PHASES[idx]);
+}
+function seasonCards(date){
+  const t=currentTerm(date),adv=TERM_ADVICE[t.name]||["",""],m=moonCard(date);
+  return '<div class="adv season"><h4>'+esc(t.name)+' <span class="todo">下書き</span></h4><p>'+esc(adv[0])+'　'+esc(adv[1])+'</p></div>'+
+    '<div class="adv lunar"><h4>'+m.ic+' '+esc(m.n)+' <span class="todo">下書き</span></h4><p>'+esc(m.t)+'　'+esc(m.a)+'</p></div>';
+}
+
 /* ───────── helpers ───────── */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -371,6 +438,7 @@ function viewToday(){
   (hideFlow?'':'<div class="group g-n"><h3>'+flowLabel()+'</h3><div class="stepper"><button data-flow="-1" aria-label="1日減らす">−</button><output>'+(x.flow?x.flow+' 日目':'なし')+'</output><button data-flow="1" aria-label="1日増やす">＋</button></div></div>')+
   '</section>'+
   '<section class="block"><div class="lbl">今日の整え方</div><div class="advice" id="advice">'+advice(x)+'</div></section>'+
+  '<section class="block"><div class="lbl">今日の節気と月の満ち欠け</div><div class="advice">'+seasonCards(d)+'</div></section>'+
   '<section class="block"><div class="lbl">ひとこと</div><textarea id="note" placeholder="今日の体の感じ、気持ち、いつもと違って食べたもの……">'+esc(x.note||"")+'</textarea></section>';
 }
 function last14(){const t=todayStr(),a=[];for(let i=13;i>=0;i--)a.push(addDays(t,-i));return a}

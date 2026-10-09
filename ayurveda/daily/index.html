@@ -21,6 +21,7 @@
   - 紀錄只存在客戶自己的瀏覽器（localStorage），不送到任何伺服器，Milliya 看不到。
   - 2026-09-18 起加上 GA4（/analytics.js）只計算使用人數與次數；自訂事件只有名稱，不帶任何紀錄內容。
   - 體質說明、訊號、「今天怎麼調」的文字取自 ayurveda/quiz/ 測驗（Milliya 自己寫的內容），沒有使用甘乃夏講義。
+  - 「此刻的節氣與月相」（2026-10-09 加）：節氣用天文算法算出今天實際對應哪個節氣，不是固定月份對照；文字是 Claude 依節氣與通用阿育吠陀季節觀整理的草稿（卡片上有「草稿」標籤），尚待 Milliya 確認語氣與內容再拿掉標籤。改中文版要同步日文版 /ja/ayurveda/daily/。
   - 標「待 Milliya 撰寫」的地方是留給她的內容位置：搜尋 TODO_MILLIYA。
   - noindex、未進 sitemap；入口只有測驗結果頁與邀請信。
 -->
@@ -33,6 +34,7 @@
     --pitta:#C56A43; --pitta-bg:#FBE7DC;
     --kapha:#5E8C6B; --kapha-bg:#E6F0E8;
     --todo:#B08A2E; --todo-bg:#FBF3DC;
+    --season:#8A8151; --season-bg:#F2EEDC; --lunar:#8B7399; --lunar-bg:#EFE6F2;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -95,6 +97,8 @@
   .adv.p{background:var(--pitta-bg);border-color:transparent}.adv.p h4{color:var(--pitta)}
   .adv.k{background:var(--kapha-bg);border-color:transparent}.adv.k h4{color:var(--kapha)}
   .adv.calm{background:var(--mist);border-color:transparent}
+  .adv.season{background:var(--season-bg);border-color:transparent}.adv.season h4{color:var(--season)}
+  .adv.lunar{background:var(--lunar-bg);border-color:transparent}.adv.lunar h4{color:var(--lunar)}
   .todo{display:inline-block;font-size:.68rem;letter-spacing:.06em;color:var(--todo);background:var(--todo-bg);border:1px dashed var(--todo);border-radius:6px;padding:0 6px;margin-left:4px;vertical-align:1px}
   .adv.slot{background:var(--todo-bg);border:1px dashed var(--todo)}
   .adv.slot h4{color:var(--todo)}
@@ -277,6 +281,69 @@ const SLEEP=["睡得好","夢多","淺眠易醒","很難起床"];
 const STOOL=["順暢","硬／乾","稀／急","沒排"];
 const TONGUE=["乾淨","薄薄一層","很厚"];
 
+/* 節氣／月相：Claude 依天文算法整理的草稿，通用於所有體質，尚待 Milliya 確認語氣與內容（見卡片上的「草稿」標籤） */
+const SOLAR_TERM_NAMES=["小寒","大寒","立春","雨水","驚蟄","春分","清明","穀雨","立夏","小滿","芒種","夏至","小暑","大暑","立秋","處暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"];
+const TERM_OFFSET=[0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758];
+function termDate(y,n){return new Date(31556925974.7*(y-1900)+TERM_OFFSET[n]*60000+Date.UTC(1900,0,6,2,5,0))}
+function currentTerm(date){
+  const y=date.getFullYear(),list=[];
+  for(let yy=y-1;yy<=y+1;yy++)for(let n=0;n<24;n++)list.push({name:SOLAR_TERM_NAMES[n],date:termDate(yy,n)});
+  list.sort((a,b)=>a.date-b.date);
+  let idx=0;for(let k=0;k<list.length;k++){if(list[k].date<=date)idx=k;else break}
+  const cur=list[idx],next=list[idx+1];
+  return {name:cur.name,days:Math.floor((date-cur.date)/86400000),nextName:next.name,toNext:Math.max(1,Math.ceil((next.date-date)/86400000))};
+}
+const TERM_ADVICE={
+  小寒:["一年最冷的時候，身體最需要溫暖。","全身保暖，避免冷風直吹頭頸；晨起先喝溫水再出門。"],
+  大寒:["冬天最後的寒，年底身心容易耗竭。","早睡、別硬撐；進補也選清淡溫熱的，不要油膩。"],
+  立春:["陽氣初升，身體開始想要動起來。","保暖的同時可以慢慢加一點活動量，晨起做點輕伸展。"],
+  雨水:["濕氣漸增，容易感覺沉重昏沉。","別貪涼、別吃生冷，給自己多一點清爽的空間。"],
+  驚蟄:["萬物甦醒，情緒也容易被一起喚醒而浮躁。","靠規律作息穩住自己，避免太多新刺激一次湧進來。"],
+  春分:["晝夜均分，是身心找平衡的好時機。","適合停下來檢查一下，最近是忙過頭了，還是太鬆散了。"],
+  清明:["氣候轉暖又轉濕。","早餐偏溫熱、好消化，避開生冷。"],
+  穀雨:["這個節氣雨水最多，濕氣最重。","運動流點汗幫助排濕，但別讓自己曬過頭。"],
+  立夏:["陽氣開始往上升的起點。","慢慢減少辛辣油炸，把豐盛的一餐挪到中午，晚餐清淡。"],
+  小滿:["濕熱漸增，消化容易悶悶的。","吃到七八分飽就好，早上多留意一下舌苔。"],
+  芒種:["高溫將至，情緒也容易跟著變得急躁。","留意別硬撐工作到情緒上來，記得喝水。"],
+  夏至:["一年陽氣最盛、白天最長。","避開正午曝曬，喝常溫水不是冰水，晚上早點休息。"],
+  小暑:["濕熱交蒸的開始。","少吃冰的，冷氣也別直吹頭。"],
+  大暑:["一年最熱的時候，也是身心最容易失衡的時候。","這幾週優先顧好基本的照顧就好，先別給自己加新挑戰。"],
+  立秋:["暑氣還沒退但已經入秋，早晚溫差開始出現。","早晚記得添衣，白天還是可以清涼。"],
+  處暑:["暑氣漸退，秋天的乾燥開始出現。","可以慢慢增加滋潤：多喝溫水，別被白天的熱騙了。"],
+  白露:["早晚轉涼，乾燥的感覺開始明顯。","皮膚、嘴唇容易乾，記得多一點保濕。"],
+  秋分:["晝夜又均分，秋天正式開始。","作息開始往前調，別再熬夜。"],
+  寒露:["寒意漸深。","腳底保暖，睡前可以用溫水泡泡腳。"],
+  霜降:["一年中最需要被好好照顧的時候之一。","這幾週把規律作息當成第一優先。"],
+  立冬:["進入冬天，消化力反而變強，適合好好進補。","吃溫熱滋養一點的食物，先別再追求清淡。"],
+  小雪:["陰氣漸盛，適合收斂、早睡。","晚上提早關燈，給身體多一點黑暗和安靜。"],
+  大雪:["一年中最適合靜心沉澱的時候。","慢下來、留白，別用年底衝刺的心態硬撐。"],
+  冬至:["一年陰氣最盛、黑夜最長，這之後會逐漸回暖。","把照顧自己這件事，當成給自己的禮物，不是任務。"]
+};
+function moonAge(date){
+  const syn=29.530588853,known=Date.UTC(2000,0,6,18,14),diff=(date.getTime()-known)/86400000;
+  return ((diff%syn)+syn)%syn;
+}
+const MOON_PHASES=[
+  {n:"新月",ic:"🌑",t:"向內收的日子。",a:"別把行程排太滿，留一點給自己安靜的時間。"},
+  {n:"眉月",ic:"🌒",t:"新的芽剛冒出來。",a:"適合開始一個還沒做到的小習慣，從小處累積就好。"},
+  {n:"上弦月",ic:"🌓",t:"能量漸強但還不穩。",a:"靠規律撐住自己，別一下子衝太快。"},
+  {n:"盈凸月",ic:"🌔",t:"行動力變強的幾天。",a:"專注力好的時候容易燒過頭，記得留白。"},
+  {n:"滿月",ic:"🌕",t:"傳統上情緒最容易被放大的幾天。",a:"今天的照顧自己寧可少做扎實，不要硬撐全做。"},
+  {n:"虧凸月",ic:"🌖",t:"滿月後的消化期。",a:"回顧這陣子做了什麼，留意一下身體的感覺。"},
+  {n:"下弦月",ic:"🌗",t:"適合清理、放手的時候。",a:"有什麼一直放不下的，這幾天可以練習鬆手。"},
+  {n:"殘月",ic:"🌘",t:"月將盡，最需要被安撫的幾天。",a:"提早睡、對自己溫柔一點，別硬撐到最後一刻。"}
+];
+function moonCard(date){
+  const age=moonAge(date),seg=29.530588853/8;
+  const idx=Math.floor(((age+seg/2)%29.530588853)/seg)%8;
+  return Object.assign({day:Math.round(age)},MOON_PHASES[idx]);
+}
+function seasonCards(date){
+  const t=currentTerm(date),adv=TERM_ADVICE[t.name]||["",""],m=moonCard(date);
+  return '<div class="adv season"><h4>'+esc(t.name)+' <span class="todo">草稿</span></h4><p>'+esc(adv[0])+'　'+esc(adv[1])+'</p></div>'+
+    '<div class="adv lunar"><h4>'+m.ic+' '+esc(m.n)+' <span class="todo">草稿</span></h4><p>'+esc(m.t)+'　'+esc(m.a)+'</p></div>';
+}
+
 /* ───────── helpers ───────── */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -370,6 +437,7 @@ function viewToday(){
   (hideFlow?'':'<div class="group g-n"><h3>'+flowLabel()+'</h3><div class="stepper"><button data-flow="-1" aria-label="減一天">−</button><output>'+(x.flow?'第 '+x.flow+' 天':'沒有')+'</output><button data-flow="1" aria-label="加一天">＋</button></div></div>')+
   '</section>'+
   '<section class="block"><div class="lbl">今天可以怎麼調</div><div class="advice" id="advice">'+advice(x)+'</div></section>'+
+  '<section class="block"><div class="lbl">此刻的節氣與月相</div><div class="advice">'+seasonCards(d)+'</div></section>'+
   '<section class="block"><div class="lbl">一句話</div><textarea id="note" placeholder="今天身體的感覺、情緒、吃了什麼特別的……">'+esc(x.note||"")+'</textarea></section>';
 }
 function last14(){const t=todayStr(),a=[];for(let i=13;i>=0;i--)a.push(addDays(t,-i));return a}

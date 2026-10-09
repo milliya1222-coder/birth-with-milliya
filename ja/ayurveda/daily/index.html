@@ -282,6 +282,14 @@ const SLEEP=["よく眠れた","夢が多い","眠りが浅い","起きられな
 const STOOL=["スムーズ","硬い・乾いている","ゆるい・急に","出なかった"];
 const TONGUE=["きれい","うっすら","厚い"];
 
+/* 「わたしを知る」の追加項目：自分の記録用で、「今日の整え方」の判定には影響しない */
+const AGE_RANGES=["20歳未満","20〜29歳","30〜39歳","40〜49歳","50歳以上"];
+const BODY_FRAME=["細身で骨格が小さく、太りにくい","中肉中背でがっちり、筋肉がつきやすく体温高め","骨格が大きくふっくら、体力・持久力がある","わからない、どれも少しずつある"];
+const DIGESTION=["調子にムラがあり、お腹が張りやすく便通も不規則","消化力が強くお腹がすきやすい。食事が遅れたり抜いたりすると不調に","消化がゆっくりで少量でも満腹感。体が重く感じやすい","わからない、どれも少しずつある"];
+const DIET=["食べる量が一定でなく、食事を忘れたり思いつきで食べたりしがち","食べる量が多くお腹がすきやすい。味の濃いもの・スパイスが好き","食べる量は安定していてゆっくり食べる。甘いものを欲しがりやすい","わからない、どれも少しずつある"];
+const PERSONALITY=["アイデアが多く、じっとしていられない。いくつものことを同時に考えがち","目標がはっきりしていて行動力がある。自分にも人にも厳しくなりがち","安定していて穏やか、怒りにくい。でも習慣を変えるのも苦手","わからない、どれも少しずつある"];
+const PROFILE_KEYS=["age","frame","digestion","diet","personality"];
+
 /* 節気／月の満ち欠け：Claude が天文計算で整理した下書き。どの体質にも通じる内容で、Milliya の語感確認待ち（カードの「下書き」タグ参照） */
 const SOLAR_TERM_NAMES=["小寒","大寒","立春","雨水","驚蟄","春分","清明","穀雨","立夏","小満","芒種","夏至","小暑","大暑","立秋","処暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"];
 const TERM_OFFSET=[0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758];
@@ -488,7 +496,14 @@ function viewMe(){
   '<div class="pick">'+ORDER.map(k=>'<button data-dosha="'+k+'" aria-pressed="'+P.doshas.includes(k)+'">'+DOSHA[k].short+'<small>'+DOSHA[k].sk+'</small></button>').join("")+'</div>'+
   '<p class="tip">まだわからない？ 5分の <a href="/ja/ayurveda/quiz/" target="_blank" rel="noopener">トリドーシャ・エネルギーチェック</a> をしてから選んでください。</p></section>'+
   '<section class="block"><div class="lbl">今のステージ</div><div class="stages">'+
-  Object.keys(STAGES).map(k=>'<button data-stage="'+k+'" aria-pressed="'+(P.stage===k)+'">'+esc(STAGES[k].label)+'</button>').join("")+'</div></section>';
+  Object.keys(STAGES).map(k=>'<button data-stage="'+k+'" aria-pressed="'+(P.stage===k)+'">'+esc(STAGES[k].label)+'</button>').join("")+'</div></section>'+
+  '<section class="block"><div class="lbl">もっと自分を知る<em>任意・記録用</em></div>'+
+  chipGroup("age","g-n","年齢層",null,AGE_RANGES,P.age||"",false)+
+  chipGroup("frame","g-n","生まれつきの体型",null,BODY_FRAME,P.frame||"",false)+
+  chipGroup("digestion","g-n","消化力",null,DIGESTION,P.digestion||"",false)+
+  chipGroup("diet","g-n","食事",null,DIET,P.diet||"",false)+
+  chipGroup("personality","g-n","性格",null,PERSONALITY,P.personality||"",false)+
+  '</section>';
   if(P.doshas.length){h+='<section class="block"><div class="lbl">わたしのエネルギー</div><div class="advice">'+
     P.doshas.map(k=>{const D=DOSHA[k];return '<div class="card '+k+'"><h4 class="serif">'+esc(D.title)+'</h4><p class="sub">'+esc(D.sub)+'</p><p>'+esc(D.body)+'</p><p style="font-size:.84rem;color:var(--ink-soft);margin:0">よく出るサイン：'+D.signs.map(esc).join("、")+'</p></div>'}).join("")+
     '</div></section>'}
@@ -576,6 +591,7 @@ document.addEventListener("click",e=>{
     markUsed();b.setAttribute("aria-pressed",!!x.habits[id]);$("#hcount").textContent="基本 "+mc(x)+"/3　全部 "+hc(x)+"/"+HABITS.length;save();return}
   if(b.dataset.flow){x.flow=Math.max(0,Math.min(60,(x.flow||0)+ +b.dataset.flow));save();render();return}
   if(b.dataset.k){const k=b.dataset.k,v=b.dataset.v;
+    if(PROFILE_KEYS.includes(k)){P[k]=P[k]===v?"":v;b.parentNode.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.v===P[k]));save();return}
     if(ORDER.includes(k)){const a=x.signals[k]=x.signals[k]||[],i=a.indexOf(v);if(i>=0)a.splice(i,1);else a.push(v);b.setAttribute("aria-pressed",i<0)}
     else{x[k]=x[k]===v?"":v;b.parentNode.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.v===x[k]))}
     $("#advice").innerHTML=advice(x);markUsed();save();return}

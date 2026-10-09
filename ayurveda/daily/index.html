@@ -281,6 +281,14 @@ const SLEEP=["睡得好","夢多","淺眠易醒","很難起床"];
 const STOOL=["順暢","硬／乾","稀／急","沒排"];
 const TONGUE=["乾淨","薄薄一層","很厚"];
 
+/* 「認識我」的補充欄位：純粹給她自己記錄參考，不影響「今天可以怎麼調」的建議邏輯 */
+const AGE_RANGES=["20 以下","20–29","30–39","40–49","50 以上"];
+const BODY_FRAME=["偏瘦、骨架小，不容易長肉","中等偏結實，容易長肌肉，體溫偏高","骨架大、偏豐腴，體力耐力好","不確定，都有一點"];
+const DIGESTION=["時好時壞，容易脹氣或排便不規律","消化力強，容易餓，吃太晚或跳過一餐會不舒服","消化偏慢，吃少也會覺得飽，容易覺得身體沉","不確定，都有一點"];
+const DIET=["食量不固定，常忘記吃飯或想到什麼吃什麼","食量大、容易餓，重口味、喜歡辛香料","食量穩定、吃得慢，容易對甜食有慾望","不確定，都有一點"];
+const PERSONALITY=["點子多、坐不住，容易同時想很多事情","目標清楚、行動力強，容易對自己和別人要求高","穩定溫和、不容易生氣，但也不容易改變習慣","不確定，都有一點"];
+const PROFILE_KEYS=["age","frame","digestion","diet","personality"];
+
 /* 節氣／月相：Claude 依天文算法整理的草稿，通用於所有體質，尚待 Milliya 確認語氣與內容（見卡片上的「草稿」標籤） */
 const SOLAR_TERM_NAMES=["小寒","大寒","立春","雨水","驚蟄","春分","清明","穀雨","立夏","小滿","芒種","夏至","小暑","大暑","立秋","處暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"];
 const TERM_OFFSET=[0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758];
@@ -487,7 +495,14 @@ function viewMe(){
   '<div class="pick">'+ORDER.map(k=>'<button data-dosha="'+k+'" aria-pressed="'+P.doshas.includes(k)+'">'+DOSHA[k].short+'<small>'+DOSHA[k].sk+'</small></button>').join("")+'</div>'+
   '<p class="tip">還不知道？先做 5 分鐘的 <a href="/ayurveda/quiz/" target="_blank" rel="noopener">三督夏・身心靈能量測驗</a>，再回來選。</p></section>'+
   '<section class="block"><div class="lbl">我現在的階段</div><div class="stages">'+
-  Object.keys(STAGES).map(k=>'<button data-stage="'+k+'" aria-pressed="'+(P.stage===k)+'">'+esc(STAGES[k].label)+'</button>').join("")+'</div></section>';
+  Object.keys(STAGES).map(k=>'<button data-stage="'+k+'" aria-pressed="'+(P.stage===k)+'">'+esc(STAGES[k].label)+'</button>').join("")+'</div></section>'+
+  '<section class="block"><div class="lbl">更多認識我自己<em>非必填，純粹記錄</em></div>'+
+  chipGroup("age","g-n","年齡層",null,AGE_RANGES,P.age||"",false)+
+  chipGroup("frame","g-n","天生的身材",null,BODY_FRAME,P.frame||"",false)+
+  chipGroup("digestion","g-n","消化能力",null,DIGESTION,P.digestion||"",false)+
+  chipGroup("diet","g-n","飲食",null,DIET,P.diet||"",false)+
+  chipGroup("personality","g-n","個性",null,PERSONALITY,P.personality||"",false)+
+  '</section>';
   if(P.doshas.length){h+='<section class="block"><div class="lbl">我的能量</div><div class="advice">'+
     P.doshas.map(k=>{const D=DOSHA[k];return '<div class="card '+k+'"><h4 class="serif">'+esc(D.title)+'</h4><p class="sub">'+esc(D.sub)+'</p><p>'+esc(D.body)+'</p><p style="font-size:.84rem;color:var(--ink-soft);margin:0">常見訊號：'+D.signs.map(esc).join("、")+'</p></div>'}).join("")+
     '</div></section>'}
@@ -575,6 +590,7 @@ document.addEventListener("click",e=>{
     markUsed();b.setAttribute("aria-pressed",!!x.habits[id]);$("#hcount").textContent="基本 "+mc(x)+"/3　全部 "+hc(x)+"/"+HABITS.length;save();return}
   if(b.dataset.flow){x.flow=Math.max(0,Math.min(60,(x.flow||0)+ +b.dataset.flow));save();render();return}
   if(b.dataset.k){const k=b.dataset.k,v=b.dataset.v;
+    if(PROFILE_KEYS.includes(k)){P[k]=P[k]===v?"":v;b.parentNode.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.v===P[k]));save();return}
     if(ORDER.includes(k)){const a=x.signals[k]=x.signals[k]||[],i=a.indexOf(v);if(i>=0)a.splice(i,1);else a.push(v);b.setAttribute("aria-pressed",i<0)}
     else{x[k]=x[k]===v?"":v;b.parentNode.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.v===x[k]))}
     $("#advice").innerHTML=advice(x);markUsed();save();return}

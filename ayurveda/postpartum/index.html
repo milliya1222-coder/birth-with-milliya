@@ -144,7 +144,8 @@ html{scroll-behavior:smooth}
     <dt>適合</dt><dd>產後一年內；其他階段先諮詢評估</dd>
     <dt>費用</dt><dd>實習招募 3 位・實習優惠價（報名後個別討論）</dd>
   </dl>
-  <div class="line-id">LINE 官方帳號 <code id="lineId">@birthwithmilliya</code> <a class="btn ghost" href="https://line.me/R/ti/p/@birthwithmilliya" target="_blank" rel="noopener">加入 LINE</a></div>
+  <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScYkLlGmF-TK8FsUifU3EaMy60um-Ww3T_nm54oE21vPHTTnQ/viewform" target="_blank" rel="noopener">填寫報名表（限額 3 位）</a></div>
+  <div class="line-id">或加 LINE 官方帳號 <code id="lineId">@birthwithmilliya</code> <a class="btn ghost" href="https://line.me/R/ti/p/@birthwithmilliya" target="_blank" rel="noopener">加入 LINE</a></div>
   <p class="muted">我會一個一個回。</p>
 </section>
 
@@ -256,8 +257,8 @@ function render(){
   ${holdIds.length?`<div class="hold"><b>這個階段先暫緩</b><ul>${holdIds.map(i=>`<li>${byId[i].name}：${hold[i]}再開始</li>`).join("")}</ul></div>`:""}
   ${late}
   <div class="send">
-    <p class="muted">想預約或問問題，把結果複製起來，貼到 LINE 給我。</p>
-    <button class="btn primary" type="button" id="copyBtn">複製我的結果</button>
+    <p class="muted">喜歡這個組合嗎？先複製結果，再填報名表（可以貼在「小問卷結果」那題），或直接貼到 LINE 給我。</p>
+    <div class="cta"><button class="btn primary" type="button" id="copyBtn">複製我的結果</button><a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLScYkLlGmF-TK8FsUifU3EaMy60um-Ww3T_nm54oE21vPHTTnQ/viewform" target="_blank" rel="noopener">填寫報名表</a></div>
     <textarea id="summary" readonly aria-label="我的問卷結果" hidden></textarea>
     <p id="copied" class="muted" hidden></p>
   </div>`;
@@ -270,7 +271,7 @@ function render(){
   document.getElementById("copyBtn").onclick=async()=>{
     const ta=document.getElementById("summary"), msg=document.getElementById("copied");
     ta.value=text;
-    try{ await navigator.clipboard.writeText(text); msg.textContent="已複製，打開 LINE 貼給 @birthwithmilliya 就可以了。"; }
+    try{ await navigator.clipboard.writeText(text); msg.textContent="已複製！可以貼到報名表的「小問卷結果」，或貼到 LINE 給 @birthwithmilliya。"; }
     catch(e){ ta.hidden=false; ta.focus(); ta.select(); msg.textContent="請長按上面的文字全選複製，再貼到 LINE。"; }
     msg.hidden=false;
   };

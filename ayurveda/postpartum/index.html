@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>阿育吠陀產後呵護｜妳現在適合哪些呵護？ — Birth with Milliya</title>
+<meta name="description" content="回答 4 個小問題，依分娩方式、產後週數、親餵狀況與身體不適，挑出適合妳的阿育吠陀產後呵護：溫油按摩、熱磚、鹽罐、藥草球、藥草浴、會陰薰蒸、關骨儀式、束腹。" />
+<link rel="canonical" href="https://birthwithmilliya.com/ayurveda/postpartum/" />
+<meta property="og:title" content="讓我好好地呵護妳一次｜阿育吠陀產後呵護">
+<meta property="og:description" content="1 分鐘小問卷，找出現在最適合妳的產後呵護組合。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://birthwithmilliya.com/ayurveda/postpartum/">
+<meta property="og:image" content="https://birthwithmilliya.com/ayurveda/postpartum/img/og.jpg">
+<meta property="og:site_name" content="Birth with Milliya">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/images/logo/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+html,body{margin:0}
+/* Layout: one narrow column like a printed care booklet — quiz first, then the eight treatments as illustrated chapters, booking at the end */
+:root{
+  --bg:#f6efe6; --paper:#fffaf3; --ink:#3b2a23; --soft:#76604f; --line:#e7d7c3;
+  --rust:#9c4a2c; --rust-ink:#fff; --gold:#a8822f; --chip:#f0e3d2; --ok:#4f7a4a; --hold:#9a6b1f;
+  --display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1e1814; --paper:#28201b; --ink:#f1e5d8; --soft:#c4ae9b; --line:#43362d;
+  --rust:#e0875f; --rust-ink:#1e1814; --gold:#d6b066; --chip:#352a23; --ok:#8cbf84; --hold:#e2b25e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1e1814; --paper:#28201b; --ink:#f1e5d8; --soft:#c4ae9b; --line:#43362d;
+  --rust:#e0875f; --rust-ink:#1e1814; --gold:#d6b066; --chip:#352a23; --ok:#8cbf84; --hold:#e2b25e; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 72px;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.35}
+h1{font-size:clamp(1.8rem,6vw,2.5rem);color:var(--rust)}
+h2{font-size:1.5rem;color:var(--rust)}
+h3{font-size:1.15rem}
+p{margin:0}
+.eyebrow{color:var(--gold);letter-spacing:.3em;font-size:.82rem}
+.muted{color:var(--soft)}
+a{color:var(--rust)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+img{display:block;max-width:100%}
+.photo{filter:saturate(.9) sepia(.08) contrast(.97);border-radius:12px;object-fit:cover;width:100%}
+
+header{display:flex;flex-direction:column;gap:14px;text-align:center}
+.hero{aspect-ratio:4/3;max-height:460px}
+.cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;border:0;border-radius:999px;padding:10px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.primary{background:var(--rust);color:var(--rust-ink)}
+.btn.ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
+
+/* quiz */
+.quiz{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 18px;display:flex;flex-direction:column;gap:22px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+legend{font-family:var(--display);font-weight:700;font-size:1.08rem;padding:0;margin-bottom:10px}
+legend small{font-family:var(--body);font-weight:400;color:var(--soft);font-size:.85rem;margin-left:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{background:var(--chip);border-radius:999px;padding:7px 15px;cursor:pointer;user-select:none;transition:background .15s,color .15s}
+.chips input:checked+label{background:var(--rust);color:var(--rust-ink)}
+.chips input:focus-visible+label{outline:3px solid var(--gold);outline-offset:2px}
+
+.result{border-top:1px dashed var(--line);padding-top:20px;display:flex;flex-direction:column;gap:14px}
+.empty{color:var(--soft);text-align:center;padding:10px 0}
+.recs{display:flex;flex-direction:column;gap:10px;list-style:none;margin:0;padding:0}
+.rec{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;background:var(--bg);border-radius:12px;padding:10px;text-decoration:none;color:inherit}
+.rec img{width:72px;height:72px;border-radius:9px}
+.rec b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
+.rec .why{font-size:.88rem;color:var(--soft);line-height:1.6}
+.rec .note{font-size:.85rem;color:var(--hold)}
+.tag{display:inline-block;font-size:.75rem;letter-spacing:.05em;padding:1px 8px;border-radius:999px;background:var(--chip);color:var(--ok);margin-left:6px;vertical-align:2px}
+.hold{font-size:.9rem;color:var(--soft);background:var(--bg);border-radius:12px;padding:12px 14px}
+.hold b{color:var(--hold)}
+.hold ul{margin:4px 0 0;padding-left:1.2em}
+.send{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+.send textarea{width:100%;min-height:120px;font:inherit;font-size:.88rem;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:10px}
+
+/* services */
+.svc{display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+.svc.hit h2::after{content:"推薦給妳";font-family:var(--body);font-size:.75rem;font-weight:700;letter-spacing:.08em;background:var(--rust);color:var(--rust-ink);border-radius:999px;padding:2px 10px;margin-left:10px;vertical-align:4px}
+.svc .sub{color:var(--gold);font-size:.92rem;letter-spacing:.04em}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.trio figure{margin:0;position:relative;min-width:0}
+.trio img{aspect-ratio:4/5}
+.trio figcaption{position:absolute;left:6px;bottom:6px;background:rgba(30,20,15,.6);color:#fff;font-size:.72rem;padding:1px 8px;border-radius:999px}
+hr{border:0;border-top:1px solid var(--line);margin:0}
+
+.info{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 18px;display:flex;flex-direction:column;gap:10px}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0}
+.info dt{color:var(--soft)}
+.info dd{margin:0;min-width:0}
+.line-id{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+code{font-family:var(--body);font-weight:700;background:var(--chip);padding:2px 10px;border-radius:8px;user-select:all}
+.care ul{margin:0;padding-left:1.2em;color:var(--soft)}
+footer{text-align:center;color:var(--soft);font-family:var(--display)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">阿育吠陀產後呵護</p>
+  <h1>讓我好好地呵護妳一次</h1>
+  <p class="muted">一段 3.5–4 小時、只屬於妳的完整產後身體呵護</p>
+  <img class="photo hero" src="img/1.jpg" alt="工作室裡的溫油按摩">
+  <div class="cta"><a class="btn primary" href="#quiz">做 1 分鐘小問卷</a><a class="btn ghost" href="#services">看全部療程</a></div>
+</header>
+
+<section class="quiz" id="quiz" aria-labelledby="quiz-h">
+  <div>
+    <h2 id="quiz-h">妳現在適合哪些呵護？</h2>
+    <p class="muted">回答幾個問題，下面會自動挑出適合這個階段的項目。</p>
+  </div>
+  <form id="f" autocomplete="off">
+  <div style="display:flex;flex-direction:column;gap:22px">
+    <fieldset><legend>1. 分娩方式</legend><div class="chips" data-name="birth"></div></fieldset>
+    <fieldset id="woundSet" hidden><legend>剖腹傷口現在的狀況</legend><div class="chips" data-name="wound"></div></fieldset>
+    <fieldset><legend>2. 產後多久了？</legend><div class="chips" data-name="week"></div></fieldset>
+    <fieldset><legend>3. 現在有親餵嗎？</legend><div class="chips" data-name="feed"></div></fieldset>
+    <fieldset><legend>4. 哪裡不舒服？<small>可複選</small></legend><div class="chips" data-name="pain" data-multi="1"></div></fieldset>
+  </div>
+  </form>
+  <div class="result" aria-live="polite" id="result"></div>
+</section>
+
+<section id="services" style="display:flex;flex-direction:column;gap:36px">
+  <div><p class="eyebrow">八種療程</p><h2>每一項呵護在做什麼</h2></div>
+  <div id="svcList" style="display:flex;flex-direction:column;gap:36px"></div>
+</section>
+
+<section class="info" id="book">
+  <h2>預約與費用</h2>
+  <dl>
+    <dt>時間</dt><dd>完整一次 3.5–4 小時</dd>
+    <dt>地點</dt><dd>北投工作室，或到府（交通費視地區另計）</dd>
+    <dt>適合</dt><dd>產後一年內；其他階段先諮詢評估</dd>
+    <dt>費用</dt><dd>實習招募 3 位・實習優惠價（報名後個別討論）</dd>
+  </dl>
+  <div class="line-id">LINE 官方帳號 <code id="lineId">@birthwithmilliya</code> <a class="btn ghost" href="https://line.me/R/ti/p/@birthwithmilliya" target="_blank" rel="noopener">加入 LINE</a></div>
+  <p class="muted">我會一個一個回。</p>
+</section>
+
+<section class="care">
+  <h3>溫馨提醒</h3>
+  <ul>
+    <li>自然產建議產後 1 週後開始局部熱敷；剖腹產等傷口完全癒合（約 3–4 週）後再進行腹部熱敷與束腹。</li>
+    <li>如果有大量出血、高血壓，或傷口紅腫發炎，請先暫停，等狀況穩定再安排。</li>
+    <li>這份問卷只是初步建議，實際內容會在事前諮詢時一起確認。這是身心呵護與放鬆，不能取代醫療。</li>
+  </ul>
+</section>
+
+<footer>Birth with Milliya・欣妙在陪妳</footer>
+</div>
+
+<script>
+const IMG = {"1": "img/1.jpg", "17": "img/17.jpg", "2": "img/2.jpg", "21": "img/21.jpg", "22": "img/22.jpg", "23": "img/23.jpg", "24": "img/24.jpg", "34": "img/34.jpg", "36": "img/36.jpg", "37": "img/37.jpg", "6": "img/6.jpg", "9": "img/9.jpg", "B06": "img/b06.jpg", "B09": "img/b09.jpg", "B13": "img/b13.jpg", "H01": "img/h01.jpg", "H04": "img/h04.jpg", "H05": "img/h05.jpg", "O12": "img/o12.jpg", "Q03": "img/q03.jpg", "Q09": "img/q09.jpg", "Q10": "img/q10.jpg", "S03": "img/s03.jpg", "S15": "img/s15.jpg", "S16": "img/s16.jpg"};
+const SVC = [
+ {id:"oil",name:"阿育吠陀溫油按摩",sub:"頭皮 → 背部與正面 → 銅壺滴油",imgs:[["6","頭皮"],["2","背部與正面"],["O12","銅壺滴油"]],
+  text:"產後的身體容易乾、冷、緊繃，這正是阿育吠陀說的 Vata（風能）偏高。從頭皮開始，用溫熱的藥草油慢慢放鬆；接著是背部與正面，推開肩頸、手臂、腰背與雙腿；最後讓溫油從銅壺緩緩流過額頭，讓思緒一起安靜下來。"},
+ {id:"brick",name:"熱石熱磚按摩",sub:"重點在下半身・腰痠、背痛、腿部",imgs:[["H04","加熱"],["H05","包葉"],["H01","施作"]],
+  text:"磚塊在火上加熱，再用香蕉葉和厚布包好，讓溫度穩定、溫和地傳進身體。按壓背部、臀部和腿部，舒緩抱寶寶、餵奶累積下來的腰痠背痛。"},
+ {id:"salt",name:"鹽罐熱敷",sub:"傳統草藥熱敷 × 阿育吠陀・融合台灣在地藥草",imgs:[["9","炒鹽"],["17","鋪藥草"],["22","熱敷"]],
+  text:"把粗鹽放進陶罐炒熱，罐底鋪上新鮮香蕉葉與薑黃、老薑、香茅、艾草、柑橘葉，再用布包起來。溫熱沿著腰背、肩頸慢慢推送，藥草的香氣也一起散開。"},
+ {id:"ball",name:"藥草球熱敷按摩",sub:"柑橘芳香產後草藥球・單顆約 150g",imgs:[["Q03","藥草球"],["Q09","背部"],["Q10","腿部"]],
+  text:"香茅、檸檬葉、薑黃、胡蘆巴、小茴香、老薑、艾草、大風草加上粗鹽，用棉布綁成草藥球，加熱後在腰背、肩頸與大腿輕壓滾動。柑橘的清香讓心情也跟著鬆開。"},
+ {id:"bath",name:"藥草浴",sub:"讓身體泡進溫暖的草本香氣裡",imgs:[["B09","藥材"],["B13","過濾"],["B06","泡浴"]],
+  text:"紅花、薑黃、香茅、乾葉與香料放進竹篩，煮成一鍋溫熱的藥草湯，再濾進浴缸。泡進去的那一刻，身體會慢慢鬆下來。"},
+ {id:"steam",name:"會陰薰蒸",sub:"溫和的草本蒸氣，照顧最私密、最辛苦的部位",imgs:[["S16","藥材"],["S03","薰蒸椅"],["S15","放鬆"]],
+  text:"把葉子、花草和香料煮成溫熱的藥草水，放在薰蒸椅下。披上斗篷坐著，讓溫和的蒸氣慢慢照顧生產後最辛苦的部位，全程有遮蓋，可以安心放鬆。"},
+ {id:"bones",name:"關骨儀式",sub:"Closing the Bones・把打開的身體溫柔地收回來",imgs:[["24","收緊"],["23","包覆"],["21","休息"]],
+  text:"生產時，身體為了迎接寶寶整個打開。關骨儀式用長布從頭到腳一段一段輕輕包覆、收緊，像一個很長的擁抱，象徵一段旅程的結束，也讓媽媽重新回到自己。"},
+ {id:"bind",name:"束腹",sub:"以布巾包覆腹部，給核心支撐與安定感",imgs:[["34","開始"],["37","纏繞"],["36","完成"]],
+  text:"用長布一圈一圈包覆腹部與骨盆，給剛生產完、還很鬆的核心一個穩穩的支撐，也教妳回家之後自己綁。"},
+];
+const Q = {
+ birth:[["vaginal","自然產"],["cs","剖腹產"]],
+ wound:[["healed","已經癒合"],["healing","還在恢復中"]],
+ week:[["w1","1 週內"],["w23","2–3 週"],["m3","4 週～3 個月"],["y1","3 個月～1 年"],["y1p","超過 1 年"]],
+ feed:[["yes","全親餵"],["mix","親餵＋瓶餵各半"],["no","沒有親餵"]],
+ pain:[["back","腰背痠痛"],["neck","肩頸僵硬"],["swell","水腫"],["tired","疲勞、睡不好"],["mood","情緒低落"],["pelvis","骨盆不適"],["belly","腹部鬆弛"],["cold","怕冷、手腳冰冷"],["peri","私密處不適"]],
+};
+const MATCH = {back:["brick","salt","ball"],neck:["oil","ball","salt"],swell:["salt","bath"],tired:["oil","bath"],mood:["oil","bath","bones"],pelvis:["bones","bind"],belly:["bind","bones"],cold:["salt","brick","steam"],peri:["steam"]};
+const label = (k,v)=>Object.fromEntries(Q[k])[v];
+
+for (const el of document.querySelectorAll(".chips")){
+  const k=el.dataset.name, multi=el.dataset.multi;
+  el.innerHTML = Q[k].map(([v,t])=>`<input type="${multi?"checkbox":"radio"}" name="${k}" id="${k}-${v}" value="${v}"><label for="${k}-${v}">${t}</label>`).join("");
+}
+const byId = Object.fromEntries(SVC.map(s=>[s.id,s]));
+document.getElementById("svcList").innerHTML = SVC.map((s,i)=>`${i?"<hr>":""}<article class="svc" id="svc-${s.id}">
+  <h2>${s.name}</h2><p class="sub">${s.sub}</p>
+  <div class="trio">${s.imgs.map(([k,c],j)=>`<figure><img class="photo" loading="lazy" src="${IMG[k]}" alt="${s.name}：${c}"><figcaption>${"①②③"[j]} ${c}</figcaption></figure>`).join("")}</div>
+  <p>${s.text}</p></article>`).join("");
+
+function plan(a){
+  const allow = {}, hold = {};
+  const all = SVC.map(s=>s.id);
+  if (a.week==="w1"){
+    ["bath","steam","bind"].forEach(i=>allow[i]=[]);
+    allow.bath.push("這週先以足浴進行"); allow.steam.push("以輕度、溫和的方式進行");
+    ["oil","brick","bones"].forEach(i=>hold[i]="產後第 4 週以後");
+    ["salt","ball"].forEach(i=>hold[i]="產後第 2 週以後");
+  } else if (a.week==="w23"){
+    ["ball","salt","bath","steam","bind"].forEach(i=>allow[i]=[]);
+    allow.ball.push("手法輕柔"); allow.salt.push("以背部、肩頸為主");
+    ["oil","brick","bones"].forEach(i=>hold[i]="產後第 4 週以後");
+  } else all.forEach(i=>allow[i]=[]);
+  if (a.birth==="cs" && a.wound!=="healed"){
+    if (allow.bind){ delete allow.bind; hold.bind="等剖腹傷口完全癒合（約 3–4 週）"; }
+    ["salt","ball","brick","oil"].forEach(i=>allow[i]&&allow[i].push("避開腹部，以背部、肩頸、腿部為主"));
+  }
+  if (a.feed==="yes"||a.feed==="mix"){
+    ["ball","salt"].forEach(i=>allow[i]&&allow[i].push("有親餵，改用無精油配方"));
+    allow.steam&&allow.steam.push("有親餵，選用溫和的草藥配方");
+  }
+  const pains=a.pain||[];
+  const scored = Object.keys(allow).map(id=>{
+    const hits=pains.filter(p=>MATCH[p].includes(id));
+    return {id,hits,notes:allow[id],score:hits.length,order:all.indexOf(id)};
+  }).sort((x,y)=>y.score-x.score||x.order-y.order);
+  let picks = pains.length ? scored.filter(s=>s.score>0) : scored;
+  if (picks.length<3) picks = picks.concat(scored.filter(s=>!picks.includes(s)).slice(0,3-picks.length));
+  picks = picks.slice(0,5);
+  return {picks,hold,pains};
+}
+
+function answers(){
+  const fd=new FormData(document.getElementById("f"));
+  return {birth:fd.get("birth"),wound:fd.get("wound"),week:fd.get("week"),feed:fd.get("feed"),pain:fd.getAll("pain")};
+}
+
+function render(){
+  const a=answers();
+  document.getElementById("woundSet").hidden = a.birth!=="cs";
+  const r=document.getElementById("result");
+  document.querySelectorAll(".svc").forEach(e=>e.classList.remove("hit"));
+  if(!a.birth||!a.week||(a.birth==="cs"&&!a.wound)){
+    r.innerHTML=`<p class="empty">選好分娩方式和產後週數，這裡就會出現適合妳的呵護組合。</p>`; return;
+  }
+  const {picks,hold,pains}=plan(a);
+  picks.forEach(p=>document.getElementById("svc-"+p.id).classList.add("hit"));
+  const late = a.week==="y1p" ? `<p class="hold">產後超過一年也可以做，我們會先聊聊妳現在的狀況再安排。</p>` : "";
+  const holdIds=Object.keys(hold);
+  r.innerHTML=`<h3>推薦給妳的 ${picks.length} 項呵護</h3>
+  <ul class="recs">${picks.map(p=>{const s=byId[p.id];
+    const why=p.hits.length?`適合${p.hits.map(h=>label("pain",h)).join("、")}`:"這個階段可以安心進行";
+    return `<li><a class="rec" href="#svc-${s.id}"><img class="photo" src="${IMG[s.imgs[0][0]]}" alt=""><span><b>${s.name}</b>${p.score>1?'<span class="tag">特別推薦</span>':""}<br><span class="why">${why}</span>${p.notes.length?`<br><span class="note">${p.notes.join("・")}</span>`:""}</span></a></li>`}).join("")}</ul>
+  ${holdIds.length?`<div class="hold"><b>這個階段先暫緩</b><ul>${holdIds.map(i=>`<li>${byId[i].name}：${hold[i]}再開始</li>`).join("")}</ul></div>`:""}
+  ${late}
+  <div class="send">
+    <p class="muted">想預約或問問題，把結果複製起來，貼到 LINE 給我。</p>
+    <button class="btn primary" type="button" id="copyBtn">複製我的結果</button>
+    <textarea id="summary" readonly aria-label="我的問卷結果" hidden></textarea>
+    <p id="copied" class="muted" hidden></p>
+  </div>`;
+  const text=[ "【產後呵護小問卷】",
+    `分娩方式：${label("birth",a.birth)}${a.birth==="cs"?`（傷口${label("wound",a.wound)}）`:""}`,
+    `產後：${label("week",a.week)}`,
+    a.feed?`親餵：${label("feed",a.feed)}`:"",
+    `不舒服：${pains.length?pains.map(p=>label("pain",p)).join("、"):"沒有特別勾選"}`,
+    `推薦項目：${picks.map(p=>byId[p.id].name).join("、")}`].filter(Boolean).join("\n");
+  document.getElementById("copyBtn").onclick=async()=>{
+    const ta=document.getElementById("summary"), msg=document.getElementById("copied");
+    ta.value=text;
+    try{ await navigator.clipboard.writeText(text); msg.textContent="已複製，打開 LINE 貼給 @birthwithmilliya 就可以了。"; }
+    catch(e){ ta.hidden=false; ta.focus(); ta.select(); msg.textContent="請長按上面的文字全選複製，再貼到 LINE。"; }
+    msg.hidden=false;
+  };
+}
+document.getElementById("f").addEventListener("change",render);
+document.getElementById("f").addEventListener("submit",e=>e.preventDefault());
+render();
+</script>
+
+<script src="/analytics.js" defer></script>
+</body>
+</html>

@@ -97,6 +97,20 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .info dd{margin:0;min-width:0}
 .line-id{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 code{font-family:var(--body);font-weight:700;background:var(--chip);padding:2px 10px;border-radius:8px;user-select:all}
+.fields{display:grid;gap:12px}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld span{font-weight:700}
+.fld em,legend small{font-style:normal;font-weight:400;font-size:.8rem;color:var(--rust);margin-left:6px}
+.fld input,.fld textarea,#regText{font:inherit;font-size:16px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg);color:var(--ink);width:100%}
+#reg{display:flex;flex-direction:column;gap:20px;margin-top:6px}
+.checks{display:flex;flex-direction:column;gap:8px}
+.checks label{display:flex;gap:10px;align-items:flex-start;line-height:1.6;cursor:pointer}
+.checks input{width:20px;height:20px;margin-top:4px;accent-color:var(--rust);flex:none}
+.err{color:var(--rust);font-weight:700}
+.btn.big{font-size:1.1rem;padding:13px 30px;align-self:flex-start}
+.quiznote{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:.92rem;white-space:pre-line}
+.done{display:flex;flex-direction:column;gap:12px;border-top:1px dashed var(--line);padding-top:16px}
+.done ol{margin:0;padding-left:1.3em}
 .care ul{margin:0;padding-left:1.2em;color:var(--soft)}
 footer{text-align:center;color:var(--soft);font-family:var(--display)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -111,7 +125,7 @@ html{scroll-behavior:smooth}
   <h1>讓我好好地呵護妳一次</h1>
   <p class="muted">一段 3.5–4 小時、只屬於妳的完整產後身體呵護</p>
   <img class="photo hero" src="img/1.jpg" alt="工作室裡的溫油按摩">
-  <div class="cta"><a class="btn primary" href="#quiz">做 1 分鐘小問卷</a><a class="btn ghost" href="#services">看全部療程</a></div>
+  <div class="cta"><a class="btn primary" href="#quiz">做 1 分鐘小問卷</a><a class="btn ghost" href="#register">直接報名</a></div>
 </header>
 
 <section class="quiz" id="quiz" aria-labelledby="quiz-h">
@@ -136,17 +150,41 @@ html{scroll-behavior:smooth}
   <div id="svcList" style="display:flex;flex-direction:column;gap:36px"></div>
 </section>
 
-<section class="info" id="book">
-  <h2>預約與費用</h2>
+<section class="info" id="register">
+  <h2>報名實習個案</h2>
   <dl>
     <dt>時間</dt><dd>完整一次 3.5–4 小時</dd>
     <dt>地點</dt><dd>北投工作室，或到府（交通費視地區另計）</dd>
     <dt>適合</dt><dd>產後一年內；其他階段先諮詢評估</dd>
-    <dt>費用</dt><dd>實習招募 3 位・實習優惠價（報名後個別討論）</dd>
+    <dt>費用</dt><dd>限額 3 位・實習優惠價（報名後個別討論）</dd>
   </dl>
-  <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScYkLlGmF-TK8FsUifU3EaMy60um-Ww3T_nm54oE21vPHTTnQ/viewform" target="_blank" rel="noopener">填寫報名表（限額 3 位）</a></div>
-  <div class="line-id">或加 LINE 官方帳號 <code id="lineId">@birthwithmilliya</code> <a class="btn ghost" href="https://line.me/R/ti/p/@birthwithmilliya" target="_blank" rel="noopener">加入 LINE</a></div>
-  <p class="muted">我會一個一個回。</p>
+  <p id="quizNote" class="quiznote"></p>
+  <form id="reg" novalidate>
+    <div class="fields">
+      <label class="fld"><span>怎麼稱呼妳？<em>必填</em></span><input id="r-name" name="name" type="text" placeholder="暱稱即可" autocomplete="nickname"></label>
+      <label class="fld"><span>LINE ID 或電話<em>必填</em></span><input id="r-contact" name="contact" type="text" autocomplete="tel"></label>
+      <label class="fld"><span>妳住哪一區？<em>必填</em></span><input id="r-area" name="area" type="text" placeholder="例如：北投、天母、新莊"></label>
+    </div>
+    <fieldset><legend>偏好的服務地點<small>必填</small></legend><div class="chips" data-name="place"></div></fieldset>
+    <fieldset><legend>大概方便的時間<small>可複選</small></legend><div class="chips" data-name="time" data-multi="1"></div></fieldset>
+    <fieldset><legend>健康與安全確認<small>請據實勾選</small></legend><div class="checks" data-name="safe"></div></fieldset>
+    <label class="fld"><span>其他病史、過敏，或要我特別注意的事</span><textarea id="r-note" name="note" rows="3"></textarea></label>
+    <label class="fld"><span>想對我說的話或問題？</span><textarea id="r-msg" name="msg" rows="3"></textarea></label>
+    <fieldset><legend>我了解並同意<small>兩項都要勾</small></legend><div class="checks" data-name="agree"></div></fieldset>
+    <p id="regErr" class="err" role="alert" hidden></p>
+    <button class="btn primary big" type="submit">送出報名</button>
+  </form>
+  <div id="regDone" class="done" hidden>
+    <h3>最後一步：把報名內容傳到 LINE 給我</h3>
+    <p id="regCopied" class="muted"></p>
+    <ol>
+      <li>按下面的按鈕打開 LINE，加入 <code>@birthwithmilliya</code></li>
+      <li>在對話框長按「貼上」，送出</li>
+    </ol>
+    <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="https://line.me/R/ti/p/@birthwithmilliya" target="_blank" rel="noopener">打開 LINE 貼給我</a><button class="btn ghost" type="button" id="recopy">再複製一次</button></div>
+    <textarea id="regText" readonly aria-label="報名內容" rows="10"></textarea>
+    <p class="muted">收到後我會在 1–2 天內親自回覆妳 🌿</p>
+  </div>
 </section>
 
 <section class="care">
@@ -162,7 +200,7 @@ html{scroll-behavior:smooth}
 </div>
 
 <script>
-const IMG = {"1": "img/1.jpg", "17": "img/17.jpg", "2": "img/2.jpg", "21": "img/21.jpg", "22": "img/22.jpg", "23": "img/23.jpg", "24": "img/24.jpg", "34": "img/34.jpg", "36": "img/36.jpg", "37": "img/37.jpg", "6": "img/6.jpg", "9": "img/9.jpg", "B06": "img/b06.jpg", "B09": "img/b09.jpg", "B13": "img/b13.jpg", "H01": "img/h01.jpg", "H04": "img/h04.jpg", "H05": "img/h05.jpg", "O12": "img/o12.jpg", "Q03": "img/q03.jpg", "Q09": "img/q09.jpg", "Q10": "img/q10.jpg", "S03": "img/s03.jpg", "S15": "img/s15.jpg", "S16": "img/s16.jpg"};
+const IMG = {"37": "img/37.jpg", "9": "img/9.jpg", "22": "img/22.jpg", "H05": "img/h05.jpg", "H04": "img/h04.jpg", "Q10": "img/q10.jpg", "6": "img/6.jpg", "S16": "img/s16.jpg", "B06": "img/b06.jpg", "2": "img/2.jpg", "H01": "img/h01.jpg", "S03": "img/s03.jpg", "S15": "img/s15.jpg", "24": "img/24.jpg", "36": "img/36.jpg", "21": "img/21.jpg", "1": "img/1.jpg", "34": "img/34.jpg", "23": "img/23.jpg", "B13": "img/b13.jpg", "B09": "img/b09.jpg", "Q03": "img/q03.jpg", "17": "img/17.jpg", "O12": "img/o12.jpg", "Q09": "img/q09.jpg"};
 const SVC = [
  {id:"oil",name:"阿育吠陀溫油按摩",sub:"頭皮 → 背部與正面 → 銅壺滴油",imgs:[["6","頭皮"],["2","背部與正面"],["O12","銅壺滴油"]],
   text:"產後的身體容易乾、冷、緊繃，這正是阿育吠陀說的 Vata（風能）偏高。從頭皮開始，用溫熱的藥草油慢慢放鬆；接著是背部與正面，推開肩頸、手臂、腰背與雙腿；最後讓溫油從銅壺緩緩流過額頭，讓思緒一起安靜下來。"},
@@ -191,7 +229,7 @@ const Q = {
 const MATCH = {back:["brick","salt","ball"],neck:["oil","ball","salt"],swell:["salt","bath"],tired:["oil","bath"],mood:["oil","bath","bones"],pelvis:["bones","bind"],belly:["bind","bones"],cold:["salt","brick","steam"],peri:["steam"]};
 const label = (k,v)=>Object.fromEntries(Q[k])[v];
 
-for (const el of document.querySelectorAll(".chips")){
+for (const el of document.querySelectorAll("#f .chips")){
   const k=el.dataset.name, multi=el.dataset.multi;
   el.innerHTML = Q[k].map(([v,t])=>`<input type="${multi?"checkbox":"radio"}" name="${k}" id="${k}-${v}" value="${v}"><label for="${k}-${v}">${t}</label>`).join("");
 }
@@ -238,13 +276,14 @@ function answers(){
   return {birth:fd.get("birth"),wound:fd.get("wound"),week:fd.get("week"),feed:fd.get("feed"),pain:fd.getAll("pain")};
 }
 
+let QUIZ=null;
 function render(){
   const a=answers();
   document.getElementById("woundSet").hidden = a.birth!=="cs";
   const r=document.getElementById("result");
   document.querySelectorAll(".svc").forEach(e=>e.classList.remove("hit"));
   if(!a.birth||!a.week||(a.birth==="cs"&&!a.wound)){
-    r.innerHTML=`<p class="empty">選好分娩方式和產後週數，這裡就會出現適合妳的呵護組合。</p>`; return;
+    r.innerHTML=`<p class="empty">選好分娩方式和產後週數，這裡就會出現適合妳的呵護組合。</p>`; QUIZ=null; updateQuizNote(); return;
   }
   const {picks,hold,pains}=plan(a);
   picks.forEach(p=>document.getElementById("svc-"+p.id).classList.add("hit"));
@@ -257,25 +296,76 @@ function render(){
   ${holdIds.length?`<div class="hold"><b>這個階段先暫緩</b><ul>${holdIds.map(i=>`<li>${byId[i].name}：${hold[i]}再開始</li>`).join("")}</ul></div>`:""}
   ${late}
   <div class="send">
-    <p class="muted">喜歡這個組合嗎？先複製結果，再填報名表（可以貼在「小問卷結果」那題），或直接貼到 LINE 給我。</p>
-    <div class="cta"><button class="btn primary" type="button" id="copyBtn">複製我的結果</button><a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLScYkLlGmF-TK8FsUifU3EaMy60um-Ww3T_nm54oE21vPHTTnQ/viewform" target="_blank" rel="noopener">填寫報名表</a></div>
-    <textarea id="summary" readonly aria-label="我的問卷結果" hidden></textarea>
-    <p id="copied" class="muted" hidden></p>
+    <p class="muted">喜歡這個組合嗎？往下填報名資料，問卷結果會自動附上。</p>
+    <a class="btn primary" href="#register">下一步：填報名資料 ↓</a>
   </div>`;
-  const text=[ "【產後呵護小問卷】",
-    `分娩方式：${label("birth",a.birth)}${a.birth==="cs"?`（傷口${label("wound",a.wound)}）`:""}`,
+  QUIZ={a,picks,pains};
+  updateQuizNote();
+}
+const RQ={
+ place:[["studio","北投工作室"],["home","到府（交通費視地區另計）"],["any","都可以"]],
+ time:[["wd","平日白天"],["wn","平日晚上"],["we","週末白天"],["wen","週末晚上"]],
+ safe:[["s1","目前沒有產後大出血"],["s2","傷口沒有發炎、紅腫"],["s3","沒有未控制的高血壓"],["s4","剖腹產傷口已完全癒合（自然產可跳過）"],["s5","以上有任何一項不符，我了解需要先諮詢評估"]],
+ agree:[["a1","這是 Milliya 培訓期間的實習個案，由她親自服務，約 3.5–4 小時，實習優惠價（報名後個別討論）"],["a2","療程紀錄僅供學習、完全匿名，不公開我的影像與個資"]],
+};
+for (const el of document.querySelectorAll("#reg .chips,#reg .checks")){
+  const k=el.dataset.name, multi=el.dataset.multi||el.classList.contains("checks");
+  el.innerHTML = RQ[k].map(([v,txt])=>el.classList.contains("checks")
+    ? `<label for="r-${k}-${v}"><input type="checkbox" name="${k}" id="r-${k}-${v}" value="${v}"><span>${txt}</span></label>`
+    : `<input type="${multi?"checkbox":"radio"}" name="${k}" id="r-${k}-${v}" value="${v}"><label for="r-${k}-${v}">${txt}</label>`).join("");
+}
+const rl=(k,v)=>Object.fromEntries(RQ[k])[v];
+function quizLines(){
+  if(!QUIZ) return [];
+  const {a,picks,pains}=QUIZ;
+  return [`分娩方式：${label("birth",a.birth)}${a.birth==="cs"?`（傷口${label("wound",a.wound)}）`:""}`,
     `產後：${label("week",a.week)}`,
     a.feed?`親餵：${label("feed",a.feed)}`:"",
     `不舒服：${pains.length?pains.map(p=>label("pain",p)).join("、"):"沒有特別勾選"}`,
-    `推薦項目：${picks.map(p=>byId[p.id].name).join("、")}`].filter(Boolean).join("\n");
-  document.getElementById("copyBtn").onclick=async()=>{
-    const ta=document.getElementById("summary"), msg=document.getElementById("copied");
-    ta.value=text;
-    try{ await navigator.clipboard.writeText(text); msg.textContent="已複製！可以貼到報名表的「小問卷結果」，或貼到 LINE 給 @birthwithmilliya。"; }
-    catch(e){ ta.hidden=false; ta.focus(); ta.select(); msg.textContent="請長按上面的文字全選複製，再貼到 LINE。"; }
-    msg.hidden=false;
-  };
+    `推薦項目：${picks.map(p=>byId[p.id].name).join("、")}`].filter(Boolean);
 }
+function updateQuizNote(){
+  const n=document.getElementById("quizNote");
+  n.innerHTML = QUIZ ? `<b>會一起附上妳的小問卷結果：</b>\n${quizLines().join("\n")}` : `還沒做小問卷？可以先<a href="#quiz">回到上面花 1 分鐘回答</a>，結果會自動附在報名裡；不做也可以直接報名。`;
+}
+async function copyText(text){
+  try{ await navigator.clipboard.writeText(text); return true; }catch(e){ return false; }
+}
+document.getElementById("reg").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const fd=new FormData(e.target), err=document.getElementById("regErr");
+  const v=k=>(fd.get(k)||"").trim(), all=k=>fd.getAll(k);
+  const miss=[];
+  if(!v("name")) miss.push("怎麼稱呼妳");
+  if(!v("contact")) miss.push("LINE ID 或電話");
+  if(!v("area")) miss.push("住哪一區");
+  if(!fd.get("place")) miss.push("服務地點");
+  if(!all("safe").length) miss.push("健康與安全確認");
+  if(all("agree").length<2) miss.push("同意事項（兩項都要勾）");
+  if(miss.length){ err.textContent="還差這幾項："+miss.join("、"); err.hidden=false; err.scrollIntoView({block:"center"}); return; }
+  err.hidden=true;
+  const text=["【產後呵護・實習個案報名】",
+    `稱呼：${v("name")}`, `聯絡：${v("contact")}`, `地區：${v("area")}`,
+    `地點：${rl("place",fd.get("place"))}`,
+    `方便時間：${all("time").map(x=>rl("time",x)).join("、")||"都可以，再討論"}`,
+    "", "— 身體狀況 —", ...(quizLines().length?quizLines():["（沒有做小問卷）"]),
+    "", "— 安全確認 —", ...all("safe").map(x=>"✓ "+rl("safe",x)),
+    v("note")?`注意事項：${v("note")}`:"",
+    v("msg")?`想說的話：${v("msg")}`:"",
+    "", "✓ 已了解並同意實習個案說明"].filter((x,i,arr)=>x!==""||arr[i-1]!=="").join("\n");
+  const ta=document.getElementById("regText"); ta.value=text;
+  const ok=await copyText(text);
+  document.getElementById("regCopied").textContent = ok ? "報名內容已經幫妳複製好了。" : "請長按下面的文字「全選」→「複製」。";
+  document.getElementById("regDone").hidden=false;
+  document.getElementById("regDone").scrollIntoView({block:"start"});
+});
+document.getElementById("recopy").addEventListener("click",async()=>{
+  const ta=document.getElementById("regText");
+  const ok=await copyText(ta.value);
+  if(!ok){ ta.focus(); ta.select(); }
+  document.getElementById("regCopied").textContent = ok ? "已再複製一次。" : "請長按下面的文字「全選」→「複製」。";
+});
+updateQuizNote();
 document.getElementById("f").addEventListener("change",render);
 document.getElementById("f").addEventListener("submit",e=>e.preventDefault());
 render();

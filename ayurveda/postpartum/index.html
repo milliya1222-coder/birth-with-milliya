@@ -111,6 +111,19 @@ code{font-family:var(--body);font-weight:700;background:var(--chip);padding:2px 
 .quiznote{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:.92rem;white-space:pre-line}
 .done{display:flex;flex-direction:column;gap:12px;border-top:1px dashed var(--line);padding-top:16px}
 .done ol{margin:0;padding-left:1.3em}
+.plans{display:flex;flex-direction:column;gap:18px;scroll-margin-top:16px}
+.plan-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.plan.featured{border:2px solid var(--rust)}
+.plan-tag{font-size:.8rem;letter-spacing:.12em;color:var(--gold);font-weight:700}
+.plan.featured .plan-tag{color:var(--rust)}
+.plan h3{font-size:1.3rem;color:var(--ink)}
+.plan-meta{font-size:.9rem;color:var(--soft)}
+.plan ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px;font-size:.93rem;line-height:1.65}
+.plan ol b{color:var(--rust)}
+.fit{font-size:.88rem;color:var(--soft);border-top:1px dashed var(--line);padding-top:8px;margin-top:auto}
+.small{font-size:.85rem}
+.pkg{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:.92rem}
 .care ul{margin:0;padding-left:1.2em;color:var(--soft)}
 footer{text-align:center;color:var(--soft);font-family:var(--display)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -150,10 +163,46 @@ html{scroll-behavior:smooth}
   <div id="svcList" style="display:flex;flex-direction:column;gap:36px"></div>
 </section>
 
+<section id="plans" class="plans">
+  <div><p class="eyebrow">選擇妳的節奏</p><h2>單次體驗，或一段完整的修復旅程</h2>
+  <p class="muted">產後的身體是一點一點回來的。包套會依妳的產後週數和狀況，由輕到深、由局部到全身，安排不同的呵護，每次都有新的重點。</p></div>
+  <div class="plan-grid">
+    <article class="plan">
+      <p class="plan-tag">單次</p><h3>完整體驗</h3>
+      <p class="plan-meta">1 次・約 3.5–4 小時</p>
+      <p>依妳現在的狀況，從 9 項呵護中挑出最適合的組合，一次感受從頭到腳被照顧。</p>
+      <p class="fit">適合：想先體驗看看、時間比較難安排的媽媽</p>
+    </article>
+    <article class="plan">
+      <p class="plan-tag">3 次包套</p><h3>溫暖修復</h3>
+      <p class="plan-meta">建議每週 1 次・約 3 週</p>
+      <ol>
+        <li><b>暖身放鬆</b>　溫油按摩（頭皮・背部與正面）＋藥草浴＋束腹教學</li>
+        <li><b>深層溫熱</b>　熱石熱磚＋鹽罐熱敷＋會陰薰蒸</li>
+        <li><b>收回身體</b>　藥草球＋銅壺滴油＋關骨儀式</li>
+      </ol>
+      <p class="fit">適合：腰背痠痛、怕冷，想有感改善的媽媽</p>
+    </article>
+    <article class="plan featured">
+      <p class="plan-tag">5 次包套・最完整</p><h3>完整產後修復</h3>
+      <p class="plan-meta">建議每週 1 次・4–6 週</p>
+      <ol>
+        <li><b>評估與暖身</b>　身體評估＋溫油按摩＋藥草浴＋束腹教學</li>
+        <li><b>溫和照顧</b>　藥草球（輕柔）＋會陰薰蒸＋束腹</li>
+        <li><b>深層溫熱</b>　熱石熱磚＋鹽罐熱敷</li>
+        <li><b>安定神經</b>　溫油按摩＋銅壺滴油＋藥草浴</li>
+        <li><b>收回身體</b>　鹽罐或藥草球＋關骨儀式＋束腹＋居家照護建議</li>
+      </ol>
+      <p class="fit">適合：產後 3 個月內、不適比較多，或想好好走完整個修復期的媽媽</p>
+    </article>
+  </div>
+  <p class="muted small">包套內容是建議安排，實際會依妳的產後週數、分娩方式和當天狀況調整順序（例如產後第 1 週先從藥草足浴、會陰薰蒸、束腹開始）。費用皆為實習優惠價，報名後個別討論。</p>
+</section>
+
 <section class="info" id="register">
   <h2>報名實習個案</h2>
   <dl>
-    <dt>時間</dt><dd>完整一次 3.5–4 小時</dd>
+    <dt>方案</dt><dd>單次（3.5–4 小時）、3 次包套、5 次包套，<a href="#plans">看內容</a></dd>
     <dt>地點</dt><dd>北投工作室，或到府（交通費視地區另計）</dd>
     <dt>適合</dt><dd>產後一年內；其他階段先諮詢評估</dd>
     <dt>費用</dt><dd>限額 3 位・實習優惠價（報名後個別討論）</dd>
@@ -165,6 +214,7 @@ html{scroll-behavior:smooth}
       <label class="fld"><span>LINE ID 或電話<em>必填</em></span><input id="r-contact" name="contact" type="text" autocomplete="tel"></label>
       <label class="fld"><span>妳住哪一區？<em>必填</em></span><input id="r-area" name="area" type="text" placeholder="例如：北投、天母、新莊"></label>
     </div>
+    <fieldset><legend>想選的方案<small>必填</small></legend><div class="chips" data-name="pkg"></div></fieldset>
     <fieldset><legend>偏好的服務地點<small>必填</small></legend><div class="chips" data-name="place"></div></fieldset>
     <fieldset><legend>大概方便的時間<small>可複選</small></legend><div class="chips" data-name="time" data-multi="1"></div></fieldset>
     <fieldset><legend>健康與安全確認<small>請據實勾選</small></legend><div class="checks" data-name="safe"></div></fieldset>
@@ -200,7 +250,7 @@ html{scroll-behavior:smooth}
 </div>
 
 <script>
-const IMG = {"37": "img/37.jpg", "9": "img/9.jpg", "22": "img/22.jpg", "H05": "img/h05.jpg", "H04": "img/h04.jpg", "Q10": "img/q10.jpg", "6": "img/6.jpg", "S16": "img/s16.jpg", "B06": "img/b06.jpg", "2": "img/2.jpg", "H01": "img/h01.jpg", "S03": "img/s03.jpg", "S15": "img/s15.jpg", "24": "img/24.jpg", "36": "img/36.jpg", "21": "img/21.jpg", "1": "img/1.jpg", "34": "img/34.jpg", "23": "img/23.jpg", "B13": "img/b13.jpg", "B09": "img/b09.jpg", "Q03": "img/q03.jpg", "17": "img/17.jpg", "O12": "img/o12.jpg", "Q09": "img/q09.jpg"};
+const IMG = {"22": "img/22.jpg", "Q10": "img/q10.jpg", "24": "img/24.jpg", "37": "img/37.jpg", "6": "img/6.jpg", "9": "img/9.jpg", "H01": "img/h01.jpg", "B09": "img/b09.jpg", "Q09": "img/q09.jpg", "B06": "img/b06.jpg", "H05": "img/h05.jpg", "23": "img/23.jpg", "2": "img/2.jpg", "H04": "img/h04.jpg", "S03": "img/s03.jpg", "B13": "img/b13.jpg", "34": "img/34.jpg", "O12": "img/o12.jpg", "36": "img/36.jpg", "17": "img/17.jpg", "21": "img/21.jpg", "S16": "img/s16.jpg", "Q03": "img/q03.jpg", "1": "img/1.jpg", "S15": "img/s15.jpg"};
 const SVC = [
  {id:"oil",name:"阿育吠陀溫油按摩",sub:"頭皮 → 背部與正面 → 銅壺滴油",imgs:[["6","頭皮"],["2","背部與正面"],["O12","銅壺滴油"]],
   text:"產後的身體容易乾、冷、緊繃，這正是阿育吠陀說的 Vata（風能）偏高。從頭皮開始，用溫熱的藥草油慢慢放鬆；接著是背部與正面，推開肩頸、手臂、腰背與雙腿；最後讓溫油從銅壺緩緩流過額頭，讓思緒一起安靜下來。"},
@@ -277,6 +327,12 @@ function answers(){
 }
 
 let QUIZ=null;
+function pkgHint(a,pains){
+  const early = a.week==="w1"||a.week==="w23"||a.week==="m3";
+  if (pains.length>=3 || (early && pains.length>=2)) return `💡 妳勾了 ${pains.length} 項不舒服，建議考慮 <a href="#plans"><b>5 次包套・完整產後修復</b></a>，一次一個重點，慢慢把身體照顧回來。`;
+  if (pains.length>=1) return `💡 除了單次體驗，也可以考慮 <a href="#plans"><b>3 次包套・溫暖修復</b></a>，暖身、深層溫熱、收回身體，一次比一次深入。`;
+  return `💡 想先感受看看的話，<a href="#plans"><b>單次完整體驗</b></a>就很適合；之後也可以接著做包套。`;
+}
 function render(){
   const a=answers();
   document.getElementById("woundSet").hidden = a.birth!=="cs";
@@ -295,6 +351,7 @@ function render(){
     return `<li><a class="rec" href="#svc-${s.id}"><img class="photo" src="${IMG[s.imgs[0][0]]}" alt=""><span><b>${s.name}</b>${p.score>1?'<span class="tag">特別推薦</span>':""}<br><span class="why">${why}</span>${p.notes.length?`<br><span class="note">${p.notes.join("・")}</span>`:""}</span></a></li>`}).join("")}</ul>
   ${holdIds.length?`<div class="hold"><b>這個階段先暫緩</b><ul>${holdIds.map(i=>`<li>${byId[i].name}：${hold[i]}再開始</li>`).join("")}</ul></div>`:""}
   ${late}
+  <p class="pkg">${pkgHint(a,pains)}</p>
   <div class="send">
     <p class="muted">喜歡這個組合嗎？往下填報名資料，問卷結果會自動附上。</p>
     <a class="btn primary" href="#register">下一步：填報名資料 ↓</a>
@@ -303,6 +360,7 @@ function render(){
   updateQuizNote();
 }
 const RQ={
+ pkg:[["one","單次完整體驗"],["p3","3 次包套・溫暖修復"],["p5","5 次包套・完整產後修復"],["undecided","還不確定，想先聊聊"]],
  place:[["studio","北投工作室"],["home","到府（交通費視地區另計）"],["any","都可以"]],
  time:[["wd","平日白天"],["wn","平日晚上"],["we","週末白天"],["wen","週末晚上"]],
  safe:[["s1","目前沒有產後大出血"],["s2","傷口沒有發炎、紅腫"],["s3","沒有未控制的高血壓"],["s4","剖腹產傷口已完全癒合（自然產可跳過）"],["s5","以上有任何一項不符，我了解需要先諮詢評估"]],
@@ -339,6 +397,7 @@ document.getElementById("reg").addEventListener("submit",async e=>{
   if(!v("name")) miss.push("怎麼稱呼妳");
   if(!v("contact")) miss.push("LINE ID 或電話");
   if(!v("area")) miss.push("住哪一區");
+  if(!fd.get("pkg")) miss.push("想選的方案");
   if(!fd.get("place")) miss.push("服務地點");
   if(!all("safe").length) miss.push("健康與安全確認");
   if(all("agree").length<2) miss.push("同意事項（兩項都要勾）");
@@ -346,6 +405,7 @@ document.getElementById("reg").addEventListener("submit",async e=>{
   err.hidden=true;
   const text=["【產後呵護・實習個案報名】",
     `稱呼：${v("name")}`, `聯絡：${v("contact")}`, `地區：${v("area")}`,
+    `方案：${rl("pkg",fd.get("pkg"))}`,
     `地點：${rl("place",fd.get("place"))}`,
     `方便時間：${all("time").map(x=>rl("time",x)).join("、")||"都可以，再討論"}`,
     "", "— 身體狀況 —", ...(quizLines().length?quizLines():["（沒有做小問卷）"]),

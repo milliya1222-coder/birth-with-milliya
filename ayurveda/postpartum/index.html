@@ -123,6 +123,17 @@ code{font-family:var(--body);font-weight:700;background:var(--chip);padding:2px 
 .plan ol b{color:var(--rust)}
 .fit{font-size:.88rem;color:var(--soft);border-top:1px dashed var(--line);padding-top:8px;margin-top:auto}
 .small{font-size:.85rem}
+.price-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.price-line .price{font-family:var(--display);font-size:1.45rem;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.price-line .intern{font-size:.8rem;color:var(--rust);border:1px solid var(--rust);border-radius:999px;padding:1px 10px}
+.price-line .per{font-size:.85rem;color:var(--soft)}
+.addons{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.addons ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
+.addons li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.addons li:last-child{border-bottom:0}
+.addons b{font-variant-numeric:tabular-nums;color:var(--ink)}
+.seats{font-size:.95rem;color:var(--soft)}
+.seats b{color:var(--rust);font-size:1.1rem}
 .pkg{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:.92rem}
 .care ul{margin:0;padding-left:1.2em;color:var(--soft)}
 footer{text-align:center;color:var(--soft);font-family:var(--display)}
@@ -170,6 +181,7 @@ html{scroll-behavior:smooth}
     <article class="plan">
       <p class="plan-tag">1 小時</p><h3>精簡呵護</h3>
       <p class="plan-meta">1 次・約 60 分鐘・僅限台北</p>
+      <p class="price-line"><span class="price">NT$2,800</span><span class="intern">實習價限量・私訊詢問</span></p>
       <p>時間不多也能好好被照顧。從兩種組合中選一種：</p>
       <ol>
         <li><b>收回身體</b>　關骨儀式＋束腹（產後 4 週以上）</li>
@@ -180,6 +192,7 @@ html{scroll-behavior:smooth}
     <article class="plan">
       <p class="plan-tag">單次</p><h3>完整體驗</h3>
       <p class="plan-meta">1 次・約 3.5 小時（療程 3 小時＋前後諮詢與休息）</p>
+      <p class="price-line"><span class="price">NT$7,800</span><span class="intern">實習價限量・私訊詢問</span></p>
       <ol>
         <li><b>溫油按摩　75 分鐘</b>　頭皮 → 背部與正面 → 銅壺滴油</li>
         <li><b>溫熱療法　45 分鐘</b>　熱石熱磚、鹽罐熱敷、藥草球，擇一</li>
@@ -189,7 +202,8 @@ html{scroll-behavior:smooth}
     </article>
     <article class="plan">
       <p class="plan-tag">3 次包套</p><h3>溫暖修復</h3>
-      <p class="plan-meta">建議每週 1 次・約 3 週</p>
+      <p class="plan-meta">3 次・每次約 2–2.5 小時・可分兩次回台檔期完成</p>
+      <p class="price-line"><span class="price">NT$13,800</span><span class="per">每次約 4,600</span></p>
       <ol>
         <li><b>暖身放鬆</b>　溫油按摩（頭皮・背部與正面）＋藥草浴＋束腹教學</li>
         <li><b>深層溫熱</b>　熱石熱磚＋鹽罐熱敷＋會陰薰蒸</li>
@@ -199,7 +213,8 @@ html{scroll-behavior:smooth}
     </article>
     <article class="plan featured">
       <p class="plan-tag">5 次包套・最完整</p><h3>完整產後修復</h3>
-      <p class="plan-meta">建議每週 1 次・4–6 週</p>
+      <p class="plan-meta">5 次・每次約 2–2.5 小時・可分兩次回台檔期完成</p>
+      <p class="price-line"><span class="price">NT$21,800</span><span class="per">每次約 4,360</span></p>
       <ol>
         <li><b>評估與暖身</b>　身體評估＋溫油按摩＋藥草浴＋束腹教學</li>
         <li><b>溫和照顧</b>　藥草球（輕柔）＋會陰薰蒸＋束腹</li>
@@ -210,16 +225,29 @@ html{scroll-behavior:smooth}
       <p class="fit">適合：產後 3 個月內、不適比較多，或想好好走完整個修復期的媽媽</p>
     </article>
   </div>
-  <p class="muted small">包套內容是建議安排，實際會依妳的產後週數、分娩方式和當天狀況調整順序（例如產後第 1 週先從藥草足浴、會陰薰蒸、束腹開始）。實習優惠價僅適用 1 小時精簡與單次完整體驗，包套不適用；到府交通費另計。</p>
+  <div class="addons">
+    <h3>加購項目</h3>
+    <p class="muted small">可加在任一方案中，不單獨預約。</p>
+    <ul>
+      <li><span>會陰薰蒸</span><b>+900</b></li>
+      <li><span>藥草浴（或藥草足浴）</span><b>+900</b></li>
+      <li><span>束腹（含居家綁法教學）</span><b>+900</b></li>
+      <li><span>鹽罐熱敷／藥草球</span><b>+1,200</b></li>
+      <li><span>關骨儀式</span><b>+1,500</b></li>
+      <li><span>銅壺滴油</span><b>+1,500</b></li>
+    </ul>
+  </div>
+  <p class="muted small">包套內容是建議安排，實際會依妳的產後週數、分娩方式和當天狀況調整順序（例如產後第 1 週先從藥草足浴、會陰薰蒸、束腹開始）。以上為定價；實習優惠價僅適用 1 小時精簡與單次完整體驗（限 5 位），包套不適用。到府交通費另計。</p>
 </section>
 
 <section class="info" id="register">
-  <h2>報名實習個案</h2>
+  <h2>預約與報名</h2>
+  <p class="seats">實習優惠名額　<b>剩 4 位</b>／共 5 位</p>
   <dl>
     <dt>方案</dt><dd>1 小時精簡（僅限台北）、單次完整（約 3.5 小時）、3 次包套、5 次包套，<a href="#plans">看內容</a></dd>
     <dt>地點</dt><dd>北投工作室，或到府（交通費視地區另計）</dd>
     <dt>適合</dt><dd>產後一年內；其他階段先諮詢評估</dd>
-    <dt>費用</dt><dd>1 小時精簡與單次完整：限額 3 位實習優惠價；包套不適用實習價。費用報名後個別討論，到府交通費另計</dd>
+    <dt>費用</dt><dd>1 小時精簡 NT$2,800、單次完整 NT$7,800、3 次包套 NT$13,800、5 次包套 NT$21,800。1 小時精簡與單次完整有實習優惠價（限 5 位），私訊詢問；包套不適用實習價。到府交通費另計</dd>
   </dl>
   <p id="quizNote" class="quiznote"></p>
   <form id="reg" novalidate>
@@ -264,7 +292,7 @@ html{scroll-behavior:smooth}
 </div>
 
 <script>
-const IMG = {"22": "img/22.jpg", "H04": "img/h04.jpg", "17": "img/17.jpg", "S15": "img/s15.jpg", "2": "img/2.jpg", "6": "img/6.jpg", "H01": "img/h01.jpg", "Q03": "img/q03.jpg", "O12": "img/o12.jpg", "B13": "img/b13.jpg", "B09": "img/b09.jpg", "S03": "img/s03.jpg", "23": "img/23.jpg", "36": "img/36.jpg", "1": "img/1.jpg", "Q10": "img/q10.jpg", "B06": "img/b06.jpg", "34": "img/34.jpg", "Q09": "img/q09.jpg", "S16": "img/s16.jpg", "21": "img/21.jpg", "37": "img/37.jpg", "9": "img/9.jpg", "H05": "img/h05.jpg", "24": "img/24.jpg"};
+const IMG = {"37": "img/37.jpg", "36": "img/36.jpg", "B06": "img/b06.jpg", "17": "img/17.jpg", "9": "img/9.jpg", "2": "img/2.jpg", "23": "img/23.jpg", "6": "img/6.jpg", "H01": "img/h01.jpg", "22": "img/22.jpg", "Q09": "img/q09.jpg", "Q10": "img/q10.jpg", "H05": "img/h05.jpg", "S15": "img/s15.jpg", "1": "img/1.jpg", "B13": "img/b13.jpg", "24": "img/24.jpg", "Q03": "img/q03.jpg", "34": "img/34.jpg", "O12": "img/o12.jpg", "H04": "img/h04.jpg", "S16": "img/s16.jpg", "S03": "img/s03.jpg", "21": "img/21.jpg", "B09": "img/b09.jpg"};
 const SVC = [
  {id:"oil",name:"阿育吠陀溫油按摩",sub:"頭皮 → 背部與正面 → 銅壺滴油",imgs:[["6","頭皮"],["2","背部與正面"],["O12","銅壺滴油"]],
   text:"產後的身體容易乾、冷、緊繃，這正是阿育吠陀說的 Vata（風能）偏高。從頭皮開始，用溫熱的藥草油慢慢放鬆；接著是背部與正面，推開肩頸、手臂、腰背與雙腿；最後讓溫油從銅壺緩緩流過額頭，讓思緒一起安靜下來。"},
@@ -378,7 +406,7 @@ const RQ={
  place:[["studio","北投工作室"],["home","到府（交通費視地區另計）"],["any","都可以"]],
  time:[["wd","平日白天"],["wn","平日晚上"],["we","週末白天"],["wen","週末晚上"]],
  safe:[["s1","目前沒有產後大出血"],["s2","傷口沒有發炎、紅腫"],["s3","沒有未控制的高血壓"],["s4","剖腹產傷口已完全癒合（自然產可跳過）"],["s5","以上有任何一項不符，我了解需要先諮詢評估"]],
- agree:[["a1","這是 Milliya 培訓期間的實習個案，由她親自服務，實習優惠價僅適用 1 小時精簡與單次完整體驗，包套不適用；到府交通費另計"],["a2","療程紀錄僅供學習、完全匿名，不公開我的影像與個資"]],
+ agree:[["a1","我了解：實習優惠價僅適用 1 小時精簡與單次完整體驗（限 5 位），包套與加購依定價；到府交通費另計"],["a2","療程紀錄僅供學習、完全匿名，不公開我的影像與個資"]],
 };
 for (const el of document.querySelectorAll("#reg .chips,#reg .checks")){
   const k=el.dataset.name, multi=el.dataset.multi||el.classList.contains("checks");
@@ -417,7 +445,7 @@ document.getElementById("reg").addEventListener("submit",async e=>{
   if(all("agree").length<2) miss.push("同意事項（兩項都要勾）");
   if(miss.length){ err.textContent="還差這幾項："+miss.join("、"); err.hidden=false; err.scrollIntoView({block:"center"}); return; }
   err.hidden=true;
-  const text=["【產後呵護・實習個案報名】",
+  const text=["【產後呵護・預約報名】",
     `稱呼：${v("name")}`, `聯絡：${v("contact")}`, `地區：${v("area")}`,
     `方案：${rl("pkg",fd.get("pkg"))}`,
     `地點：${rl("place",fd.get("place"))}`,
@@ -426,7 +454,7 @@ document.getElementById("reg").addEventListener("submit",async e=>{
     "", "— 安全確認 —", ...all("safe").map(x=>"✓ "+rl("safe",x)),
     v("note")?`注意事項：${v("note")}`:"",
     v("msg")?`想說的話：${v("msg")}`:"",
-    "", "✓ 已了解並同意實習個案說明"].filter((x,i,arr)=>x!==""||arr[i-1]!=="").join("\n");
+    "", "✓ 已了解並同意方案與費用說明"].filter((x,i,arr)=>x!==""||arr[i-1]!=="").join("\n");
   const ta=document.getElementById("regText"); ta.value=text;
   const ok=await copyText(text);
   document.getElementById("regCopied").textContent = ok ? "報名內容已經幫妳複製好了。" : "請長按下面的文字「全選」→「複製」。";

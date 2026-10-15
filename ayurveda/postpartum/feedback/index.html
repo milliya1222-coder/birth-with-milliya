@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>療程回饋 — Birth with Milliya 阿育吠陀產後呵護</title>
+<meta name="description" content="謝謝妳讓我照顧妳。花 3 分鐘留下這次產後呵護的感受，幫助我把每一次呵護做得更好。">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://birthwithmilliya.com/ayurveda/postpartum/feedback/" />
+<meta property="og:title" content="謝謝妳讓我照顧妳｜療程回饋">
+<meta property="og:description" content="花 3 分鐘，留下這次產後呵護的感受。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://birthwithmilliya.com/ayurveda/postpartum/feedback/">
+<meta property="og:image" content="https://birthwithmilliya.com/ayurveda/postpartum/img/og.jpg">
+<meta property="og:site_name" content="Birth with Milliya">
+<link rel="icon" type="image/png" href="/images/logo/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Same booklet palette as the postpartum page: one narrow column, chips for every choice, ends by handing the answers to LINE */
+:root{
+  --bg:#f6efe6; --paper:#fffaf3; --ink:#3b2a23; --soft:#76604f; --line:#e7d7c3;
+  --rust:#9c4a2c; --rust-ink:#fff; --gold:#a8822f; --chip:#f0e3d2; --err:#a3352a;
+  --display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1e1814; --paper:#28201b; --ink:#f1e5d8; --soft:#c4ae9b; --line:#43362d;
+  --rust:#e0875f; --rust-ink:#1e1814; --gold:#d6b066; --chip:#352a23; --err:#f08a7c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1e1814; --paper:#28201b; --ink:#f1e5d8; --soft:#c4ae9b; --line:#43362d;
+  --rust:#e0875f; --rust-ink:#1e1814; --gold:#d6b066; --chip:#352a23; --err:#f08a7c; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8}
+.wrap{max-width:680px;margin:0 auto;padding-inline:16px;padding-block:28px 72px;display:flex;flex-direction:column;gap:28px}
+h1,h2{font-family:var(--display);margin:0;line-height:1.35;text-wrap:balance}
+h1{font-size:clamp(1.7rem,6vw,2.3rem);color:var(--rust)}
+h2{font-size:1.2rem;color:var(--rust)}
+p{margin:0}
+a{color:var(--rust)}
+.eyebrow{color:var(--gold);letter-spacing:.3em;font-size:.82rem}
+.muted{color:var(--soft)}
+.small{font-size:.88rem}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header{display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center}
+header img{width:180px;height:auto}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 18px;display:flex;flex-direction:column;gap:24px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+legend{font-family:var(--display);font-weight:700;font-size:1.05rem;padding:0;margin-bottom:10px}
+legend small,label small{font-family:var(--body);font-weight:400;color:var(--soft);font-size:.85rem;margin-left:6px}
+.req{color:var(--rust);margin-left:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{background:var(--chip);border-radius:999px;padding:7px 15px;cursor:pointer;user-select:none;transition:background .15s,color .15s}
+.chips input:checked+label{background:var(--rust);color:var(--rust-ink)}
+.chips input:focus-visible+label{outline:3px solid var(--gold);outline-offset:2px}
+.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:4px}
+.scale.five{grid-template-columns:repeat(5,1fr)}
+.scale label{padding:7px 0;text-align:center;border-radius:10px}
+.ends{display:flex;justify-content:space-between;font-size:.8rem;color:var(--soft)}
+.text{display:flex;flex-direction:column;gap:6px;font-family:var(--display);font-weight:700}
+input[type=text],input[type=date],textarea{font:inherit;font-weight:400;font-family:var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+textarea{min-height:96px;resize:vertical}
+.grid-q{display:flex;flex-direction:column;gap:12px}
+.grid-q .row{display:flex;flex-direction:column;gap:6px}
+.grid-q .row span{font-size:.95rem}
+.sec{border-top:1px dashed var(--line);padding-top:22px;display:flex;flex-direction:column;gap:24px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:999px;padding:12px 26px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.primary{background:var(--rust);color:var(--rust-ink)}
+.btn.ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.error{color:var(--err);font-weight:700;text-align:center}
+.done{text-align:center;align-items:center}
+.done pre{white-space:pre-wrap;text-align:left;background:var(--bg);border-radius:12px;padding:14px;font-family:var(--body);font-size:.9rem;width:100%;margin:0}
+footer{text-align:center;color:var(--soft);font-size:.85rem}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <img src="/images/logo/logo-rose.png" alt="欣妙在陪你 Birth with Milliya">
+    <p class="eyebrow">阿育吠陀產後呵護・療程回饋</p>
+    <h1>謝謝妳讓我照顧妳</h1>
+    <p class="muted">大約 3 分鐘。妳的回饋會幫助我把每一次呵護做得更好，也是我培訓實習的重要紀錄。填完按「送出」，再貼到 LINE 給我就完成了。</p>
+  </header>
+
+  <form id="f" class="card" novalidate>
+    <h2>一、這次的呵護</h2>
+    <label class="text">怎麼稱呼妳？<small>暱稱即可</small><input type="text" name="name" autocomplete="nickname"></label>
+    <label class="text">服務日期<input type="date" name="date"></label>
+    <fieldset><legend>服務時產後多久？</legend><div class="chips" data-name="week" data-type="radio"></div></fieldset>
+    <fieldset><legend>分娩方式</legend><div class="chips" data-name="birth" data-type="radio"></div></fieldset>
+    <fieldset><legend>這次體驗了哪些項目？<small>可複選</small></legend><div class="chips" data-name="items" data-type="checkbox"></div></fieldset>
+
+    <div class="sec">
+      <h2>二、身體的感受</h2>
+      <fieldset><legend>療程「前」的不舒服程度<span class="req">*</span></legend>
+        <div class="chips scale" data-name="before" data-type="radio" data-scale="0-10"></div>
+        <div class="ends"><span>0 沒有</span><span>10 非常不舒服</span></div></fieldset>
+      <fieldset><legend>療程「後」的不舒服程度<span class="req">*</span></legend>
+        <div class="chips scale" data-name="after" data-type="radio" data-scale="0-10"></div>
+        <div class="ends"><span>0 沒有</span><span>10 非常不舒服</span></div></fieldset>
+      <fieldset><legend>結束後，身體有什麼感覺？<small>可複選</small></legend><div class="chips" data-name="feel" data-type="checkbox"></div></fieldset>
+      <fieldset><legend>最喜歡的項目<small>可複選</small></legend><div class="chips" data-name="fav" data-type="checkbox"></div></fieldset>
+      <fieldset><legend>按摩的力道</legend><div class="chips" data-name="pressure" data-type="radio"></div></fieldset>
+      <fieldset><legend>油、熱石、藥草的溫度</legend><div class="chips" data-name="temp" data-type="radio"></div></fieldset>
+      <fieldset><legend>整體時間長度</legend><div class="chips" data-name="length" data-type="radio"></div></fieldset>
+      <label class="text">過程中有沒有不舒服、或希望我調整的地方？<textarea name="adjust"></textarea></label>
+    </div>
+
+    <div class="sec">
+      <h2>三、整體體驗</h2>
+      <fieldset><legend>整體滿意度<span class="req">*</span></legend>
+        <div class="chips scale five" data-name="overall" data-type="radio" data-scale="1-5"></div>
+        <div class="ends"><span>1 不滿意</span><span>5 非常滿意</span></div></fieldset>
+      <fieldset><legend>這些部分妳覺得如何？</legend><div class="grid-q" id="gridQ"></div></fieldset>
+      <fieldset><legend>有多願意推薦給身邊的媽媽？</legend>
+        <div class="chips scale" data-name="nps" data-type="radio" data-scale="0-10"></div>
+        <div class="ends"><span>0 不會推薦</span><span>10 一定推薦</span></div></fieldset>
+      <fieldset><legend>之後還想再預約嗎？</legend><div class="chips" data-name="again" data-type="radio"></div></fieldset>
+    </div>
+
+    <div class="sec">
+      <h2>四、想對我說的話</h2>
+      <label class="text">用一兩句話，形容這次的感受<small>例如：「好久沒有這樣被好好照顧」</small><textarea name="words"></textarea></label>
+      <label class="text">還有什麼想對我說的？或對未來服務的建議？<textarea name="note"></textarea></label>
+      <fieldset><legend>妳的回饋，可以分享在官網或社群嗎？<span class="req">*</span></legend><div class="chips" data-name="share" data-type="radio"></div></fieldset>
+    </div>
+
+    <p class="error" id="err" role="alert" hidden></p>
+    <div class="actions"><button class="btn primary" type="submit">送出回饋</button></div>
+  </form>
+
+  <section class="card done" id="done" hidden aria-live="polite">
+    <h2>謝謝妳 🤍 最後一步</h2>
+    <p id="copyMsg">回饋內容已經複製好了，打開 LINE 貼上傳給我就完成囉。</p>
+    <div class="actions">
+      <a class="btn primary" href="https://line.me/R/ti/p/@birthwithmilliya" target="_blank" rel="noopener">打開 LINE 貼給我</a>
+      <button class="btn ghost" type="button" id="recopy">再複製一次</button>
+    </div>
+    <pre id="out"></pre>
+    <p class="muted small">這幾天記得多喝溫水、注意保暖、早點休息。有任何身體變化，隨時 LINE 我。</p>
+  </section>
+
+  <footer>Birth with Milliya ・ 欣妙在陪妳 ・ LINE @birthwithmilliya</footer>
+</main>
+
+<script>
+const ITEMS = ["溫油按摩","銅壺滴油","熱石熱磚","鹽罐熱敷","藥草球","藥草浴","會陰薰蒸","關骨儀式","束腹"];
+const OPTS = {
+  week: ["1 週內","2–3 週","4 週～3 個月","3 個月～1 年","超過 1 年"],
+  birth: ["自然產","剖腹產"],
+  items: ITEMS,
+  fav: ITEMS,
+  feel: ["身體暖起來了","整個人放鬆下來","想睡、睡得比較好","痠痛減輕","身體變輕盈","情緒比較平靜","肚子／骨盆比較有支撐感","沒有特別的感覺","有不舒服"],
+  pressure: ["偏輕","剛好","偏重"],
+  temp: ["偏涼","剛好","偏熱"],
+  length: ["太短","剛好","太長"],
+  again: ["想再約單次","想了解 3 次／5 次包套","想約 1 小時精簡呵護（台北）","再考慮看看","目前不需要"],
+  share: ["可以，用我的暱稱","可以，但請匿名","不要公開，只給 Milliya 看"]
+};
+const GRID_ROWS = ["療程前的諮詢與說明","環境的溫暖與隱私","過程中的溝通與照顧","寶寶在旁邊時的安排","結束後的居家照護建議"];
+const GRID_COLS = ["需要加強","還可以","很好","非常好"];
+
+let uid = 0;
+function chip(name, type, value){
+  const id = "c" + (uid++);
+  return `<input type="${type}" id="${id}" name="${name}" value="${value}"><label for="${id}">${value}</label>`;
+}
+document.querySelectorAll("#f .chips").forEach(box => {
+  const {name, type, scale} = box.dataset;
+  let vals = OPTS[name];
+  if (scale){ const [a,b] = scale.split("-").map(Number); vals = []; for (let i=a;i<=b;i++) vals.push(String(i)); }
+  box.innerHTML = vals.map(v => chip(name, type, v)).join("");
+});
+document.getElementById("gridQ").innerHTML = GRID_ROWS.map((r,i) =>
+  `<div class="row"><span>${r}</span><div class="chips">${GRID_COLS.map(c => chip("g"+i, "radio", c)).join("")}</div></div>`).join("");
+
+const f = document.getElementById("f");
+const one = n => (f.querySelector(`input[name="${n}"]:checked`)||{}).value || "";
+const many = n => [...f.querySelectorAll(`input[name="${n}"]:checked`)].map(x => x.value);
+const val = n => f.elements[n].value.trim();
+
+let lastText = "";
+async function copy(text){
+  try{ await navigator.clipboard.writeText(text); return true; }catch(e){ return false; }
+}
+f.addEventListener("submit", async e => {
+  e.preventDefault();
+  const err = document.getElementById("err");
+  const missing = [];
+  if (!one("before")) missing.push("療程前的不舒服程度");
+  if (!one("after")) missing.push("療程後的不舒服程度");
+  if (!one("overall")) missing.push("整體滿意度");
+  if (!one("share")) missing.push("可不可以分享");
+  if (missing.length){ err.textContent = "還差：" + missing.join("、"); err.hidden = false; return; }
+  err.hidden = true;
+
+  const b = Number(one("before")), a = Number(one("after"));
+  const L = ["【產後呵護・療程回饋】"];
+  const add = (k, v) => { if (v && v.length) L.push(`${k}：${Array.isArray(v) ? v.join("、") : v}`); };
+  add("稱呼", val("name")); add("服務日期", val("date")); add("產後", one("week")); add("分娩", one("birth"));
+  add("體驗項目", many("items"));
+  L.push(`不舒服程度：療程前 ${b} → 療程後 ${a}（${a<b ? "減少 "+(b-a) : a===b ? "沒變" : "增加 "+(a-b)}）`);
+  add("結束後感覺", many("feel")); add("最喜歡", many("fav"));
+  add("力道", one("pressure")); add("溫度", one("temp")); add("時間", one("length"));
+  add("想調整", val("adjust"));
+  L.push(`整體滿意度：${one("overall")} / 5`);
+  GRID_ROWS.forEach((r,i) => add(r, one("g"+i)));
+  if (one("nps")) L.push(`推薦意願：${one("nps")} / 10`);
+  add("再預約", one("again"));
+  add("一句話感受", val("words")); add("想說的話", val("note"));
+  add("分享授權", one("share"));
+  lastText = L.join("\n");
+
+  document.getElementById("out").textContent = lastText;
+  const ok = await copy(lastText);
+  document.getElementById("copyMsg").textContent = ok
+    ? "回饋內容已經複製好了，打開 LINE 貼上傳給我就完成囉。"
+    : "請長按下面的文字全選複製，再打開 LINE 貼給我。";
+  f.hidden = true;
+  const done = document.getElementById("done");
+  done.hidden = false;
+  done.scrollIntoView({behavior:"smooth", block:"start"});
+});
+document.getElementById("recopy").addEventListener("click", async () => {
+  const ok = await copy(lastText);
+  document.getElementById("copyMsg").textContent = ok ? "已再複製一次 ✓" : "請長按下面的文字全選複製。";
+});
+</script>
+<script src="/analytics.js" defer></script>
+</body>
+</html>

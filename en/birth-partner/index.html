@@ -36,6 +36,9 @@
     body{font-family:"Noto Sans TC",system-ui,-apple-system,"Segoe UI",sans-serif;}
     h1,h2,h3{font-family:"Noto Serif TC",Georgia,serif;}
 
+    .nav-pair{display:flex;align-items:center;gap:18px;}
+    .nav-pair .lang-switch,.nav-pair .nav-cta{white-space:nowrap;}
+    @media(max-width:480px){.nav-pair{gap:8px;}.nav-pair .lang-switch{gap:6px;font-size:.78rem;}.nav-pair .nav-cta{padding:8px 11px;font-size:.78rem;}.svc-topbar .brand-en{display:none;}}
     /* 這組文章的頁首：女人圈祭壇上的畫卡（Milliya 攝） */
     .svc-hero{background:linear-gradient(110deg,rgba(251,247,242,.86) 0%,rgba(251,247,242,.55) 45%,rgba(168,181,162,.2) 100%),
       url("../../images/doula-hero-altar.jpg") center 62%/cover no-repeat;}

@@ -57,11 +57,14 @@
     .article-body strong{color:var(--cocoa);font-weight:500;}
     .article-body ul.plain{margin:0 0 22px;padding-left:20px;color:var(--cocoa-soft);line-height:1.9;}
     .article-body ul.plain li{margin-bottom:8px;}
-    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:22px 0 10px;}
-    .stat{border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;background:var(--cream,#faf6f2);}
-    .stat b{display:block;font-family:"Noto Serif TC",serif;font-size:1.45rem;color:var(--rose-deep);font-weight:500;}
+    /* 五張數字卡：桌機一排五張；手機第一張（剖腹產）獨佔一排，其餘兩兩成對，不落單 */
+    .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0 10px;}
+    @media(max-width:700px){.stats{grid-template-columns:1fr 1fr;}.stats .stat:first-child{grid-column:1/-1;}}
+    .stat{border:1px solid var(--line);border-radius:14px;padding:16px 14px 14px;background:var(--cream,#faf6f2);}
+    .stat b{display:block;font-family:"Noto Serif TC",serif;font-size:1.3rem;color:var(--rose-deep);font-weight:500;white-space:nowrap;}
     .stat span{display:block;font-size:.85rem;line-height:1.7;color:var(--cocoa-soft);margin-top:4px;}
-    .four{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:22px 0;}
+    .four{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0;}
+    @media(max-width:560px){.four{grid-template-columns:1fr;}}
     .four div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
     .four h3{font-size:1rem;margin:0 0 6px;color:var(--cocoa);}
     .four p{font-size:.9rem;line-height:1.8;margin:0;}

@@ -279,6 +279,7 @@ html{scroll-behavior:smooth}
     <div class="fields">
       <label class="fld"><span>怎麼稱呼妳？<em>必填</em></span><input id="r-name" name="name" type="text" placeholder="暱稱即可" autocomplete="nickname"></label>
       <label class="fld"><span>LINE ID 或電話<em>必填</em></span><input id="r-contact" name="contact" type="text" autocomplete="tel"></label>
+      <label class="fld"><span>Email<em>必填</em></span><input id="r-email" name="email" type="email" placeholder="example@mail.com" autocomplete="email" inputmode="email"></label>
       <label class="fld"><span>妳住哪一區？<em>必填</em></span><input id="r-area" name="area" type="text" placeholder="例如：北投、天母、新莊"></label>
     </div>
     <fieldset><legend>想選的方案<small>必填</small></legend><div class="chips" data-name="pkg"></div></fieldset>
@@ -463,15 +464,17 @@ document.getElementById("reg").addEventListener("submit",async e=>{
   const miss=[];
   if(!v("name")) miss.push("怎麼稱呼妳");
   if(!v("contact")) miss.push("LINE ID 或電話");
+  if(!v("email")) miss.push("Email");
   if(!v("area")) miss.push("住哪一區");
   if(!fd.get("pkg")) miss.push("想選的方案");
   if(!fd.get("place")) miss.push("服務地點");
   if(!all("safe").length) miss.push("健康與安全確認");
   if(all("agree").length<2) miss.push("同意事項（兩項都要勾）");
   if(miss.length){ err.textContent="還差這幾項："+miss.join("、"); err.hidden=false; err.scrollIntoView({block:"center"}); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))){ err.textContent="Email 格式看起來怪怪的，再確認一下"; err.hidden=false; err.scrollIntoView({block:"center"}); return; }
   err.hidden=true;
   const text=["【產後呵護・預約報名】",
-    `稱呼：${v("name")}`, `聯絡：${v("contact")}`, `地區：${v("area")}`,
+    `稱呼：${v("name")}`, `聯絡：${v("contact")}`, `Email：${v("email")}`, `地區：${v("area")}`,
     `方案：${rl("pkg",fd.get("pkg"))}`,
     `地點：${rl("place",fd.get("place"))}`,
     `方便時間：${all("time").map(x=>rl("time",x)).join("、")||"都可以，再討論"}`,

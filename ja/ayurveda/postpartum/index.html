@@ -269,6 +269,7 @@ html{scroll-behavior:smooth}
     <div class="fields">
       <label class="fld"><span>お名前<em>必須</em></span><input id="r-name" name="name" type="text" placeholder="ニックネームで構いません" autocomplete="nickname"></label>
       <label class="fld"><span>LINE ID またはお電話番号<em>必須</em></span><input id="r-contact" name="contact" type="text" autocomplete="tel"></label>
+      <label class="fld"><span>メールアドレス<em>必須</em></span><input id="r-email" name="email" type="email" placeholder="example@mail.com" autocomplete="email" inputmode="email"></label>
       <label class="fld"><span>お住まいの地域<em>必須</em></span><input id="r-area" name="area" type="text" placeholder="例：北投、天母、新荘"></label>
     </div>
     <fieldset><legend>ご希望のコース<small>必須</small></legend><div class="chips" data-name="pkg"></div></fieldset>
@@ -455,15 +456,17 @@ document.getElementById("reg").addEventListener("submit",async e=>{
   const miss=[];
   if(!v("name")) miss.push("お名前");
   if(!v("contact")) miss.push("LINE ID またはお電話番号");
+  if(!v("email")) miss.push("メールアドレス");
   if(!v("area")) miss.push("お住まいの地域");
   if(!fd.get("pkg")) miss.push("ご希望のコース");
   if(!fd.get("place")) miss.push("ご希望の場所");
   if(!all("safe").length) miss.push("健康・安全のご確認");
   if(all("agree").length<2) miss.push("同意事項（2つともチェック）");
   if(miss.length){ err.textContent="あと少しです。未入力："+miss.join("、"); err.hidden=false; err.scrollIntoView({block:"center"}); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))){ err.textContent="メールアドレスの形式をご確認ください"; err.hidden=false; err.scrollIntoView({block:"center"}); return; }
   err.hidden=true;
   const text=["【産後ケア・ご予約お申し込み】",
-    `お名前：${v("name")}`, `ご連絡先：${v("contact")}`, `地域：${v("area")}`,
+    `お名前：${v("name")}`, `ご連絡先：${v("contact")}`, `メール：${v("email")}`, `地域：${v("area")}`,
     `コース：${rl("pkg",fd.get("pkg"))}`,
     `場所：${rl("place",fd.get("place"))}`,
     `ご希望の時間帯：${all("time").map(x=>rl("time",x)).join("・")||"どちらでも（相談）"}`,

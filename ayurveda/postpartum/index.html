@@ -428,7 +428,7 @@ function render(){
   updateQuizNote();
 }
 const RQ={
- pkg:[["h1","1 小時精簡呵護"],["one","單次完整體驗"],["p3","3 次包套・溫暖修復"],["p5","5 次包套・完整產後修復"],["undecided","還不確定，想先聊聊"]],
+ pkg:[["h1","1 小時精簡呵護"],["oil2","純溫油按摩 2 小時（產後・非產後皆可）"],["one","單次完整體驗"],["p3","3 次包套・溫暖修復"],["p5","5 次包套・完整產後修復"],["undecided","還不確定，想先聊聊"]],
  place:[["studio","北投工作室"],["home","到府（交通費視地區另計）"],["any","都可以"]],
  time:[["wd","平日白天"],["wn","平日晚上"],["we","週末白天"],["wen","週末晚上"]],
  safe:[["s1","目前沒有產後大出血"],["s2","傷口沒有發炎、紅腫"],["s3","沒有未控制的高血壓"],["s4","剖腹產傷口已完全癒合（自然產可跳過）"],["s5","以上有任何一項不符，我了解需要先諮詢評估"]],
@@ -457,6 +457,9 @@ function updateQuizNote(){
 async function copyText(text){
   try{ await navigator.clipboard.writeText(text); return true; }catch(e){ return false; }
 }
+// 部署「報名自動寄信_AppsScript.gs」後，把 /exec 網址貼進這裡就會自動寄信＋入庫
+const REG_ENDPOINT="";
+const LINE_ADD="https://line.me/R/ti/p/@birthwithmilliya";
 document.getElementById("reg").addEventListener("submit",async e=>{
   e.preventDefault();
   const fd=new FormData(e.target), err=document.getElementById("regErr");
@@ -484,10 +487,21 @@ document.getElementById("reg").addEventListener("submit",async e=>{
     v("msg")?`想說的話：${v("msg")}`:"",
     "", "✓ 已了解並同意方案與費用說明"].filter((x,i,arr)=>x!==""||arr[i-1]!=="").join("\n");
   const ta=document.getElementById("regText"); ta.value=text;
+  if(REG_ENDPOINT){
+    try{ fetch(REG_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({lang:"zh",name:v("name"),contact:v("contact"),email:v("email"),area:v("area"),
+        pkg:rl("pkg",fd.get("pkg")),place:rl("place",fd.get("place")),
+        time:all("time").map(x=>rl("time",x)).join("、")||"都可以，再討論",
+        quiz:(quizLines().length?quizLines().join(" / "):"（沒做小問卷）"),
+        safe:all("safe").map(x=>rl("safe",x)).join("、"),note:v("note"),msg:v("msg"),text:text})}); }catch(_){}
+  }
   const ok=await copyText(text);
-  document.getElementById("regCopied").textContent = ok ? "報名內容已經幫妳複製好了。" : "請長按下面的文字「全選」→「複製」。";
+  document.getElementById("regCopied").textContent =
+    (REG_ENDPOINT?"報名已送出，確認信會寄到妳的信箱 🌿　":"") +
+    (ok ? "報名內容也幫妳複製好了，開 LINE 後貼上就能傳給我。" : "請長按下面的文字「全選」→「複製」。");
   document.getElementById("regDone").hidden=false;
   document.getElementById("regDone").scrollIntoView({block:"start"});
+  try{ window.open(LINE_ADD,"_blank","noopener"); }catch(_){}
 });
 document.getElementById("recopy").addEventListener("click",async()=>{
   const ta=document.getElementById("regText");

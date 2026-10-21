@@ -420,7 +420,7 @@ function render(){
   updateQuizNote();
 }
 const RQ={
- pkg:[["h1","1時間 ぎゅっと凝縮ケア"],["one","まるごと体験（単発）"],["p3","3回コース・あたたかな回復"],["p5","5回コース・産後まるごと回復"],["undecided","まだ決められない、まず相談したい"]],
+ pkg:[["h1","1時間 ぎゅっと凝縮ケア"],["oil2","純オイルトリートメント 2時間（産後・産後以外どちらも）"],["one","まるごと体験（単発）"],["p3","3回コース・あたたかな回復"],["p5","5回コース・産後まるごと回復"],["undecided","まだ決められない、まず相談したい"]],
  place:[["studio","台北・北投のサロン"],["home","ご自宅への出張（交通費は地域により別途）"],["any","どちらでも"]],
  time:[["wd","平日の日中"],["wn","平日の夜"],["we","週末の日中"],["wen","週末の夜"]],
  safe:[["s1","産後の大量出血はありません"],["s2","傷の炎症・腫れはありません"],["s3","コントロールされていない高血圧はありません"],["s4","帝王切開の傷は完全に癒えています（自然分娩の方はスキップ可）"],["s5","上記にあてはまらない項目があり、まず相談・評価が必要なことを理解しています"]],
@@ -449,6 +449,9 @@ function updateQuizNote(){
 async function copyText(text){
   try{ await navigator.clipboard.writeText(text); return true; }catch(e){ return false; }
 }
+// 「報名自動寄信_AppsScript.gs」を公開後、その /exec URL をここに貼ると自動送信＋記録されます
+const REG_ENDPOINT="";
+const LINE_ADD="https://line.me/R/ti/p/@birthwithmilliya";
 document.getElementById("reg").addEventListener("submit",async e=>{
   e.preventDefault();
   const fd=new FormData(e.target), err=document.getElementById("regErr");
@@ -476,10 +479,21 @@ document.getElementById("reg").addEventListener("submit",async e=>{
     v("msg")?`メッセージ：${v("msg")}`:"",
     "", "✓ コース・料金のご説明に同意しました"].filter((x,i,arr)=>x!==""||arr[i-1]!=="").join("\n");
   const ta=document.getElementById("regText"); ta.value=text;
+  if(REG_ENDPOINT){
+    try{ fetch(REG_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({lang:"ja",name:v("name"),contact:v("contact"),email:v("email"),area:v("area"),
+        pkg:rl("pkg",fd.get("pkg")),place:rl("place",fd.get("place")),
+        time:all("time").map(x=>rl("time",x)).join("・")||"どちらでも（相談）",
+        quiz:(quizLines().length?quizLines().join(" / "):"（診断は未回答）"),
+        safe:all("safe").map(x=>rl("safe",x)).join("・"),note:v("note"),msg:v("msg"),text:text})}); }catch(_){}
+  }
   const ok=await copyText(text);
-  document.getElementById("regCopied").textContent = ok ? "お申し込み内容をコピーしました。" : "下の文章を長押しして「すべて選択」→「コピー」してください。";
+  document.getElementById("regCopied").textContent =
+    (REG_ENDPOINT?"お申し込みを送信しました。確認メールをお送りします 🌿　":"") +
+    (ok ? "内容もコピーしました。LINE を開いて貼り付けるだけで送れます。" : "下の文章を長押しして「すべて選択」→「コピー」してください。");
   document.getElementById("regDone").hidden=false;
   document.getElementById("regDone").scrollIntoView({block:"start"});
+  try{ window.open(LINE_ADD,"_blank","noopener"); }catch(_){}
 });
 document.getElementById("recopy").addEventListener("click",async()=>{
   const ta=document.getElementById("regText");

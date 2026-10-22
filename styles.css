@@ -728,3 +728,16 @@ img{max-width:100%;display:block;}
 .related p.pc-desc{margin:0 0 12px;}
 .related p.related-h{margin:0;}
 .related a.pc{text-decoration:none;}
+
+/* ---------- 照片格（現場照） ---------- */
+.pgrid{display:grid;gap:12px;margin:30px auto 8px;max-width:1000px;}
+.pgrid.c3{grid-template-columns:repeat(3,1fr);}
+.pgrid.c2{grid-template-columns:repeat(2,1fr);}
+.pgrid figure{margin:0;}
+.pgrid img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:14px;box-shadow:var(--shadow-soft);}
+.pgrid img.tall{aspect-ratio:4/5;}
+.pgrid img.wide{aspect-ratio:3/2;}
+@media(max-width:640px){.pgrid.c3{grid-template-columns:repeat(2,1fr);gap:8px;}}
+.pgrid-cap{text-align:center;font-size:.84rem;color:var(--cocoa-soft);letter-spacing:.04em;margin-top:12px;line-height:1.8;}
+.pnarrow{max-width:440px;margin:26px auto 0;}
+.pnarrow img{width:100%;display:block;border-radius:14px;box-shadow:var(--shadow-soft);}

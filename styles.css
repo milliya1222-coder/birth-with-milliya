@@ -632,8 +632,16 @@ img{max-width:100%;display:block;}
 }
 .about-quote{
   font-family:"Noto Serif TC",serif;font-weight:500;
-  font-size:clamp(1.4rem,3.4vw,2rem);line-height:1.6;color:var(--cocoa);margin:6px auto 24px;
+  font-size:clamp(1.12rem,4.6vw,2rem);line-height:1.65;color:var(--cocoa);margin:6px auto 24px;
+  text-wrap:balance;
 }
+/* 中文長段落：不要在手機上置中（斷行會很碎），標題與短句才置中 */
+@media(max-width:600px){
+  .about-para{text-align:left;}
+}
+/* 標題、引言一律平衡斷行，避免單字落單；內文避免最後一行只剩一兩個字 */
+h1,h2,h3,blockquote{text-wrap:balance;}
+p{text-wrap:pretty;}
 .mission-band{
   margin-top:34px;padding:30px 28px;border-radius:var(--radius);
   background:linear-gradient(160deg,#fbf1ea 0%,#f7e6dd 100%);border:1px solid var(--line);

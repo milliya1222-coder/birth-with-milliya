@@ -71,3 +71,18 @@ document.querySelectorAll('[data-booking-src]').forEach(function (box) {
   box.querySelector('.booking-frame').appendChild(frame);
   box.hidden = false;
 });
+
+// 4) 導覽「更多」下拉（桌機點開；手機抽屜裡直接展開）
+const navMore = document.querySelector('.nav-more');
+if (navMore) {
+  const btn = navMore.querySelector('.nav-more-btn');
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = navMore.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', () => {
+    navMore.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+}

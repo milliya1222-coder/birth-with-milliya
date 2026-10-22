@@ -668,3 +668,10 @@ img{max-width:100%;display:block;}
 .lang-switch a:hover{color:var(--rose-deep);}
 .lang-switch span{color:var(--rose-deep);font-weight:500;}
 .svc-topbar .lang-switch{font-size:.95rem;}
+
+/* 英日文章頁頂欄：回首頁文章區 */
+.svc-topbar .topbar-link{margin-left:auto;margin-right:20px;font-size:.92rem;letter-spacing:.04em;color:var(--cocoa);text-decoration:none;}
+.svc-topbar .topbar-link:hover{color:var(--rose-deep);}
+@media(max-width:480px){.svc-topbar .topbar-link{margin-right:12px;font-size:.85rem;}}
+.svc-topbar .topbar-link,.svc-topbar:has(.topbar-link) .lang-switch{white-space:nowrap;}
+@media(max-width:480px){.svc-topbar:has(.topbar-link) .brand-name-en{display:none;}}

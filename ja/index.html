@@ -27,15 +27,40 @@
     body,.hero-sub,.lead,.service-desc,.pillar-sub{font-family:"Noto Sans JP",system-ui,sans-serif;}
     h1,h2,h3,h4,blockquote{font-family:"Noto Serif JP","Cormorant Garamond",serif;}
   </style>
+
+  <style>
+    .home-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px;text-align:left;}
+    @media(max-width:980px){.home-cards{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:640px){.home-cards{grid-template-columns:1fr;gap:22px;}}
+    .card{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--cream,#faf6f2);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+    .card:hover{transform:translateY(-3px);border-color:rgba(226,155,134,.55);box-shadow:0 22px 44px -30px rgba(90,74,66,.55);}
+    .card .cthumb{aspect-ratio:16/10;overflow:hidden;background:#efe6e0;}
+    .card .cthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+    .card:hover .cthumb img{transform:scale(1.035);}
+    .card .cbody{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
+    .card .cmeta{font-size:.78rem;color:var(--cocoa-soft);letter-spacing:.04em;margin:0 0 9px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;}
+    .card .ccat{color:var(--rose-deep);background:rgba(226,155,134,.14);padding:2px 9px;border-radius:4px;font-size:.72rem;letter-spacing:.06em;}
+    .card h3{font-size:1.05rem;line-height:1.6;margin:0 0 10px;color:var(--cocoa);}
+    .card .cdesc{font-size:.9rem;line-height:1.8;color:var(--cocoa-soft);margin:0 0 14px;flex:1;}
+    .card .cmore{font-size:.88rem;color:var(--rose-deep);letter-spacing:.03em;}
+  </style>
   <script src="/analytics.js" defer></script>
 </head>
 <body>
 
-  <header class="svc-topbar">
+  <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="../" class="svc-back brand-lockup"><img src="../images/logo/icon.png" alt="Birth with Milliya" class="brand-mark"><span class="brand-text"><span class="brand-name-en">Birth with Milliya</span></span></a>
-      <nav class="lang-switch">
-        <a href="../">中文</a><a href="../en/">EN</a><span>日本語</span>
+      <a href="#" class="logo brand-lockup"><img src="../images/logo/icon.png" alt="Birth with Milliya" class="brand-mark"><span class="brand-text"><span class="brand-name-en">Birth with Milliya</span></span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">わたしについて</a>
+        <a href="#services">ケア</a>
+        <a href="#articles">記事</a>
+        <a href="taiwan-shussan/">ガイド</a>
+        <span class="lang-switch"><a href="../">中</a><a href="../en/">EN</a><span>日</span></span>
+        <a href="#contact" class="nav-cta">お問い合わせ</a>
       </nav>
     </div>
   </header>
@@ -51,7 +76,7 @@
   </section>
 
   <!-- わたしについて -->
-  <section class="svc-section">
+  <section class="svc-section" id="about">
     <div class="container about-grid reveal">
       <div class="about-photo">
         <div class="photo-frame"><img src="../images/milliya-about.jpg" alt="Milliya ミリヤ"></div>
@@ -67,7 +92,7 @@
   </section>
 
   <!-- ご提供しているケア -->
-  <section class="services">
+  <section class="services" id="services">
     <div class="container">
       <div class="section-head reveal">
         <p class="section-eyebrow">ご提供しているケア</p>
@@ -116,6 +141,61 @@
       <p style="margin-top:22px;color:var(--cocoa-soft);font-size:.94rem;">Instagram · @birth.with.milliya &nbsp;·&nbsp; Email · birthwithmilliya@gmail.com</p>
     </div>
   </section>
+  <!-- Articles -->
+  <section class="svc-section" id="articles">
+    <div class="container reveal" style="text-align:center;max-width:1100px;">
+      <p class="section-eyebrow">新着記事</p>
+      <h2>記事</h2>
+      <div class="home-cards">
+        <a href="waterbirth/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/waterbirth.jpg" alt="自宅での水中出産のプール" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">お産の選択</span><span>2026 年 10 月 22 日</span></p>
+            <h3>水中出産：メリット、思い込み、確認したい 16 の質問</h3>
+            <p class="cdesc">研究からわかること、唯一増えるリスク、準備すること、台湾で確認したい 16 の質問。</p>
+            <span class="cmore">記事を読む →</span>
+          </div>
+        </a>
+        <a href="why-doula/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/why-doula.jpg" alt="花とろうそくの祭壇に置かれた、女性たちが妊婦を囲む絵札" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">お産のサポート</span><span>2026 年 10 月 22 日</span></p>
+            <h3>ドゥーラは本当に必要？研究が示すこと</h3>
+            <p class="cdesc">Cochrane のレビューと WHO 2018 年の推奨、台湾で産むならなおさらの理由。</p>
+            <span class="cmore">記事を読む →</span>
+          </div>
+        </a>
+        <a href="birth-partner/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/birth-partner.jpg" alt="夫が妻を後ろから抱き、二人の手がお腹の上にある" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">パートナーへ</span><span>2026 年 10 月 22 日</span></p>
+            <h3>お産に立ち会うあなたへ：できること</h3>
+            <p class="cdesc">台湾で立ち会う方へ。無力感の正体、お産の各段階でできること、ご自身を守る方法。</p>
+            <span class="cmore">記事を読む →</span>
+          </div>
+        </a>
+        <a href="maha-al-musa/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/maha-al-musa.jpg" alt="目を閉じて手を合わせる Maha Al Musa" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">わたしの先生</span><span>2026 年 10 月 22 日</span></p>
+            <h3>Maha Al Musa：陣痛ではなく、拡張</h3>
+            <p class="cdesc">EmbodyBirth™ と BellydanceBirth® の創設者。お産への言葉を変えてくれた先生。</p>
+            <span class="cmore">記事を読む →</span>
+          </div>
+        </a>
+        <a href="taiwan-shussan/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/taiwan-ja.jpg" alt="生まれたばかりの赤ちゃんにキスをするお母さん" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">ガイド</span><span>2026 年 8 月 8 日</span></p>
+            <h3>台湾で出産する日本人へ</h3>
+            <p class="cdesc">健保・日本語が通じる病院・月子中心・出産後の手続きまで。</p>
+            <span class="cmore">ガイドを読む →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ガイド -->
   <section class="svc-section alt">
     <div class="container svc-narrow reveal" style="text-align:center;">

@@ -22,15 +22,41 @@
   <link rel="icon" type="image/png" href="../images/logo/icon.png">
   <link rel="apple-touch-icon" href="../images/logo/icon.png">
   <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .home-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px;text-align:left;}
+    @media(max-width:980px){.home-cards{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:640px){.home-cards{grid-template-columns:1fr;gap:22px;}}
+    .card{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--cream,#faf6f2);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+    .card:hover{transform:translateY(-3px);border-color:rgba(226,155,134,.55);box-shadow:0 22px 44px -30px rgba(90,74,66,.55);}
+    .card .cthumb{aspect-ratio:16/10;overflow:hidden;background:#efe6e0;}
+    .card .cthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+    .card:hover .cthumb img{transform:scale(1.035);}
+    .card .cbody{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
+    .card .cmeta{font-size:.78rem;color:var(--cocoa-soft);letter-spacing:.04em;margin:0 0 9px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;}
+    .card .ccat{color:var(--rose-deep);background:rgba(226,155,134,.14);padding:2px 9px;border-radius:4px;font-size:.72rem;letter-spacing:.06em;}
+    .card h3{font-size:1.05rem;line-height:1.6;margin:0 0 10px;color:var(--cocoa);}
+    .card .cdesc{font-size:.9rem;line-height:1.8;color:var(--cocoa-soft);margin:0 0 14px;flex:1;}
+    .card .cmore{font-size:.88rem;color:var(--rose-deep);letter-spacing:.03em;}
+  </style>
   <script src="/analytics.js" defer></script>
 </head>
 <body>
 
-  <header class="svc-topbar">
+  <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="../" class="svc-back brand-lockup"><img src="../images/logo/icon.png" alt="Birth with Milliya" class="brand-mark"><span class="brand-text"><span class="brand-name-en">Birth with Milliya</span></span></a>
-      <nav class="lang-switch">
-        <a href="../">中文</a><span>EN</span><a href="../ja/">日本語</a>
+      <a href="#" class="logo brand-lockup"><img src="../images/logo/icon.png" alt="Birth with Milliya" class="brand-mark"><span class="brand-text"><span class="brand-name-en">Birth with Milliya</span></span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#plans">Plans</a>
+        <a href="#articles">Articles</a>
+        <a href="giving-birth-in-taiwan/">Guide</a>
+        <span class="lang-switch"><a href="../">中</a><span>EN</span><a href="../ja/">日</a></span>
+        <a href="#contact" class="nav-cta">Contact</a>
       </nav>
     </div>
   </header>
@@ -46,7 +72,7 @@
   </section>
 
   <!-- Who I am -->
-  <section class="svc-section">
+  <section class="svc-section" id="about">
     <div class="container about-grid reveal">
       <div class="about-photo">
         <div class="photo-frame"><img src="../images/milliya-about.jpg" alt="Milliya"></div>
@@ -62,7 +88,7 @@
   </section>
 
   <!-- What I offer -->
-  <section class="services">
+  <section class="services" id="services">
     <div class="container">
       <div class="section-head reveal">
         <p class="section-eyebrow">How I can walk with you</p>
@@ -134,6 +160,61 @@
       <p style="text-align:center;margin-top:30px;color:var(--cocoa-soft);">Every family's needs are different, so I send a full quotation after we've talked. In-person birth support depends on my dates in Taiwan — it helps to reach out early. Families I've supported through pregnancy receive 10% off <a href="/en/ayurveda/" style="color:var(--rose-deep);">Ayurvedic postpartum care</a> within 6 months after birth.</p>
       <div style="text-align:center;margin-top:12px;"><a href="#contact" class="btn">Ask for a quotation</a></div>
       <p style="text-align:center;margin-top:14px;"><a href="why-a-doula/" style="color:var(--rose-deep);">Why hire a doula — and why it matters even more in Taiwan →</a><br><a href="birth-partner/" style="color:var(--rose-deep);">Supporting your partner in labour: a guide for birth partners →</a></p>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="svc-section" id="articles">
+    <div class="container reveal" style="text-align:center;max-width:1100px;">
+      <p class="section-eyebrow">Latest writing</p>
+      <h2>Articles</h2>
+      <div class="home-cards">
+        <a href="waterbirth/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/waterbirth.jpg" alt="A home waterbirth with an inflatable pool" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">Birth choices</span><span>22 Oct 2026</span></p>
+            <h3>Waterbirth: benefits, myths, and 16 questions to ask</h3>
+            <p class="cdesc">What the evidence shows, the one risk that goes up, how to prepare, and 16 questions to ask any provider in Taiwan.</p>
+            <span class="cmore">Read the article →</span>
+          </div>
+        </a>
+        <a href="why-a-doula/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/why-doula.jpg" alt="A painted card of women gathered around a pregnant woman, on an altar with flowers and candles" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">Birth support</span><span>22 Oct 2026</span></p>
+            <h3>Why hire a doula? What the research says</h3>
+            <p class="cdesc">The Cochrane evidence, the WHO 2018 recommendation, and why it matters even more in Taiwan.</p>
+            <span class="cmore">Read the article →</span>
+          </div>
+        </a>
+        <a href="birth-partner/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/birth-partner.jpg" alt="A husband holds his wife from behind, both their hands on her belly" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">For partners</span><span>22 Oct 2026</span></p>
+            <h3>Supporting your partner in labour: what you can do</h3>
+            <p class="cdesc">A guide for birth partners in Taiwan: why you feel helpless, what to do at each stage, and how to look after yourself.</p>
+            <span class="cmore">Read the article →</span>
+          </div>
+        </a>
+        <a href="maha-al-musa/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/maha-al-musa.jpg" alt="Maha Al Musa with eyes closed and hands together" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">My teachers</span><span>22 Oct 2026</span></p>
+            <h3>Maha Al Musa: Not Contractions, Expansions</h3>
+            <p class="cdesc">The founder of EmbodyBirth™ and BellydanceBirth®, and the teacher who changed my language around birth.</p>
+            <span class="cmore">Read the article →</span>
+          </div>
+        </a>
+        <a href="giving-birth-in-taiwan/" class="card">
+          <div class="cthumb"><img src="../images/thumbs/taiwan-en.jpg" alt="A mother kissing her newborn" loading="lazy" width="640" height="420"></div>
+          <div class="cbody">
+            <p class="cmeta"><span class="ccat">Guide</span><span>8 Aug 2026</span></p>
+            <h3>Giving birth in Taiwan as a foreigner</h3>
+            <p class="cdesc">Insurance, prenatal care, hospitals with international services, low-intervention options and the paperwork.</p>
+            <span class="cmore">Read the guide →</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 

@@ -133,10 +133,8 @@ img{max-width:100%;display:block;}
   position:relative;min-height:100vh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:120px 26px 80px;overflow:hidden;
-  /* 柔光自然照 + 品牌色漸層疊加，確保文字清晰 */
-  background:
-    linear-gradient(105deg, rgba(251,247,242,.88) 0%, rgba(251,247,242,.58) 42%, rgba(226,155,134,.26) 100%),
-    url("images/hero-wide.jpg") center/cover no-repeat;
+  /* 照片與漸層分成兩層（.hero-photo／.hero-grad），照片才能慢慢放大 */
+  background:var(--ivory);
 }
 /* 有機柔光形狀（裝飾） */
 .hero::before,
@@ -745,3 +743,33 @@ img{max-width:100%;display:block;}
 .pgrid-cap{text-align:center;font-size:.84rem;color:var(--cocoa-soft);letter-spacing:.04em;margin-top:12px;line-height:1.8;}
 .pnarrow{max-width:440px;margin:26px auto 0;}
 .pnarrow img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:var(--shadow-soft);}
+
+/* ---------- 互動（慢、輕、可關閉） ---------- */
+/* 1) 首頁主視覺：照片 24 秒緩慢放大 5% */
+.hero-photo{position:absolute;inset:0;z-index:0;background:url("images/hero-wide.jpg") center/cover no-repeat;
+  transform-origin:55% 45%;animation:heroZoom 26s ease-in-out infinite alternate;will-change:transform;}
+.hero-grad{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(105deg, rgba(251,247,242,.88) 0%, rgba(251,247,242,.58) 42%, rgba(226,155,134,.26) 100%);}
+@keyframes heroZoom{from{transform:scale(1);}to{transform:scale(1.05);}}
+
+/* 2) 照片帶（跑馬燈）：每張約 8 秒走過，滑鼠移上去暫停 */
+.photo-band{padding:50px 0;overflow:hidden;background:var(--ivory);}
+.band-track{display:flex;gap:14px;width:max-content;animation:bandMove 95s linear infinite;
+  -webkit-mask-image:none;}
+.photo-band:hover .band-track,.photo-band:focus-within .band-track{animation-play-state:paused;}
+.band-track img{height:220px;width:auto;display:block;flex:none;border-radius:14px;box-shadow:var(--shadow-soft);}
+.photo-band{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);}
+@keyframes bandMove{to{transform:translateX(calc(-50% - 7px));}}
+@media(max-width:640px){.photo-band{padding:36px 0;}.band-track img{height:160px;}}
+
+/* 3) 卡片與照片進場：依序淡入並從 97% 放大（由 script.js 加上 .fx，進入畫面時加 .in） */
+.fx{opacity:0;transform:translateY(16px) scale(.97);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.fx.in{opacity:1;transform:none;}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-photo{animation:none;}
+  .band-track{animation:none;}
+  .photo-band{overflow-x:auto;-webkit-mask-image:none;mask-image:none;}
+  .fx{opacity:1;transform:none;transition:none;}
+}

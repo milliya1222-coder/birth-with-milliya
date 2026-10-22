@@ -86,3 +86,26 @@ if (navMore) {
     btn.setAttribute('aria-expanded', 'false');
   });
 }
+
+// 5) 卡片與照片依序淡入（fx-init）。尊重「減少動態效果」；4 秒保險，內容不會永久隱形
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const els = Array.prototype.slice.call(document.querySelectorAll('.pc, .pgrid figure, .photo, .pnarrow, .about-photo, .svc-figure'));
+  if (!els.length) return;
+  els.forEach((e) => e.classList.add('fx'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      const t = en.target;
+      const sibs = Array.prototype.filter.call(t.parentElement.children, (c) => c.classList.contains('fx'));
+      const i = Math.max(0, sibs.indexOf(t));
+      t.style.transitionDelay = (Math.min(i, 5) * 90) + 'ms';
+      t.classList.add('in');
+      setTimeout(() => { t.classList.remove('fx', 'in'); t.style.transitionDelay = ''; }, 1800);
+      io.unobserve(t);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+  els.forEach((e) => io.observe(e));
+  setTimeout(() => els.forEach((e) => { if (e.classList.contains('fx')) e.classList.add('in'); }), 4000);
+})();

@@ -781,3 +781,7 @@ p{text-wrap:pretty;}
   .photo-band{overflow-x:auto;-webkit-mask-image:none;mask-image:none;}
   .fx{opacity:1;transform:none;transition:none;}
 }
+
+.footer-social{margin:8px 0 4px;font-size:.88rem;letter-spacing:.03em;}
+.footer-social a{color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:.85;}
+.footer-social a:hover{opacity:1;}

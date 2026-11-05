@@ -749,6 +749,7 @@ p{text-wrap:pretty;}
   .pgrid.c3>figure:last-child:nth-child(odd){grid-column:1/-1;}
   .pgrid.c3>figure:last-child:nth-child(odd) img{aspect-ratio:3/2;}
 }
+.pgrid figcaption{text-align:center;font-size:.78rem;color:var(--cocoa-soft);letter-spacing:.04em;line-height:1.7;margin-top:8px;}
 .pgrid-cap{text-align:center;font-size:.84rem;color:var(--cocoa-soft);letter-spacing:.04em;margin-top:12px;line-height:1.8;}
 .pnarrow{max-width:440px;margin:26px auto 0;}
 .pnarrow img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:var(--shadow-soft);}

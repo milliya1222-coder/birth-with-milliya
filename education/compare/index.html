@@ -53,8 +53,13 @@
     .mine{border-color:#EBCFC3;background:linear-gradient(160deg,#FCF1EB,#fff 70%)}
     .mine h3::before{content:"🌸 "}
 
+    .tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 2px;margin-top:14px;scrollbar-width:none}
+    .tabs::-webkit-scrollbar{display:none}
+    .tabs button{flex:0 0 auto;font:inherit;font-size:14px;color:var(--rose-deep);background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 14px;cursor:pointer}
+    .tabs button[aria-selected=true]{background:var(--rose-deep);border-color:var(--rose-deep);color:#fff}
+    .tpl .fit{font-size:13.5px;color:var(--rose-deep);background:#FCF1EB;border-radius:12px;padding:8px 12px;margin-bottom:6px}
     .flow{list-style:none;margin-top:6px}
-    .flow li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-top:1px dashed #EBDDD3;font-size:14.5px}
+    .flow li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-top:1px dashed #EBDDD3;font-size:14.5px}
     .flow li:first-child{border-top:0}
     .flow .t{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--rose-deep);font-size:16px;line-height:1.6}
     .flow b{font-weight:500}
@@ -205,18 +210,99 @@
   </div>
 
   <h2>一堂課大概的樣子</h2>
-  <p class="sub">以一次約 4 小時的課為例，內容和順序會依妳們的問卷調整。</p>
-  <div class="card">
-    <ol class="flow">
-      <li><span class="t">opening</span><span><b>進場與調整能量</b><small>佈置空間、放音樂，一起安靜下來；聊聊今天的身體和心情，再來一段自由舞動，讓身體鬆開</small></span></li>
-      <li><span class="t">part 1</span><span><b>生產哲學與心態</b><small>生產是經驗性的，只有去經驗，妳才會知道。如果一切都很順利呢？妳不需要被拯救。認識線以上、線以下與戲劇三角，以及陪產員、Birth Keeper 是什麼</small></span></li>
-      <li><span class="t">part 2</span><span><b>破解生產的奧秘</b><small>誰會在場、怎麼佈置一個充滿催產素的環境、產兆與產程、怎麼面對疼痛、什麼才是真正的緊急狀況、伴侶怎麼支持、產後怎麼照顧自己</small></span></li>
-      <li><span class="t">break</span><span><b>休息</b><small>每一小時小休息，確保妳坐得舒服</small></span></li>
-      <li><span class="t">film</span><span><b>一起看生產影片</b><small>看見真實、溫柔的生產，讓身體先熟悉</small></span></li>
-      <li><span class="t">movement</span><span><b>待產姿勢與 EmbodyBirth 舞動</b><small>圓形、數字 8、波浪、螺旋，連結身體與生俱來對生產的信任</small></span></li>
-      <li><span class="t">heart</span><span><b>恐懼整理與生產願景板</b><small>分辨外加的恐懼與內在原生的恐懼；用想像練習走過一次理想的生產，做出妳們的生產願景板</small></span></li>
-    </ol>
+  <p class="sub">以一次約 4 小時的課為例。下面是幾種參考版本，實際內容會依妳們的問卷調整，也可以混搭。</p>
+  <div class="tabs" id="tpl-tabs" role="tablist"></div>
+  <div class="card tpl">
+    <p class="fit" id="tpl-fit"></p>
+    <ol class="flow" id="tpl-flow"></ol>
   </div>
+  <script>
+  const TPL = [
+    {name:'身心靈完整版', fit:'第一次接觸，想把心態、知識、身體、心都準備到', steps:[
+      ['0:00','進場與調整能量','佈置空間、放音樂，一起安靜下來；聊聊今天的身體和心情，再來一段自由舞動，讓身體鬆開'],
+      ['0:30','生產哲學與心態','生產是經驗性的，只有去經驗，妳才會知道。如果一切都很順利呢？妳不需要被拯救。認識線以上、線以下與戲劇三角'],
+      ['1:00','破解生產的奧秘','誰會在場、怎麼佈置充滿催產素的環境、產兆與產程、怎麼面對疼痛、什麼才是真正的緊急狀況、產後怎麼照顧自己'],
+      ['2:00','休息','每一小時小休息，確保妳坐得舒服'],
+      ['2:10','一起看生產影片','看見真實、溫柔的生產，讓身體先熟悉'],
+      ['2:40','待產姿勢與 EmbodyBirth 舞動','圓形、數字 8、波浪、螺旋，連結身體與生俱來對生產的信任'],
+      ['3:20','恐懼整理與生產願景板','分辨外加的恐懼與內在原生的恐懼；用想像練習走過一次理想的生產，做出妳們的生產願景板'],
+    ]},
+    {name:'伴侶準備版', fit:'爸爸想參與但不知道怎麼幫、或兩人都希望爸爸成為主要支持', steps:[
+      ['0:00','兩個人一起進場','一起安靜下來、彼此連結；先請爸爸說說他對生產的期待和擔心'],
+      ['0:30','爸爸需要知道的生產','產程地圖、生產荷爾蒙，為什麼安靜、昏暗、不被打擾這麼重要'],
+      ['1:10','爸爸的任務','產兆來之前、產程中、寶寶出生後，他各可以做什麼；怎麼守住空間、怎麼替妳跟醫護溝通'],
+      ['1:50','休息',''],
+      ['2:00','爸爸的雙手','按摩、穴位、支撐姿勢、陪妳慢慢搖擺，現場一起實作'],
+      ['2:45','演練一次產程','從產兆出現到寶寶出生，兩人照順序走一遍，爸爸練習每個階段怎麼陪'],
+      ['3:20','爸爸自己的心','他的害怕、他和自己父親的關係、成為父親這件事'],
+      ['3:45','收尾','兩人一起把伴侶的角色畫進生產願景板，說一句給彼此的話'],
+    ]},
+    {name:'醫院生產版', fit:'確定在醫院或診所生，想在醫院裡也能生得溫柔、被尊重', steps:[
+      ['0:00','進場與調整能量','安頓、聊聊妳產檢的醫院和醫師'],
+      ['0:20','在醫院也能守住荷爾蒙','催產素需要什麼；在醫院可以帶什麼、怎麼調燈光、音樂、氣味'],
+      ['1:00','醫院常見的醫療處置','催生、破水、減痛分娩、會陰切開、延遲斷臍：各是什麼、什麼時候會用、可以怎麼問'],
+      ['1:40','什麼時候去醫院','產兆、在家待產的節奏、到醫院之後會發生什麼'],
+      ['2:10','休息',''],
+      ['2:20','在病床上也能動','待產姿勢、EmbodyBirth 舞動、呼吸，伴侶怎麼支撐'],
+      ['3:00','一起寫生產計畫書（醫院版）','把妳的選擇寫清楚，練習怎麼跟醫護開口'],
+      ['3:40','收尾','生產願景板：在醫院裡，妳理想中的生產是什麼樣子'],
+    ]},
+    {name:'居家／助產所版', fit:'計畫在家或助產所生，或還在考慮', steps:[
+      ['0:00','進場與調整能量','擁抱、感謝、緩慢；一起 tune in'],
+      ['0:20','人','誰會在場、每個人的任務，每個參與的人都要充分理解這次的生產'],
+      ['0:50','環境','充滿催產素的空間：水池、燈光、氣味、溫度、音樂、熟悉感、伴侶的全心陪伴'],
+      ['1:20','產程與疼痛','產兆、產程怎麼啟動與維持、各階段的荷爾蒙；用正念面對疼痛'],
+      ['2:00','休息',''],
+      ['2:10','真正的緊急狀況與 B 計畫','哪些狀況要立刻就醫、轉院時怎麼穩住自己'],
+      ['2:40','一起看生產影片',''],
+      ['3:10','寶寶出生之後','肌膚接觸、親餵、胎盤與臍帶怎麼處理、產後的支持安排'],
+      ['3:40','生產願景板','想像練習：走過一次理想的居家生產'],
+    ]},
+    {name:'恐懼療癒版', fit:'上一胎經驗不好受，或對生產非常害怕', steps:[
+      ['0:00','慢慢安頓','先建立安全感，不急著進入主題'],
+      ['0:30','說出恐懼','恐懼與疼痛的連結日記：把害怕的事一件一件寫下來'],
+      ['1:10','看見恐懼從哪裡來','外加的恐懼、內在原生的恐懼；溫柔回看上一次的生產故事'],
+      ['1:50','休息',''],
+      ['2:00','讓身體釋放','呼吸、聲音、舞動，把卡在身體裡的東西慢慢鬆開'],
+      ['2:40','我和媽媽、和我出生的故事','回看自己的出生，伴侶也一起'],
+      ['3:10','想像練習','在放鬆的狀態下，走過一次理想的生產'],
+      ['3:40','生產願景板與收尾','把這一次想要的生產放上願景板'],
+    ]},
+    {name:'身體舞動版', fit:'想深入 EmbodyBirth，多用身體練、少坐著聽', steps:[
+      ['0:00','開場圈','安靜呼吸、雙手輕放、說說今天帶著什麼能量來'],
+      ['0:25','暖身','打開骨盆、肩頸、下顎'],
+      ['0:50','BellydanceBirth','圓形、數字 8、波浪、螺旋，每個動作在產程中怎麼用'],
+      ['1:40','休息',''],
+      ['1:50','產程姿勢與重力','直立、跪、趴、側躺；伴侶怎麼支撐'],
+      ['2:30','呼吸與聲音','低沉的聲音、讓呼吸帶妳穿越宮縮'],
+      ['3:00','自由舞動','聽身體想怎麼動'],
+      ['3:30','放鬆冥想與結束圈','用一個詞說帶走的能量，雙手放在腳上接地'],
+    ]},
+    {name:'產後準備版', fit:'最在意產後的身體修復與生完之後的日子', steps:[
+      ['0:00','進場與調整能量',''],
+      ['0:20','剛生完的那幾個小時','肌膚接觸、延遲斷臍、第一次餵奶，守住這段時光'],
+      ['1:00','哺育準備','母乳、親餵、瓶餵，先了解再決定'],
+      ['1:40','休息',''],
+      ['1:50','產後身體修復','惡露、傷口、骨盆底、體力；阿育吠陀產後調理怎麼幫妳'],
+      ['2:40','產後住哪裡、誰來幫忙','回家或月子中心、誰煮飯、出生證明等手續'],
+      ['3:10','新生兒的第一週與產後情緒','回家後會遇到什麼；產後憂鬱的徵兆與怎麼求助'],
+      ['3:40','收尾','伴侶與家人的分工，寫成一張產後支援清單'],
+    ]},
+  ];
+  (function(){
+    const tabs = document.getElementById('tpl-tabs');
+    tabs.innerHTML = TPL.map((t,i) => `<button type="button" role="tab" data-i="${i}">${t.name}</button>`).join('');
+    function show(i){
+      const t = TPL[i];
+      [...tabs.children].forEach((b,j) => b.setAttribute('aria-selected', j === i));
+      document.getElementById('tpl-fit').textContent = '適合：' + t.fit;
+      document.getElementById('tpl-flow').innerHTML = t.steps.map(s =>
+        `<li><span class="t">${s[0]}</span><span><b>${s[1]}</b>${s[2] ? `<small>${s[2]}</small>` : ''}</span></li>`).join('');
+    }
+    tabs.addEventListener('click', e => { if(e.target.dataset.i) show(+e.target.dataset.i); });
+    show(0);
+  })();
+  </script>
 
   <p class="quote">外面的課教妳「生產會發生什麼」，<br>我的課陪妳準備「妳想怎麼生」。</p>
 

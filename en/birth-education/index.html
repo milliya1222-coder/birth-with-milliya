@@ -250,9 +250,9 @@ const QUESTIONS = [
   {id:'fear', label:'When you think about birth, what worries you most?', hint:'choose any', multi:true, opts:[
     ['The pain', ['pain','breath','comfort','hormone','position','dadtouch']],
     ['Not knowing how labour starts or when to go in', ['map','signs','start']],
-    ['Unnecessary intervention, or not being respected', ['medical','comm','bp','advocate','primal']],
+    ['Unnecessary intervention or not being respected', ['medical','comm','bp','advocate','primal']],
     ['Something going wrong', ['emergency','planb','signs','medical']],
-    ['Not being able to do it, or losing control', ['fear','mindset','vuln','listen','breath','expert']],
+    ['Not being able to do it or losing control', ['fear','mindset','vuln','listen','breath','expert']],
     ['My age or health', ['medical','signs','nutrition','comm','planb']],
     ['Birth stories I\'ve heard from others', ['fearsrc','mindset','film','expert','love']],
   ]},
@@ -391,7 +391,7 @@ function renderAdvice(){
     <div class="focus">${focus.map(z => `<span>${z.icon} ${z.name}</span>`).join('')}</div>
     ${ranked.map(k => `
       <div class="rec"><b>${TOPIC[k].zone.icon} ${TOPIC[k].t[0]}</b>
-      ${why[k] ? `<div class="why">Because: ${[...new Set(why[k])].join(', ')}</div>` : `<div class="why">Recommended for everyone</div>`}</div>`).join('')}
+      ${why[k] ? `<div class="why">Because: ${[...new Set(why[k])].join(' · ')}</div>` : `<div class="why">Recommended for everyone</div>`}</div>`).join('')}
     <div class="hours">Suggested time: <b>${fmtH(ranked.reduce((s,k) => s + hrs(k), 0))}</b><br>${planText(ranked.reduce((s,k) => s + hrs(k), 0))}</div>
     <div class="warm">${warm}<br>— Milliya</div>
     <p style="margin-top:12px">This is just a starting point. The full list below is already ticked for you; add or remove anything.</p>`;

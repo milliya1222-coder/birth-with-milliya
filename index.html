@@ -385,12 +385,13 @@
         <a href="https://instagram.com/birth.with.milliya" class="btn" target="_blank" rel="noopener">Instagram 私訊我</a>
         <a href="https://line.me/R/ti/p/@859uhxmv" class="btn btn-outline" target="_blank" rel="noopener">加 LINE 預約</a>
       </div>
-      <!-- 線上預約：把 Google 日曆「預約時段」的嵌入網址貼進 data-booking-src，留空時整塊不顯示 -->
-      <div class="booking" id="booking" data-booking-src="" hidden>
+      <!-- 線上預約：Calendly 15 分鐘免費通話 -->
+      <div class="booking" id="booking">
         <p class="booking-eyebrow">BOOK A TALK・線上預約</p>
-        <h3>直接選一個時段，我們先聊 30 分鐘</h3>
-        <p class="booking-note">免費的初談，線上進行。聊完不需要當場決定任何事。<br>選好時段後，妳會收到 Google 寄來的確認信與通話連結。</p>
-        <div class="booking-frame"></div>
+        <h3>直接選一個時段，我們先聊 15 分鐘</h3>
+        <p class="booking-note">免費的初談，線上進行。聊完不需要當場決定任何事。<br>選好時段後，妳會收到確認信與通話連結。</p>
+        <div class="booking-frame calendly-inline-widget" data-url="https://calendly.com/milliya1222/15min?hide_gdpr_banner=1&amp;primary_color=c97e68"></div>
+        <noscript><p class="booking-help"><a href="https://calendly.com/milliya1222/15min" target="_blank" rel="noopener">開啟預約頁面 →</a></p></noscript>
         <p class="booking-help">時段都不適合嗎？<a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">傳 LINE 給我</a>，我們再另外約。</p>
       </div>
       <ul class="contact-info">
@@ -412,6 +413,7 @@
     <p class="footer-copy">© 2026 Birth with Milliya・欣妙</p>
   </footer>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script src="script.js"></script>
 </body>
 </html>

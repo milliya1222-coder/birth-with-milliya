@@ -81,6 +81,10 @@
     .tag{display:inline-block;font-size:11px;border-radius:99px;padding:0 8px;margin-left:6px;vertical-align:2px;font-weight:400}
     .tag.src{color:#6F7E69;background:#EEF2EC}
     .tag.rec-tag{color:#fff;background:var(--rose)}
+    .hr{display:inline-block;margin-left:8px;font-size:12px;color:#8C7B70;white-space:nowrap}
+    .hr::before{content:"⏱ ";font-size:11px}
+    .hours{margin-top:14px;padding:12px 16px;border:1px solid #EBCFC3;border-radius:14px;font-size:14px;background:#fff}
+    .hours b{color:var(--rose-deep);font-weight:500;font-size:17px}
 
     .note{font-size:13px;color:var(--cocoa-soft);text-align:center;margin:26px 0 8px}
     .bar{position:fixed;left:0;right:0;bottom:0;background:rgba(251,247,242,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
@@ -129,7 +133,7 @@
     <!-- STEP 3 -->
     <section id="step3" hidden>
       <h2 class="step-title"><small>step 3</small>所有主題，妳來調整</h2>
-      <p class="step-sub">標「推薦」的已經幫妳勾好了。想加的就勾，不想要的取消就好。</p>
+      <p class="step-sub">標「推薦」的已經幫妳勾好了。想加的就勾，不想要的取消就好。時數是參考，實際會依妳們的狀況調整。</p>
       <div id="zones"></div>
     </section>
 
@@ -142,7 +146,7 @@
 
   <div class="bar" id="bar" hidden>
     <div class="wrap">
-      <div class="count">已選 <b id="n">0</b> 個主題</div>
+      <div class="count">已選 <b id="n">0</b> 個主題<span id="h"></span></div>
       <button class="btn copy" id="b-copy" disabled>複製</button>
       <button class="btn line" id="b-line" disabled>傳給欣妙</button>
     </div>
@@ -163,6 +167,7 @@ const ZONES = [
     nutrition:['孕期營養與活動','吃什麼、怎麼動，為生產儲備體力'],
   }},
   {id:'plan', icon:'🛠', name:'建構面', sub:'把理想的生產，變成可以執行的計畫', items:{
+    gentle:['認識溫柔生產、順勢生產、低介入生產','它們是什麼、差在哪裡，在台灣可以怎麼做到'],
     choice:['生產選擇','在哪裡生、誰陪、怎麼生，有哪些選項與考量'],
     bp:['生產計畫書','一起寫，醫院版／居家版都可以'],
     comm:['跟醫護溝通','妳有哪些權利與選擇，怎麼開口問、怎麼表達'],
@@ -223,9 +228,16 @@ const QUESTIONS = [
   ]},
   {id:'place', label:'目前想在哪裡生？', multi:false, opts:[
     ['醫院', ['medical','comm','bp','visit','advocate']],
-    ['診所／助產所', ['comm','bp','visit','choice']],
+    ['診所', ['comm','bp','visit','medical']],
+    ['助產所', ['gentle','env','hormone','bp','visit']],
     ['在家', ['env','team','planb','golden','hormone']],
-    ['還不確定', ['choice','bp']],
+    ['還不確定', ['choice','gentle','bp']],
+  ]},
+  {id:'way', label:'妳對哪些生產方式感興趣？', hint:'可複選', multi:true, opts:[
+    ['低介入生產', ['gentle','medical','comm','bp','primal']],
+    ['順勢生產', ['gentle','hormone','position','listen','push']],
+    ['想更了解溫柔生產', ['gentle','choice','env','hormone','love']],
+    ['還在認識各種選擇', ['choice','gentle','medical']],
   ]},
   {id:'fear', label:'想到生產，妳最擔心的是？', hint:'可複選', multi:true, opts:[
     ['怕痛', ['pain','breath','comfort','hormone','position','dadtouch']],
@@ -267,7 +279,23 @@ const QUESTIONS = [
 /* 每位都會推薦的基礎 */
 const BASE = ['bp','breath','vision'];
 
-const KEY = 'bwm-edu-topics-v2';
+/* 參考時數（小時），沒列的是 0.5 */
+const HOURS = {
+  map:1, medical:1, gentle:1, bp:1, comm:1,
+  breath:1, dance:1.5, position:1, push:0.5, comfort:1,
+  fear:1, heal:1.5, pain:1, mother:1,
+  dad:1, dadtouch:1, advocate:1,
+  blessing:1, feed:1, recover:1, newborn:1,
+};
+const hrs = k => HOURS[k] || 0.5;
+const fmtH = h => `約 ${Number.isInteger(h) ? h : h.toFixed(1)} 小時`;
+function planText(h){
+  if(h <= 8) return `可以排成 2 堂、每堂 4 小時（共 8 小時）`;
+  if(h <= 16) return `適合完整課程（共 16 小時），分 4 堂上`;
+  return `內容比較多，可以挑最在意的先上，或排成完整課程（16 小時）再加堂`;
+}
+
+const KEY = 'bwm-edu-topics-v3';
 const $ = s => document.querySelector(s);
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const TOPIC = {}; ZONES.forEach(z => Object.entries(z.items).forEach(([k,v]) => TOPIC[k] = {t:v, zone:z}));
@@ -294,7 +322,7 @@ $('#zones').innerHTML = ZONES.map(z => `
       <label class="topic">
         <input type="checkbox" class="tp" value="${k}">
         <span class="box" aria-hidden="true">${check}</span>
-        <span><span class="t-title">${t[0]}${t[2] ? `<span class="tag src">${t[2]}</span>` : ''}<span class="tag rec-tag" data-rec="${k}" hidden>推薦</span></span><br><span class="t-desc">${t[1]}</span></span>
+        <span><span class="t-title">${t[0]}${t[2] ? `<span class="tag src">${t[2]}</span>` : ''}<span class="tag rec-tag" data-rec="${k}" hidden>推薦</span></span><br><span class="t-desc">${t[1]}<span class="hr">${fmtH(hrs(k))}</span></span></span>
       </label>`).join('')}
   </section>`).join('');
 
@@ -340,7 +368,7 @@ function renderAdvice(){
   const focus = ZONES.filter(z => zoneHits[z.id]).sort((x,y) => zoneHits[y.id] - zoneHits[x.id]);
 
   /* 溫柔的一段話 */
-  const fears = a.fear.map(i => QUESTIONS[2].opts[i][0]);
+  const fears = a.fear.map(i => QUESTIONS.find(q => q.id === 'fear').opts[i][0]);
   let warm = '';
   if(a.parity.includes(2)) warm += '上一次的經驗還留在身上，這很正常。這一次我們慢慢來，先把它溫柔地看見，再為新的生產做準備。';
   else if(fears.length >= 3) warm += '妳在意的事不少，這代表妳很認真地在迎接這個寶寶。害怕不是缺點，它只是在告訴妳：這裡還不夠清楚。我們就從這些地方開始，一塊一塊弄清楚。';
@@ -356,6 +384,7 @@ function renderAdvice(){
     ${ranked.map(k => `
       <div class="rec"><b>${TOPIC[k].zone.icon} ${TOPIC[k].t[0]}</b>
       ${why[k] ? `<div class="why">因為：${[...new Set(why[k])].join('、')}</div>` : `<div class="why">每位媽媽都建議準備</div>`}</div>`).join('')}
+    <div class="hours">這份建議的參考時數：<b>${fmtH(ranked.reduce((s,k) => s + hrs(k), 0))}</b><br>${planText(ranked.reduce((s,k) => s + hrs(k), 0))}</div>
     <div class="warm">${warm}<br>— 欣妙</div>
     <p style="margin-top:12px">這只是起點。下面的完整清單已經幫妳勾好，妳可以再加、再減。</p>`;
 
@@ -375,8 +404,11 @@ function renderCount(){
   });
   tps.forEach(b => b.closest('.topic').classList.toggle('on', b.checked));
   $('#n').textContent = total;
+  $('#h').textContent = total ? `・${fmtH(selHours())}` : '';
   $('#b-line').disabled = $('#b-copy').disabled = total === 0;
 }
+
+const selHours = () => tps.filter(b => b.checked).reduce((s,b) => s + hrs(b.value), 0);
 
 function message(){
   const a = answers();
@@ -389,6 +421,7 @@ function message(){
     const picked = tps.filter(b => b.checked && TOPIC[b.value].zone === z);
     if(picked.length){ L.push('', `${z.icon} ${z.name}`); picked.forEach(b => L.push(`・${TOPIC[b.value].t[0]}`)); }
   });
+  L.push('', `參考時數：${fmtH(selHours())}`);
   return L.join('\n');
 }
 

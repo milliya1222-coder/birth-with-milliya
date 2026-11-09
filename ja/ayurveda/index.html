@@ -18,7 +18,7 @@
 <link rel="icon" type="image/png" href="/images/logo/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-cream: #FAF6F0;
@@ -796,6 +796,94 @@
   }
   .cta-flow strong{color:#fff;font-weight:500;}
   @media (max-width:560px){ .cta-flow{font-size:14.5px;padding:18px 20px;} }
+
+  /* Postpartum closing (藥草球・熱磚・束腹・關骨) */
+  .closing { background: var(--bg-cream); padding: 96px 0; }
+  .closing-head { display: grid; gap: 28px; }
+  .closing-title {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.9;
+    letter-spacing: 0.18em;
+    color: var(--primary-dark);
+  }
+  .closing-lead { color: var(--text-soft); font-size: 15px; line-height: 2.1; }
+  .closing-lead p + p { margin-top: 14px; }
+  @media (min-width: 860px) {
+    .closing-head { grid-template-columns: auto 1fr; gap: 64px; align-items: start; }
+    .closing.vertical .closing-title {
+      writing-mode: vertical-rl;
+      font-size: 26px;
+      letter-spacing: 0.32em;
+      height: 380px;
+    }
+    .closing-lead { padding-top: 56px; }
+  }
+  .closing-list { display: grid; gap: 72px; margin-top: 80px; }
+  .closing-item { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; align-items: center; }
+  @media (min-width: 720px) {
+    .closing-item { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; }
+    .closing-item:nth-child(even) .closing-figure { order: 2; }
+  }
+  .closing-figure { position: relative; margin: 0; }
+  .closing-figure img, .closing-figure svg {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+  .closing-num {
+    position: absolute;
+    top: -30px;
+    left: -6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .closing-item:nth-child(even) .closing-num { left: auto; right: -6px; }
+  .closing-origin {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .closing-name {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--primary-dark);
+    margin: 10px 0 2px;
+    letter-spacing: 0.08em;
+  }
+  .closing-roman { font-size: 12px; letter-spacing: 0.16em; color: var(--text-soft); font-style: italic; }
+  .closing-body p { color: var(--text-soft); font-size: 15px; line-height: 2; margin-top: 16px; }
+  .closing-feel {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    letter-spacing: 0.24em;
+    color: var(--forest);
+  }
+  .closing-note {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--text-soft);
+  }
+  .closing-note::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 48px;
+    margin: 0 auto 20px;
+    background: var(--line);
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -1023,6 +1111,108 @@
         <span class="effect-tag">自律神経を整える</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- POSTPARTUM CLOSING -->
+<section class="closing vertical" id="closing">
+  <div class="container">
+    <div class="section-eyebrow">Postpartum Closing · 産後の「閉じる」ケア</div>
+    <div class="closing-head">
+      <h2 class="closing-title">ひらいたからだを、<br>ひと重ずつ閉じていく</h2>
+      <div class="closing-lead">
+      <p>この四つの手技は、すべてがアーユルヴェーダというわけではありません。ハーバルボールは南インド・ケララとタイに、温レンガと腹巻きはタイに、クロージング・ザ・ボーンは中南米に伝わってきたものです。</p>
+      <p>生まれた土地は違っても、していることはひとつ。赤ちゃんのためにひらいたからだを、産後、だれかがそっと閉じてあげること。からだの状態や産後の時期に合わせて、ケアの中に組み合わせます。</p>
+      </div>
+    </div>
+    <div class="closing-list">
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">01</span>
+        <img src="/ayurveda/images/technique-herbal-ball.jpg" alt="温かいオイルをつけたハーバルボールを腕に押し当てる" loading="lazy">
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Kerala · Thailand</div>
+        <h3 class="closing-name">ハーバルボール</h3>
+        <div class="closing-roman">Herbal Ball · Pinda Sweda</div>
+        <p>乾燥ハーブを綿の布で包んで丸め、蒸して温めたらオイルをつけて、肩や背中、手足にリズムよく押し当てていきます。ハーブの香りといっしょに、手よりも深く、温かさが届きます。</p>
+        <div class="closing-feel">ぬくもり・ハーブの香り・こわばりがゆるむ</div>
+      </div>
+    </div>
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">02</span>
+        <img src="/ayurveda/images/technique-hot-brick.jpg" alt="布で包んだ温かいレンガを背中にのせる" loading="lazy">
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Thailand</div>
+        <h3 class="closing-name">温レンガ</h3>
+        <div class="closing-roman">Hot Brick</div>
+        <p>火であたためたレンガを、葉と生姜と布で幾重にも包み、背中の上をゆっくり動かします。ずっしりとした重さと安定した熱に、からだが自然とゆだねていきます。</p>
+        <div class="closing-feel">安定した熱・重み・芯からあたたまる</div>
+      </div>
+    </div>
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">03</span>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="くるくると巻いていく長い布">
+          <rect width="400" height="300" fill="#EFE6D8"/>
+          <g fill="none" stroke-linecap="round">
+            <path d="M-20 70 Q200 30 420 80" stroke="#E2D4C0" stroke-width="34"/>
+            <path d="M-20 108 Q200 70 420 118" stroke="#D9C9B5" stroke-width="34"/>
+            <path d="M-20 146 Q200 108 420 156" stroke="#E8DCCB" stroke-width="34"/>
+            <path d="M-20 184 Q200 146 420 194" stroke="#CDB89E" stroke-width="34"/>
+            <path d="M-20 222 Q200 184 420 232" stroke="#E2D4C0" stroke-width="34"/>
+            <path d="M-20 260 Q200 222 420 270" stroke="#D9C9B5" stroke-width="34"/>
+          </g>
+          <g fill="none" stroke="#B8A389" stroke-width="1" opacity="0.6">
+            <path d="M-20 89 Q200 50 420 99"/><path d="M-20 127 Q200 89 420 137"/>
+            <path d="M-20 165 Q200 127 420 175"/><path d="M-20 203 Q200 165 420 213"/>
+            <path d="M-20 241 Q200 203 420 251"/>
+          </g>
+          <path d="M268 150 q26 -6 40 14 q-22 10 -40 -14z" fill="#B8654A" opacity="0.55"/>
+        </svg>
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Thailand</div>
+        <h3 class="closing-name">腹巻き</h3>
+        <div class="closing-roman">Belly Binding</div>
+        <p>マジックテープの産後ベルトではなく、一枚の長い布をくるくると巻いて、その人のからだの形にぴったり沿わせます。産後、立つのもおぼつかなかったお母さんが、巻いたあとに「支えられている感じがする」と言ってくれます。</p>
+        <div class="closing-feel">支えられる・からだに沿う・立ち姿が安定する</div>
+      </div>
+    </div>
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">04</span>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="中南米の長い布の縞模様とフリンジ">
+          <rect width="400" height="300" fill="#F2E9DC"/>
+          <g transform="rotate(-8 200 150)">
+            <rect x="-40" y="40" width="480" height="190" fill="#E9DDCB"/>
+            <rect x="-40" y="52" width="480" height="10" fill="#B8654A" opacity="0.75"/>
+            <rect x="-40" y="68" width="480" height="4" fill="#C89B3C" opacity="0.8"/>
+            <rect x="-40" y="92" width="480" height="22" fill="#D9C9B5"/>
+            <rect x="-40" y="122" width="480" height="6" fill="#4A5D3F" opacity="0.6"/>
+            <rect x="-40" y="136" width="480" height="30" fill="#EFE6D8"/>
+            <rect x="-40" y="174" width="480" height="6" fill="#4A5D3F" opacity="0.6"/>
+            <rect x="-40" y="188" width="480" height="22" fill="#D9C9B5"/>
+            <rect x="-40" y="214" width="480" height="4" fill="#C89B3C" opacity="0.8"/>
+            <rect x="-40" y="222" width="480" height="8" fill="#B8654A" opacity="0.75"/>
+            <g stroke="#C9B39A" stroke-width="2">
+              <path d="M10 230v26M24 230v30M38 230v24M52 230v28M66 230v26M80 230v30M94 230v24M108 230v28M122 230v26M136 230v30M150 230v24M164 230v28M178 230v26M192 230v30M206 230v24M220 230v28M234 230v26M248 230v30M262 230v24M276 230v28M290 230v26M304 230v30M318 230v24M332 230v28M346 230v26M360 230v30M374 230v24M388 230v28"/>
+            </g>
+          </g>
+        </svg>
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Latin America</div>
+        <h3 class="closing-name">クロージング・ザ・ボーン</h3>
+        <div class="closing-roman">Closing the Bones</div>
+        <p>長い布で、頭から順にからだ全体を一重ずつ包んでいく儀式です。全身の加圧マッサージのような感覚で、包まれた瞬間、そばで誰かが見守ってくれているという深い安心がこみあげてきます。</p>
+        <div class="closing-feel">安心・見守られる・全身がゆるむ</div>
+      </div>
+    </div>
+    </div>
+    <p class="closing-note">からだの状態に合わせて組み合わせます。ご予約前のご相談で一緒に決めましょう。</p>
   </div>
 </section>
 

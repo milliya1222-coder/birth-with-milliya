@@ -19,7 +19,7 @@
 <link rel="icon" type="image/png" href="/images/logo/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-cream: #FAF6F0;
@@ -845,6 +845,94 @@
   }
   .cta-flow strong{color:#fff;font-weight:500;}
   @media (max-width:560px){ .cta-flow{font-size:14.5px;padding:18px 20px;} }
+
+  /* Postpartum closing (藥草球・熱磚・束腹・關骨) */
+  .closing { background: var(--bg-cream); padding: 96px 0; }
+  .closing-head { display: grid; gap: 28px; }
+  .closing-title {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.9;
+    letter-spacing: 0.18em;
+    color: var(--primary-dark);
+  }
+  .closing-lead { color: var(--text-soft); font-size: 15px; line-height: 2.1; }
+  .closing-lead p + p { margin-top: 14px; }
+  @media (min-width: 860px) {
+    .closing-head { grid-template-columns: auto 1fr; gap: 64px; align-items: start; }
+    .closing.vertical .closing-title {
+      writing-mode: vertical-rl;
+      font-size: 26px;
+      letter-spacing: 0.32em;
+      height: 380px;
+    }
+    .closing-lead { padding-top: 56px; }
+  }
+  .closing-list { display: grid; gap: 72px; margin-top: 80px; }
+  .closing-item { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; align-items: center; }
+  @media (min-width: 720px) {
+    .closing-item { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; }
+    .closing-item:nth-child(even) .closing-figure { order: 2; }
+  }
+  .closing-figure { position: relative; margin: 0; }
+  .closing-figure img, .closing-figure svg {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+  .closing-num {
+    position: absolute;
+    top: -30px;
+    left: -6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .closing-item:nth-child(even) .closing-num { left: auto; right: -6px; }
+  .closing-origin {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .closing-name {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--primary-dark);
+    margin: 10px 0 2px;
+    letter-spacing: 0.08em;
+  }
+  .closing-roman { font-size: 12px; letter-spacing: 0.16em; color: var(--text-soft); font-style: italic; }
+  .closing-body p { color: var(--text-soft); font-size: 15px; line-height: 2; margin-top: 16px; }
+  .closing-feel {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    letter-spacing: 0.24em;
+    color: var(--forest);
+  }
+  .closing-note {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--text-soft);
+  }
+  .closing-note::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 48px;
+    margin: 0 auto 20px;
+    background: var(--line);
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -1140,6 +1228,108 @@
         <span class="effect-tag">深層放鬆</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- POSTPARTUM CLOSING -->
+<section class="closing vertical" id="closing">
+  <div class="container">
+    <div class="section-eyebrow">Postpartum Closing · 產後的收邊</div>
+    <div class="closing-head">
+      <h2 class="closing-title">把散開的身體，<br>一層一層收回來</h2>
+      <div class="closing-lead">
+      <p>這四種手法，不全是阿育吠陀。藥草球在南印度喀拉拉和泰國都有，熱磚和束腹來自泰國，關骨來自中南美。</p>
+      <p>它們出自不同的土地，卻都在做同一件事：生產時為孩子打開的身體，產後需要有人幫它收邊。我會依妳的身體狀況和產後的時間，把它們搭配進療程裡。</p>
+      </div>
+    </div>
+    <div class="closing-list">
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">01</span>
+        <img src="images/technique-herbal-ball.jpg" alt="藥草球沾著溫油，按壓在手臂上" loading="lazy">
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Kerala · Thailand</div>
+        <h3 class="closing-name">藥草球</h3>
+        <div class="closing-roman">Herbal Ball · Pinda Sweda</div>
+        <p>把乾燥藥草包進棉布、紮成球，蒸熱後沾上溫油，一下一下按壓在肩背和四肢。熱度帶著藥草的香氣慢慢滲進去，比雙手更深、更暖。</p>
+        <div class="closing-feel">溫熱・藥草香・痠緊慢慢鬆開</div>
+      </div>
+    </div>
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">02</span>
+        <img src="images/technique-hot-brick.jpg" alt="用布包好的熱磚，放在趴著的背上" loading="lazy">
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Thailand</div>
+        <h3 class="closing-name">熱磚</h3>
+        <div class="closing-roman">Hot Brick</div>
+        <p>磚塊在爐火上烤熱，用葉片、薑片和布層層包好，放在背上慢慢移動。磚很重、熱很穩，那份重量會讓身體不由自主地放下來。</p>
+        <div class="closing-feel">穩定的熱・重量感・核心變暖</div>
+      </div>
+    </div>
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">03</span>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="一圈一圈繞上去的長布">
+          <rect width="400" height="300" fill="#EFE6D8"/>
+          <g fill="none" stroke-linecap="round">
+            <path d="M-20 70 Q200 30 420 80" stroke="#E2D4C0" stroke-width="34"/>
+            <path d="M-20 108 Q200 70 420 118" stroke="#D9C9B5" stroke-width="34"/>
+            <path d="M-20 146 Q200 108 420 156" stroke="#E8DCCB" stroke-width="34"/>
+            <path d="M-20 184 Q200 146 420 194" stroke="#CDB89E" stroke-width="34"/>
+            <path d="M-20 222 Q200 184 420 232" stroke="#E2D4C0" stroke-width="34"/>
+            <path d="M-20 260 Q200 222 420 270" stroke="#D9C9B5" stroke-width="34"/>
+          </g>
+          <g fill="none" stroke="#B8A389" stroke-width="1" opacity="0.6">
+            <path d="M-20 89 Q200 50 420 99"/><path d="M-20 127 Q200 89 420 137"/>
+            <path d="M-20 165 Q200 127 420 175"/><path d="M-20 203 Q200 165 420 213"/>
+            <path d="M-20 241 Q200 203 420 251"/>
+          </g>
+          <path d="M268 150 q26 -6 40 14 q-22 10 -40 -14z" fill="#B8654A" opacity="0.55"/>
+        </svg>
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Thailand</div>
+        <h3 class="closing-name">束腹</h3>
+        <div class="closing-roman">Belly Binding</div>
+        <p>不用黏貼式的束腹帶，而是用一條長布，一圈一圈繞上去，完全貼合妳的身形。很多媽媽產後連站都站不穩，包起來之後說：「有一種被撐住的感覺。」</p>
+        <div class="closing-feel">被撐住・貼合身形・站得安穩</div>
+      </div>
+    </div>
+    <div class="closing-item">
+      <figure class="closing-figure">
+        <span class="closing-num">04</span>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="中南美長布的條紋與流蘇">
+          <rect width="400" height="300" fill="#F2E9DC"/>
+          <g transform="rotate(-8 200 150)">
+            <rect x="-40" y="40" width="480" height="190" fill="#E9DDCB"/>
+            <rect x="-40" y="52" width="480" height="10" fill="#B8654A" opacity="0.75"/>
+            <rect x="-40" y="68" width="480" height="4" fill="#C89B3C" opacity="0.8"/>
+            <rect x="-40" y="92" width="480" height="22" fill="#D9C9B5"/>
+            <rect x="-40" y="122" width="480" height="6" fill="#4A5D3F" opacity="0.6"/>
+            <rect x="-40" y="136" width="480" height="30" fill="#EFE6D8"/>
+            <rect x="-40" y="174" width="480" height="6" fill="#4A5D3F" opacity="0.6"/>
+            <rect x="-40" y="188" width="480" height="22" fill="#D9C9B5"/>
+            <rect x="-40" y="214" width="480" height="4" fill="#C89B3C" opacity="0.8"/>
+            <rect x="-40" y="222" width="480" height="8" fill="#B8654A" opacity="0.75"/>
+            <g stroke="#C9B39A" stroke-width="2">
+              <path d="M10 230v26M24 230v30M38 230v24M52 230v28M66 230v26M80 230v30M94 230v24M108 230v28M122 230v26M136 230v30M150 230v24M164 230v28M178 230v26M192 230v30M206 230v24M220 230v28M234 230v26M248 230v30M262 230v24M276 230v28M290 230v26M304 230v30M318 230v24M332 230v28M346 230v26M360 230v30M374 230v24M388 230v28"/>
+            </g>
+          </g>
+        </svg>
+      </figure>
+      <div class="closing-body">
+        <div class="closing-origin">Latin America</div>
+        <h3 class="closing-name">關骨儀式</h3>
+        <div class="closing-roman">Closing the Bones</div>
+        <p>用長布從頭部開始，把整個人一層一層包裹起來，有點像全身的加壓按摩。被包住的那一刻，會湧上一種很深的安心，知道身邊有人守著妳。</p>
+        <div class="closing-feel">安心・被守護・全身放鬆</div>
+      </div>
+    </div>
+    </div>
+    <p class="closing-note">依妳的身體狀況搭配，預約諮詢時我們一起討論。</p>
   </div>
 </section>
 

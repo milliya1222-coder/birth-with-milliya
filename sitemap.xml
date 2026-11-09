@@ -252,6 +252,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://birthwithmilliya.com/blog/jaapa-oil-40-days/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://birthwithmilliya.com/blog/jaapa-dai/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://birthwithmilliya.com/blog/jaapa-kitchen/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://birthwithmilliya.com/blog/ayurveda-kitchen/</loc>
     <lastmod>2026-11-09</lastmod>
   </url>

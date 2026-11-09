@@ -933,6 +933,26 @@
         #F2E9DC;
     }
   }
+
+  /* Hero tagline: quiet text, not a button */
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: none;
+    color: var(--primary-dark);
+    padding: 0;
+    border-radius: 0;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    margin-bottom: 8px;
+  }
+  .hero-tag::before, .hero-tag::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
 </style>
   <script src="/analytics.js" defer></script>
 </head>
@@ -1381,23 +1401,6 @@
       <p>Space, air, fire, water, earth — Ayurveda holds that whatever makes the universe also makes you. This is a gentle interactive journey: from the five great elements, to your own constitution, and on to the three qualities of mind — so you can see what this moment of you is woven from.</p>
       <a href="/ayurveda/understand/" class="btn">Open the element journey →</a>
       <div class="quiz-meta">🪷 Interactive journey · five elements × three doshas × three gunas</div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top: 0;">
-  <div class="container">
-    <div class="quiz-banner">
-      <div class="quiz-dots">
-        <span style="background:#C89B3C;" title="Turmeric"></span>
-        <span style="background:#B8654A;" title="Cumin"></span>
-        <span style="background:#7FA88B;" title="Fennel"></span>
-      </div>
-      <div class="section-eyebrow">Kitchen · Where it begins</div>
-      <h2>Much of the damp and the heat can be settled from the kitchen</h2>
-      <p>Beyond the treatment room, what you eat each day matters just as much. This is a table you can look things up in directly — 49 spices, herbs and everyday Taiwanese ingredients. Start from the symptom, find the ingredient, then see how to use it and how much. Bloating, water retention, heat, restless sleep: each has an entry.</p>
-      <a href="/ayurveda/ingredients/" class="btn">Open the ingredient table →</a>
-      <div class="quiz-meta">🌿 49 ingredients · filter by symptom or action · searchable</div>
     </div>
   </div>
 </section>

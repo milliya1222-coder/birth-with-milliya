@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Ayurvedic Postpartum Care in Taipei — Which treatments suit you now? | Birth with Milliya</title>
+<meta name="description" content="Answer four short questions about your birth, how many weeks postpartum you are, feeding and what aches, and see which Ayurvedic postpartum treatments suit you now: warm-oil massage with Shirodhara, heated brick, salt pot, herbal ball, herbal bath, yoni steam, closing the bones and belly binding. In English, in Taipei." />
+<link rel="canonical" href="https://birthwithmilliya.com/en/ayurveda/postpartum/" />
+<link rel="alternate" hreflang="zh-Hant" href="https://birthwithmilliya.com/ayurveda/postpartum/" />
+<link rel="alternate" hreflang="ja" href="https://birthwithmilliya.com/ja/ayurveda/postpartum/" />
+<link rel="alternate" hreflang="en" href="https://birthwithmilliya.com/en/ayurveda/postpartum/" />
+<meta property="og:title" content="Let me take proper care of you | Ayurvedic postpartum care">
+<meta property="og:description" content="A one-minute quiz to find the postpartum care that suits you right now.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://birthwithmilliya.com/en/ayurveda/postpartum/">
+<meta property="og:image" content="https://birthwithmilliya.com/ayurveda/postpartum/img/og.jpg">
+<meta property="og:site_name" content="Birth with Milliya">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/images/logo/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;700&family=Noto+Sans:wght@400;500;700&display=swap">
+<style>
+html,body{margin:0}
+/* Layout: one narrow column like a printed care booklet — quiz first, then the eight treatments as illustrated chapters, booking at the end */
+:root{
+  --bg:#f6efe6; --paper:#fffaf3; --ink:#3b2a23; --soft:#76604f; --line:#e7d7c3;
+  --rust:#9c4a2c; --rust-ink:#fff; --gold:#a8822f; --chip:#f0e3d2; --ok:#4f7a4a; --hold:#9a6b1f;
+  --display:"Noto Serif",Georgia,serif;
+  --body:"Noto Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1e1814; --paper:#28201b; --ink:#f1e5d8; --soft:#c4ae9b; --line:#43362d;
+  --rust:#e0875f; --rust-ink:#1e1814; --gold:#d6b066; --chip:#352a23; --ok:#8cbf84; --hold:#e2b25e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1e1814; --paper:#28201b; --ink:#f1e5d8; --soft:#c4ae9b; --line:#43362d;
+  --rust:#e0875f; --rust-ink:#1e1814; --gold:#d6b066; --chip:#352a23; --ok:#8cbf84; --hold:#e2b25e; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:linear-gradient(180deg,var(--paper),var(--bg) 22%,var(--bg));background-attachment:fixed;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8}
+header{position:relative;overflow:hidden}
+header>*{position:relative;z-index:1}
+.hero-mandala{position:absolute;top:-46px;left:50%;transform:translateX(-50%);width:min(460px,122vw);height:min(460px,122vw);opacity:.1;color:var(--gold);pointer-events:none;z-index:0}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 72px;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.35}
+h1{font-size:clamp(1.8rem,6vw,2.5rem);color:var(--rust)}
+h2{font-size:1.5rem;color:var(--rust)}
+h3{font-size:1.15rem}
+p{margin:0}
+.eyebrow{color:var(--gold);letter-spacing:.18em;font-size:.82rem;text-transform:uppercase}
+.muted{color:var(--soft)}
+a{color:var(--rust)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+img{display:block;max-width:100%}
+.photo{filter:saturate(.9) sepia(.08) contrast(.97);border-radius:12px;object-fit:cover;width:100%}
+
+header{display:flex;flex-direction:column;gap:14px;text-align:center}
+.hero{aspect-ratio:4/3;max-height:460px}
+.cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;border:0;border-radius:999px;padding:10px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.primary{background:var(--rust);color:var(--rust-ink)}
+.btn.ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
+
+/* quiz */
+.quiz{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 18px;display:flex;flex-direction:column;gap:22px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+legend{font-family:var(--display);font-weight:700;font-size:1.08rem;padding:0;margin-bottom:10px}
+legend small{font-family:var(--body);font-weight:400;color:var(--soft);font-size:.85rem;margin-left:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{background:var(--chip);border-radius:999px;padding:7px 15px;cursor:pointer;user-select:none;transition:background .15s,color .15s}
+.chips input:checked+label{background:var(--rust);color:var(--rust-ink)}
+.chips input:focus-visible+label{outline:3px solid var(--gold);outline-offset:2px}
+
+.result{border-top:1px dashed var(--line);padding-top:20px;display:flex;flex-direction:column;gap:14px}
+.empty{color:var(--soft);text-align:center;padding:10px 0}
+.recs{display:flex;flex-direction:column;gap:10px;list-style:none;margin:0;padding:0}
+.rec{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;background:var(--bg);border-radius:12px;padding:10px;text-decoration:none;color:inherit}
+.rec img{width:72px;height:72px;border-radius:9px}
+.rec b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
+.rec .why{font-size:.88rem;color:var(--soft);line-height:1.6}
+.rec .note{font-size:.85rem;color:var(--hold)}
+.tag{display:inline-block;font-size:.75rem;letter-spacing:.05em;padding:1px 8px;border-radius:999px;background:var(--chip);color:var(--ok);margin-left:6px;vertical-align:2px}
+.hold{font-size:.9rem;color:var(--soft);background:var(--bg);border-radius:12px;padding:12px 14px}
+.hold b{color:var(--hold)}
+.hold ul{margin:4px 0 0;padding-left:1.2em}
+.send{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+.send textarea{width:100%;min-height:120px;font:inherit;font-size:.88rem;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:10px}
+
+/* services */
+.svc{display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+.svc.hit h2::after{content:"For you";font-family:var(--body);font-size:.75rem;font-weight:700;letter-spacing:.08em;background:var(--rust);color:var(--rust-ink);border-radius:999px;padding:2px 10px;margin-left:10px;vertical-align:4px}
+.svc .sub{color:var(--gold);font-size:.92rem;letter-spacing:.04em}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.trio figure{margin:0;position:relative;min-width:0}
+.trio img{aspect-ratio:4/5}
+.trio figcaption{position:absolute;left:6px;bottom:6px;background:rgba(30,20,15,.6);color:#fff;font-size:.72rem;padding:1px 8px;border-radius:999px}
+hr{border:0;border-top:1px solid var(--line);margin:0}
+
+.info{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 18px;display:flex;flex-direction:column;gap:10px}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0}
+.info dt{color:var(--soft)}
+.info dd{margin:0;min-width:0}
+.line-id{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+code{font-family:var(--body);font-weight:700;background:var(--chip);padding:2px 10px;border-radius:8px;user-select:all}
+.fields{display:grid;gap:12px}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld span{font-weight:700}
+.fld em,legend small{font-style:normal;font-weight:400;font-size:.8rem;color:var(--rust);margin-left:6px}
+.fld input,.fld textarea,#regText{font:inherit;font-size:16px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg);color:var(--ink);width:100%}
+#reg{display:flex;flex-direction:column;gap:20px;margin-top:6px}
+.checks{display:flex;flex-direction:column;gap:8px}
+.checks label{display:flex;gap:10px;align-items:flex-start;line-height:1.6;cursor:pointer}
+.checks input{width:20px;height:20px;margin-top:4px;accent-color:var(--rust);flex:none}
+.err{color:var(--rust);font-weight:700}
+.btn.big{font-size:1.1rem;padding:13px 30px;align-self:flex-start}
+.quiznote{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:.92rem;white-space:pre-line}
+.done{display:flex;flex-direction:column;gap:12px;border-top:1px dashed var(--line);padding-top:16px}
+.done ol{margin:0;padding-left:1.3em}
+.plans{display:flex;flex-direction:column;gap:18px;scroll-margin-top:16px}
+.plan-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.plan.featured{border:2px solid var(--rust)}
+.plan-tag{font-size:.8rem;letter-spacing:.12em;color:var(--gold);font-weight:700}
+.plan.featured .plan-tag{color:var(--rust)}
+.plan h3{font-size:1.3rem;color:var(--ink)}
+.plan-meta{font-size:.9rem;color:var(--soft)}
+.formula{font-size:.88rem;color:var(--soft);background:var(--bg);border-radius:10px;padding:6px 10px}
+.formula b{color:var(--ink);font-weight:600}
+.plan ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px;font-size:.93rem;line-height:1.65}
+.plan ol b{color:var(--rust)}
+.fit{font-size:.88rem;color:var(--soft);border-top:1px dashed var(--line);padding-top:8px;margin-top:auto}
+.small{font-size:.85rem}
+.price-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.price-line .price{font-family:var(--display);font-size:1.45rem;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.price-line .intern{font-size:.8rem;color:var(--rust);border:1px solid var(--rust);border-radius:999px;padding:1px 10px}
+.price-line .per{font-size:.85rem;color:var(--soft)}
+.price-line .was{font-family:var(--display);font-size:1.15rem;color:var(--soft);text-decoration:line-through;text-decoration-color:#d4452f;text-decoration-thickness:2.5px}
+.addons{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.addons ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
+.addons li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.addons li:last-child{border-bottom:0}
+.addons b{font-variant-numeric:tabular-nums;color:var(--ink)}
+.seats{font-size:.95rem;color:var(--soft)}
+.seats b{color:var(--rust);font-size:1.1rem}
+.pkg{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:.92rem}
+.care ul{margin:0;padding-left:1.2em;color:var(--soft)}
+footer{text-align:center;color:var(--soft);font-family:var(--display)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <svg class="hero-mandala" viewBox="0 0 400 400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <path id="pA" d="M200,200 C181,148 181,98 200,52 C219,98 219,148 200,200 Z"/>
+      <path id="pB" d="M200,200 C189,168 189,136 200,110 C211,136 211,168 200,200 Z"/>
+    </defs>
+    <g fill="none" stroke="currentColor" stroke-width="1.4">
+      <circle cx="200" cy="200" r="193" stroke-width="1" stroke-dasharray="1 7"/>
+      <circle cx="200" cy="200" r="178"/>
+      <use href="#pA" transform="rotate(0 200 200)"/><use href="#pA" transform="rotate(30 200 200)"/><use href="#pA" transform="rotate(60 200 200)"/><use href="#pA" transform="rotate(90 200 200)"/><use href="#pA" transform="rotate(120 200 200)"/><use href="#pA" transform="rotate(150 200 200)"/><use href="#pA" transform="rotate(180 200 200)"/><use href="#pA" transform="rotate(210 200 200)"/><use href="#pA" transform="rotate(240 200 200)"/><use href="#pA" transform="rotate(270 200 200)"/><use href="#pA" transform="rotate(300 200 200)"/><use href="#pA" transform="rotate(330 200 200)"/>
+      <circle cx="200" cy="200" r="150" stroke-dasharray="3 6"/>
+      <use href="#pB" transform="rotate(22.5 200 200)"/><use href="#pB" transform="rotate(67.5 200 200)"/><use href="#pB" transform="rotate(112.5 200 200)"/><use href="#pB" transform="rotate(157.5 200 200)"/><use href="#pB" transform="rotate(202.5 200 200)"/><use href="#pB" transform="rotate(247.5 200 200)"/><use href="#pB" transform="rotate(292.5 200 200)"/><use href="#pB" transform="rotate(337.5 200 200)"/>
+      <circle cx="200" cy="200" r="104"/>
+      <circle cx="200" cy="200" r="31"/>
+      <circle cx="200" cy="200" r="9" fill="currentColor" stroke="none"/>
+    </g>
+  </svg>
+  <p class="eyebrow">Ayurvedic postpartum care · Taipei</p>
+  <h1>Let me take proper care of you</h1>
+  <p class="muted">A complete postpartum treatment of about three and a half hours, entirely yours</p>
+  <img class="photo hero" src="/ayurveda/postpartum/img/hero.jpg" alt="Warm herbal oil falling from a copper vessel onto the forehead">
+  <div class="cta"><a class="btn primary" href="#quiz">Take the one-minute quiz</a><a class="btn ghost" href="#register">Go straight to booking</a></div>
+</header>
+
+<section class="quiz" id="quiz" aria-labelledby="quiz-h">
+  <div>
+    <h2 id="quiz-h">Which treatments suit you now?</h2>
+    <p class="muted">Answer a few questions and the treatments that suit this stage will appear below.</p>
+  </div>
+  <form id="f" autocomplete="off">
+  <div style="display:flex;flex-direction:column;gap:22px">
+    <fieldset><legend>1. How did you give birth?</legend><div class="chips" data-name="birth"></div></fieldset>
+    <fieldset id="woundSet" hidden><legend>How is your caesarean incision now?</legend><div class="chips" data-name="wound"></div></fieldset>
+    <fieldset><legend>2. How long ago was the birth?</legend><div class="chips" data-name="week"></div></fieldset>
+    <fieldset><legend>3. Are you breastfeeding?</legend><div class="chips" data-name="feed"></div></fieldset>
+    <fieldset><legend>4. What is bothering you?<small>choose any</small></legend><div class="chips" data-name="pain" data-multi="1"></div></fieldset>
+  </div>
+  </form>
+  <div class="result" aria-live="polite" id="result"></div>
+</section>
+
+<section id="services" style="display:flex;flex-direction:column;gap:36px">
+  <div><p class="eyebrow">Eight treatments</p><h2>What each treatment does</h2></div>
+  <div id="svcList" style="display:flex;flex-direction:column;gap:36px"></div>
+</section>
+
+<section id="plans" class="plans">
+  <div><p class="eyebrow">Choose your pace</p><h2>A single session, or a full journey of recovery</h2>
+  <p class="muted">Every session begins with a warm-oil treatment and Shirodhara, at least two and a half hours, so a postpartum body has time to truly let go. In a course, each session has its own focus, moving from gentle to deep and from local to whole-body, shaped around how many weeks postpartum you are and how you feel.</p></div>
+  <div class="plan-grid">
+    <article class="plan">
+      <p class="plan-tag">Basic</p><h3>Warm-oil treatment + Shirodhara</h3>
+      <p class="plan-meta">2.5-hour treatment + about 30 minutes for consultation and settling · <b>postpartum or not</b></p>
+      <p class="price-line"><span class="price">NT$3,800</span><span class="per">first visit NT$2,800</span></p>
+      <p>Simple, and deep. Warmed herbal oil, worked in slowly from head to toe, and finally a thread of warm oil from a copper vessel onto the forehead. It calms the nerves and brings you back into your body.</p>
+      <ol>
+        <li><b>Full-body warm-oil massage</b>　scalp → back and front → arms and legs</li>
+        <li><b>Shirodhara</b>　warm herbal oil poured slowly onto the centre of the forehead — the deepest rest Ayurveda offers</li>
+      </ol>
+      <p class="fit">For you if: it is your first time, you want to feel it first, or you simply need deep rest and better sleep</p>
+    </article>
+    <article class="plan">
+      <p class="plan-tag">Single · set</p><h3>Postpartum full set</h3>
+      <p class="plan-meta">About 3.5–4 hours in all (basic + two closing treatments)</p>
+      <p class="price-line"><span class="price">NT$4,900</span></p>
+      <ol>
+        <li><b>Warm-oil treatment + Shirodhara　2.5 hours</b>　scalp → back and front → copper-vessel oil</li>
+        <li><b>Yoni herbal steam</b>　gentle herbal steam for the pelvic floor after birth</li>
+        <li><b>Herbal bath</b>　a herbal foot bath instead in the early weeks</li>
+      </ol>
+      <p class="fit">For you if: you want to be thoroughly cared for in one visit. For a herbal ball or heated brick set instead, see <a href="/en/ayurveda/#pricing">the main page</a></p>
+    </article>
+    <article class="plan">
+      <p class="plan-tag">3-session course</p><h3>Warming recovery</h3>
+      <p class="plan-meta">3 sessions · about 3.5–4 hours each · use within 6 months, can be split across two visits to Taiwan</p>
+      <p class="price-line"><span class="price">NT$14,400</span><span class="per">NT$4,800 per session</span></p>
+      <p class="formula">Each time: <b>warm-oil treatment + Shirodhara</b> + <b>one warming treatment</b> + <b>one closing treatment</b></p>
+      <ol>
+        <li><b>Loosen and warm</b>　oil + heated brick + herbal bath</li>
+        <li><b>Deep warmth</b>　oil + salt pot + yoni steam</li>
+        <li><b>Bringing the body back</b>　oil + herbal ball + closing the bones</li>
+      </ol>
+      <p class="fit">For you if: your back aches, you feel the cold, and you want to feel a real difference</p>
+    </article>
+    <article class="plan featured">
+      <p class="plan-tag">5-session course · most complete</p><h3>Full postpartum recovery</h3>
+      <p class="plan-meta">5 sessions · about 3.5–4 hours each · use within 9 months, can be split across two visits to Taiwan</p>
+      <p class="price-line"><span class="price">NT$22,500</span><span class="per">NT$4,500 per session</span></p>
+      <p class="formula">Each time: <b>warm-oil treatment + Shirodhara</b> + <b>one warming treatment</b> + <b>one closing treatment</b></p>
+      <ol>
+        <li><b>Assessment and warming</b>　body assessment + oil + herbal ball (gentle) + belly binding (with how to bind at home)</li>
+        <li><b>Gentle care</b>　oil + heated brick + yoni steam</li>
+        <li><b>Deep warmth</b>　oil + salt pot + herbal bath</li>
+        <li><b>Settling the nerves</b>　oil + heated brick + herbal bath</li>
+        <li><b>Bringing the body back</b>　oil + salt pot + closing the bones + suggestions for care at home</li>
+      </ol>
+      <p class="fit">For you if: you are within three months of birth with several discomforts, or you want to walk through the whole recovery period properly</p>
+    </article>
+  </div>
+  <div class="addons">
+    <h3>Add-ons</h3>
+    <p class="muted small">Added after the basic session, if you would like to build your own. Yoni steam can also be booked on its own (about 60 minutes, NT$1,200).</p>
+    <ul>
+      <li><span>Salt pot / herbal ball</span><b>+1,000</b></li>
+      <li><span>Heated brick</span><b>+1,000</b></li>
+      <li><span>Yoni herbal steam</span><b>+800</b></li>
+      <li><span>Herbal bath (or foot bath)</span><b>+600</b></li>
+      <li><span>Belly binding (with how to bind at home)</span><b>+900</b></li>
+      <li><span>Closing the bones</span><b>+1,200</b></li>
+    </ul>
+  </div>
+  <p class="muted small">Every course session includes the warm-oil treatment and Shirodhara, paired with one warming treatment (heated brick, salt pot or herbal ball) and one closing treatment (closing the bones, yoni steam, belly binding or herbal bath). This is a suggested sequence; the actual plan follows how many weeks postpartum you are, how you gave birth, and how you feel on the day (in the first week, for example, we begin with a foot bath, yoni steam and binding). <b>First visit NT$2,800</b>: on your first booking the basic session is NT$2,800; for a set, add the add-on price (a first-visit postpartum full set is NT$4,200). Once per person; courses are not included. If your body is not ready for a course session, it can be postponed once. Home-visit travel is charged separately. All prices are in Taiwan dollars.</p>
+  <p class="muted small">♡ <b>For families I have supported as a doula</b>: if you booked a <a href="/en/#plans">doula support plan</a> with me during pregnancy, the plans above are 10% off within six months after birth (add-ons at the listed price; not combined with the first-visit rate).</p>
+</section>
+
+<section class="info" id="register">
+  <h2>Booking</h2>
+  <dl>
+    <dt>Plans</dt><dd>Basic (warm-oil treatment + Shirodhara, postpartum or not), postpartum full set, 3-session course, 5-session course — <a href="#plans">see what is included</a></dd>
+    <dt>Where</dt><dd>My studio in Beitou, Taipei, or a home visit (travel charged by area). If you are postpartum, please do ask — your baby can be with you. Home visits depend on when I am in Taiwan, so please book early</dd>
+    <dt>Suits</dt><dd>Within a year of birth; for other stages, let us talk first</dd>
+    <dt>Fees</dt><dd>Basic NT$3,800 (first visit NT$2,800) · postpartum full set NT$4,900 · 3-session course NT$14,400 (within 6 months) · 5-session course NT$22,500 (within 9 months). Add-ons as listed above. Home-visit travel extra. Mothers who booked a doula support plan receive 10% off within six months after birth</dd>
+  </dl>
+  <p class="muted">All bookings go through this form, which takes about five minutes. It asks about your birth and recovery for safety; I will read it and then arrange a time with you.</p>
+  <p id="quizNote" class="quiznote"></p>
+  <div class="cta" style="justify-content:flex-start">
+    <a class="btn primary big" href="https://docs.google.com/forms/d/e/1FAIpQLScybScq2cEMowCyMLvMx3ardIxugvnjcwlDD1FF4INz7DBWkg/viewform" target="_blank" rel="noopener">Open the booking form →</a>
+    <button class="btn ghost" type="button" id="copyQuiz" hidden>Copy my quiz result</button>
+  </div>
+  <p id="copyDone" class="muted small" hidden></p>
+  <p class="muted small">A question first? <a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">Message me on LINE</a> or email <a href="mailto:birthwithmilliya@gmail.com">birthwithmilliya@gmail.com</a> — I reply personally within one or two days 🌿</p>
+</section>
+
+<section class="care">
+  <h3>Please note</h3>
+  <ul>
+    <li>After a vaginal birth, local warmth can begin from one week. After a caesarean, wait until the incision has fully healed (about three to four weeks) before warmth on the abdomen or belly binding.</li>
+    <li>If you have heavy bleeding, high blood pressure, or a wound that is red, swollen or inflamed, please pause and we will book once things are stable.</li>
+    <li>This quiz is a first suggestion only; we confirm the details together beforehand. This is care and rest for body and mind, not a substitute for medical treatment.</li>
+  </ul>
+</section>
+
+<footer><a href="/en/ayurveda/" style="color:inherit">Birth with Milliya · Ayurvedic care</a></footer>
+</div>
+
+<script>
+const IMG = {"H04": "/ayurveda/postpartum/img/h04.jpg", "2": "/ayurveda/postpartum/img/2.jpg", "B09": "/ayurveda/postpartum/img/b09.jpg", "S03": "/ayurveda/postpartum/img/s03.jpg", "36": "/ayurveda/postpartum/img/36.jpg", "9": "/ayurveda/postpartum/img/9.jpg", "24": "/ayurveda/postpartum/img/24.jpg", "1": "/ayurveda/postpartum/img/1.jpg", "B13": "/ayurveda/postpartum/img/b13.jpg", "B06": "/ayurveda/postpartum/img/b06.jpg", "O12": "/ayurveda/postpartum/img/o12.jpg", "6": "/ayurveda/postpartum/img/6.jpg", "H01": "/ayurveda/postpartum/img/h01.jpg", "Q10": "/ayurveda/postpartum/img/q10.jpg", "21": "/ayurveda/postpartum/img/21.jpg", "23": "/ayurveda/postpartum/img/23.jpg", "H05": "/ayurveda/postpartum/img/h05.jpg", "Q03": "/ayurveda/postpartum/img/q03.jpg", "S15": "/ayurveda/postpartum/img/s15.jpg", "37": "/ayurveda/postpartum/img/37.jpg", "S16": "/ayurveda/postpartum/img/s16.jpg", "17": "/ayurveda/postpartum/img/17.jpg", "22": "/ayurveda/postpartum/img/22.jpg", "34": "/ayurveda/postpartum/img/34.jpg", "Q09": "/ayurveda/postpartum/img/q09.jpg"};
+const SVC = [
+ {id:"oil",name:"Ayurvedic warm-oil massage",sub:"Scalp → back and front → copper-vessel oil",imgs:[["6","Scalp"],["2","Back and front"],["O12","Copper-vessel oil"]],
+  text:"After birth the body tends to feel dry, cold and tight — what Ayurveda calls raised Vata (the energy of air and movement). We begin at the scalp, loosening slowly with warm herbal oil; then the back and front, easing the neck and shoulders, arms, lower back and legs; and finally warm oil flows slowly from a copper vessel across the forehead, and the mind grows quiet with it."},
+ {id:"brick",name:"Heated brick massage",sub:"Focused on the lower body · lower back, back and legs",imgs:[["H04","Heating"],["H05","Wrapping in leaves"],["H01","Treatment"]],
+  text:"Bricks are heated over a flame, then wrapped in banana leaf and thick cloth so the warmth reaches the body steadily and gently. Pressed along the back, hips and legs, it eases the aches built up from carrying and feeding a baby."},
+ {id:"salt",name:"Salt pot warming",sub:"Traditional herbal warming × Ayurveda, with local Taiwanese herbs",imgs:[["9","Roasting the salt"],["17","Laying the herbs"],["22","Warming"]],
+  text:"Coarse salt is roasted in a clay pot lined with fresh banana leaf, turmeric, old ginger, lemongrass, mugwort and citrus leaves, then wrapped in cloth. The warmth is moved slowly along the back, neck and shoulders, and the scent of the herbs opens as it goes."},
+ {id:"ball",name:"Herbal ball massage",sub:"Citrus-scented postpartum herbal balls · about 150 g each",imgs:[["Q03","Herbal ball"],["Q09","Back"],["Q10","Legs"]],
+  text:"Lemongrass, lime leaf, turmeric, fenugreek, fennel, old ginger, mugwort and Blumea, with coarse salt, tied into cotton bundles and heated, then pressed and rolled over the back, neck and thighs. The citrus scent lets the mood loosen too."},
+ {id:"bath",name:"Herbal bath",sub:"Letting the body sink into warm, herb-scented water",imgs:[["B09","Herbs"],["B13","Straining"],["B06","Bathing"]],
+  text:"Safflower, turmeric, lemongrass, dried leaves and spices are simmered into a warm herbal brew and strained into the bath. The moment you sink in, the body slowly lets go."},
+ {id:"steam",name:"Yoni herbal steam",sub:"Gentle herbal steam for the most private, hardest-working part of you",imgs:[["S16","Herbs"],["S03","Steam chair"],["S15","Resting"]],
+  text:"Leaves, flowers and spices are simmered into warm herbal water placed beneath a steam chair. Wrapped in a cape, you sit while gentle steam cares for the part of you that worked hardest in birth. You are covered throughout and can relax completely."},
+ {id:"bones",name:"Closing the bones",sub:"Gently bringing an opened body back together",imgs:[["24","Tightening"],["23","Wrapping"],["21","Resting"]],
+  text:"In birth the body opens completely to welcome the baby. Closing the bones wraps and gently tightens long cloths from head to foot, section by section, like one very long embrace. It marks the end of a journey and helps a mother return to herself."},
+ {id:"bind",name:"Belly binding",sub:"A cloth wrap for core support and steadiness",imgs:[["34","Beginning"],["37","Wrapping"],["36","Finished"]],
+  text:"A long cloth is wound round the abdomen and pelvis, giving a core that is still soft after birth steady support. I also show you how to bind it yourself at home."},
+];
+const Q = {
+ birth:[["vaginal","Vaginal birth"],["cs","Caesarean"]],
+ wound:[["healed","Healed"],["healing","Still healing"]],
+ week:[["w1","Within 1 week"],["w23","2–3 weeks"],["m3","4 weeks – 3 months"],["y1","3 months – 1 year"],["y1p","More than 1 year"]],
+ feed:[["yes","Breastfeeding fully"],["mix","Breast and bottle"],["no","Not breastfeeding"]],
+ pain:[["back","Lower back pain"],["neck","Stiff neck and shoulders"],["swell","Swelling"],["tired","Exhaustion, poor sleep"],["mood","Low mood"],["pelvis","Pelvic discomfort"],["belly","Loose belly"],["cold","Feeling cold, cold hands and feet"],["peri","Perineal discomfort"]],
+};
+const MATCH = {back:["brick","salt","ball"],neck:["oil","ball","salt"],swell:["salt","bath"],tired:["oil","bath"],mood:["oil","bath","bones"],pelvis:["bones","bind"],belly:["bind","bones"],cold:["salt","brick","steam"],peri:["steam"]};
+const label = (k,v)=>Object.fromEntries(Q[k])[v];
+
+for (const el of document.querySelectorAll("#f .chips")){
+  const k=el.dataset.name, multi=el.dataset.multi;
+  el.innerHTML = Q[k].map(([v,t])=>`<input type="${multi?"checkbox":"radio"}" name="${k}" id="${k}-${v}" value="${v}"><label for="${k}-${v}">${t}</label>`).join("");
+}
+const byId = Object.fromEntries(SVC.map(s=>[s.id,s]));
+document.getElementById("svcList").innerHTML = SVC.map((s,i)=>`${i?"<hr>":""}<article class="svc" id="svc-${s.id}">
+  <h2>${s.name}</h2><p class="sub">${s.sub}</p>
+  <div class="trio">${s.imgs.map(([k,c],j)=>`<figure><img class="photo" loading="lazy" src="${IMG[k]}" alt="${s.name}: ${c}"><figcaption>${"①②③"[j]} ${c}</figcaption></figure>`).join("")}</div>
+  <p>${s.text}</p></article>`).join("");
+
+function plan(a){
+  const allow = {}, hold = {};
+  const all = SVC.map(s=>s.id);
+  if (a.week==="w1"){
+    ["bath","steam","bind"].forEach(i=>allow[i]=[]);
+    allow.bath.push("a foot bath this week"); allow.steam.push("light and gentle");
+    ["oil","brick","bones"].forEach(i=>hold[i]="from week 4");
+    ["salt","ball"].forEach(i=>hold[i]="from week 2");
+  } else if (a.week==="w23"){
+    ["ball","salt","bath","steam","bind"].forEach(i=>allow[i]=[]);
+    allow.ball.push("a gentle touch"); allow.salt.push("mainly back, neck and shoulders");
+    ["oil","brick","bones"].forEach(i=>hold[i]="from week 4");
+  } else all.forEach(i=>allow[i]=[]);
+  if (a.birth==="cs" && a.wound!=="healed"){
+    if (allow.bind){ delete allow.bind; hold.bind="once the incision has fully healed (about 3–4 weeks)"; }
+    ["salt","ball","brick","oil"].forEach(i=>allow[i]&&allow[i].push("avoiding the abdomen; back, shoulders and legs"));
+  }
+  if (a.feed==="yes"||a.feed==="mix"){
+    ["ball","salt"].forEach(i=>allow[i]&&allow[i].push("essential-oil-free blend while breastfeeding"));
+    allow.steam&&allow.steam.push("a gentle herbal blend while breastfeeding");
+  }
+  const pains=a.pain||[];
+  const scored = Object.keys(allow).map(id=>{
+    const hits=pains.filter(p=>MATCH[p].includes(id));
+    return {id,hits,notes:allow[id],score:hits.length,order:all.indexOf(id)};
+  }).sort((x,y)=>y.score-x.score||x.order-y.order);
+  let picks = pains.length ? scored.filter(s=>s.score>0) : scored;
+  if (picks.length<3) picks = picks.concat(scored.filter(s=>!picks.includes(s)).slice(0,3-picks.length));
+  picks = picks.slice(0,5);
+  return {picks,hold,pains};
+}
+
+function answers(){
+  const fd=new FormData(document.getElementById("f"));
+  return {birth:fd.get("birth"),wound:fd.get("wound"),week:fd.get("week"),feed:fd.get("feed"),pain:fd.getAll("pain")};
+}
+
+let QUIZ=null;
+function pkgHint(a,pains){
+  const early = a.week==="w1"||a.week==="w23"||a.week==="m3";
+  if (pains.length>=3 || (early && pains.length>=2)) return `💡 You chose ${pains.length} discomforts. The <a href="#plans"><b>5-session course · Full postpartum recovery</b></a> would let us take one focus at a time and bring your body back slowly.`;
+  if (pains.length>=1) return `💡 Besides a single set, the <a href="#plans"><b>3-session course · Warming recovery</b></a> goes deeper each time: loosening, deep warmth, then bringing the body back.`;
+  return `💡 If you would like to feel it first, the <a href="#plans"><b>basic warm-oil treatment + Shirodhara</b></a> is a lovely start — NT$2,800 on your first visit.`;
+}
+function render(){
+  const a=answers();
+  document.getElementById("woundSet").hidden = a.birth!=="cs";
+  const r=document.getElementById("result");
+  document.querySelectorAll(".svc").forEach(e=>e.classList.remove("hit"));
+  if(!a.birth||!a.week||(a.birth==="cs"&&!a.wound)){
+    r.innerHTML=`<p class="empty">Choose how you gave birth and how long ago, and the treatments that suit you will appear here.</p>`; QUIZ=null; updateQuizNote(); return;
+  }
+  const {picks,hold,pains}=plan(a);
+  picks.forEach(p=>document.getElementById("svc-"+p.id).classList.add("hit"));
+  const late = a.week==="y1p" ? `<p class="hold">More than a year after birth is fine too — we will talk about how you are now before planning.</p>` : "";
+  const holdIds=Object.keys(hold);
+  r.innerHTML=`<h3>${picks.length} treatments for you</h3>
+  <ul class="recs">${picks.map(p=>{const s=byId[p.id];
+    const why=p.hits.length?`Good for ${p.hits.map(h=>label("pain",h).toLowerCase()).join(", ")}`:"Safe to have at this stage";
+    return `<li><a class="rec" href="#svc-${s.id}"><img class="photo" src="${IMG[s.imgs[0][0]]}" alt=""><span><b>${s.name}</b>${p.score>1?'<span class="tag">Especially for you</span>':""}<br><span class="why">${why}</span>${p.notes.length?`<br><span class="note">${p.notes.join("・")}</span>`:""}</span></a></li>`}).join("")}</ul>
+  ${holdIds.length?`<div class="hold"><b>Not yet at this stage</b><ul>${holdIds.map(i=>`<li>${byId[i].name}: ${hold[i]}</li>`).join("")}</ul></div>`:""}
+  ${late}
+  <p class="pkg">${pkgHint(a,pains)}</p>
+  <div class="send">
+    <p class="muted">Like this combination? Scroll down to booking, where you can copy your quiz result and paste it into the last box of the form.</p>
+    <a class="btn primary" href="#register">Next: booking ↓</a>
+  </div>`;
+  QUIZ={a,picks,pains};
+  updateQuizNote();
+}
+function quizLines(){
+  if(!QUIZ) return [];
+  const {a,picks,pains}=QUIZ;
+  return [`Birth: ${label("birth",a.birth)}${a.birth==="cs"?` (incision: ${label("wound",a.wound).toLowerCase()})`:""}`,
+    `Since birth: ${label("week",a.week)}`,
+    a.feed?`Feeding: ${label("feed",a.feed)}`:"",
+    `Discomforts: ${pains.length?pains.map(p=>label("pain",p)).join(", "):"none chosen"}`,
+    `Suggested: ${picks.map(p=>byId[p.id].name).join(", ")}`].filter(Boolean);
+}
+function updateQuizNote(){
+  const n=document.getElementById("quizNote");
+  document.getElementById("copyQuiz").hidden = !QUIZ;
+  n.innerHTML = QUIZ ? `<b>Your quiz result:</b>
+${quizLines().join(String.fromCharCode(10))}
+
+Tap “Copy my quiz result”, then paste it into the last box of the booking form.` : `Haven’t taken the quiz? <a href="#quiz">Go back up and spend a minute on it</a> — you can copy the result into the form. Or simply book without it.`;
+}
+async function copyText(text){
+  try{ await navigator.clipboard.writeText(text); return true; }catch(e){ return false; }
+}
+document.getElementById("copyQuiz").addEventListener("click",async()=>{
+  const ok=await copyText(["[Postpartum quiz result]",...quizLines()].join(String.fromCharCode(10)));
+  const d=document.getElementById("copyDone"); d.hidden=false;
+  d.textContent = ok ? "Copied — paste it into the last box of the form." : "This browser cannot copy automatically; please select the result above and copy it.";
+});
+updateQuizNote();
+document.getElementById("f").addEventListener("change",render);
+document.getElementById("f").addEventListener("submit",e=>e.preventDefault());
+render();
+</script>
+
+<script src="/analytics.js" defer></script>
+</body>
+</html>

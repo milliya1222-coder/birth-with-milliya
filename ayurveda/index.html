@@ -436,6 +436,11 @@
     margin-right: auto;
   }
   .featured-tier { border-color: var(--primary); border-width: 2px; }
+  .path-choice { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; max-width: 640px; margin: 32px auto 0; }
+  .path-card { display: flex; flex-direction: column; gap: 6px; padding: 20px 24px; border: 1px solid var(--line); border-radius: 16px; background: #fff; text-decoration: none; transition: border-color .2s, transform .2s; }
+  .path-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .path-who { font-family: 'Noto Serif TC', serif; font-size: 18px; color: var(--text-dark); }
+  .path-what { font-size: 13px; color: var(--text-soft); }
   .featured-tier .price-tier-header { background: var(--primary); color: #fff; }
   .featured-tier .price-tier-name { color: #fff; }
   .featured-tier .price-tier-tag { color: rgba(255,255,255,0.85); }
@@ -1319,78 +1324,138 @@
     <div class="section-eyebrow">Pricing · 服務方案</div>
     <h2 class="section-title">為不同需求的妳設計</h2>
     <div class="divider"></div>
-    <p class="section-intro">第一次接觸阿育吠陀，建議從入門體驗開始；如果妳已經清楚自己需要深度修復，完整套組是最完整的選擇。</p>
+    <p class="section-intro">每一次都從「溫油按摩＋眉心淋油」這個基礎開始，至少 2.5 小時，讓身體有足夠的時間真正放下。想多一點溫熱或清理，就選一個主題套組；產後的妳，<a href="postpartum/#plans">產後頁</a>有依週數安排的 3 次、5 次包套。</p>
 
-    <!-- 純按摩 -->
+    <!-- 基礎款 -->
     <div class="price-tier">
       <div class="price-tier-header">
-        <span class="price-tier-name">純按摩 · Abhyanga</span>
-        <span class="price-tier-tag">Abhyanga Only</span>
+        <span class="price-tier-name">基礎款 · 溫油按摩 ＋ 眉心淋油</span>
+        <span class="price-tier-tag">Abhyanga + Shirodhara</span>
       </div>
       <div class="price-options">
         <div class="price-option">
           <div class="price-option-info">
-            <div class="price-option-title">入門體驗 · 1.5 小時</div>
-            <div class="price-option-desc">溫油按摩 90 分 ＋ <strong>眉心淋油 Shirodhara</strong></div>
+            <div class="price-option-title">溫油全身按摩 ＋ 眉心淋油 · 療程 2.5 小時</div>
+            <div class="price-option-desc">前後諮詢與準備約 30 分鐘，全程約 3 小時｜<strong>第一次來的妳，首次體驗價 NT$ 2,800</strong></div>
           </div>
-          <div class="price-option-price">NT$ 3,500</div>
+          <div class="price-option-price">NT$ 3,800</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主題套組 -->
+    <div class="price-tier featured-tier">
+      <div class="price-tier-header">
+        <span class="price-tier-name">主題套組 · 基礎款再加一項</span>
+        <span class="price-tier-tag">比單點加總更划算</span>
+      </div>
+      <div class="price-options">
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">完整套組 · 全程約 3.5–4 小時</div>
+            <div class="price-option-desc">基礎款 ＋ 會陰薰蒸 ＋ 藥草浴｜產後與深度調養最推薦</div>
+          </div>
+          <div class="price-option-price">NT$ 4,900</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
-            <div class="price-option-title">從容體驗 · 2 小時</div>
-            <div class="price-option-desc">溫油按摩 120 分 ＋ <strong>眉心淋油 Shirodhara</strong></div>
+            <div class="price-option-title">藥草球套組 · 全程約 3.5 小時</div>
+            <div class="price-option-desc">基礎款 ＋ 溫熱藥草球（或鹽罐熱敷）</div>
+          </div>
+          <div class="price-option-price">NT$ 4,600</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">熱磚套組 · 全程約 3.5 小時</div>
+            <div class="price-option-desc">基礎款 ＋ 熱石熱磚</div>
+          </div>
+          <div class="price-option-price">NT$ 4,600</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">坐薰套組 · 全程約 3.5 小時</div>
+            <div class="price-option-desc">基礎款 ＋ 會陰藥草薰蒸</div>
+          </div>
+          <div class="price-option-price">NT$ 4,400</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">藥草浴套組 · 全程約 3.5 小時</div>
+            <div class="price-option-desc">基礎款 ＋ 藥草浴</div>
           </div>
           <div class="price-option-price">NT$ 4,200</div>
         </div>
       </div>
     </div>
 
-    <!-- 完整套組 -->
-    <div class="price-tier featured-tier">
-      <div class="price-tier-header">
-        <span class="price-tier-name">完整套組 · 按摩 + 薰蒸 + 藥草浴</span>
-        <span class="price-tier-tag">推薦 · Full Therapy</span>
-      </div>
-      <div class="price-options">
-        <div class="price-option">
-          <div class="price-option-info">
-            <div class="price-option-title">完整套組 · 約 2.5 小時</div>
-            <div class="price-option-desc">溫油按摩 90 分 ＋ <strong>眉心淋油 Shirodhara</strong> ＋ 會陰薰蒸 ＋ 藥草浴</div>
-          </div>
-          <div class="price-option-price">NT$ 5,800</div>
-        </div>
-        <div class="price-option">
-          <div class="price-option-info">
-            <div class="price-option-title">加長完整套組 · 約 3 小時</div>
-            <div class="price-option-desc">溫油按摩延長至 120 分 ＋ <strong>眉心淋油 Shirodhara</strong> ＋ 會陰薰蒸 ＋ 藥草浴</div>
-          </div>
-          <div class="price-option-price">NT$ 6,800</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 純坐薰 -->
+    <!-- 單品加購 -->
     <div class="price-tier">
       <div class="price-tier-header">
-        <span class="price-tier-name">純坐薰 · Yoni Steam</span>
-        <span class="price-tier-tag">Herbal Steam Only</span>
+        <span class="price-tier-name">單品 · 想自己搭配的妳</span>
+        <span class="price-tier-tag">À la carte</span>
       </div>
       <div class="price-options">
         <div class="price-option">
           <div class="price-option-info">
-            <div class="price-option-title">純坐薰 · 約 60 分鐘</div>
-            <div class="price-option-desc">身心諮詢 ＋ 會陰藥草薰蒸 ＋ 靜養</div>
+            <div class="price-option-title">溫熱藥草球／鹽罐熱敷</div>
+            <div class="price-option-desc">加購在基礎款之後</div>
           </div>
-          <div class="price-option-price">NT$ 1,500</div>
+          <div class="price-option-price">＋1,000</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">熱石熱磚</div>
+            <div class="price-option-desc">加購在基礎款之後</div>
+          </div>
+          <div class="price-option-price">＋1,000</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">會陰藥草薰蒸</div>
+            <div class="price-option-desc">加購在基礎款之後｜也可單獨預約：身心諮詢 ＋ 坐薰 ＋ 靜養，約 60 分鐘 NT$ 1,200</div>
+          </div>
+          <div class="price-option-price">＋800</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">藥草浴</div>
+            <div class="price-option-desc">加購在基礎款之後</div>
+          </div>
+          <div class="price-option-price">＋600</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">束腹（含居家綁法教學）</div>
+            <div class="price-option-desc">產後的妳，加購在基礎款之後</div>
+          </div>
+          <div class="price-option-price">＋900</div>
+        </div>
+        <div class="price-option">
+          <div class="price-option-info">
+            <div class="price-option-title">關骨儀式</div>
+            <div class="price-option-desc">產後的妳，加購在基礎款之後</div>
+          </div>
+          <div class="price-option-price">＋1,200</div>
         </div>
       </div>
     </div>
 
     <p class="price-note">
-      ⏱ 標示的是<strong>療程本身</strong>的時間。前後的身心諮詢、更衣與休息另需 30–50 分鐘，請預留充裕的時間給自己。<br>
+      ⏱ 「全程」已含前後的身心諮詢、更衣與休息，請預留充裕的時間給自己。<br>
+      🌱 <strong>首次體驗價 NT$ 2,800</strong>：第一次預約的妳，基礎款享首次價；想做套組，就以 2,800 再加上單品加購價（例如首次做完整套組＝NT$ 4,200）。每人限用一次，產後包套不適用。<br>
       ✨ 每一個按摩方案都包含 <strong>Shirodhara（眉心淋油）</strong>——溫油細細落在眉心正中央的那段時間，是阿育吠陀最深的一種休息。創始客戶回饋裡被提到最多次的，就是這一段。<br>
       💫 北投工作室無額外費用｜到府車馬費依距離：台北市與鄰近免費–NT$200、大台北 NT$300–500、外圍（淡水・新店・汐止・林口）約 NT$600、桃園‧新竹 NT$1,000｜假日 / 夜間 +NT$500<br>
     </p>
+    <div class="path-choice">
+      <a class="path-card" href="postpartum/">
+        <span class="path-who">我是產後媽媽</span>
+        <span class="path-what">依產後週數的小問卷＋3 次、5 次包套 →</span>
+      </a>
+      <a class="path-card" href="https://docs.google.com/forms/d/e/1FAIpQLSeEDVIrbETJGQMQ1klpne87tIPtagF4qPY5_vfB6Mq5Wnez1A/viewform" target="_blank" rel="noopener">
+        <span class="path-who">我想調養身心</span>
+        <span class="path-what">直接填預約表單，約 3 分鐘 →</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1403,7 +1468,7 @@
     <p style="font-size: 17px;">這份信任把這個服務養大了。<strong>創始期到此圓滿，台北的療程回到定價。</strong><br>而妳們的話留了下來，就在下面。</p>
     <p style="font-size: 15px; opacity: 0.95; margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
       給錯過的妳：定價本身就已經包含完整的諮詢時間與 Shirodhara（眉心淋油）。<br>
-      沒有少給任何東西，只是不再有創始價。
+      第一次來，基礎款有首次體驗價 NT$ 2,800。
     </p>
   </div>
 </section>
@@ -1438,25 +1503,26 @@
     <div class="divider"></div>
     <div class="flow-table">
       <div class="flow-row">
-        <div class="flow-time">第 0–20 分</div>
+        <div class="flow-time">第 0–15 分</div>
         <div class="flow-content">抵達 / 身心諮詢 · Vāta 評估 · 體質判讀</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">第 20–110 分</div>
-        <div class="flow-content">Abhyanga 全身溫油按摩（90 分鐘）</div>
+        <div class="flow-time">第 15–165 分</div>
+        <div class="flow-content">Abhyanga 全身溫油按摩 ＋ Shirodhara 眉心淋油（150 分鐘）</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">第 110–130 分</div>
+        <div class="flow-time">第 165–185 分</div>
         <div class="flow-content">Yoni 藥草薰蒸（20 分鐘）</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">第 130–150 分</div>
+        <div class="flow-time">第 185–205 分</div>
         <div class="flow-content">藥草浴（20 分鐘）</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">第 150–160 分</div>
-        <div class="flow-content">靜養</div>
+        <div class="flow-time">第 205–220 分</div>
+        <div class="flow-content">靜養 · 更衣 · 聊聊今天的身體</div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -1561,8 +1627,8 @@
     </details>
 
     <details>
-      <summary>純按摩和完整套組怎麼選？</summary>
-      <div>第一次接觸阿育吠陀的妳，可從入門體驗（純按摩 1.5hr）開始，認識自己的身體與這套手法。產後媽媽、有明確婦科困擾、或想深度調養的妳，直接選完整套組（2.5hr 含薰蒸與藥草浴）效果最完整。</div>
+      <summary>基礎款和套組怎麼選？</summary>
+      <div>第一次接觸阿育吠陀的妳，可以從基礎款（溫油按摩＋眉心淋油，療程 2.5 小時）開始，首次體驗價 NT$ 2,800。產後媽媽、有明確婦科困擾、或想深度調養的妳，完整套組（再加會陰薰蒸與藥草浴）最完整。不確定的話，填預約表單時勾「想先聊聊」，我們一起看妳現在需要什麼。</div>
     </details>
 
     <details>
@@ -1666,7 +1732,7 @@
       這通電話是免費的，不用開視訊。如果評估起來現在還不適合，我會誠實告訴妳，並陪妳改到更好的時間。</p>
     <div class="booking-frame calendly-inline-widget" data-url="https://calendly.com/birthwithmilliya/15min?hide_gdpr_banner=1&amp;primary_color=c97e68"></div>
     <noscript><p class="booking-help"><a href="https://calendly.com/birthwithmilliya/15min" target="_blank" rel="noopener">開啟預約頁面 →</a></p></noscript>
-    <p class="booking-help">已經想好要約療程了？直接<a href="https://forms.gle/MCZ38b8pf2ByGyBk8" target="_blank" rel="noopener">填預約表單</a>。到府服務（產後媽媽有需要請儘管開口，孩子在身邊也可以；要看我在台灣的時間，請提早預約）或時段都不合適，<a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">傳 LINE 給我</a>。</p>
+    <p class="booking-help">已經想好要約療程了？直接<a href="https://docs.google.com/forms/d/e/1FAIpQLSeEDVIrbETJGQMQ1klpne87tIPtagF4qPY5_vfB6Mq5Wnez1A/viewform" target="_blank" rel="noopener">填預約表單</a>。到府服務（產後媽媽有需要請儘管開口，孩子在身邊也可以；要看我在台灣的時間，請提早預約）或時段都不合適，<a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">傳 LINE 給我</a>。</p>
   </div>
 </section>
 
@@ -1710,7 +1776,7 @@
       如果妳希望在決定之前先聽聽彼此的聲音，我們也可以約 <strong>15 分鐘的通話</strong>，不用開視訊。想這樣的話，再跟我說就好。<br>
       這段諮詢是免費的，聊完不需要當場決定，也不會有任何費用。<br>
       如果聊完覺得現在不是時候，那也很好——我會誠實跟妳說。</p>
-    <a href="https://forms.gle/MCZ38b8pf2ByGyBk8" class="btn" target="_blank" rel="noopener">填寫預約表單</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEDVIrbETJGQMQ1klpne87tIPtagF4qPY5_vfB6Mq5Wnez1A/viewform" class="btn" target="_blank" rel="noopener">填寫預約表單</a>
     <a href="https://line.me/R/ti/p/@859uhxmv" class="btn btn-secondary" target="_blank" rel="noopener">加 LINE 聊聊</a>
     <a href="https://www.instagram.com/birth.with.milliya/" class="btn btn-secondary" target="_blank" rel="noopener">先私訊我聊聊</a>
   </div>
@@ -1722,7 +1788,7 @@
   <p><a class="foot-home" href="/">← 回 Birth with Milliya 首頁</a></p>
 </footer>
 
-<a href="https://forms.gle/MCZ38b8pf2ByGyBk8" class="sticky-cta" target="_blank" rel="noopener" aria-label="預約療程">預約療程 →</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeEDVIrbETJGQMQ1klpne87tIPtagF4qPY5_vfB6Mq5Wnez1A/viewform" class="sticky-cta" target="_blank" rel="noopener" aria-label="預約療程">預約療程 →</a>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 

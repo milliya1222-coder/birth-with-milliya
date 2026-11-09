@@ -922,6 +922,31 @@
     height: 1px;
     background: var(--gold);
   }
+
+  /* Voices marquee（中日見證跑馬燈） */
+  #testimonials { overflow-x: clip; }
+  .voices-marquee { width: 100vw; margin: 8px 0 48px calc(50% - 50vw); overflow: hidden; display: grid; gap: 14px; }
+  .mq-row { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .mq-track { display: flex; width: max-content; animation: mq-scroll 90s linear infinite; }
+  .mq-row.reverse .mq-track { animation-direction: reverse; animation-duration: 70s; }
+  .voices-marquee:hover .mq-track { animation-play-state: paused; }
+  .mq-item {
+    flex: none;
+    margin-right: 14px;
+    padding: 12px 22px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+  .mq-item b { font-weight: 400; color: var(--primary); margin-left: 10px; font-size: 12px; letter-spacing: 0.06em; }
+  @keyframes mq-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .mq-track { animation: none; }
+    .mq-row { overflow-x: auto; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -1489,6 +1514,11 @@
     <h2 class="section-title">彼女たちは、自分のからだに帰っていきました</h2>
     <div class="divider"></div>
     <p class="section-intro">すべて実際にケアを受けてくださった方のお声です。ご本人の同意をいただき、それぞれの許諾の範囲（実名／ニックネーム／匿名）で掲載しています。</p>
+
+    <div class="voices-marquee">
+      <div class="mq-row"><div class="mq-track"><span class="mq-item" lang="zh-Hant">「Milliya 有種讓人可以安心交託的氣質，結束後有一種穩定紮根的力量。」<b>— 查理・台北</b></span><span class="mq-item" lang="zh-Hant">「眉心滴油舒緩了我的思慮，晚上也特別好睡。」<b>— 一位孕期媽媽・台北</b></span><span class="mq-item" lang="zh-Hant">「可以感受到被溫油包覆、被守護的力量。」<b>— Ponpon・台北</b></span><span class="mq-item" lang="zh-Hant">「按摩結束後身體一直暖暖的，淋了雨、進了冷氣，手腳依然溫暖。」<b>— Hannah・台北</b></span><span class="mq-item" lang="zh-Hant">「女人們都應該被好好呵護。」<b>— 朱芸・台北</b></span><span class="mq-item" lang="zh-Hant">「療程後感覺身體輕盈，又充滿能量。」<b>— Ruma・台北</b></span><span class="mq-item" lang="zh-Hant">「在妳溫柔的陪伴下，身體放鬆了，心也跟著慢了下來。」<b>— Elaine・台北</b></span><span class="mq-item" lang="zh-Hant">「身體很放鬆，思緒也變清晰了。」<b>— MAYO・台北</b></span><span class="mq-item" lang="zh-Hant">「被愛真好，滋養自己真好。」<b>— 匀・台北</b></span><span class="mq-item" lang="zh-Hant">「幸福的一趟身體旅行。」<b>— 匿名分享・台北</b></span><span aria-hidden="true" style="display:contents"><span class="mq-item" lang="zh-Hant">「Milliya 有種讓人可以安心交託的氣質，結束後有一種穩定紮根的力量。」<b>— 查理・台北</b></span><span class="mq-item" lang="zh-Hant">「眉心滴油舒緩了我的思慮，晚上也特別好睡。」<b>— 一位孕期媽媽・台北</b></span><span class="mq-item" lang="zh-Hant">「可以感受到被溫油包覆、被守護的力量。」<b>— Ponpon・台北</b></span><span class="mq-item" lang="zh-Hant">「按摩結束後身體一直暖暖的，淋了雨、進了冷氣，手腳依然溫暖。」<b>— Hannah・台北</b></span><span class="mq-item" lang="zh-Hant">「女人們都應該被好好呵護。」<b>— 朱芸・台北</b></span><span class="mq-item" lang="zh-Hant">「療程後感覺身體輕盈，又充滿能量。」<b>— Ruma・台北</b></span><span class="mq-item" lang="zh-Hant">「在妳溫柔的陪伴下，身體放鬆了，心也跟著慢了下來。」<b>— Elaine・台北</b></span><span class="mq-item" lang="zh-Hant">「身體很放鬆，思緒也變清晰了。」<b>— MAYO・台北</b></span><span class="mq-item" lang="zh-Hant">「被愛真好，滋養自己真好。」<b>— 匀・台北</b></span><span class="mq-item" lang="zh-Hant">「幸福的一趟身體旅行。」<b>— 匿名分享・台北</b></span></span></div></div>
+      <div class="mq-row reverse"><div class="mq-track"><span class="mq-item" lang="ja">「眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。」<b>— あんり・逗子</b></span><span class="mq-item" lang="ja">「呼吸を合わせて、寄り添ってくれる。深い安心感がありました。」<b>— たまちゃん・逗子</b></span><span class="mq-item" lang="ja">「ちょっとしたリトリートみたいな時間。その夜はいつもよりぐっすりでした。」<b>— あい・逗子</b></span><span class="mq-item" lang="ja">「普段は寝落ちなんてほとんどできないのに、シローダーラで落ちれました。」<b>— Ayano・逗子</b></span><span aria-hidden="true" style="display:contents"><span class="mq-item" lang="ja">「眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。」<b>— あんり・逗子</b></span><span class="mq-item" lang="ja">「呼吸を合わせて、寄り添ってくれる。深い安心感がありました。」<b>— たまちゃん・逗子</b></span><span class="mq-item" lang="ja">「ちょっとしたリトリートみたいな時間。その夜はいつもよりぐっすりでした。」<b>— あい・逗子</b></span><span class="mq-item" lang="ja">「普段は寝落ちなんてほとんどできないのに、シローダーラで落ちれました。」<b>— Ayano・逗子</b></span></span></div></div>
+    </div>
 
     <div class="testimonial-grid">
       <blockquote class="testimonial-card">

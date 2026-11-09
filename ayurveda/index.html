@@ -971,6 +971,31 @@
     height: 1px;
     background: var(--gold);
   }
+
+  /* Voices marquee（中日見證跑馬燈） */
+  #testimonials { overflow-x: clip; }
+  .voices-marquee { width: 100vw; margin: 8px 0 48px calc(50% - 50vw); overflow: hidden; display: grid; gap: 14px; }
+  .mq-row { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .mq-track { display: flex; width: max-content; animation: mq-scroll 90s linear infinite; }
+  .mq-row.reverse .mq-track { animation-direction: reverse; animation-duration: 70s; }
+  .voices-marquee:hover .mq-track { animation-play-state: paused; }
+  .mq-item {
+    flex: none;
+    margin-right: 14px;
+    padding: 12px 22px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+  .mq-item b { font-weight: 400; color: var(--primary); margin-left: 10px; font-size: 12px; letter-spacing: 0.06em; }
+  @keyframes mq-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .mq-track { animation: none; }
+    .mq-row { overflow-x: auto; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -1546,6 +1571,11 @@
     <div class="divider"></div>
     <p class="section-intro">每一段都來自真實走過這趟調養的女性，皆經本人同意分享，並依各自的授權呈現（具名／暱稱／匿名）。</p>
 
+    <div class="voices-marquee">
+      <div class="mq-row"><div class="mq-track"><span class="mq-item" lang="zh-Hant">「Milliya 有種讓人可以安心交託的氣質，結束後有一種穩定紮根的力量。」<b>— 查理・台北</b></span><span class="mq-item" lang="zh-Hant">「眉心滴油舒緩了我的思慮，晚上也特別好睡。」<b>— 一位孕期媽媽・台北</b></span><span class="mq-item" lang="zh-Hant">「可以感受到被溫油包覆、被守護的力量。」<b>— Ponpon・台北</b></span><span class="mq-item" lang="zh-Hant">「按摩結束後身體一直暖暖的，淋了雨、進了冷氣，手腳依然溫暖。」<b>— Hannah・台北</b></span><span class="mq-item" lang="zh-Hant">「女人們都應該被好好呵護。」<b>— 朱芸・台北</b></span><span class="mq-item" lang="zh-Hant">「療程後感覺身體輕盈，又充滿能量。」<b>— Ruma・台北</b></span><span class="mq-item" lang="zh-Hant">「在妳溫柔的陪伴下，身體放鬆了，心也跟著慢了下來。」<b>— Elaine・台北</b></span><span class="mq-item" lang="zh-Hant">「身體很放鬆，思緒也變清晰了。」<b>— MAYO・台北</b></span><span class="mq-item" lang="zh-Hant">「被愛真好，滋養自己真好。」<b>— 匀・台北</b></span><span class="mq-item" lang="zh-Hant">「幸福的一趟身體旅行。」<b>— 匿名分享・台北</b></span><span aria-hidden="true" style="display:contents"><span class="mq-item" lang="zh-Hant">「Milliya 有種讓人可以安心交託的氣質，結束後有一種穩定紮根的力量。」<b>— 查理・台北</b></span><span class="mq-item" lang="zh-Hant">「眉心滴油舒緩了我的思慮，晚上也特別好睡。」<b>— 一位孕期媽媽・台北</b></span><span class="mq-item" lang="zh-Hant">「可以感受到被溫油包覆、被守護的力量。」<b>— Ponpon・台北</b></span><span class="mq-item" lang="zh-Hant">「按摩結束後身體一直暖暖的，淋了雨、進了冷氣，手腳依然溫暖。」<b>— Hannah・台北</b></span><span class="mq-item" lang="zh-Hant">「女人們都應該被好好呵護。」<b>— 朱芸・台北</b></span><span class="mq-item" lang="zh-Hant">「療程後感覺身體輕盈，又充滿能量。」<b>— Ruma・台北</b></span><span class="mq-item" lang="zh-Hant">「在妳溫柔的陪伴下，身體放鬆了，心也跟著慢了下來。」<b>— Elaine・台北</b></span><span class="mq-item" lang="zh-Hant">「身體很放鬆，思緒也變清晰了。」<b>— MAYO・台北</b></span><span class="mq-item" lang="zh-Hant">「被愛真好，滋養自己真好。」<b>— 匀・台北</b></span><span class="mq-item" lang="zh-Hant">「幸福的一趟身體旅行。」<b>— 匿名分享・台北</b></span></span></div></div>
+      <div class="mq-row reverse"><div class="mq-track"><span class="mq-item" lang="ja">「眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。」<b>— あんり・逗子</b></span><span class="mq-item" lang="ja">「呼吸を合わせて、寄り添ってくれる。深い安心感がありました。」<b>— たまちゃん・逗子</b></span><span class="mq-item" lang="ja">「ちょっとしたリトリートみたいな時間。その夜はいつもよりぐっすりでした。」<b>— あい・逗子</b></span><span class="mq-item" lang="ja">「普段は寝落ちなんてほとんどできないのに、シローダーラで落ちれました。」<b>— Ayano・逗子</b></span><span aria-hidden="true" style="display:contents"><span class="mq-item" lang="ja">「眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。」<b>— あんり・逗子</b></span><span class="mq-item" lang="ja">「呼吸を合わせて、寄り添ってくれる。深い安心感がありました。」<b>— たまちゃん・逗子</b></span><span class="mq-item" lang="ja">「ちょっとしたリトリートみたいな時間。その夜はいつもよりぐっすりでした。」<b>— あい・逗子</b></span><span class="mq-item" lang="ja">「普段は寝落ちなんてほとんどできないのに、シローダーラで落ちれました。」<b>— Ayano・逗子</b></span></span></div></div>
+    </div>
+
     <div class="testimonial-grid">
       <blockquote class="testimonial-card">
         <p class="testimonial-text">是被淋油在眉心的當下，觸動了神聖的第三眼開關。在靜默之中，有一種深深被一波波浪潮沖刷的感覺，彷彿花瓣一片片綻開、釋放。</p>
@@ -1568,24 +1598,8 @@
         <footer class="testimonial-author">— <strong>岩岩</strong> · 創始客戶</footer>
       </blockquote>
       <blockquote class="testimonial-card">
-        <p class="testimonial-text">按摩不只是技術，施作者本身的能量也很重要。Milliya 有種讓人可以安心交託的氣質，引導很溫柔，結束後會有一種穩定紮根的力量。</p>
-        <footer class="testimonial-author">— <strong>查理</strong> · 創始客戶</footer>
-      </blockquote>
-      <blockquote class="testimonial-card">
-        <p class="testimonial-text">眉心滴油舒緩了我的思慮，交感神經得到放鬆，有一種很深沉的安穩感，晚上也特別好睡。</p>
-        <footer class="testimonial-author">— <strong>一位孕期媽媽</strong>（匿名分享）</footer>
-      </blockquote>
-      <blockquote class="testimonial-card">
-        <p class="testimonial-text">可以感受到被溫油包覆、被守護的力量。</p>
-        <footer class="testimonial-author">— <strong>Ponpon</strong> · 創始客戶</footer>
-      </blockquote>
-      <blockquote class="testimonial-card">
-        <p class="testimonial-text">欣妙給我一種非常安全、可以全然交付的感覺。女人們都應該被好好呵護。</p>
-        <footer class="testimonial-author">— <strong>朱芸</strong> · 創始客戶</footer>
-      </blockquote>
-      <blockquote class="testimonial-card">
-        <p class="testimonial-text">身體很放鬆，思緒也變清晰了。明明很累，居然還可以繼續工作——可見能量真的有補到。</p>
-        <footer class="testimonial-author">— <strong>MAYO</strong> · 創始客戶</footer>
+        <p class="testimonial-text">坐燻的感覺是前所未有的。關骨儀式很包覆、很有安全感，很像小時候想躲進紙箱裡，或是想把重重的棉被壓在身上的那種感覺。</p>
+        <footer class="testimonial-author">— <strong>南昕</strong> · 台北・完整療程</footer>
       </blockquote>
     </div>
 

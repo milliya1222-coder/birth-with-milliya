@@ -972,30 +972,37 @@
     background: var(--gold);
   }
 
-  /* Voices marquee（中日見證跑馬燈） */
-  #testimonials { overflow-x: clip; }
-  .voices-marquee { width: 100vw; margin: 8px 0 48px calc(50% - 50vw); overflow: hidden; display: grid; gap: 14px; }
-  .mq-row { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .mq-track { display: flex; width: max-content; animation: mq-scroll 90s linear infinite; }
-  .mq-row.reverse .mq-track { animation-direction: reverse; animation-duration: 70s; }
-  .voices-marquee:hover .mq-track { animation-play-state: paused; }
-  .mq-item {
-    flex: none;
-    margin-right: 14px;
-    padding: 12px 22px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-size: 14px;
-    color: var(--text-dark);
-    white-space: nowrap;
+  /* Voices fade（中日見證淡入淡出） */
+  .voices-fade { max-width: 640px; margin: 8px auto 56px; text-align: center; }
+  .vf-stage { display: grid; }
+  .vf-item {
+    grid-area: 1 / 1;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+    pointer-events: none;
+    align-self: center;
   }
-  .mq-item b { font-weight: 400; color: var(--primary); margin-left: 10px; font-size: 12px; letter-spacing: 0.06em; }
-  @keyframes mq-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) {
-    .mq-track { animation: none; }
-    .mq-row { overflow-x: auto; }
+  .vf-item.on { opacity: 1; transform: none; pointer-events: auto; }
+  .vf-item blockquote {
+    margin: 0;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    line-height: 1.9;
+    letter-spacing: 0.06em;
+    color: var(--primary-dark);
   }
+  .vf-item[lang="ja"] blockquote { font-family: 'Noto Serif JP', 'Noto Serif TC', serif; }
+  .vf-item figcaption { margin-top: 14px; font-size: 13px; letter-spacing: 0.18em; color: var(--primary); }
+  .vf-dots { display: flex; justify-content: center; gap: 8px; margin-top: 26px; flex-wrap: wrap; }
+  .vf-dots button {
+    width: 6px; height: 6px; padding: 0; border: 0; border-radius: 50%;
+    background: var(--line); cursor: pointer; transition: background .4s, transform .4s;
+  }
+  .vf-dots button[aria-current="true"] { background: var(--gold); transform: scale(1.4); }
+  @media (max-width: 600px) { .vf-item blockquote { font-size: 17px; } }
+  @media (prefers-reduced-motion: reduce) { .vf-item { transition: none; } }
 </style>
 <script type="application/ld+json">
 {
@@ -1571,9 +1578,24 @@
     <div class="divider"></div>
     <p class="section-intro">每一段都來自真實走過這趟調養的女性，皆經本人同意分享，並依各自的授權呈現（具名／暱稱／匿名）。</p>
 
-    <div class="voices-marquee">
-      <div class="mq-row"><div class="mq-track"><span class="mq-item" lang="zh-Hant">「Milliya 有種讓人可以安心交託的氣質，結束後有一種穩定紮根的力量。」<b>— 查理・台北</b></span><span class="mq-item" lang="zh-Hant">「眉心滴油舒緩了我的思慮，晚上也特別好睡。」<b>— 一位孕期媽媽・台北</b></span><span class="mq-item" lang="zh-Hant">「可以感受到被溫油包覆、被守護的力量。」<b>— Ponpon・台北</b></span><span class="mq-item" lang="zh-Hant">「按摩結束後身體一直暖暖的，淋了雨、進了冷氣，手腳依然溫暖。」<b>— Hannah・台北</b></span><span class="mq-item" lang="zh-Hant">「女人們都應該被好好呵護。」<b>— 朱芸・台北</b></span><span class="mq-item" lang="zh-Hant">「療程後感覺身體輕盈，又充滿能量。」<b>— Ruma・台北</b></span><span class="mq-item" lang="zh-Hant">「在妳溫柔的陪伴下，身體放鬆了，心也跟著慢了下來。」<b>— Elaine・台北</b></span><span class="mq-item" lang="zh-Hant">「身體很放鬆，思緒也變清晰了。」<b>— MAYO・台北</b></span><span class="mq-item" lang="zh-Hant">「被愛真好，滋養自己真好。」<b>— 匀・台北</b></span><span class="mq-item" lang="zh-Hant">「幸福的一趟身體旅行。」<b>— 匿名分享・台北</b></span><span aria-hidden="true" style="display:contents"><span class="mq-item" lang="zh-Hant">「Milliya 有種讓人可以安心交託的氣質，結束後有一種穩定紮根的力量。」<b>— 查理・台北</b></span><span class="mq-item" lang="zh-Hant">「眉心滴油舒緩了我的思慮，晚上也特別好睡。」<b>— 一位孕期媽媽・台北</b></span><span class="mq-item" lang="zh-Hant">「可以感受到被溫油包覆、被守護的力量。」<b>— Ponpon・台北</b></span><span class="mq-item" lang="zh-Hant">「按摩結束後身體一直暖暖的，淋了雨、進了冷氣，手腳依然溫暖。」<b>— Hannah・台北</b></span><span class="mq-item" lang="zh-Hant">「女人們都應該被好好呵護。」<b>— 朱芸・台北</b></span><span class="mq-item" lang="zh-Hant">「療程後感覺身體輕盈，又充滿能量。」<b>— Ruma・台北</b></span><span class="mq-item" lang="zh-Hant">「在妳溫柔的陪伴下，身體放鬆了，心也跟著慢了下來。」<b>— Elaine・台北</b></span><span class="mq-item" lang="zh-Hant">「身體很放鬆，思緒也變清晰了。」<b>— MAYO・台北</b></span><span class="mq-item" lang="zh-Hant">「被愛真好，滋養自己真好。」<b>— 匀・台北</b></span><span class="mq-item" lang="zh-Hant">「幸福的一趟身體旅行。」<b>— 匿名分享・台北</b></span></span></div></div>
-      <div class="mq-row reverse"><div class="mq-track"><span class="mq-item" lang="ja">「眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。」<b>— あんり・逗子</b></span><span class="mq-item" lang="ja">「呼吸を合わせて、寄り添ってくれる。深い安心感がありました。」<b>— たまちゃん・逗子</b></span><span class="mq-item" lang="ja">「ちょっとしたリトリートみたいな時間。その夜はいつもよりぐっすりでした。」<b>— あい・逗子</b></span><span class="mq-item" lang="ja">「普段は寝落ちなんてほとんどできないのに、シローダーラで落ちれました。」<b>— Ayano・逗子</b></span><span aria-hidden="true" style="display:contents"><span class="mq-item" lang="ja">「眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。」<b>— あんり・逗子</b></span><span class="mq-item" lang="ja">「呼吸を合わせて、寄り添ってくれる。深い安心感がありました。」<b>— たまちゃん・逗子</b></span><span class="mq-item" lang="ja">「ちょっとしたリトリートみたいな時間。その夜はいつもよりぐっすりでした。」<b>— あい・逗子</b></span><span class="mq-item" lang="ja">「普段は寝落ちなんてほとんどできないのに、シローダーラで落ちれました。」<b>— Ayano・逗子</b></span></span></div></div>
+    <div class="voices-fade" aria-roledescription="carousel">
+      <div class="vf-stage">
+        <figure class="vf-item on" lang="zh-Hant"><blockquote>「Milliya 有種讓人可以安心交託的氣質，結束後有一種穩定紮根的力量。」</blockquote><figcaption>— 查理・台北</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「眉心滴油舒緩了我的思慮，晚上也特別好睡。」</blockquote><figcaption>— 一位孕期媽媽・台北</figcaption></figure>
+        <figure class="vf-item" lang="ja"><blockquote>「眠りに落ちる直前のあの気持ちいい状態が、最初から最後まで続きました。」</blockquote><figcaption>— あんり・逗子</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「可以感受到被溫油包覆、被守護的力量。」</blockquote><figcaption>— Ponpon・台北</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「按摩結束後身體一直暖暖的，淋了雨、進了冷氣，手腳依然溫暖。」</blockquote><figcaption>— Hannah・台北</figcaption></figure>
+        <figure class="vf-item" lang="ja"><blockquote>「呼吸を合わせて、寄り添ってくれる。深い安心感がありました。」</blockquote><figcaption>— たまちゃん・逗子</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「女人們都應該被好好呵護。」</blockquote><figcaption>— 朱芸・台北</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「療程後感覺身體輕盈，又充滿能量。」</blockquote><figcaption>— Ruma・台北</figcaption></figure>
+        <figure class="vf-item" lang="ja"><blockquote>「ちょっとしたリトリートみたいな時間。その夜はいつもよりぐっすりでした。」</blockquote><figcaption>— あい・逗子</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「在妳溫柔的陪伴下，身體放鬆了，心也跟著慢了下來。」</blockquote><figcaption>— Elaine・台北</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「身體很放鬆，思緒也變清晰了。」</blockquote><figcaption>— MAYO・台北</figcaption></figure>
+        <figure class="vf-item" lang="ja"><blockquote>「普段は寝落ちなんてほとんどできないのに、シローダーラで落ちれました。」</blockquote><figcaption>— Ayano・逗子</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「被愛真好，滋養自己真好。」</blockquote><figcaption>— 匀・台北</figcaption></figure>
+        <figure class="vf-item" lang="zh-Hant"><blockquote>「幸福的一趟身體旅行。」</blockquote><figcaption>— 匿名分享・台北</figcaption></figure>
+      </div>
+      <div class="vf-dots"><button type="button" aria-label="第 1 則" aria-current="true"></button><button type="button" aria-label="第 2 則"></button><button type="button" aria-label="第 3 則"></button><button type="button" aria-label="第 4 則"></button><button type="button" aria-label="第 5 則"></button><button type="button" aria-label="第 6 則"></button><button type="button" aria-label="第 7 則"></button><button type="button" aria-label="第 8 則"></button><button type="button" aria-label="第 9 則"></button><button type="button" aria-label="第 10 則"></button><button type="button" aria-label="第 11 則"></button><button type="button" aria-label="第 12 則"></button><button type="button" aria-label="第 13 則"></button><button type="button" aria-label="第 14 則"></button></div>
     </div>
 
     <div class="testimonial-grid">
@@ -1702,5 +1724,19 @@
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
+
+<script>
+(function(){
+  var box=document.querySelector('.voices-fade'); if(!box) return;
+  var items=box.querySelectorAll('.vf-item'), dots=box.querySelectorAll('.vf-dots button'), i=0, t;
+  function show(n){ items[i].classList.remove('on'); dots[i].removeAttribute('aria-current');
+    i=(n+items.length)%items.length; items[i].classList.add('on'); dots[i].setAttribute('aria-current','true'); }
+  function play(){ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; stop(); t=setInterval(function(){ show(i+1); }, 5500); }
+  function stop(){ clearInterval(t); }
+  dots.forEach(function(d,k){ d.addEventListener('click', function(){ show(k); play(); }); });
+  box.addEventListener('mouseenter', stop); box.addEventListener('mouseleave', play);
+  play();
+})();
+</script>
 </body>
 </html>

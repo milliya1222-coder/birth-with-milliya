@@ -915,6 +915,24 @@
     margin: 0 auto 20px;
     background: var(--line);
   }
+
+  /* Hero photo backdrop */
+  .hero {
+    background:
+      radial-gradient(ellipse at 50% 48%, rgba(250,246,240,0.9) 0%, rgba(250,246,240,0.78) 45%, rgba(250,246,240,0.42) 100%),
+      url('/ayurveda/images/hero-bg-wide.jpg') center 40% / cover no-repeat,
+      #F2E9DC;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) {
+    .hero {
+      background:
+        linear-gradient(180deg, rgba(250,246,240,0.55) 0%, rgba(250,246,240,0.84) 30%, rgba(250,246,240,0.86) 75%, rgba(250,246,240,0.6) 100%),
+        url('/ayurveda/images/hero-bg-tall.jpg') center 30% / cover no-repeat,
+        #F2E9DC;
+    }
+  }
 </style>
   <script src="/analytics.js" defer></script>
 </head>

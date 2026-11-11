@@ -61,6 +61,36 @@
     .author-box .ab-body strong{color:var(--cocoa,#4a3b34);}
     .author-box .ab-body a{color:var(--rose,#E29B86);}
     .author-box .ab-date{margin-top:10px;font-size:.8rem;opacity:.7;}
+    .quiz-card{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);margin-top:30px;background:var(--ivory);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;color:inherit;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);}
+    .quiz-card:hover{transform:translateY(-6px);border-color:var(--rose);}
+    .quiz-card .qc-photo{position:relative;min-height:100%;background:var(--beige);}
+    .quiz-card .qc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+    .quiz-card .qc-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(251,247,242,0) 60%,rgba(251,247,242,.95));}
+    .quiz-card .qc-time{position:absolute;left:18px;bottom:18px;z-index:1;background:rgba(251,247,242,.92);color:var(--rose-deep);font-size:.82rem;letter-spacing:.12em;padding:6px 14px;border-radius:999px;}
+    .quiz-card .qc-body{padding:40px 42px 36px 30px;display:flex;flex-direction:column;}
+    .quiz-card .qc-eyebrow{align-self:flex-start;font-family:"Cormorant Garamond",serif;font-size:.86rem;letter-spacing:.24em;color:var(--rose-deep);border:1px solid var(--rose);border-radius:999px;padding:4px 16px;}
+    .quiz-card h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:1.65rem;line-height:1.5;letter-spacing:.06em;margin:18px 0 12px;}
+    .quiz-card .qc-lead{font-size:.98rem;line-height:1.9;color:var(--cocoa-soft);margin:0 0 22px;}
+    .quiz-card .qc-steps{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:10px;}
+    .quiz-card .qc-steps li{display:flex;align-items:center;gap:14px;font-size:.98rem;}
+    .quiz-card .qc-steps b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--rose);color:#fff;font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:500;display:grid;place-items:center;}
+    .quiz-card .qc-steps li:last-child b{background:var(--sage);}
+    .quiz-card .qc-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px dashed var(--line);}
+    .quiz-card .qc-go{display:inline-block;background:var(--rose-deep);color:#fff;padding:13px 28px;border-radius:999px;font-size:.98rem;letter-spacing:.06em;}
+    .quiz-card:hover .qc-go{background:#9C4D38;}
+    .quiz-card .qc-qr{display:flex;align-items:center;gap:12px;font-size:.8rem;line-height:1.6;color:var(--cocoa-soft);}
+    .quiz-card .qc-qr img{width:84px;height:84px;border-radius:8px;border:1px solid var(--line);}
+    .phase-grid.two{grid-template-columns:repeat(2,1fr);}
+    @media (max-width:760px){
+      .quiz-card{grid-template-columns:1fr;}
+      .quiz-card .qc-photo{aspect-ratio:16/10;}
+      .quiz-card .qc-photo::after{background:linear-gradient(180deg,rgba(251,247,242,0) 55%,rgba(251,247,242,.95));}
+      .quiz-card .qc-body{padding:26px 22px 26px;}
+      .quiz-card h3{font-size:1.35rem;}
+      .quiz-card .qc-qr{display:none;}
+      .quiz-card .qc-go{width:100%;text-align:center;}
+      .phase-grid.two{grid-template-columns:1fr;}
+    }
   </style>
   <script src="/analytics.js" defer></script>
 </head>
@@ -124,21 +154,32 @@
         <p class="section-eyebrow">上課之前，妳可以先看看</p>
         <h3 style="font-size:1.25rem;margin:0 0 6px;">先自己動手，把需要的主題找出來</h3>
       </div>
-      <div class="phase-grid">
-        <a class="phase-card" href="topics/" style="text-decoration:none;color:inherit;display:block;">
-          <span class="phase-num">01</span>
-          <h3>產前教育問卷</h3>
-          <p>勾選妳的狀況、擔心和期待，馬上看到建議的主題和參考時數，也可以直接傳給我。</p>
-          <span style="color:var(--rose-deep);font-size:.9rem;">開始填寫 →</span>
-        </a>
+      <a class="quiz-card" href="topics/">
+        <div class="qc-photo"><img src="../images/about-pregnant-candle.jpg" alt="懷孕的媽媽在燭光裡安靜坐著" loading="lazy"><span class="qc-time">約 3 分鐘</span></div>
+        <div class="qc-body">
+          <span class="qc-eyebrow">BIRTH EDUCATION · 小問卷</span>
+          <h3>妳的產前教育課，<br>依妳的需要來排</h3>
+          <p class="qc-lead">這不是套裝課。告訴我妳現在的狀況、擔心和期待，馬上看到建議的主題和參考時數。</p>
+          <ol class="qc-steps">
+            <li><b>1</b>填小問卷，沒有標準答案</li>
+            <li><b>2</b>看我給妳的課程建議</li>
+            <li><b>3</b>自己增減後，一鍵傳給欣妙</li>
+          </ol>
+          <div class="qc-foot">
+            <span class="qc-go">開始填寫小問卷 →</span>
+            <span class="qc-qr"><img src="../images/edu-quiz-qr.png" alt="產前教育小問卷 QR code" loading="lazy">用手機掃描<br>也可以填</span>
+          </div>
+        </div>
+      </a>
+      <div class="phase-grid two">
         <a class="phase-card" href="compare/" style="text-decoration:none;color:inherit;display:block;">
-          <span class="phase-num">02</span>
+          <span class="phase-num">01</span>
           <h3>和外面的課有什麼不同</h3>
           <p>醫院媽媽教室、國健署、坊間課程、國北護，各自教什麼；哪些建議妳去外面學，我的課著重什麼。</p>
           <span style="color:var(--rose-deep);font-size:.9rem;">看比較表 →</span>
         </a>
         <a class="phase-card" href="basics/" style="text-decoration:none;color:inherit;display:block;">
-          <span class="phase-num">03</span>
+          <span class="phase-num">02</span>
           <h3>生產名詞與常見問題</h3>
           <p>生理性生產、荷爾蒙、產程，還有用力、延遲斷臍、會陰切開、減痛分娩等 9 個常見問題。</p>
           <span style="color:var(--rose-deep);font-size:.9rem;">讀讀看 →</span>

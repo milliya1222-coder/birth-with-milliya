@@ -112,6 +112,13 @@ blockquote cite{font-style:normal;font-size:12px;letter-spacing:.14em;color:var(
 .routes b{font-weight:500;color:var(--tide);white-space:nowrap}
 .map{margin:22px 0 8px;border-radius:6px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:var(--mist-deep)}
 .map iframe{display:block;width:100%;height:100%;border:0}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 6px}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;filter:saturate(.9)}
+.video{margin:26px 0 8px}
+.video .frame{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--mist-deep)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video p{font-size:14px;margin:10px 0 0}
+@media (max-width:560px){.gallery{grid-template-columns:1fr 1fr}.gallery img:last-child{grid-column:span 2;aspect-ratio:2/1}}
 figure{margin:28px 0}
 figure img{display:block;width:100%;height:auto;border-radius:4px;filter:saturate(.9)}
 figcaption{font-size:13px;color:var(--ink-soft);margin-top:8px}
@@ -149,10 +156,6 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--line);font-si
     </div>
   </div>
 
-  <div class="draft">
-    <p class="ja" style="margin:0"><b>下書き（えいこさん確認用）</b>　Maha 先生は 12/27（日）で快諾、会場（みさきルーム348）も予約済みです。参加費はえいこさんと相談した案です。申し込みフォーム（カード決済つき）も用意しました。</p>
-    <p class="en" style="margin:0"><b>Draft for Eiko-san</b> — Maha said yes to Sunday 27 December when we spoke on 9 November. The venue (Misaki Room 348) is booked, and the fees below are the plan agreed with Eiko. The registration form, with card payment, is now ready.</p>
-  </div>
 
   <header class="hero">
     <div class="eyebrow">An afternoon gathering · 2026.12.27</div>
@@ -243,6 +246,32 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--line);font-si
       <p class="tr ja">お産は緊急事態ではなく、魂があらわれてくるとき。</p>
       <cite>Maha Al Musa</cite>
     </blockquote>
+  </section>
+
+  <section>
+    <h2><span class="ja">動画と写真で知る EmbodyBirth™</span><span class="en">EmbodyBirth™ in pictures and film</span></h2>
+    <p class="ja">当日の前に、Maha 先生の動きと空気を少しだけ。どちらも英語の短い動画です。</p>
+    <p class="en">A small taste of Maha's movement and presence before the day. Both are short videos in English.</p>
+    <div class="video">
+      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/4sH-xPnDfMc" title="Moving through a contraction as an expansion (2:36)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <p><a href="https://www.youtube.com/watch?v=4sH-xPnDfMc" target="_blank" rel="noopener"><span class="ja">「収縮」を「拡張」として動く（2 分 36 秒）</span><span class="en">Moving through a contraction as an expansion (2:36)</span></a></p>
+      <p class="small ja">46 歳の自宅出産の映像から、陣痛の波をベリーダンスの直感的な動きで迎える様子。当日のお話のテーマそのものです。出産の場面が含まれます。</p>
+      <p class="small en">From Maha's homebirth at 46: meeting each wave with intuitive bellydance movement — the heart of her talk on the day. Contains birth footage.</p>
+    </div>
+    <div class="video">
+      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/EofBImVbxWQ" title="Dance of the Womb — trailer (4:09)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <p><a href="https://www.youtube.com/watch?v=EofBImVbxWQ" target="_blank" rel="noopener"><span class="ja">Dance of the Womb 予告編（4 分 9 秒）</span><span class="en">Dance of the Womb — trailer (4:09)</span></a></p>
+      <p class="small ja">妊娠・出産のためのベリーダンス DVD『Dance of the Womb』の予告編。BellydanceBirth® ミニ体験の雰囲気がわかります。</p>
+      <p class="small en">Trailer for Maha's DVD on bellydance for pregnancy and birth — a feel for the BellydanceBirth® taster.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="img/maha-workshop-dance.jpg" alt="ワークショップで、両手を広げて参加者と一緒に舞う Maha" width="720" height="540" loading="lazy">
+      <img src="img/maha-workshop-touch.jpg" alt="ワークショップで、参加者の背中に手を当てて寄り添う Maha" width="1000" height="638" loading="lazy">
+      <img src="img/maha-prayer.jpg" alt="目を閉じて胸の前で手を合わせる Maha" width="1080" height="1060" loading="lazy">
+    </div>
+    <p class="small ja">ワークショップで参加者と舞い、支えるタッチを伝える Maha 先生。写真：Maha Al Musa／EmbodyBirth™</p>
+    <p class="small en">Maha leading movement and supportive touch in her workshops. Photos: Maha Al Musa / EmbodyBirth™</p>
   </section>
 
   <section>

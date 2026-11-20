@@ -1047,6 +1047,17 @@
     .gb-glass { font-size: 16px; padding: 26px 20px; }
     .gb-right { flex-basis: 100%; }
   }
+
+  /* 本頁目錄：捲過首圖後黏在最上方，手機可左右滑 */
+  .page-nav { position: sticky; top: 0; z-index: 1000; background: rgba(250,246,240,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .pn-track { max-width: 1040px; margin: 0 auto; display: flex; gap: 6px; overflow-x: auto; padding: 10px 16px; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .pn-track::-webkit-scrollbar { display: none; }
+  .page-nav a { flex: none; scroll-snap-align: start; padding: 7px 15px; border-radius: 999px; font-size: 14px; letter-spacing: .06em; color: var(--text-soft); text-decoration: none; border: 1px solid transparent; transition: background .2s, color .2s; }
+  .page-nav a:hover { color: var(--primary); }
+  .page-nav a.on { background: var(--primary); color: #fff; }
+  @media (min-width: 900px) { .pn-track { justify-content: center; } }
+  section[id], header + nav ~ section { scroll-margin-top: 64px; }
+  body.nav-stuck .site-back, body.nav-stuck .lang-switch { opacity: 0; pointer-events: none; transition: opacity .2s; }
 </style>
 <script type="application/ld+json">
 {
@@ -1134,9 +1145,10 @@
     <a href="#pricing" class="btn-primary">看療程方案</a>
   </div>
 </header>
+<nav class="page-nav" aria-label="本頁目錄"><div class="pn-track"><a href="#for-whom">適合誰</a><a href="#techniques">療法</a><a href="#pricing">價目</a><a href="#flow">流程</a><a href="#location">地點</a><a href="#safety">注意事項</a><a href="#faq">常見問題</a><a href="#testimonials">見證</a><a href="#reserve">預約</a></div></nav>
 
 <!-- FOR WHOM -->
-<section>
+<section id="for-whom">
   <div class="container">
     <div class="section-eyebrow">For Whom · 適合誰</div>
     <h2 class="section-title">這個療程是為妳而存在</h2>
@@ -1209,7 +1221,7 @@
 </section>
 
 <!-- TECHNIQUES -->
-<section class="techniques">
+<section class="techniques" id="techniques">
   <div class="container">
     <div class="section-eyebrow">What · 三大主軸療法</div>
     <h2 class="section-title">完整呵護包含什麼</h2>
@@ -1541,7 +1553,7 @@
 </section>
 
 <!-- LOCATION -->
-<section>
+<section id="location">
   <div class="container">
     <div class="section-eyebrow">Where · 服務地點</div>
     <h2 class="section-title">兩種方式，妳選最舒服的</h2>
@@ -1563,7 +1575,7 @@
 </section>
 
 <!-- FLOW -->
-<section style="background: var(--bg-warm);">
+<section id="flow" style="background: var(--bg-warm);">
   <div class="container">
     <div class="section-eyebrow">Flow · 流程示意</div>
     <h2 class="section-title">產後完整呵護的當日流程（示意）</h2>
@@ -1634,7 +1646,7 @@
 </section>
 
 <!-- CONTRAINDICATIONS -->
-<section>
+<section id="safety">
   <div class="container">
     <div class="section-eyebrow">Safety · 我希望妳安心</div>
     <h2 class="section-title">服務適用與禁忌</h2>
@@ -1658,7 +1670,7 @@
 </section>
 
 <!-- FAQ -->
-<section style="background: var(--bg-warm);">
+<section id="faq" style="background: var(--bg-warm);">
   <div class="container">
     <div class="section-eyebrow">FAQ · 妳可能想問</div>
     <h2 class="section-title">常見問題</h2>
@@ -1796,21 +1808,18 @@
   </div>
 </section>
 
-<!-- 線上預約：Calendly 15 分鐘免費通話（療程本身仍走下方預約表單） -->
+<!-- 15 分鐘談話已搬到 /ayurveda/talk/；保留 #booking 讓舊連結有落點 -->
 <section class="booking-section" id="booking">
   <div class="container">
     <p class="booking-eyebrow">BOOK A TALK</p>
-    <h2>先約 15 分鐘，聊聊妳的身體</h2>
-    <p class="booking-note">療程前我想先認識妳：產後第幾週、自然產還是剖腹產、現在最不舒服的是什麼。<br>
-      這通電話是免費的，不用開視訊。如果評估起來現在還不適合，我會誠實告訴妳，並陪妳改到更好的時間。</p>
-    <div class="booking-frame calendly-inline-widget" data-url="https://calendly.com/birthwithmilliya/15min?hide_gdpr_banner=1&amp;primary_color=c97e68"></div>
-    <noscript><p class="booking-help"><a href="https://calendly.com/birthwithmilliya/15min" target="_blank" rel="noopener">開啟預約頁面 →</a></p></noscript>
-    <p class="booking-help">已經想好要約療程了？直接<a href="https://docs.google.com/forms/d/e/1FAIpQLSeEDVIrbETJGQMQ1klpne87tIPtagF4qPY5_vfB6Mq5Wnez1A/viewform" target="_blank" rel="noopener">填預約表單</a>。到府服務（產後媽媽有需要請儘管開口，孩子在身邊也可以；要看我在台灣的時間，請提早預約）或時段都不合適，<a href="https://line.me/R/ti/p/@859uhxmv" target="_blank" rel="noopener">傳 LINE 給我</a>。</p>
+    <h2>想先聊 15 分鐘？</h2>
+    <p class="booking-note">療程前想先問問題、確認身體適不適合，可以先約一通免費的 15 分鐘電話，不用開視訊。</p>
+    <a class="btn" href="talk/">選一個時段聊聊 →</a>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta-final">
+<section class="cta-final" id="reserve">
   <svg class="hero-mandala" viewBox="0 0 400 400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#C89B3C" stroke-width="1.4">
       <circle cx="200" cy="200" r="193" stroke-width="1" stroke-dasharray="1 7"/>
@@ -1878,7 +1887,7 @@
 
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEDVIrbETJGQMQ1klpne87tIPtagF4qPY5_vfB6Mq5Wnez1A/viewform" class="sticky-cta" target="_blank" rel="noopener" aria-label="預約療程">預約療程 →</a>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
 
 
 <script>
@@ -1892,6 +1901,31 @@
   dots.forEach(function(d,k){ d.addEventListener('click', function(){ show(k); play(); }); });
   box.addEventListener('mouseenter', stop); box.addEventListener('mouseleave', play);
   play();
+})();
+</script>
+<script>
+(function(){
+  var nav=document.querySelector('.page-nav'); if(!nav) return;
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  links.forEach(function(a){ a.addEventListener('click',function(ev){
+    var el=document.getElementById(a.getAttribute('href').slice(1)); if(!el) return;
+    ev.preventDefault(); history.replaceState(null,'',a.getAttribute('href'));
+    var go=function(b){ window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:b}); };
+    go('smooth');
+    /* 圖片延遲載入會把內容往下推，到位後再校正兩次 */
+    [700,1400].forEach(function(t){ setTimeout(function(){ if(Math.abs(el.getBoundingClientRect().top-60)>8) go('instant'); },t); });
+  }); });
+  var hero=document.querySelector('header.hero');
+  if(hero && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ document.body.classList.toggle('nav-stuck', !e[0].isIntersecting); }).observe(hero);
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(!en.isIntersecting) return;
+        links.forEach(function(a){ var on=a.getAttribute('href')==='#'+en.target.id; a.classList.toggle('on',on);
+          if(on){ var t=nav.querySelector('.pn-track'); t.scrollTo({left:a.offsetLeft-t.clientWidth/2+a.clientWidth/2,behavior:'smooth'}); } });
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    links.forEach(function(a){ var el=document.getElementById(a.getAttribute('href').slice(1)); if(el) io.observe(el); });
+  }
 })();
 </script>
 </body>

@@ -992,6 +992,16 @@
     .gb-glass { font-size: 16px; padding: 26px 20px; }
     .gb-right { flex-basis: 100%; }
   }
+  /* 本頁目錄：捲過首圖後黏在最上方，手機可左右滑 */
+  .page-nav { position: sticky; top: 0; z-index: 1000; background: rgba(250,246,240,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .pn-track { max-width: 1040px; margin: 0 auto; display: flex; gap: 6px; overflow-x: auto; padding: 10px 16px; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .pn-track::-webkit-scrollbar { display: none; }
+  .page-nav a { flex: none; scroll-snap-align: start; padding: 7px 15px; border-radius: 999px; font-size: 14px; letter-spacing: .06em; color: var(--text-soft); text-decoration: none; border: 1px solid transparent; transition: background .2s, color .2s; }
+  .page-nav a:hover { color: var(--primary); }
+  .page-nav a.on { background: var(--primary); color: #fff; }
+  @media (min-width: 900px) { .pn-track { justify-content: center; } }
+  section[id], header + nav ~ section { scroll-margin-top: 64px; }
+  body.nav-stuck .site-back, body.nav-stuck .lang-switch { opacity: 0; pointer-events: none; transition: opacity .2s; }
 </style>
   <script src="/analytics.js" defer></script>
 </head>
@@ -1028,9 +1038,10 @@
     <a href="#pricing" class="btn-primary">See the treatments</a>
   </div>
 </header>
+<nav class="page-nav" aria-label="On this page"><div class="pn-track"><a href="#for-whom">For you</a><a href="#techniques">Treatments</a><a href="#pricing">Prices</a><a href="#location">Where</a><a href="#flow">Flow</a><a href="#quiz-cta">Dosha quiz</a><a href="#safety">Safety</a><a href="#faq">FAQ</a><a href="#testimonials">Voices</a><a href="#reserve">Book</a></div></nav>
 
 <!-- FOR WHOM -->
-<section>
+<section id="for-whom">
   <div class="container">
     <div class="section-eyebrow">For Whom</div>
     <h2 class="section-title">This treatment exists for you</h2>
@@ -1103,7 +1114,7 @@
 </section>
 
 <!-- TECHNIQUES -->
-<section class="techniques">
+<section class="techniques" id="techniques">
   <div class="container">
     <div class="section-eyebrow">What</div>
     <h2 class="section-title">What complete care includes</h2>
@@ -1381,7 +1392,7 @@
 </section>
 
 <!-- LOCATION -->
-<section>
+<section id="location">
   <div class="container">
     <div class="section-eyebrow">Where</div>
     <h2 class="section-title">Whichever is easier on you</h2>
@@ -1408,7 +1419,7 @@
 </section>
 
 <!-- FLOW -->
-<section style="background: var(--bg-warm);">
+<section id="flow" style="background: var(--bg-warm);">
   <div class="container">
     <div class="section-eyebrow">Flow</div>
     <h2 class="section-title">How postpartum complete care runs (Taipei)</h2>
@@ -1459,7 +1470,7 @@
   </div>
 </section>
 
-<section style="padding-top: 0;">
+<section id="quiz-cta" style="padding-top: 0;">
   <div class="container">
     <div class="quiz-banner">
       <div class="quiz-dots">
@@ -1478,7 +1489,7 @@
 </section>
 
 <!-- CONTRAINDICATIONS -->
-<section>
+<section id="safety">
   <div class="container">
     <div class="section-eyebrow">Safety</div>
     <h2 class="section-title">When to wait, and when to ask first</h2>
@@ -1502,7 +1513,7 @@
 </section>
 
 <!-- FAQ -->
-<section style="background: var(--bg-warm);">
+<section id="faq" style="background: var(--bg-warm);">
   <div class="container">
     <div class="section-eyebrow">FAQ</div>
     <h2 class="section-title">Things you might want to ask</h2>
@@ -1616,7 +1627,7 @@
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta-final">
+<section class="cta-final" id="reserve">
   <div class="container">
     <h2>Ready to be properly caught?</h2>
     <p>Fill in the booking form and I will reply within 24 hours. The form asks about your body in some detail — Ayurvedic bodywork has real contraindications, and I would rather know beforehand.</p>
@@ -1655,5 +1666,30 @@
 
 <a href="https://www.instagram.com/birth.with.milliya/" class="sticky-cta" target="_blank" rel="noopener" aria-label="Book a session">Book a session →</a>
 
+<script>
+(function(){
+  var nav=document.querySelector('.page-nav'); if(!nav) return;
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  links.forEach(function(a){ a.addEventListener('click',function(ev){
+    var el=document.getElementById(a.getAttribute('href').slice(1)); if(!el) return;
+    ev.preventDefault(); history.replaceState(null,'',a.getAttribute('href'));
+    var go=function(b){ window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:b}); };
+    go('smooth');
+    /* 圖片延遲載入會把內容往下推，到位後再校正兩次 */
+    [700,1400].forEach(function(t){ setTimeout(function(){ if(Math.abs(el.getBoundingClientRect().top-60)>8) go('instant'); },t); });
+  }); });
+  var hero=document.querySelector('header.hero');
+  if(hero && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ document.body.classList.toggle('nav-stuck', !e[0].isIntersecting); }).observe(hero);
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(!en.isIntersecting) return;
+        links.forEach(function(a){ var on=a.getAttribute('href')==='#'+en.target.id; a.classList.toggle('on',on);
+          if(on){ var t=nav.querySelector('.pn-track'); t.scrollTo({left:a.offsetLeft-t.clientWidth/2+a.clientWidth/2,behavior:'smooth'}); } });
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    links.forEach(function(a){ var el=document.getElementById(a.getAttribute('href').slice(1)); if(el) io.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>

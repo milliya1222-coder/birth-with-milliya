@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>女性のためのアーユルヴェーダ・ケア | 産後・妊活・婦人科・心身の巡りに | Milliya（逗子・神奈川）</title>
-<meta name="description" content="五千年のインドの伝統的な癒し × 出産に寄り添うドゥーラの視点。産後・妊活・婦人科の悩み・心身の消耗に、あなたの巡りを整える、女性のためのアーユルヴェーダ・ケア。神奈川・逗子のプライベートサロン / 逗子・葉山・鎌倉エリア出張。">
+<meta name="description" content="五千年のインドの伝統的な癒し × 出産に寄り添うドゥーラの視点。産後・妊活・心身の疲れに、ゆっくり休む時間を。女性のためのアーユルヴェーダ・ケア。神奈川・逗子のプライベートサロン / 逗子・葉山・鎌倉エリア出張。">
 <meta property="og:title" content="女性のためのアーユルヴェーダ・ケア | Milliya">
-<meta property="og:description" content="五千年のインドの叡智と、出産に寄り添うドゥーラの視点。産後・妊活・婦人科の悩み・心身の疲れに、あなたの巡りを整える。">
+<meta property="og:description" content="五千年のインドの叡智と、出産に寄り添うドゥーラの視点。産後・妊活・心身の疲れに、ゆっくり休む時間を。">
 <meta property="og:image" content="https://birthwithmilliya.com/ayurveda/images/og-ja.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -993,6 +993,16 @@
     .gb-glass { font-size: 16px; padding: 26px 20px; }
     .gb-right { flex-basis: 100%; }
   }
+  /* 本頁目錄：捲過首圖後黏在最上方，手機可左右滑 */
+  .page-nav { position: sticky; top: 0; z-index: 1000; background: rgba(250,246,240,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .pn-track { max-width: 1040px; margin: 0 auto; display: flex; gap: 6px; overflow-x: auto; padding: 10px 16px; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .pn-track::-webkit-scrollbar { display: none; }
+  .page-nav a { flex: none; scroll-snap-align: start; padding: 7px 15px; border-radius: 999px; font-size: 14px; letter-spacing: .06em; color: var(--text-soft); text-decoration: none; border: 1px solid transparent; transition: background .2s, color .2s; }
+  .page-nav a:hover { color: var(--primary); }
+  .page-nav a.on { background: var(--primary); color: #fff; }
+  @media (min-width: 900px) { .pn-track { justify-content: center; } }
+  section[id], header + nav ~ section { scroll-margin-top: 64px; }
+  body.nav-stuck .site-back, body.nav-stuck .lang-switch { opacity: 0; pointer-events: none; transition: opacity .2s; }
 </style>
 <script type="application/ld+json">
 {
@@ -1035,7 +1045,7 @@
   <span class="om-symbol">ॐ</span>
   <div class="hero-eyebrow">Ayurveda for Women &middot; Body &amp; Mind Care</div>
   <h1>女性のための<br>アーユルヴェーダ・ケア</h1>
-  <p class="hero-sub">五千年のインドの伝統的な癒しの叡智 × 出産に寄り添うドゥーラの視点<br>産後・妊活・婦人科の悩み・心身の疲れに——あなたの巡りを、深く整える</p>
+  <p class="hero-sub">五千年のインドの伝統的な癒しの叡智 × 出産に寄り添うドゥーラの視点<br>産後・妊活・心身の疲れに——ゆっくり、自分の身体へ還る時間を</p>
   <div>
     <span class="hero-tag">ご予約受付中 · おひとりずつ、ていねいに</span>
   </div>
@@ -1046,31 +1056,32 @@
     <a href="#pricing" class="btn-primary">メニュー・料金を見る</a>
   </div>
 </header>
+<nav class="page-nav" aria-label="このページの目次"><div class="pn-track"><a href="#for-whom">対象</a><a href="#techniques">ケア</a><a href="#pricing">料金</a><a href="#location">場所</a><a href="#flow">流れ</a><a href="#quiz-cta">体質診断</a><a href="#safety">ご注意</a><a href="#faq">よくある質問</a><a href="#testimonials">お客様の声</a><a href="#reserve">ご予約</a></div></nav>
 
 <!-- FOR WHOM -->
-<section>
+<section id="for-whom">
   <div class="container">
     <div class="section-eyebrow">For Whom · どんな方へ</div>
     <h2 class="section-title">このケアは、あなたのためにあります</h2>
     <div class="divider"></div>
-    <p class="section-intro">南インド・ケララ地方に伝わるこの伝統的な癒しの体系は、心とからだを深く整えたい、自分のからだに還りたいと願う、すべての女性のためのもの。その原点は産後ケアにありますが、婦人科の巡り、妊活、そして日々の心身の疲れにも、同じように寄り添います。</p>
+    <p class="section-intro">南インド・ケララ地方に伝わるこの伝統的な癒しの体系は、心とからだを深く整えたい、自分のからだに還りたいと願う、すべての女性のためのもの。その原点は産後ケアにありますが、生理の前後のしんどさ、妊活、そして日々の心身の疲れにも、同じように寄り添います。</p>
 
     <div class="for-whom-grid">
       <div class="whom-card">
         <h3>産後6ヶ月以内のお母さん</h3>
-        <p>自然分娩でも帝王切開でも。特に産後42日間の「ゴールデンタイム」に。子宮の回復、産後の不安をなだめ、睡眠と授乳期の心身の状態を整えます。</p>
+        <p>自然分娩でも帝王切開でも。母になったばかりの、いちばん労わられたい時期に、あたたかく、ゆっくりした時間を。どのケアが合うかは、ご予約前に一緒に確認します。</p>
       </div>
       <div class="whom-card">
-        <h3>婦人科のお悩みを抱える女性</h3>
-        <p>生理不順、生理痛、PMS、骨盤内の巡りの停滞、慢性的な疲れ、長く続くストレスによるホルモンバランスの乱れ。アーユルヴェーダの方法で深く整えます。</p>
+        <h3>生理の周期をいたわりたい女性</h3>
+        <p>生理の前後に疲れやすい、身体が冷える、気持ちが揺れやすい——そんな周期のしんどい日々に、温かいオイルとハーブで寄り添います。身体のケアであり、婦人科の診療に代わるものではありません。</p>
       </div>
       <div class="whom-card">
         <h3>心とからだが消耗している女性</h3>
-        <p>長く続く不安、不眠、止まらない思考、「からだが自分のものじゃない」感覚——アーユルヴェーダではこの状態を <span class="sanskrit-term">Vāta（ヴァータ）</span>の過剰と呼びます。温かいオイルのマッサージが、最も直接的な答えです。</p>
+        <p>止まらない思考、眠りの浅さ、「からだが自分のものじゃない」感覚——アーユルヴェーダではこれを <span class="sanskrit-term">Vāta（ヴァータ）</span>が高まった状態と捉え、伝統的に温かいオイルとゆっくりしたトリートメントでいたわってきました。</p>
       </div>
       <div class="whom-card">
         <h3>妊娠を望む女性</h3>
-        <p>妊活期に体質を整え、生殖システムを養い、心を落ち着けたい女性へ。からだが最良の状態で、新しい命を迎えられるように。</p>
+        <p>妊活の時期に、身体をあたため、心を落ち着けたい女性へ。新しい命を迎える前に、まず自分を大切に。</p>
       </div>
     </div>
   </div>
@@ -1100,12 +1111,12 @@
     <h2 class="section-title">からだに、5000年の積み重ねが出した答えを</h2>
     <div class="divider"></div>
 
-    <p>アーユルヴェーダ（Āyurveda・生命の叡智）は、女性の心とからだを、巡り、記憶する一つの全体として捉えます。生理、出産、更年期、長く続くストレス——大切な生理的な出来事の一つひとつが、からだに刻印を残します。きちんとケアされなければ、その刻印は不眠、不安、慢性的な疲れ、婦人科の不調として積み重なっていきます。</p>
+    <p>アーユルヴェーダ（Āyurveda・生命の叡智）は、女性の心とからだを、巡り、記憶する一つの全体として捉えます。生理、出産、更年期、長く続くストレス——大切な生理的な出来事の一つひとつが、からだに刻印を残します。ずっと労わられずにいると、それは疲れやこわばり、眠りの浅さとして表れることがよくあります。</p>
 
     <p>産後の6週間は <span class="sanskrit-term">Sutika Kala（スーティカ・カーラ）</span>——母親のからだと心が回復する黄金期と呼ばれます。日本にも昔から「産後の肥立ち」「床上げ21日」という考え方がありますね。それと同じ叡智です。けれどこの時期の外にいても、すべての女性のなかで <span class="sanskrit-term">Vāta（ヴァータ・風のエネルギー）</span>は乱れやすいもの。「流れ・変化・神経の伝達」をつかさどるこのエネルギーは、現代女性の速いペース、考えすぎ、産後のホルモン変化によって、簡単に過剰へと傾きます。</p>
 
     <div class="highlight">
-      ヴァータの過剰 = 不眠・不安・お腹の張り・関節のこわばり・止まらない思考・「からだが自分のものじゃない」感覚<br>
+      アーユルヴェーダでは、ヴァータが高まると、眠りの浅さ・お腹の張り・乾燥やこわばり・止まらない思考・「からだが自分のものじゃない」感覚が出やすいと考えます<br>
       そしてヴァータへの最も直接的な答えは、温かいオイルと、筋膜の奥まで届く深い安らぎです。
     </div>
 
@@ -1121,12 +1132,12 @@
 </section>
 
 <!-- TECHNIQUES -->
-<section class="techniques">
+<section class="techniques" id="techniques">
   <div class="container">
     <div class="section-eyebrow">What · 三つの柱</div>
     <h2 class="section-title">フルコースに含まれるもの</h2>
     <div class="divider"></div>
-    <p class="section-intro">単発の体験は、アビヤンガに象徴的なシローダーラ（額へのオイルの点滴）を添えて。フルコースはさらにハーブの蒸しとハーブ浴を加え、相乗的に働き、単独の施術をはるかに超える効果を生みます。</p>
+    <p class="section-intro">単発の体験は、アビヤンガに象徴的なシローダーラ（額へのオイルの点滴）を添えて。フルコースはさらにヨニ蒸しとハーブ浴を加え、トリートメントのあとも、ハーブのぬくもりの中でゆっくり過ごしていただきます。</p>
 
     <div class="split-image" style="margin-bottom: 32px;">
       <img src="/ayurveda/images/technique-abhyanga.jpg" alt="Abhyanga 温オイルマッサージ — 両手が筋膜の奥まで届き、乱れた神経系をなだめる">
@@ -1151,14 +1162,12 @@
         <span class="technique-sanskrit">Abhyanga · アビヤンガ</span>
         <span class="technique-duration">中核の施術</span>
       </div>
-      <p>古法で作られたハーブ浸出オイル（精油ではありません）を温め、頭から足まで深く施します。乱れた神経系を直接なだめる、ケア全体の中核であり、単発体験の主な内容です。</p>
+      <p>古法で作られたハーブ浸出オイル（精油ではありません）を温め、頭から足まで深く施します。張りつめた身体が少しずつゆるんでいく、ケア全体の中核です。</p>
       <div class="technique-effects">
-        <span class="effect-tag">ヴァータを鎮める</span>
+        <span class="effect-tag">ヴァータをいたわる</span>
         <span class="effect-tag">深いリラックス</span>
-        <span class="effect-tag">巡りを促す</span>
-        <span class="effect-tag">睡眠の改善</span>
-        <span class="effect-tag">肌を養う</span>
-        <span class="effect-tag">生理痛の緩和</span>
+        <span class="effect-tag">身体をあたためる</span>
+        <span class="effect-tag">肌をうるおす</span>
       </div>
     </div>
 
@@ -1178,11 +1187,11 @@
         <span class="technique-sanskrit">Yoni Steam · ヨニスチーム（よもぎ蒸しと同じ系統）</span>
         <span class="technique-duration">フルコース</span>
       </div>
-      <p>穏やかなハーブの蒸気がデリケートゾーンと骨盤に働きかけ、子宮の回復、悪露の排出、会陰の傷の癒しを助けます。産後でない女性には、生理不順・生理痛・骨盤内の巡りの改善に。日本のよもぎ蒸しとも通じる、多くの文化が共有してきた女性の癒しの叡智です。</p>
+      <p>専用の椅子に座ってケープを羽織り、穏やかなハーブの蒸気とともに静かに過ごす、多くの文化が受け継いできた女性のための伝統的なハーブの儀式です。日本のよもぎ蒸しにも通じます。医療や婦人科の治療ではありません。蒸気にはやけどや刺激のリスクがあるため、毎回事前に適否を確認し、傷・出血・感染・痛みなど気になることがある場合はご案内を控えます。必要に応じて、まず医師にご相談ください。</p>
       <div class="technique-effects">
-        <span class="effect-tag">子宮の回復</span>
-        <span class="effect-tag">会陰の癒し</span>
-        <span class="effect-tag">生理を整える</span>
+        <span class="effect-tag">伝統的なハーブの儀式</span>
+        <span class="effect-tag">ぬくもり</span>
+        <span class="effect-tag">事前に適否を確認</span>
         <span class="effect-tag">骨盤の巡り</span>
       </div>
     </div>
@@ -1195,9 +1204,9 @@
         <span class="technique-sanskrit">Herbal Bath</span>
         <span class="technique-duration">フルコース</span>
       </div>
-      <p>ケララ伝統の全身浸浴。ハーブを煮出した温かいお湯で、頭から足まで全身を浄化します。肌・毛穴・リンパがともに呼吸し、マッサージのあとに使うと効果が倍に。</p>
+      <p>ケララ伝統の全身浸浴。ハーブを煮出した温かいお湯を浴槽に注ぎ、香りの中でゆっくりと浸かります。トリートメントのあとの身体を、そのままあたたかく包みます。合うかどうかは、事前に確認します。</p>
       <div class="technique-effects">
-        <span class="effect-tag">全身のデトックス</span>
+        <span class="effect-tag">全身浴</span>
         <span class="effect-tag">筋肉をほぐす</span>
         <span class="effect-tag">芯から温める</span>
         <span class="effect-tag">深いリラックス</span>
@@ -1212,12 +1221,11 @@
         <span class="technique-sanskrit">Shirodhara · シローダーラ</span>
         <span class="technique-duration">全コースに含まれる</span>
       </div>
-      <p>温かいオイルを、額の中心（第三の眼）へ細く長く注ぎつづける、アーユルヴェーダを象徴する技法。銅の器からこぼれる金色のしずくが、走り続ける思考をそっと止め、神経を深く鎮めます。「終わったら、そのまま眠ってしまいそう」——そんな深い休息へ。アビヤンガに組み合わせると、心の奥までほどけていきます。</p>
+      <p>温かいオイルを、額の中心（第三の眼）へ細く長く注ぎつづける、アーユルヴェーダを象徴する技法。銅の器からこぼれる金色のしずくが、走り続ける思考をそっと止め、心をしずかにほどいていきます。「終わったら、そのまま眠ってしまいそう」——そんな深い休息へ。アビヤンガに組み合わせると、心の奥までほどけていきます。</p>
       <div class="technique-effects">
         <span class="effect-tag">深い鎮静</span>
         <span class="effect-tag">思考を静める</span>
-        <span class="effect-tag">安眠</span>
-        <span class="effect-tag">自律神経を整える</span>
+        <span class="effect-tag">深い休息</span>
       </div>
     </div>
   </div>
@@ -1298,7 +1306,7 @@
     <div class="section-eyebrow">Pricing · メニュー</div>
     <h2 class="section-title">それぞれのあなたのために</h2>
     <div class="divider"></div>
-    <p class="section-intro">どのメニューも「温オイルトリートメント＋シローダーラ」から始まります。からだが本当にゆるむまでの時間をとるため、施術は2.5時間以上。温めやデトックスをもう少し、という方はテーマセットを。</p>
+    <p class="section-intro">どのメニューも「温オイルトリートメント＋シローダーラ」から始まります。からだが本当にゆるむまでの時間をとるため、施術は2.5時間以上。もう少し温めたい、ハーブに包まれたいという方はテーマセットを。</p>
 
     <!-- ベーシック -->
     <div class="price-tier">
@@ -1327,7 +1335,7 @@
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">フルコース · 全体で約3.5〜4時間</div>
-            <div class="price-option-desc">ベーシック ＋ ヨニ・ハーブ蒸し ＋ ハーブ浴｜産後・深く整えたい方にいちばんのおすすめ</div>
+            <div class="price-option-desc">ベーシック ＋ ヨニ・ハーブ蒸し ＋ ハーブ浴｜産後の方、ゆっくり過ごしたい方にいちばんのおすすめ</div>
           </div>
           <div class="price-option-price">¥30,000</div>
         </div>
@@ -1441,7 +1449,7 @@
 </section>
 
 <!-- LOCATION -->
-<section>
+<section id="location">
   <div class="container">
     <div class="section-eyebrow">Where · 施術の場所</div>
     <h2 class="section-title">二つの方法から、いちばん心地よいものを</h2>
@@ -1463,7 +1471,7 @@
 </section>
 
 <!-- FLOW -->
-<section style="background: var(--bg-warm);">
+<section id="flow" style="background: var(--bg-warm);">
   <div class="container">
     <div class="section-eyebrow">Flow · 流れ</div>
     <h2 class="section-title">フルコースの流れ（一例）</h2>
@@ -1514,7 +1522,7 @@
   </div>
 </section>
 
-<section style="padding-top: 0;">
+<section id="quiz-cta" style="padding-top: 0;">
   <div class="container">
     <div class="quiz-banner">
       <div class="quiz-dots">
@@ -1533,7 +1541,7 @@
 </section>
 
 <!-- CONTRAINDICATIONS -->
-<section>
+<section id="safety">
   <div class="container">
     <div class="section-eyebrow">Safety · 安心して受けていただくために</div>
     <h2 class="section-title">適応と、ご注意</h2>
@@ -1543,12 +1551,13 @@
       <h3>以下の場合はお控えいただくか、まずご相談ください。予約前にしっかり確認します</h3>
       <ul>
         <li>産後の出血が止まっていない、悪露に異常がある、または感染の兆候がある</li>
-        <li>帝王切開の傷がまだ癒えていない（Abhyanga は産後3週間以降を推奨）</li>
+        <li>帝王切開や会陰の傷がまだ回復中（受けられるか、どこから始めるかは、傷の状態を見ながら一緒に決めます）</li>
+        <li>ヨニ蒸し・ハーブ浴：傷・出血・感染・痛みなど気になることがある場合はご案内を控えます。蒸気やお湯にはやけど・刺激のリスクがあるため、迷うときはまず医師にご相談ください</li>
         <li>生理期間中（蒸しとハーブ浴は避けることを推奨）</li>
         <li>急な発熱、重い風邪、皮膚の感染、開いた傷がある</li>
         <li>特定のハーブやオイルにアレルギーの既往がある</li>
         <li>抗凝固薬を服用している</li>
-        <li>重度の産後うつと診断され、精神科の治療を受けている（まず医療を優先し、ケアは補助的に）</li>
+        <li>重度の産後うつと診断され、精神科の治療を受けている（まず医療を優先してください。ここは休息の時間にはなれても、治療の代わりにはなりません）</li>
         <li>がんの治療中（まず主治医にご相談ください）</li>
       </ul>
     </div>
@@ -1556,7 +1565,7 @@
 </section>
 
 <!-- FAQ -->
-<section style="background: var(--bg-warm);">
+<section id="faq" style="background: var(--bg-warm);">
   <div class="container">
     <div class="section-eyebrow">FAQ · 聞いてみたいこと</div>
     <h2 class="section-title">よくあるご質問</h2>
@@ -1564,12 +1573,12 @@
 
     <details>
       <summary>産後どのくらいから始められますか?</summary>
-      <div>自然分娩は産後7〜10日から、帝王切開は3週間後（傷の癒えが安定してから）を目安に。予約前のカウンセリングで、あなたの回復の状態に合わせて、最適な開始時期を確認します。産後6ヶ月以内ならいつでも歓迎、早く始めるほど良いです。</div>
+      <div>決まった週数はありません。傷・出血・回復の様子は人それぞれなので、ご予約前のカウンセリングで、どのケアから始めるかを一緒に決めます。傷や出血、感染に心配があるときは、まず医師や助産師にご相談ください。産後1年以内ならいつでも歓迎です。</div>
     </details>
 
     <details>
       <summary>産後でなくても受けられますか?</summary>
-      <div>はい。このケアの本質は「ヴァータを整え、女性の心とからだを養う」こと。産後はそれが最も必要とされる場面ですが、深く整えたい、婦人科の悩みに向き合いたい、長いストレスを手放したいすべての女性に向いています。妊活中の方も歓迎です。</div>
+      <div>はい。オイルトリートメントとシローダーラは、ゆっくり休みたいすべての女性に向いています。妊活中の方も歓迎です。ヨニ蒸しはどなたにも合うわけではないので、事前に確認します。</div>
     </details>
 
     <details>
@@ -1579,7 +1588,7 @@
 
     <details>
       <summary>授乳中でも受けられますか? ハーブは母乳に影響しますか?</summary>
-      <div>はい、Abhyanga は授乳中のお母さんの巡りと情緒の安定にも役立ちます。使用するハーブオイルは外用で、母乳には入りません。ヨニ蒸しのハーブも選び抜いています。特定の植物に敏感な方は、カウンセリングのときにお知らせください。</div>
+      <div>はい。ハーブオイルは外用です。授乳中の方には精油を使わない配合にし、胸元は避けます。ヨニ蒸しのハーブも、やさしい配合を選びます。特定の植物に敏感な方は、カウンセリングのときにお知らせください。</div>
     </details>
 
     <details>
@@ -1589,12 +1598,12 @@
 
     <details>
       <summary>普通のSPAマッサージと、何が違うの?</summary>
-      <div>一般のSPAは「リラックス」を、このケアは「回復」を扱います。違いは三つ。(1) オイルと手技が、ヴァータの過剰に向けた伝統的な配合であること。(2) ドゥーラ + 心とからだの統合の視点で、あなたが経験したことを理解すること——ただからだを揉むのではありません。(3) 5000年の理論に支えられた体系であり、単発の体験ではないこと。</div>
+      <div>一般のSPAは多くの場合、一度きりのリラックスです。ここでの違いは三つ。(1) オイルと手技が、ヴァータをいたわるアーユルヴェーダの伝統から来ていること。(2) ドゥーラ + 心とからだの統合の視点で、あなたが経験したことを理解すること——ただからだを揉むのではありません。(3) 毎回、その日のお身体の状態に合わせて組み立てること。</div>
     </details>
 
     <details>
       <summary>ベーシックとセット、どう選べば?</summary>
-      <div>初めての方は、ベーシック（オイルトリートメント＋シローダーラ、施術2.5時間・初回価格 ¥17,000）から、自分のからだとこの手技に出会ってください。産後のお母さん、はっきりした婦人科の悩みがある方、深く整えたい方は、フルコース（ヨニ蒸しとハーブ浴つき）が最も完全です。迷ったら、予約フォームに「相談してから決めたい」と書いてください。</div>
+      <div>初めての方は、ベーシック（オイルトリートメント＋シローダーラ、施術2.5時間・初回価格 ¥17,000）から、自分のからだとこの手技に出会ってください。産後のお母さんや、ゆっくり過ごしたい方には、フルコース（ヨニ蒸しとハーブ浴つき）がいちばんおすすめです。ヨニ蒸しとハーブ浴は事前に適否を確認します。迷ったら、予約フォームに「相談してから決めたい」と書いてください。</div>
     </details>
 
     <details>
@@ -1698,7 +1707,7 @@
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta-final">
+<section class="cta-final" id="reserve">
   <div class="container">
     <h2>深く受けとめられる準備は、できましたか?</h2>
     <p>メッセージをいただければ、24時間以内にご連絡します。</p>
@@ -1729,7 +1738,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Milliya · 女性のためのアーユルヴェーダ・ケア（産後・妊活・婦人科・心身の調律）</p>
+  <p>© 2026 Milliya · 女性のためのアーユルヴェーダ・ケア（産後・妊活・心身の休息）</p>
   <p style="margin-top: 8px;">神奈川・逗子のプライベートサロン · 逗子・葉山・鎌倉エリア出張 · Email: milliya1222@gmail.com</p>
   <p><a class="foot-home" href="/">← Birth with Milliya トップへ</a></p>
 </footer>
@@ -1748,6 +1757,31 @@
   dots.forEach(function(d,k){ d.addEventListener('click', function(){ show(k); play(); }); });
   box.addEventListener('mouseenter', stop); box.addEventListener('mouseleave', play);
   play();
+})();
+</script>
+<script>
+(function(){
+  var nav=document.querySelector('.page-nav'); if(!nav) return;
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  links.forEach(function(a){ a.addEventListener('click',function(ev){
+    var el=document.getElementById(a.getAttribute('href').slice(1)); if(!el) return;
+    ev.preventDefault(); history.replaceState(null,'',a.getAttribute('href'));
+    var go=function(b){ window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:b}); };
+    go('smooth');
+    /* 圖片延遲載入會把內容往下推，到位後再校正兩次 */
+    [700,1400].forEach(function(t){ setTimeout(function(){ if(Math.abs(el.getBoundingClientRect().top-60)>8) go('instant'); },t); });
+  }); });
+  var hero=document.querySelector('header.hero');
+  if(hero && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ document.body.classList.toggle('nav-stuck', !e[0].isIntersecting); }).observe(hero);
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(!en.isIntersecting) return;
+        links.forEach(function(a){ var on=a.getAttribute('href')==='#'+en.target.id; a.classList.toggle('on',on);
+          if(on){ var t=nav.querySelector('.pn-track'); t.scrollTo({left:a.offsetLeft-t.clientWidth/2+a.clientWidth/2,behavior:'smooth'}); } });
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    links.forEach(function(a){ var el=document.getElementById(a.getAttribute('href').slice(1)); if(el) io.observe(el); });
+  }
 })();
 </script>
 </body>

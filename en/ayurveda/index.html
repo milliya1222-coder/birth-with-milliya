@@ -493,8 +493,11 @@
     text-align: center;
   }
   .location-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
+    width: 64px; height: 64px; margin: 0 auto 16px;
+    border-radius: 50%; display: grid; place-items: center;
+    color: var(--primary);
+    background: radial-gradient(circle at 50% 40%, rgba(200,155,60,.14), rgba(200,155,60,.04));
+    border: 1px solid rgba(200,155,60,.38);
   }
   .location-card h3 {
     font-size: 18px;
@@ -1128,9 +1131,9 @@
         <span class="technique-num">03</span>
         <span class="technique-name">Full herbal bath</span>
         <span class="technique-sanskrit">Herbal Bath</span>
-        <span class="technique-duration">25-minute soak</span>
+        <span class="technique-duration">30-minute soak</span>
       </div>
-      <p>The Kerala tradition of a full-body soak. Herbs are simmered into a warm brew and strained into the tub, and you rest in it for 25 minutes so the body stays warm and loose after the massage. Suitability is checked first here too.</p>
+      <p>The Kerala tradition of a full-body soak. Herbs are simmered into a warm brew and strained into the tub, and you rest in it for 30 minutes so the body stays warm and loose after the massage. Suitability is checked first here too.</p>
       <div class="technique-effects">
         <span class="effect-tag">Full-body soak</span>
         <span class="effect-tag">Muscle ease</span>
@@ -1238,14 +1241,14 @@
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Postpartum Essential · complete postpartum care</div>
-            <div class="price-option-desc">About 3 h 25 min in all: 120-minute massage with Shirodhara + 30-minute yoni steam + 25-minute full herbal bath (both after a suitability check) · NT$ 6,000 if booked separately</div>
+            <div class="price-option-desc">About 3 h 30 min in all: 120-minute massage with Shirodhara + 30-minute yoni steam + 30-minute full herbal bath (both after a suitability check) · NT$ 6,000 if booked separately</div>
           </div>
           <div class="price-option-price">NT$ 5,800</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Postpartum Extended · deep postpartum care</div>
-            <div class="price-option-desc">About 3 h 55 min in all: massage and Shirodhara extended to 150 minutes · NT$ 6,400 if booked separately</div>
+            <div class="price-option-desc">About 4 hours in all: massage and Shirodhara extended to 150 minutes · NT$ 6,400 if booked separately</div>
           </div>
           <div class="price-option-price">NT$ 6,200</div>
         </div>
@@ -1259,7 +1262,7 @@
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">Herbal and body rituals</div>
-            <div class="price-option-desc">Yoni steam 30 min +1,200 (on its own NT$ 1,500, with consultation) · full herbal bath 25 min +1,000 · herbal pouch +1,200 · salt pot +1,000 · hot stone / brick +1,200 · belly binding +1,200 · closing the bones +1,500</div>
+            <div class="price-option-desc">Yoni steam 30 min +1,200 (on its own NT$ 1,500, with consultation) · full herbal bath 30 min +1,000 · herbal pouch +1,200 · salt pot +1,000 · hot stone / brick +1,200 · belly binding +1,200 · closing the bones +1,500</div>
           </div>
           <div class="price-option-price">+NT$ 1,000–1,500</div>
         </div>
@@ -1352,17 +1355,17 @@
 
     <div class="location-grid">
       <div class="location-card">
-        <div class="location-icon">🏠</div>
+        <div class="location-icon"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27V13a7 7 0 0 1 14 0v14"/><path d="M6 27h20"/><path d="M16 26v-6"/><path d="M16 22c-2.6 0-4-1.8-4-4.2 2.5 0 4 1.6 4 4.2Z"/><path d="M16 20.5c0-2.4 1.4-4 3.8-4 0 2.4-1.4 4-3.8 4Z"/></svg></div>
         <h3>Beitou studio, Taipei</h3>
         <p>Warm, quiet, fully equipped.<br>For when leaving the house and having time alone is the point.</p>
       </div>
       <div class="location-card">
-        <div class="location-icon">🚗</div>
+        <div class="location-icon"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 16 6l11 9"/><path d="M8 13v13h16V13"/><path d="M16 23.5s-4-2.4-4-5.1a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.7-4 5.1-4 5.1Z"/></svg></div>
         <h3>Home visits</h3>
         <p>Getting out of the house is hard after a birth, so I can bring everything to you. If you need it, please just ask. Having your baby or children with you is fine.<br>Greater Taipei, and the Zushi–Hayama area in Japan. Travel charged by distance. Taipei visits depend on my dates in Taiwan, so please book early.</p>
       </div>
       <div class="location-card">
-        <div class="location-icon">🌊</div>
+        <div class="location-icon"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 13a5 5 0 0 1 10 0"/><path d="M16 5v2M9.5 8.5l1.3 1.3M22.5 8.5l-1.3 1.3"/><path d="M4 18c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M4 23c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/></svg></div>
         <h3>Zushi salon, Kanagawa</h3>
         <p>A private room near the sea in Zushi.<br>For those living in Japan — every massage session here includes Shirodhara.</p>
       </div>
@@ -1390,15 +1393,15 @@
         <div class="flow-content">Yoni steam (30 minutes, after a suitability check)</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">165–190 min</div>
-        <div class="flow-content">Full herbal bath (25-minute soak, after a suitability check)</div>
+        <div class="flow-time">165–195 min</div>
+        <div class="flow-content">Full herbal bath (30-minute soak, after a suitability check)</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">190–205 min</div>
+        <div class="flow-time">195–210 min</div>
         <div class="flow-content">Rest, changing, and a few words about your body and care at home</div>
       </div>
     </div>
-    <p class="section-intro" style="margin-top:24px;">Postpartum Essential is about 3 h 25 min in all and Extended about 3 h 55 min. Essential on its own is about 2 hours and Extended about 2.5 hours, plus about 30 minutes before and after.</p>
+    <p class="section-intro" style="margin-top:24px;">Postpartum Essential is about 3 h 30 min in all and Extended about 4 hours. Essential on its own is about 2 hours and Extended about 2.5 hours, plus about 30 minutes before and after.</p>
   </div>
 </section>
 

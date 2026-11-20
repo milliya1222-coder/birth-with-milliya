@@ -491,8 +491,11 @@
     text-align: center;
   }
   .location-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
+    width: 64px; height: 64px; margin: 0 auto 16px;
+    border-radius: 50%; display: grid; place-items: center;
+    color: var(--primary);
+    background: radial-gradient(circle at 50% 40%, rgba(200,155,60,.14), rgba(200,155,60,.04));
+    border: 1px solid rgba(200,155,60,.38);
   }
   .location-card h3 {
     font-size: 18px;
@@ -1234,9 +1237,9 @@
         <span class="technique-num">03</span>
         <span class="technique-name">全身藥草浴</span>
         <span class="technique-sanskrit">Herbal Bath</span>
-        <span class="technique-duration">浸浴 25 分鐘</span>
+        <span class="technique-duration">浸浴 30 分鐘</span>
       </div>
-      <p>喀拉拉邦傳統的全身浸浴。藥草煮成溫熱的湯，濾進浴缸，在草本的香氣裡泡 25 分鐘，讓按摩後的身體繼續暖著、鬆著。是否適合，一樣會先評估。</p>
+      <p>喀拉拉邦傳統的全身浸浴。藥草煮成溫熱的湯，濾進浴缸，在草本的香氣裡泡 30 分鐘，讓按摩後的身體繼續暖著、鬆著。是否適合，一樣會先評估。</p>
       <div class="technique-effects">
         <span class="effect-tag">全身浸浴</span>
         <span class="effect-tag">溫暖身體</span>
@@ -1357,14 +1360,14 @@
       <div class="price-options">
         <div class="price-option">
           <div class="price-option-info">
-            <div class="price-option-title">Postpartum Essential｜產後基本完整呵護 · 約 3 小時 25 分</div>
-            <div class="price-option-desc">溫油按摩＋眉心淋油 120 分鐘 ＋ 會陰薰蒸 30 分鐘 ＋ 全身藥草浴 25 分鐘，含諮詢與休息｜單項合計 NT$ 6,000，套組省 200</div>
+            <div class="price-option-title">Postpartum Essential｜產後基本完整呵護 · 約 3 小時 30 分</div>
+            <div class="price-option-desc">溫油按摩＋眉心淋油 120 分鐘 ＋ 會陰薰蒸 30 分鐘 ＋ 全身藥草浴 30 分鐘，含諮詢與休息｜單項合計 NT$ 6,000，套組省 200</div>
           </div>
           <div class="price-option-price">NT$ 5,800</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
-            <div class="price-option-title">Postpartum Extended｜產後深度完整呵護 · 約 3 小時 55 分</div>
+            <div class="price-option-title">Postpartum Extended｜產後深度完整呵護 · 約 4 小時</div>
             <div class="price-option-desc">按摩與淋油延長為 150 分鐘，其餘相同｜單項合計 NT$ 6,400，套組省 200</div>
           </div>
           <div class="price-option-price">NT$ 6,200</div>
@@ -1395,7 +1398,7 @@
         </div>
         <div class="price-option">
           <div class="price-option-info">
-            <div class="price-option-title">全身藥草浴 Herbal Bath · 浸浴 25 分鐘</div>
+            <div class="price-option-title">全身藥草浴 Herbal Bath · 浸浴 30 分鐘</div>
             <div class="price-option-desc">浴缸全身浸浴，藥草現煮</div>
           </div>
           <div class="price-option-price">＋1,000</div>
@@ -1448,21 +1451,21 @@
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">暖身放鬆</div>
-            <div class="price-option-desc">Essential ＋ 藥草球</div>
+            <div class="price-option-desc">Essential（溫油按摩 90 分鐘＋眉心淋油 30 分鐘）＋ 藥草球</div>
           </div>
           <div class="price-option-price">NT$ 5,000</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">腰背暖暖</div>
-            <div class="price-option-desc">Essential ＋ 熱石熱磚</div>
+            <div class="price-option-desc">Essential（溫油按摩 90 分鐘＋眉心淋油 30 分鐘）＋ 熱石熱磚</div>
           </div>
           <div class="price-option-price">NT$ 5,000</div>
         </div>
         <div class="price-option">
           <div class="price-option-info">
             <div class="price-option-title">泡進草本裡</div>
-            <div class="price-option-desc">Essential ＋ 全身藥草浴</div>
+            <div class="price-option-desc">Essential（溫油按摩 90 分鐘＋眉心淋油 30 分鐘）＋ 全身藥草浴 30 分鐘</div>
           </div>
           <div class="price-option-price">NT$ 4,800</div>
         </div>
@@ -1512,12 +1515,12 @@
 
     <div class="location-grid">
       <div class="location-card">
-        <div class="location-icon">🏠</div>
+        <div class="location-icon"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27V13a7 7 0 0 1 14 0v14"/><path d="M6 27h20"/><path d="M16 26v-6"/><path d="M16 22c-2.6 0-4-1.8-4-4.2 2.5 0 4 1.6 4 4.2Z"/><path d="M16 20.5c0-2.4 1.4-4 3.8-4 0 2.4-1.4 4-3.8 4Z"/></svg></div>
         <h3>台北北投工作室</h3>
         <p>溫暖、安靜、有完整器具的療癒空間。<br>適合想離開家、給自己一段獨處時光的妳。</p>
       </div>
       <div class="location-card">
-        <div class="location-icon">🚗</div>
+        <div class="location-icon"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 16 6l11 9"/><path d="M8 13v13h16V13"/><path d="M16 23.5s-4-2.4-4-5.1a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.7-4 5.1-4 5.1Z"/></svg></div>
         <h3>到府服務</h3>
         <p>產後媽媽出門不易，可請我帶器具到妳家。有需要，請不要客氣，儘管開口。<br>有孩子在身邊也沒關係。大台北地區可服務，依距離酌收交通費；要看我在台灣的時間，請提早預約。</p>
       </div>
@@ -1545,15 +1548,15 @@
         <div class="flow-content">會陰薰蒸（30 分鐘，經適用性評估後安排）</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">第 165–190 分</div>
-        <div class="flow-content">全身藥草浴（浸浴 25 分鐘，經適用性評估後安排）</div>
+        <div class="flow-time">第 165–195 分</div>
+        <div class="flow-content">全身藥草浴（浸浴 30 分鐘，經適用性評估後安排）</div>
       </div>
       <div class="flow-row">
-        <div class="flow-time">第 190–205 分</div>
+        <div class="flow-time">第 195–210 分</div>
         <div class="flow-content">休息 · 換衣 · 聊聊今天的身體與回家後的照顧</div>
       </div>
     </div>
-    <p class="section-intro" style="margin-top:24px;">Postpartum Essential 全程約 3 小時 25 分，Extended 約 3 小時 55 分。一般女性的 Essential 約 2 小時、Extended 約 2.5 小時，另加前後約 30 分鐘。</p>
+    <p class="section-intro" style="margin-top:24px;">Postpartum Essential 全程約 3 小時 30 分，Extended 約 4 小時。一般女性的 Essential 約 2 小時、Extended 約 2.5 小時，另加前後約 30 分鐘。</p>
   </div>
 </section>
 

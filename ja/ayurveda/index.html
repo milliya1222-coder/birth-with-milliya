@@ -463,8 +463,11 @@
     text-align: center;
   }
   .location-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
+    width: 64px; height: 64px; margin: 0 auto 16px;
+    border-radius: 50%; display: grid; place-items: center;
+    color: var(--primary);
+    background: radial-gradient(circle at 50% 40%, rgba(200,155,60,.14), rgba(200,155,60,.04));
+    border: 1px solid rgba(200,155,60,.38);
   }
   .location-card h3 {
     font-size: 18px;
@@ -1412,12 +1415,12 @@
 
     <div class="location-grid">
       <div class="location-card">
-        <div class="location-icon">🏠</div>
+        <div class="location-icon"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27V13a7 7 0 0 1 14 0v14"/><path d="M6 27h20"/><path d="M16 26v-6"/><path d="M16 22c-2.6 0-4-1.8-4-4.2 2.5 0 4 1.6 4 4.2Z"/><path d="M16 20.5c0-2.4 1.4-4 3.8-4 0 2.4-1.4 4-3.8 4Z"/></svg></div>
         <h3>逗子のプライベートサロン</h3>
         <p>温かく、静かで、必要な道具のそろった癒しの空間。<br>家を離れて、自分だけの時間を過ごしたいあなたに。</p>
       </div>
       <div class="location-card">
-        <div class="location-icon">🚗</div>
+        <div class="location-icon"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 16 6l11 9"/><path d="M8 13v13h16V13"/><path d="M16 23.5s-4-2.4-4-5.1a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.7-4 5.1-4 5.1Z"/></svg></div>
         <h3>出張サービス</h3>
         <p>産後のお母さんは、出かけるのが大変。道具を持ってあなたのお宅へ伺います。<br>逗子・葉山・鎌倉・神奈川エリアで対応、距離に応じて交通費を申し受けます。</p>
       </div>

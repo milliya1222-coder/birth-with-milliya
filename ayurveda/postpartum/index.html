@@ -270,8 +270,8 @@ html{scroll-behavior:smooth}
     <h3>只想好好被按摩一次</h3>
     <p class="muted small">產後、非產後皆可。時間是療程本身，前後的諮詢與更衣另外預留約 30 分鐘。</p>
     <ul>
-      <li><span>Essential｜溫油呵護 約 2 小時<br><small class="muted">溫油按摩 90 分鐘＋眉心淋油 30 分鐘・開幕首次體驗 NT$2,980</small></span><b>NT$3,800</b></li>
-      <li><span>Extended｜深度溫油呵護 約 2.5 小時<br><small class="muted">溫油按摩 120 分鐘＋眉心淋油 30 分鐘・開幕首次體驗 NT$3,380</small></span><b>NT$4,200</b></li>
+      <li><span>Essential｜溫油呵護 約 2 小時<br><small class="muted">溫油按摩 90 分鐘＋眉心淋油 30 分鐘・首次體驗價 NT$2,980</small></span><b>NT$3,800</b></li>
+      <li><span>Extended｜深度溫油呵護 約 2.5 小時<br><small class="muted">溫油按摩 120 分鐘＋眉心淋油 30 分鐘・首次體驗價 NT$3,380</small></span><b>NT$4,200</b></li>
     </ul>
   </div>
   <div class="addons">
@@ -287,7 +287,7 @@ html{scroll-behavior:smooth}
       <li><span>產後關骨包覆 Closing the Bones</span><b>+1,500</b></li>
     </ul>
   </div>
-  <p class="muted small"><b>開幕首次體驗（2027/1/31 前）</b>：第一次預約的妳，Essential NT$2,980、Extended NT$3,380，每人限用一次。首次價只適用 Essential／Extended 單次，不適用產後完整呵護與 3 次、5 次方案，也不與其他優惠併用。到府交通費另計。</p>
+  <p class="muted small"><b>首次體驗價（2027/1/31 前）</b>：第一次預約的妳，Essential NT$2,980、Extended NT$3,380，每人限用一次。首次價只適用 Essential／Extended 單次，不適用產後完整呵護與 3 次、5 次方案，也不與其他優惠併用。到府交通費另計。</p>
   <p class="muted small">♡ <b>陪產家庭禮遇</b>：曾與我一起走過孕期（簽約<a href="../../doula/#plans">陪產陪伴方案</a>）的媽媽，產後 6 個月內，以上方案享定價 9 折（加購項目依定價，不與其他優惠併用）。</p>
 </section>
 
@@ -297,7 +297,7 @@ html{scroll-behavior:smooth}
     <dt>方案</dt><dd>產後完整呵護 Essential／Extended、3 次方案、5 次方案，以及只做按摩的 Essential／Extended（產後、非產後皆可），<a href="#plans">看內容</a></dd>
     <dt>地點</dt><dd>北投工作室，或到府（交通費視地區另計）。產後媽媽有需要請儘管開口，孩子在身邊也沒關係；到府要看我在台灣的時間，請提早預約</dd>
     <dt>適合</dt><dd>產後一年內；其他階段先諮詢評估</dd>
-    <dt>費用</dt><dd>產後完整呵護 Essential NT$5,800／Extended NT$6,200、3 次方案 NT$16,500（6 個月內用完）、5 次方案 NT$26,500（9 個月內用完）。只做按摩：Essential NT$3,800／Extended NT$4,200（開幕首次體驗 NT$2,980／NT$3,380）。單項加購依上方價目。到府交通費另計。曾簽約陪產陪伴方案的媽媽，產後 6 個月內享定價 9 折</dd>
+    <dt>費用</dt><dd>產後完整呵護 Essential NT$5,800／Extended NT$6,200、3 次方案 NT$16,500（6 個月內用完）、5 次方案 NT$26,500（9 個月內用完）。只做按摩：Essential NT$3,800／Extended NT$4,200（首次體驗價 NT$2,980／NT$3,380）。單項加購依上方價目。到府交通費另計。曾簽約陪產陪伴方案的媽媽，產後 6 個月內享定價 9 折</dd>
   </dl>
   <p class="muted">報名一律填這份預約表單，大約 3 分鐘。裡面有分娩方式、產後週數、傷口狀況這些安全確認，也可以告訴我想不想安排薰蒸或藥草浴。我會先看過、評估，再跟妳確認時間；送出表單不代表預約已經成立。</p>
   <p id="quizNote" class="quiznote"></p>
@@ -400,7 +400,7 @@ function pkgHint(a,pains){
   const early = a.week==="w1"||a.week==="w23"||a.week==="m3";
   if (pains.length>=3 || (early && pains.length>=2)) return `💡 妳勾了 ${pains.length} 項不舒服，可以考慮 <a href="#plans"><b>5 次方案・完整產後呵護</b></a>，一次一個重點，慢慢把身體照顧回來。`;
   if (pains.length>=1) return `💡 想一次被好好照顧，<a href="#plans"><b>產後基本完整呵護</b></a>（NT$5,800）最完整；想慢慢來，也可以看 <a href="#plans"><b>3 次方案・溫暖照顧</b></a>。`;
-  return `💡 想先感受看看的話，<a href="#plans"><b>Essential・溫油按摩＋眉心淋油</b></a>就很適合，第一次來有開幕首次體驗 NT$2,980。`;
+  return `💡 想先感受看看的話，<a href="#plans"><b>Essential・溫油按摩＋眉心淋油</b></a>就很適合，第一次來有首次體驗價 NT$2,980。`;
 }
 function render(){
   const a=answers();

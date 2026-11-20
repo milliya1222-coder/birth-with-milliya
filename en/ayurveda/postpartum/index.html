@@ -270,8 +270,8 @@ html{scroll-behavior:smooth}
     <h3>Just a warm-oil treatment</h3>
     <p class="muted small">Postpartum or not. Times are the treatment itself; allow about 30 more minutes for consultation and changing.</p>
     <ul>
-      <li><span>Essential · warm-oil care, about 2 hours<br><small class="muted">90-minute massage + 30-minute Shirodhara · opening first visit NT$2,980</small></span><b>NT$3,800</b></li>
-      <li><span>Extended · deep warm-oil care, about 2.5 hours<br><small class="muted">120-minute massage + 30-minute Shirodhara · opening first visit NT$3,380</small></span><b>NT$4,200</b></li>
+      <li><span>Essential · warm-oil care, about 2 hours<br><small class="muted">90-minute massage + 30-minute Shirodhara · first visit NT$2,980</small></span><b>NT$3,800</b></li>
+      <li><span>Extended · deep warm-oil care, about 2.5 hours<br><small class="muted">120-minute massage + 30-minute Shirodhara · first visit NT$3,380</small></span><b>NT$4,200</b></li>
     </ul>
   </div>
   <div class="addons">
@@ -287,7 +287,7 @@ html{scroll-behavior:smooth}
       <li><span>Closing the bones</span><b>+1,500</b></li>
     </ul>
   </div>
-  <p class="muted small"><b>Opening first visit (until 31 Jan 2027)</b>: on your first booking, Essential is NT$2,980 and Extended NT$3,380, once per person. It applies to a single Essential or Extended treatment only — not to postpartum care or the 3- and 5-session courses — and cannot be combined with other offers. Home-visit travel is extra.</p>
+  <p class="muted small"><b>First visit (until 31 Jan 2027)</b>: on your first booking, Essential is NT$2,980 and Extended NT$3,380, once per person. It applies to a single Essential or Extended treatment only — not to postpartum care or the 3- and 5-session courses — and cannot be combined with other offers. Home-visit travel is extra.</p>
   <p class="muted small">♡ <b>For families I accompanied as a doula</b>: if you booked my <a href="/doula/#plans">doula support plan</a>, the plans above are 10% off within six months of birth (add-ons at full price; not combined with other offers).</p>
 </section>
 
@@ -297,7 +297,7 @@ html{scroll-behavior:smooth}
     <dt>Plans</dt><dd>Postpartum care Essential / Extended, 3-session and 5-session courses, and a warm-oil treatment on its own (Essential / Extended, postpartum or not) — <a href="#plans">see what is included</a></dd>
     <dt>Where</dt><dd>My studio in Beitou, Taipei, or a home visit (travel charged by area). If you are postpartum, please do ask — your baby can be with you. Home visits depend on when I am in Taiwan, so please book early</dd>
     <dt>Suits</dt><dd>Within a year of birth; for other stages, let us talk first</dd>
-    <dt>Fees</dt><dd>Postpartum care Essential NT$5,800 / Extended NT$6,200 · 3-session course NT$16,500 (within 6 months) · 5-session course NT$26,500 (within 9 months) · warm-oil treatment only: Essential NT$3,800 / Extended NT$4,200 (opening first visit NT$2,980 / NT$3,380). Add-ons as listed above. Home-visit travel is extra. Families from my doula support plan get 10% off within six months of birth.</dd>
+    <dt>Fees</dt><dd>Postpartum care Essential NT$5,800 / Extended NT$6,200 · 3-session course NT$16,500 (within 6 months) · 5-session course NT$26,500 (within 9 months) · warm-oil treatment only: Essential NT$3,800 / Extended NT$4,200 (first visit NT$2,980 / NT$3,380). Add-ons as listed above. Home-visit travel is extra. Families from my doula support plan get 10% off within six months of birth.</dd>
   </dl>
   <p class="muted">All bookings go through this form, which takes about five minutes. It asks about your birth, recovery and any wound for safety, and whether you would like the steam or bath. I will read it and check suitability, then confirm a time with you — sending the form does not by itself confirm a booking.</p>
   <p id="quizNote" class="quiznote"></p>
@@ -400,7 +400,7 @@ function pkgHint(a,pains){
   const early = a.week==="w1"||a.week==="w23"||a.week==="m3";
   if (pains.length>=3 || (early && pains.length>=2)) return `💡 You chose ${pains.length} discomforts. The <a href="#plans"><b>5-session course · Full postpartum care</b></a> lets us take one focus at a time and care for your body slowly.`;
   if (pains.length>=1) return `💡 For one complete session, <a href="#plans"><b>Postpartum Essential</b></a> (NT$5,800) is the fullest care; to go slowly, see the <a href="#plans"><b>3-session course · Warming care</b></a>.`;
-  return `💡 If you would like to feel it first, <a href="#plans"><b>Essential · warm-oil treatment + Shirodhara</b></a> is a lovely start — NT$2,980 on your first visit (opening offer).`;
+  return `💡 If you would like to feel it first, <a href="#plans"><b>Essential · warm-oil treatment + Shirodhara</b></a> is a lovely start — NT$2,980 on your first visit.`;
 }
 function render(){
   const a=answers();
